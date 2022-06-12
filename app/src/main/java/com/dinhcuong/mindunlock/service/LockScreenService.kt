@@ -1,4 +1,4 @@
-package com.dinhcuong.mindunlock
+package com.dinhcuong.mindunlock.service
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -8,9 +8,10 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.graphics.Color
-import android.os.Build
 import android.os.IBinder
 import android.util.Log
+import com.dinhcuong.mindunlock.R
+import com.dinhcuong.mindunlock.receiver.ScreenOnOffReceiver
 
 class LockScreenService: Service() {
 

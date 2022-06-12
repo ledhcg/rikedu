@@ -1,9 +1,10 @@
-package com.dinhcuong.mindunlock
+package com.dinhcuong.mindunlock.receiver
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import com.dinhcuong.mindunlock.service.LockScreenService
 
 class BootCompleteReceiver: BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {

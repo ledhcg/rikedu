@@ -1,4 +1,4 @@
-package com.dinhcuong.mindunlock
+package com.dinhcuong.mindunlock.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,8 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
+import com.dinhcuong.mindunlock.R
+import com.dinhcuong.mindunlock.service.LockScreenService
 
 class SettingsActivity : AppCompatActivity() {
 

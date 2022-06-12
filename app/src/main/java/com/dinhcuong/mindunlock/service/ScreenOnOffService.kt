@@ -1,9 +1,10 @@
-package com.dinhcuong.mindunlock
+package com.dinhcuong.mindunlock.service
 
 import android.app.Service
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.IBinder
+import com.dinhcuong.mindunlock.receiver.ScreenOnOffReceiver
 
 
 class ScreenOnOffService: Service() {

@@ -21,16 +21,16 @@
         android:theme="@style/Theme.MindUnlock"
         tools:targetApi="31">
         <activity
-            android:name=".SettingsActivity"
+            android:name=".activity.SettingsActivity"
             android:exported="false"
             android:label="@string/title_activity_settings" />
         <activity
-            android:name=".LockScreenActivity"
+            android:name=".activity.LockScreenActivity"
             android:launchMode="singleInstance"
             android:showOnLockScreen="true"
             android:showWhenLocked="true"/>
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,7 +40,7 @@
         </activity>
 
         <receiver
-            android:name=".AdminController"
+            android:name=".receiver.AdminReceiver"
             android:exported="true"
             android:permission="android.permission.BIND_DEVICE_ADMIN">
             <meta-data
@@ -56,18 +56,18 @@
                 <action android:name="android.intent.action.ACTION_SHUTDOWN" />
             </intent-filter>
         </receiver>
-
-        <service
-            android:name=".LockScreenService"
-            android:enabled="true"
-            android:exported="true" />
         <receiver
-            android:name=".BootCompleteReceiver"
+            android:name=".receiver.BootCompleteReceiver"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+        <service
+            android:name=".service.LockScreenService"
+            android:enabled="true"
+            android:exported="true" />
+
     </application>
 
 </manifest>

@@ -1,10 +1,11 @@
-package com.dinhcuong.mindunlock
+package com.dinhcuong.mindunlock.activity
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import com.dinhcuong.mindunlock.R
 
 class LockScreenActivity : AppCompatActivity() {
     @SuppressLint("SetJavaScriptEnabled")
