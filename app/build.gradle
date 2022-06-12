@@ -41,6 +41,7 @@ dependencies {
     implementation 'androidx.compose.material3:material3:1.0.0-alpha13'
     implementation 'androidx.compose.material3:material3-window-size-class:1.0.0-alpha13'
     implementation 'androidx.preference:preference:1.2.0'
+    implementation 'com.microsoft.design:fluent-system-icons:1.1.172@aar'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

@@ -1,25 +1,9 @@
 <resources>
     <string name="app_name">Mind Unlock</string>
 
-    <string name="remind_to_take_a_break">Remind me to take a break</string>
-    <string name="key_upload_quality">key_upload_quality</string>
-    <string name="remind_me">Remind me to take a break</string>
-    <string name="remind_me_for_bed_time">remind_me_for_bed_time</string>
-    <string name="remind_for_bed_time">Remind me for bed time</string>
-    <string name="limit_data_usage">prefs_limit_data_usage</string>
-    <string name="stream_video">Only stream HD video on Wi-Fi</string>
-    <string name="limit_mobile_usage">Limit mobile data usage</string>
-    <string name="double_tap_to_seek">Double-tap to seek</string>
-    <string name="pref_seek_val">pref_seek_val</string>
-    <string name="seconds">seconds</string>
-    <string name="uploads">Uploads</string>
-    <string name="pref_uploads">pref_uploads</string>
-    <string name="specify_network_prefs">Specify network preferences for uploads</string>
-    <string name="prefs_restricted_mode">prefs_restricted_mode</string>
-    <string name="restricated_mode">Restricted Mode can help to hide videos with potentially mature content.No filter is 100% accurate, but it should help you to avoid most of this type of content.</string>
-    <string name="restricated_mode_description">Restricted Mode</string>
-    <string name="prefs_enable_stats">prefs_enable_stats</string>
-    <string name="enable_stats">Enable stats for nerds</string>
+    <string name="pref_admin">Device admin</string>
+    <string name="pref_admin_summary">Activate this device admin for normal mode\nPlease note that you have to deactivate the app\'s device admin privileges before uninstalling it!</string>
+
 
     <string-array name="pref_upload_quality_entries">
         <item>360p</item>
