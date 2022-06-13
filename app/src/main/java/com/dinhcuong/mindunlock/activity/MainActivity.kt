@@ -7,6 +7,7 @@ import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.widget.Button
@@ -40,11 +41,14 @@ class MainActivity : AppCompatActivity(){
         window.statusBarColor = Color.TRANSPARENT
         super.onCreate(savedInstanceState)
 
+
         setContentView(R.layout.activity_main)
         checkPermission()
 
         devicePolicyManager = getSystemService(DEVICE_POLICY_SERVICE) as DevicePolicyManager
         compName = ComponentName(this, AdminReceiver::class.java)
+
+        setTimeoutToLock(5)
 
         settings = findViewById(R.id.settings)
         lock = findViewById(R.id.lock)
@@ -82,6 +86,15 @@ class MainActivity : AppCompatActivity(){
         settings!!.setOnClickListener {
             val intentSettings = Intent(this, SettingsActivity::class.java)
             startActivity(intentSettings)
+        }
+    }
+
+    private fun setTimeoutToLock(time: Long){
+        val active = devicePolicyManager!!.isAdminActive(compName!!)
+        if (active) {
+            val timeMs: Long = 1000L * time //.text.toString().toLong()
+            Log.d("[MainActivity]", "Timeout: $timeMs")
+            devicePolicyManager!!.setMaximumTimeToLock(compName!!, timeMs)
         }
     }
 
