@@ -118,13 +118,9 @@ class SettingsActivity : AppCompatActivity() {
 
         private fun handlePermissionDOOA(prefDrawOverOtherApps : SwitchPreferenceCompat){
             val context: FragmentActivity? = activity
-            when {
-                prefDrawOverOtherApps.isChecked -> {
-                    val uri = Uri.fromParts("package", context!!.packageName, null)
-                    val intentMOP = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, uri)
-                    startActivityForResult(intentMOP, 0)
-                }
-            }
+            val uri = Uri.fromParts("package", context!!.packageName, null)
+            val intentMOP = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, uri)
+            startActivityForResult(intentMOP, 0)
         }
 
         private fun handlePermissionDevice(prefAdmin: SwitchPreferenceCompat){
