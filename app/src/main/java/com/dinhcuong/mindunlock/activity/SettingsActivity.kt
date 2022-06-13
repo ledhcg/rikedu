@@ -44,15 +44,51 @@ class SettingsActivity : AppCompatActivity() {
 
         private var prefDrawOverOtherApps: SwitchPreferenceCompat? = null
         private var prefAdmin: SwitchPreferenceCompat? = null
+        private var useLockScreenPref: SwitchPreferenceCompat? = null
+        private var screenTimeout: ListPreference? = null
+
+        private var intentLS: Intent? = null
 
 
 
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey)
-            val useLockScreenPref = findPreference<SwitchPreferenceCompat>("useLockScreen")
-            val screenTimeout = findPreference<ListPreference>("time")
+
+            useLockScreenPref = findPreference("useLockScreen")
+            screenTimeout = findPreference<ListPreference>("time")
             prefDrawOverOtherApps = findPreference("pref_draw_over_other_apps")
             prefAdmin = findPreference("pref_admin")
+
+            intentLS = Intent(activity, LockScreenService::class.java)
+
+            useLockScreenPref!!.setOnPreferenceClickListener {
+
+                when {
+                    useLockScreenPref!!.isChecked -> {
+                        if (prefAdmin!!.isChecked && prefDrawOverOtherApps!!.isChecked){
+                            Log.d("[SettingsFragment]","startForegroundService")
+                            activity?.startForegroundService(intentLS)
+                        } else {
+                            useLockScreenPref!!.isChecked = false
+                            Toast.makeText(
+                                activity,
+                                "You need permission to perform this action",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+                    else -> {
+                        Log.d("[SettingsFragment]","stopService")
+                        activity?.stopService(intentLS)
+                    }
+                }
+                prefAdmin!!.isChecked && prefDrawOverOtherApps!!.isChecked
+            }
+
+            prefDrawOverOtherApps!!.setOnPreferenceClickListener {
+                handlePermissionDOOA(prefDrawOverOtherApps!!)
+                true
+            }
 
             screenTimeout!!.setOnPreferenceChangeListener { preference, newValue ->
                 if(preference is ListPreference){
@@ -66,32 +102,17 @@ class SettingsActivity : AppCompatActivity() {
                 true
             }
 
-            val intent = Intent(activity, LockScreenService::class.java)
-            useLockScreenPref!!.setOnPreferenceClickListener {
-                when {
-                    useLockScreenPref.isChecked -> {
-                        Log.d("[SettingsFragment]","startForegroundService")
-                        activity?.startForegroundService(intent)
-                    }
-                    else -> activity?.stopService(intent)
-                }
-                true
-            }
-
             prefAdmin!!.setOnPreferenceClickListener {
                 handlePermissionDevice(prefAdmin!!)
                 true
             }
 
-            prefDrawOverOtherApps!!.setOnPreferenceClickListener {
-                handlePermissionDOOA(prefDrawOverOtherApps!!)
-                true
-            }
 
-            if (useLockScreenPref.isChecked){
-                Log.d("[SettingsFragment]","startForegroundService")
-                activity?.startForegroundService(intent)
-            }
+
+//            if (useLockScreenPref!!.isChecked){
+//                Log.d("[SettingsFragment]","startForegroundService")
+//                activity?.startForegroundService(intentLS)
+//            }
         }
 
 
@@ -99,7 +120,7 @@ class SettingsActivity : AppCompatActivity() {
             val context: FragmentActivity? = activity
             when {
                 prefDrawOverOtherApps.isChecked -> {
-                    val uri = Uri.fromParts("package", activity?.packageName, null)
+                    val uri = Uri.fromParts("package", context!!.packageName, null)
                     val intentMOP = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, uri)
                     startActivityForResult(intentMOP, 0)
                 }
@@ -116,7 +137,7 @@ class SettingsActivity : AppCompatActivity() {
                     intentDPM.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, compName)
                     intentDPM.putExtra(
                         DevicePolicyManager.EXTRA_ADD_EXPLANATION,
-                        "Additional text explaining why we need this permission"
+                        "We need this permission to perform the lock screen function."
                     )
                     startActivityForResult(intentDPM, RESULT_ENABLE)
                 } else -> devicePolicyManager!!.removeActiveAdmin(compName!!)
@@ -151,18 +172,18 @@ class SettingsActivity : AppCompatActivity() {
         override fun onResume() {
             super.onResume()
 
-
-            val intentLS = Intent(context, LockScreenService::class.java)
             devicePolicyManager = context?.getSystemService(DEVICE_POLICY_SERVICE) as DevicePolicyManager
             compName = ComponentName(requireContext(), AdminReceiver::class.java)
 
-            if (Settings.canDrawOverlays(activity)) {
-                prefDrawOverOtherApps?.isChecked = true
-                context?.startForegroundService(intentLS)
-            } else {
-                prefDrawOverOtherApps?.isChecked = false
-                context?.stopService(intentLS)
-            }
+            prefDrawOverOtherApps?.isChecked = Settings.canDrawOverlays(activity)
+
+//            if (Settings.canDrawOverlays(activity)) {
+//                prefDrawOverOtherApps?.isChecked = true
+////                context?.startForegroundService(intentLS)
+//            } else {
+//                prefDrawOverOtherApps?.isChecked = false
+////                context?.stopService(intentLS)
+//            }
             prefAdmin?.isChecked = devicePolicyManager!!.isAdminActive(compName!!)
         }
 
