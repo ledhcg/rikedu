@@ -11,7 +11,7 @@ class ScreenOnOffReceiver: BroadcastReceiver() {
         when (intent?.action) {
             Intent.ACTION_SCREEN_OFF -> {
                 Log.d("ScreenOnOffReceiver", "Screen Off")
-                Log.d("ScreenOffReceiver","$context")
+                Log.d("ScreenOnOffReceiver","$context")
                 val intentLockScreen = Intent(context, LockScreenActivity::class.java)
                 intentLockScreen.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 intentLockScreen.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)

@@ -17,6 +17,7 @@ import com.dinhcuong.mindunlock.R
 import com.dinhcuong.mindunlock.receiver.AdminReceiver
 import com.dinhcuong.mindunlock.service.LockScreenService
 import com.dinhcuong.mindunlock.service.ScreenOnOffService
+import java.lang.Long.parseLong
 
 
 class MainActivity : AppCompatActivity(){
@@ -47,8 +48,6 @@ class MainActivity : AppCompatActivity(){
 
         devicePolicyManager = getSystemService(DEVICE_POLICY_SERVICE) as DevicePolicyManager
         compName = ComponentName(this, AdminReceiver::class.java)
-
-        setTimeoutToLock(5)
 
         settings = findViewById(R.id.settings)
         lock = findViewById(R.id.lock)
@@ -86,15 +85,6 @@ class MainActivity : AppCompatActivity(){
         settings!!.setOnClickListener {
             val intentSettings = Intent(this, SettingsActivity::class.java)
             startActivity(intentSettings)
-        }
-    }
-
-    private fun setTimeoutToLock(time: Long){
-        val active = devicePolicyManager!!.isAdminActive(compName!!)
-        if (active) {
-            val timeMs: Long = 1000L * time //.text.toString().toLong()
-            Log.d("[MainActivity]", "Timeout: $timeMs")
-            devicePolicyManager!!.setMaximumTimeToLock(compName!!, timeMs)
         }
     }
 

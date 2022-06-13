@@ -10,7 +10,7 @@
             app:icon="@drawable/ic_fluent_lock_shield_24_filled"/>
 
         <ListPreference
-            app:defaultValue="time"
+            app:defaultValue="0"
             app:entries="@array/time_entries"
             app:entryValues="@array/time_values"
             app:key="time"
