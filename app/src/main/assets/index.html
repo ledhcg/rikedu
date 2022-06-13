@@ -41,7 +41,7 @@
 </body>
 
 <script>
-
+    var result = null
     function showAndroidToast(toast) {
         Android.showToast(toast);
     }
@@ -85,12 +85,25 @@
         localStorage.setItem(key_user, user)
         localStorage.setItem(key_password, password)
 
+        switch(result){
+            case true: {
+                clearAlert("success")
+                break;
+            }
+            case false: {
+                clearAlert("danger")
+                break;
+            }
+        }
+
         if(user === "mail@ledinhcuong.com"){
             console.log("true")
-            Android.unlockAndroid()
+            result = true
             alert(true)
+            Android.unlockAndroid()
         } else {
             console.log("false")
+            result = false
             alert(false)
         }
 
@@ -109,6 +122,24 @@
                 alert.classList.add("alert-danger")
                 alert.innerHTML = "Unlock Fail!"
                 alert.style.display = "block"
+                break;
+            }
+        }
+    }
+
+    function clearAlert(style){
+        const alert = document.getElementById("alert")
+        switch(style){
+            case "success": {
+                alert.classList.remove("alert-success")
+                alert.innerHTML = ""
+                alert.style.display = "none"
+                break;
+            }
+            case "danger": {
+                alert.classList.remove("alert-danger")
+                alert.innerHTML = ""
+                alert.style.display = "none"
                 break;
             }
         }

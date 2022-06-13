@@ -6,8 +6,7 @@
             app:defaultValue="false"
             app:key="useLockScreen"
             app:title="Lockscreen"
-            app:iconSpaceReserved="false"
-            app:icon="@drawable/ic_fluent_lock_shield_24_filled"/>
+            app:icon="@drawable/ic_fluent_phone_lock_24_filled"/>
 
         <ListPreference
             app:defaultValue="0"
@@ -18,14 +17,20 @@
             app:useSimpleSummaryProvider="true"
             app:icon="@drawable/ic_fluent_phone_screen_time_24_filled"/>
 
-        <Preference
+        <SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:key="pref_draw_over_other_apps"
+            app:icon="@drawable/ic_fluent_color_24_filled"
+            app:summary="@string/pref_draw_over_other_apps_summary"
+            app:title="@string/pref_draw_over_other_apps">
+        </SwitchPreferenceCompat>
+        <SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:key="pref_admin"
             app:icon="@drawable/ic_fluent_shield_keyhole_24_filled"
             app:summary="@string/pref_admin_summary"
             app:title="@string/pref_admin">
-<!--            <intent-->
-<!--                app:targetClass="com.android.settings.Settings$OverlaySettingsActivity"-->
-<!--                app:targetPackage="com.android.settings" />-->
-        </Preference>
+        </SwitchPreferenceCompat>
     </PreferenceCategory>
 
 </PreferenceScreen>
