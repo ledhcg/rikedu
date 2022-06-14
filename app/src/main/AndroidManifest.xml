@@ -20,7 +20,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MindUnlock"
         tools:targetApi="31">
-
+        <activity
+            android:name=".ExitActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.SettingsActivity"
             android:exported="false"
@@ -29,7 +31,8 @@
             android:name=".activity.LockScreenActivity"
             android:launchMode="singleInstance"
             android:showOnLockScreen="true"
-            android:showWhenLocked="true" />
+            android:showWhenLocked="true"
+            android:turnScreenOn="true" />
         <activity
             android:name=".activity.MainActivity"
             android:exported="true">
