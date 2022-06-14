@@ -14,5 +14,6 @@ Android Lock Screen Application
 *	Website: [ledinhcuong.com](https://ledinhcuong.com)
 
 # .versionHistory()
+* 0.6.14b-BETA
 * 0.6.14-BETA
     * Initial Release
