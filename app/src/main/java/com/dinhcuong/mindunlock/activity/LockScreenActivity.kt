@@ -5,15 +5,18 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.webkit.JavascriptInterface
-import android.webkit.WebView
-import android.webkit.WebViewClient
+import android.webkit.*
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat.startActivity
+
 
 class LockScreenActivity : AppCompatActivity() {
+
+
     private var webView: WebView? = null
+    private var port: WebMessagePort? = null
+    private var message: WebMessage? = null
+
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,21 +25,31 @@ class LockScreenActivity : AppCompatActivity() {
         setContentView(webView)
         webView!!.webViewClient = LockScreenWebView()
         webView!!.addJavascriptInterface(WebAppInterface(this), "Android")
+
         webView!!.settings.apply {
             javaScriptEnabled = true
             domStorageEnabled = true
             allowContentAccess = true
         }
-        webView!!.loadUrl("https://zergity.github.io/mind-unlock/")
-//        webView!!.loadUrl("file:///android_asset/index.html")
+//        webView!!.loadUrl("https://zergity.github.io/mind-unlock/")
+        webView!!.loadUrl("file:///android_asset/index.html")
+
 
     }
 
     class WebAppInterface(private val context: Context) {
+
         @JavascriptInterface
         fun showToast(toast: String) {
             Toast.makeText(context, toast, Toast.LENGTH_SHORT).show()
             Log.d("[JavascriptInterface]", "showToast")
+        }
+
+        @JavascriptInterface
+        fun receiveMessage(data: String?): Boolean {
+            Log.d("[JavascriptInterface]", "receiveMessage")
+            Log.d("[JavascriptInterface]", data.toString())
+            return false // here we return true if we handled the post.
         }
 
         @JavascriptInterface
@@ -53,9 +66,8 @@ class LockScreenActivity : AppCompatActivity() {
     class LockScreenWebView: WebViewClient(){
         override fun onPageFinished(webView: WebView?, url: String?) {
             super.onPageFinished(webView, url)
-
             webView?.loadUrl(
-                "javascript:(function() {document.body.style.paddingTop = '50px'; var btn = document.getElementById('btn-unlock');btn.setAttribute('onclick', 'Android.unlockAndroid()')})()"
+                "javascript:(function() {document.body.style.paddingTop = '50px'})()"
             )
         }
     }

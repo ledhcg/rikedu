@@ -1,149 +1,178 @@
-<!DOCTYPE html>
-<html lang="en">
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Mind Unlock</title>-->
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">-->
+<!--</head>-->
+<!--<style>-->
+<!--    .clock {-->
+<!--        color: #17D4FE;-->
+<!--        font-size: 60px;-->
+<!--        font-family: Orbitron;-->
+<!--    }-->
+<!--</style>-->
+<!--<body>-->
+
+<!--    <div class="p-4">-->
+<!--        <div class="d-flex justify-content-center mb-3 pt-4">-->
+<!--            <div id="ClockDisplay" class="clock center" onload="showTime()"></div>-->
+<!--        </div>-->
+<!--        <div class="form-floating mb-3">-->
+<!--            <input type="email" class="form-control" id="email" placeholder="name@example.com">-->
+<!--            <label for="email">Email address</label>-->
+<!--        </div>-->
+<!--        <div class="form-floating mb-3">-->
+<!--            <input type="password" class="form-control" id="password" placeholder="123456789">-->
+<!--            <label for="password">Password</label>-->
+<!--        </div>-->
+<!--        <div class="d-grid gap-2 mb-3">-->
+<!--            <a class="btn btn-lg btn-primary" type="button" onclick="unlock()">Unlock</a>-->
+<!--        </div>-->
+<!--        <div class="d-grid gap-2 mb-3">-->
+<!--            <a class="btn btn-lg btn-primary" type="button" onclick="showAndroidToast('Hello')">Show Toast</a>-->
+<!--        </div>-->
+<!--        <div class="alert" id="alert" role="alert">-->
+<!--            &lt;!&ndash;Text&ndash;&gt;-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</body>-->
+
+<!--<script>-->
+<!--    var result = null-->
+<!--    function showAndroidToast(toast) {-->
+<!--        Android.showToast(toast);-->
+<!--    }-->
+<!--    function showTime(){-->
+<!--        var date = new Date()-->
+<!--        var h = date.getHours()-->
+<!--        var m = date.getMinutes()-->
+<!--        var s = date.getSeconds()-->
+<!--        var session = "AM"-->
+<!--        -->
+<!--        if(h == 0){-->
+<!--            h = 12-->
+<!--        }-->
+<!--        -->
+<!--        if(h > 12){-->
+<!--            h = h - 12-->
+<!--            session = "PM"-->
+<!--        }-->
+<!--        -->
+<!--        h = (h < 10) ? "0" + h : h-->
+<!--        m = (m < 10) ? "0" + m : m-->
+<!--        s = (s < 10) ? "0" + s : s-->
+<!--        -->
+<!--        var time = h + ":" + m + ":" + s + " " + session-->
+<!--        document.getElementById("ClockDisplay").innerText = time-->
+<!--        document.getElementById("ClockDisplay").textContent = time-->
+<!--        -->
+<!--        setTimeout(showTime, 1000)-->
+<!--        -->
+<!--    }-->
+
+<!--    showTime();-->
+
+<!--    function unlock() {-->
+
+<!--        const key_user = 'user'-->
+<!--        const key_password = 'password'-->
+
+<!--        const user = document.getElementById("email").value-->
+<!--        const password = document.getElementById("password").value-->
+<!--        localStorage.setItem(key_user, user)-->
+<!--        localStorage.setItem(key_password, password)-->
+
+<!--        switch(result){-->
+<!--            case true: {-->
+<!--                clearAlert("success")-->
+<!--                break;-->
+<!--            }-->
+<!--            case false: {-->
+<!--                clearAlert("danger")-->
+<!--                break;-->
+<!--            }-->
+<!--        }-->
+
+<!--        if(user === "mail@ledinhcuong.com"){-->
+<!--            console.log("true")-->
+<!--            result = true-->
+<!--            alert(true)-->
+<!--            Android.unlockAndroid()-->
+<!--        } else {-->
+<!--            console.log("false")-->
+<!--            result = false-->
+<!--            alert(false)-->
+<!--        }-->
+
+<!--    }-->
+
+<!--    function alert(result){-->
+<!--        const alert = document.getElementById("alert")-->
+<!--        switch(result){-->
+<!--            case true: {-->
+<!--                alert.classList.add("alert-success")-->
+<!--                alert.innerHTML = "Unlocked!"-->
+<!--                alert.style.display = "block"-->
+<!--                break;-->
+<!--            }-->
+<!--            case false: {-->
+<!--                alert.classList.add("alert-danger")-->
+<!--                alert.innerHTML = "Unlock Fail!"-->
+<!--                alert.style.display = "block"-->
+<!--                break;-->
+<!--            }-->
+<!--        }-->
+<!--    }-->
+
+<!--    function clearAlert(style){-->
+<!--        const alert = document.getElementById("alert")-->
+<!--        switch(style){-->
+<!--            case "success": {-->
+<!--                alert.classList.remove("alert-success")-->
+<!--                alert.innerHTML = ""-->
+<!--                alert.style.display = "none"-->
+<!--                break;-->
+<!--            }-->
+<!--            case "danger": {-->
+<!--                alert.classList.remove("alert-danger")-->
+<!--                alert.innerHTML = ""-->
+<!--                alert.style.display = "none"-->
+<!--                break;-->
+<!--            }-->
+<!--        }-->
+<!--    }-->
+
+<!--</script>-->
+<!--</html>-->
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mind Unlock</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script>
+        const key = 'name'
+
+        function store() {
+            const value = document.getElementById("name").value
+            localStorage.setItem(key, value)
+            const btn = document.getElementById("btn-unlock")
+            btn.innerHTML = "Unlocked"
+            btn.disabled = true
+            window?.chrome?.webview?.postMessage?.('WEBVIEW.UNLOCK')
+            window.postMessage('UNLOCK', '*')
+        }
+
+        function load() {
+            const value = localStorage.getItem(key)
+            document.getElementById("name").value = value
+        }
+
+        window.addEventListener('message', function(event) { Android.receiveMessage(JSON.stringify(event.data)) })()
+
+        window.onload = load
+    </script>
 </head>
-<style>
-    .clock {
-        color: #17D4FE;
-        font-size: 60px;
-        font-family: Orbitron;
-    }
-</style>
-<body>
-
-    <div class="p-4">
-        <div class="d-flex justify-content-center mb-3 pt-4">
-            <div id="ClockDisplay" class="clock center" onload="showTime()"></div>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="email" placeholder="name@example.com">
-            <label for="email">Email address</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="password" placeholder="123456789">
-            <label for="password">Password</label>
-        </div>
-        <div class="d-grid gap-2 mb-3">
-            <a class="btn btn-lg btn-primary" type="button" onclick="unlock()">Unlock</a>
-        </div>
-        <div class="d-grid gap-2 mb-3">
-            <a class="btn btn-lg btn-primary" type="button" onclick="showAndroidToast('Hello')">Show Toast</a>
-        </div>
-        <div class="alert" id="alert" role="alert">
-            <!--Text-->
-        </div>
-    </div>
-</body>
-
-<script>
-    var result = null
-    function showAndroidToast(toast) {
-        Android.showToast(toast);
-    }
-    function showTime(){
-        var date = new Date()
-        var h = date.getHours()
-        var m = date.getMinutes()
-        var s = date.getSeconds()
-        var session = "AM"
-        
-        if(h == 0){
-            h = 12
-        }
-        
-        if(h > 12){
-            h = h - 12
-            session = "PM"
-        }
-        
-        h = (h < 10) ? "0" + h : h
-        m = (m < 10) ? "0" + m : m
-        s = (s < 10) ? "0" + s : s
-        
-        var time = h + ":" + m + ":" + s + " " + session
-        document.getElementById("ClockDisplay").innerText = time
-        document.getElementById("ClockDisplay").textContent = time
-        
-        setTimeout(showTime, 1000)
-        
-    }
-
-    showTime();
-
-    function unlock() {
-
-        const key_user = 'user'
-        const key_password = 'password'
-
-        const user = document.getElementById("email").value
-        const password = document.getElementById("password").value
-        localStorage.setItem(key_user, user)
-        localStorage.setItem(key_password, password)
-
-        switch(result){
-            case true: {
-                clearAlert("success")
-                break;
-            }
-            case false: {
-                clearAlert("danger")
-                break;
-            }
-        }
-
-        if(user === "mail@ledinhcuong.com"){
-            console.log("true")
-            result = true
-            alert(true)
-            Android.unlockAndroid()
-        } else {
-            console.log("false")
-            result = false
-            alert(false)
-        }
-
-    }
-
-    function alert(result){
-        const alert = document.getElementById("alert")
-        switch(result){
-            case true: {
-                alert.classList.add("alert-success")
-                alert.innerHTML = "Unlocked!"
-                alert.style.display = "block"
-                break;
-            }
-            case false: {
-                alert.classList.add("alert-danger")
-                alert.innerHTML = "Unlock Fail!"
-                alert.style.display = "block"
-                break;
-            }
-        }
-    }
-
-    function clearAlert(style){
-        const alert = document.getElementById("alert")
-        switch(style){
-            case "success": {
-                alert.classList.remove("alert-success")
-                alert.innerHTML = ""
-                alert.style.display = "none"
-                break;
-            }
-            case "danger": {
-                alert.classList.remove("alert-danger")
-                alert.innerHTML = ""
-                alert.style.display = "none"
-                break;
-            }
-        }
-    }
-
-</script>
+<html style="background: #424242; color: #EDEDED;">
+Local Storage: <input id="name" placeholder="write something" />
+<button id="btn-unlock" onclick="store()">Save and Unlock</button>
 </html>
