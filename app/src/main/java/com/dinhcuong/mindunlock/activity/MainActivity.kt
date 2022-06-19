@@ -3,50 +3,60 @@ package com.dinhcuong.mindunlock.activity
 import android.app.KeyguardManager
 import android.app.admin.DevicePolicyManager
 import android.content.ComponentName
+import android.content.Context
 import android.content.Intent
-import android.graphics.Color
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
-import android.view.View
-import android.view.WindowManager
+import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SwitchCompat
 import com.dinhcuong.mindunlock.R
 import com.dinhcuong.mindunlock.receiver.AdminReceiver
 import com.dinhcuong.mindunlock.service.LockScreenService
-import com.dinhcuong.mindunlock.service.ScreenOnOffService
+import com.dinhcuong.mindunlock.utils.SharedPref
 
 
 class MainActivity : AppCompatActivity(){
     private var lock: Button? = null
     private var settings: Button? = null
+    private var startSwitch: SwitchCompat? = null
+
+
+
     private var RESULT_ENABLE = 11
+
     private var devicePolicyManager: DevicePolicyManager? = null
     private var compName: ComponentName? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val intent = Intent(this, ScreenOnOffService::class.java)
-        startService(intent)
-        window.addFlags(
-            WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON or
-                    WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD or
-                    WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED or
-                    WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON
-        )
-        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-        window.statusBarColor = Color.TRANSPARENT
+//        val intent = Intent(this, ScreenOnOffService::class.java)
+//        startService(intent)
+//        window.addFlags(
+//            WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON or
+//                    WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD or
+//                    WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED or
+//                    WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON
+//        )
+//        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+//        window.statusBarColor = Color.TRANSPARENT
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
-//        checkPermission()
+
 
         devicePolicyManager = getSystemService(DEVICE_POLICY_SERVICE) as DevicePolicyManager
         compName = ComponentName(this, AdminReceiver::class.java)
 
         settings = findViewById(R.id.settings)
         lock = findViewById(R.id.lock)
+        startSwitch = findViewById(R.id.start_switch)
+
+
+
 
         lock!!.setOnClickListener {
             val active = devicePolicyManager!!.isAdminActive(compName!!)
@@ -64,8 +74,17 @@ class MainActivity : AppCompatActivity(){
             val intentSettings = Intent(this, SettingsActivity::class.java)
             startActivity(intentSettings)
         }
+
+
+        if (isDeviceSecure(applicationContext)){
+            Log.d("[MainActivity]", "LS-enable")
+        }
     }
 
+    fun isDeviceSecure(context: Context): Boolean{
+        val manager = context.getSystemService(KEYGUARD_SERVICE) as KeyguardManager
+        return manager.isDeviceSecure
+    }
     private fun checkPermission() {
         if (!Settings.canDrawOverlays(this)) {
             val uri = Uri.fromParts("package", packageName, null)

@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -28,7 +29,7 @@
             android:name=".activity.LockScreenActivity"
             android:launchMode="singleInstance"
             android:showOnLockScreen="true"
-            android:showWhenLocked="true"/>
+            android:showWhenLocked="true" />
         <activity
             android:name=".activity.MainActivity"
             android:exported="true">
@@ -66,8 +67,7 @@
 
         <service
             android:name=".service.LockScreenService"
-            android:enabled="true"
-            android:exported="true" />
+            android:enabled="true" />
     </application>
 
 </manifest>
