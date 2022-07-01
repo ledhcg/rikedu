@@ -6,13 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".activity.MainActivity">
 
-    <androidx.appcompat.widget.SwitchCompat
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/start_switch"
-        android:text="Start/Stop the service"
-        app:switchPadding="20dp"/>
-
     <Button
         android:id="@+id/settings"
         android:layout_width="200dp"
@@ -29,6 +22,14 @@
         android:text="Lock the Phone"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/settings"/>
+
+    <TextView
+        android:id="@+id/notification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/lock"/>
 
 
 </RelativeLayout>

@@ -21,9 +21,6 @@ class LockScreenActivity : AppCompatActivity() {
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
-        window.addFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN
-        )
         super.onCreate(savedInstanceState)
         sharedPref = SharedPref(this)
 
@@ -31,7 +28,7 @@ class LockScreenActivity : AppCompatActivity() {
         webView = WebView(applicationContext)
         setContentView(webView)
         webView!!.webViewClient = LockScreenWebView()
-        webView!!.addJavascriptInterface(WebAppInterface(this, sharedPref!!), "webview")
+        webView!!.addJavascriptInterface(WebAppInterface(this, sharedPref!!, webView!!), "webview")
 
         webView!!.settings.apply {
             javaScriptEnabled = true
@@ -43,6 +40,7 @@ class LockScreenActivity : AppCompatActivity() {
 
 
     }
+
 
     //To prevent user from exiting (without properly unlocking) this activity, when it loses focus the screen locks again
     override fun onStop() {
@@ -63,8 +61,9 @@ class LockScreenActivity : AppCompatActivity() {
     //Does nothing on back press
     override fun onBackPressed() {}
 
-    class WebAppInterface(private val context: Context, sharedPref: SharedPref) {
+    class WebAppInterface(private val context: Context, sharedPref: SharedPref, webView: WebView) {
         private var sp = sharedPref
+        private var wV = webView
         @JavascriptInterface
         fun showToast(toast: String) {
             Toast.makeText(context, toast, Toast.LENGTH_SHORT).show()
@@ -78,8 +77,9 @@ class LockScreenActivity : AppCompatActivity() {
             Toast.makeText(context, data, Toast.LENGTH_SHORT).show()
 
             sp.setIsLocking(false)
+//            reload()
             unlockAndroid()
-//            LockScreenActivity().unlockAndFinish()
+//            reload()
             return false // here we return true if we handled the post.
         }
 
@@ -87,11 +87,19 @@ class LockScreenActivity : AppCompatActivity() {
         fun unlockAndroid() {
 //            Toast.makeText(context, "Unlocked", Toast.LENGTH_SHORT).show()
             //HomeScreen
-
+            backHomeApp()
             val homeIntent = Intent(Intent.ACTION_MAIN)
             homeIntent.addCategory(Intent.CATEGORY_HOME)
             homeIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             context.startActivity(homeIntent)
+        }
+
+        @JavascriptInterface
+        fun backHomeApp() {
+            val intentHomeApp = Intent(context, MainActivity::class.java)
+            intentHomeApp.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            intentHomeApp.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            context.startActivity(intentHomeApp)
         }
 
     }

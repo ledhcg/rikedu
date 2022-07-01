@@ -11,9 +11,11 @@ import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
+import androidx.core.content.getSystemService
 import com.dinhcuong.mindunlock.R
 import com.dinhcuong.mindunlock.receiver.AdminReceiver
 import com.dinhcuong.mindunlock.service.LockScreenService
@@ -23,14 +25,14 @@ import com.dinhcuong.mindunlock.utils.SharedPref
 class MainActivity : AppCompatActivity(){
     private var lock: Button? = null
     private var settings: Button? = null
-    private var startSwitch: SwitchCompat? = null
-
-
+    private var notification: TextView? = null
 
     private var RESULT_ENABLE = 11
 
     private var devicePolicyManager: DevicePolicyManager? = null
     private var compName: ComponentName? = null
+
+    private var keyguardManager: KeyguardManager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
 //        val intent = Intent(this, ScreenOnOffService::class.java)
@@ -53,7 +55,14 @@ class MainActivity : AppCompatActivity(){
 
         settings = findViewById(R.id.settings)
         lock = findViewById(R.id.lock)
-        startSwitch = findViewById(R.id.start_switch)
+        notification = findViewById(R.id.notification)
+
+        keyguardManager = applicationContext.getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager
+        if(keyguardManager!!.isDeviceSecure()){
+            notification!!.text = "The device is secured with a PIN, pattern or password."
+        } else {
+            notification!!.text = "The device is not secured."
+        }
 
 
 
@@ -118,5 +127,12 @@ class MainActivity : AppCompatActivity(){
         super.onActivityResult(requestCode, resultCode, data)
     }
 
-
+    override fun onResume() {
+        super.onResume()
+        if(keyguardManager!!.isDeviceSecure()){
+            notification!!.text = "The device is secured with a PIN, pattern or password."
+        } else {
+            notification!!.text = "The device is not secured."
+        }
+    }
 }
