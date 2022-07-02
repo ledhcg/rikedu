@@ -38,8 +38,8 @@ dependencies {
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.test:core-ktx:1.4.0'
-    implementation 'androidx.compose.material3:material3:1.0.0-alpha13'
-    implementation 'androidx.compose.material3:material3-window-size-class:1.0.0-alpha13'
+    implementation 'androidx.compose.material3:material3:1.0.0-alpha14'
+    implementation 'androidx.compose.material3:material3-window-size-class:1.0.0-alpha14'
     implementation 'androidx.preference:preference:1.2.0'
     implementation 'com.microsoft.design:fluent-system-icons:1.1.172@aar'
 

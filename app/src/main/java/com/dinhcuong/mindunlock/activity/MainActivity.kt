@@ -1,25 +1,28 @@
 package com.dinhcuong.mindunlock.activity
 
+import android.accessibilityservice.AccessibilityServiceInfo
+import android.app.AlertDialog
 import android.app.KeyguardManager
 import android.app.admin.DevicePolicyManager
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
+import android.content.pm.ServiceInfo
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
+import android.view.accessibility.AccessibilityManager
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SwitchCompat
-import androidx.core.content.getSystemService
 import com.dinhcuong.mindunlock.R
 import com.dinhcuong.mindunlock.receiver.AdminReceiver
+import com.dinhcuong.mindunlock.service.LockAccessibilityService
 import com.dinhcuong.mindunlock.service.LockScreenService
-import com.dinhcuong.mindunlock.utils.SharedPref
+import java.util.function.Consumer
 
 
 class MainActivity : AppCompatActivity(){
@@ -28,11 +31,13 @@ class MainActivity : AppCompatActivity(){
     private var notification: TextView? = null
 
     private var RESULT_ENABLE = 11
-
-    private var devicePolicyManager: DevicePolicyManager? = null
-    private var compName: ComponentName? = null
+    private val REQUEST_CODE_ENABLE_ADMIN = 1
 
     private var keyguardManager: KeyguardManager? = null
+
+    private var mCN: ComponentName? = null
+    private var mDPM : DevicePolicyManager? = null
+    private var mAM: AccessibilityManager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
 //        val intent = Intent(this, ScreenOnOffService::class.java)
@@ -49,9 +54,11 @@ class MainActivity : AppCompatActivity(){
 
         setContentView(R.layout.activity_main)
 
+        mAM = getSystemService(Context.ACCESSIBILITY_SERVICE) as AccessibilityManager
+        mDPM  = getSystemService(DEVICE_POLICY_SERVICE) as DevicePolicyManager
+        mCN = ComponentName(this, AdminReceiver::class.java)
+        
 
-        devicePolicyManager = getSystemService(DEVICE_POLICY_SERVICE) as DevicePolicyManager
-        compName = ComponentName(this, AdminReceiver::class.java)
 
         settings = findViewById(R.id.settings)
         lock = findViewById(R.id.lock)
@@ -68,15 +75,29 @@ class MainActivity : AppCompatActivity(){
 
 
         lock!!.setOnClickListener {
-            val active = devicePolicyManager!!.isAdminActive(compName!!)
-            if (active) {
-                devicePolicyManager!!.lockNow()
+//            val active = mDPM !!.isAdminActive(mCN!!)
+//            if (active) {
+//                mDPM !!.lockNow()
+//            } else {
+//                Toast.makeText(
+//                    this,
+//                    "You need to enable the Admin Device Features",
+//                    Toast.LENGTH_SHORT
+//                ).show()
+//            }
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                if (isAccessibilityServiceEnabled()) {
+                    startLockAccessibilityService();
+                    finish();
+                } else {
+                    enableAppAsAccessibilityService();
+                }
+            } else if (isAdminActive()) {
+                lockAsDeviceAdmin();
+                finish();
             } else {
-                Toast.makeText(
-                    this,
-                    "You need to enable the Admin Device Features",
-                    Toast.LENGTH_SHORT
-                ).show()
+                enableAppAsAdministrator();
             }
         }
         settings!!.setOnClickListener {
@@ -94,6 +115,15 @@ class MainActivity : AppCompatActivity(){
         val manager = context.getSystemService(KEYGUARD_SERVICE) as KeyguardManager
         return manager.isDeviceSecure
     }
+
+
+    private fun isAdminActive(): Boolean {
+        return mDPM!!.isAdminActive(mCN!!)
+    }
+
+    private fun lockAsDeviceAdmin() {
+        mDPM!!.lockNow()
+    }
     private fun checkPermission() {
         if (!Settings.canDrawOverlays(this)) {
             val uri = Uri.fromParts("package", packageName, null)
@@ -105,6 +135,23 @@ class MainActivity : AppCompatActivity(){
         }
     }
 
+    private fun enableAppAsAdministrator() {
+        val intent = Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN)
+        startActivityForResult(intent, REQUEST_CODE_ENABLE_ADMIN)
+    }
+
+    private fun enableAppAsAccessibilityService() {
+        AlertDialog.Builder(this)
+            .setMessage("Enable Accessibility Service")
+            .setPositiveButton(android.R.string.ok) { _, _ ->
+                val intent = Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS)
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
+            }
+            .setNegativeButton(android.R.string.cancel) { dialog, _ -> dialog.dismiss() }
+            .show()
+        Log.d("[MainActivity]", "enableAppAsAccessibilityService")
+    }
 
     @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -134,5 +181,32 @@ class MainActivity : AppCompatActivity(){
         } else {
             notification!!.text = "The device is not secured."
         }
+    }
+
+    private fun startLockAccessibilityService() {
+        val intent = Intent(
+            LockAccessibilityService().ACTION_LOCK, null, this,
+            LockAccessibilityService::class.java
+        )
+        Log.d("[MainActivity]", "startLockAccessibilityService")
+        startService(intent)
+
+    }
+
+    private fun isAccessibilityServiceEnabled(): Boolean {
+        val enabled = booleanArrayOf(false)
+        mAM!!.getEnabledAccessibilityServiceList(AccessibilityServiceInfo.FEEDBACK_ALL_MASK)
+            .forEach(
+                Consumer { enabledAccessibilityService: AccessibilityServiceInfo ->
+                    val enabledServiceInfo: ServiceInfo =
+                        enabledAccessibilityService.resolveInfo.serviceInfo
+                    if (enabledServiceInfo.packageName.equals(packageName) && enabledServiceInfo.name.equals(
+                            LockAccessibilityService::class.java.name
+                        )
+                    ) {
+                        enabled[0] = true
+                    }
+                })
+        return enabled[0]
     }
 }

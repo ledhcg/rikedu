@@ -94,5 +94,6 @@
     <string name="La">A</string>
     <string name="Ladie">A#</string>
     <string name="Si">B</string>
+    <string name="accessibility_service_label">Mind Unlock</string>
 
 </resources>

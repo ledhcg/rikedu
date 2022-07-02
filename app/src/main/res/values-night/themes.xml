@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.MindUnlock" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.MindUnlock" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_200</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -21,7 +21,7 @@
 
     </style>
 
-    <style name="AppPreferenceTheme" parent="@style/PreferenceThemeOverlay">
+    <style name="AppPreferenceTheme" parent="@style/PreferenceThemeOverlay.v14.Material">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:paddingTop">3dp</item>
