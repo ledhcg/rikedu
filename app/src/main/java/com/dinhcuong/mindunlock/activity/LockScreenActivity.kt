@@ -1,9 +1,13 @@
 package com.dinhcuong.mindunlock.activity
 
 import android.annotation.SuppressLint
+import android.app.admin.DevicePolicyManager
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.WindowManager
 import android.webkit.JavascriptInterface
@@ -11,7 +15,12 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentActivity
+import androidx.preference.PreferenceManager
+import com.dinhcuong.mindunlock.receiver.AdminReceiver
 import com.dinhcuong.mindunlock.utils.SharedPref
+import java.util.*
+import kotlin.concurrent.schedule
 
 
 class LockScreenActivity : AppCompatActivity() {
@@ -87,6 +96,8 @@ class LockScreenActivity : AppCompatActivity() {
         fun unlockAndroid() {
 //            Toast.makeText(context, "Unlocked", Toast.LENGTH_SHORT).show()
             //HomeScreen
+
+            setTimeoutToLock()
             backHomeApp()
             val homeIntent = Intent(Intent.ACTION_MAIN)
             homeIntent.addCategory(Intent.CATEGORY_HOME)
@@ -94,12 +105,29 @@ class LockScreenActivity : AppCompatActivity() {
             context.startActivity(homeIntent)
         }
 
-        @JavascriptInterface
-        fun backHomeApp() {
+
+        private fun backHomeApp() {
             val intentHomeApp = Intent(context, MainActivity::class.java)
             intentHomeApp.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             intentHomeApp.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             context.startActivity(intentHomeApp)
+        }
+
+        //Set the device usage time after unlocking the device
+        private fun setTimeoutToLock(){
+            val pref: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+            val timeout = pref.getString("time", "0")
+            Log.d("[LockScreenActivity]", "Timeout: $timeout")
+            val timeMs: Long = 1000L * timeout.toString().toLong()
+
+            Handler().postDelayed({
+                Toast.makeText(context, "The device will lock in 10 seconds", Toast.LENGTH_SHORT).show()
+                Handler().postDelayed({
+                    val mDPM = context.getSystemService(DEVICE_POLICY_SERVICE) as DevicePolicyManager
+                    val mCN = ComponentName(context, AdminReceiver::class.java)
+                    if(mDPM.isAdminActive(mCN)) mDPM.lockNow()
+                }, 10000)
+            }, timeMs-10000)
         }
 
     }

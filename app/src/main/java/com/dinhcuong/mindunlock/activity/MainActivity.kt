@@ -75,30 +75,30 @@ class MainActivity : AppCompatActivity(){
 
 
         lock!!.setOnClickListener {
-//            val active = mDPM !!.isAdminActive(mCN!!)
-//            if (active) {
-//                mDPM !!.lockNow()
-//            } else {
-//                Toast.makeText(
-//                    this,
-//                    "You need to enable the Admin Device Features",
-//                    Toast.LENGTH_SHORT
-//                ).show()
-//            }
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                if (isAccessibilityServiceEnabled()) {
-                    startLockAccessibilityService();
-                    finish();
-                } else {
-                    enableAppAsAccessibilityService();
-                }
-            } else if (isAdminActive()) {
-                lockAsDeviceAdmin();
-                finish();
+            val active = mDPM !!.isAdminActive(mCN!!)
+            if (active) {
+                mDPM !!.lockNow()
             } else {
-                enableAppAsAdministrator();
+                Toast.makeText(
+                    this,
+                    "You need to enable the Admin Device Features",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
+
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+//                if (isAccessibilityServiceEnabled()) {
+//                    startLockAccessibilityService();
+//                    finish();
+//                } else {
+//                    enableAppAsAccessibilityService();
+//                }
+//            } else if (isAdminActive()) {
+//                lockAsDeviceAdmin();
+//                finish();
+//            } else {
+//                enableAppAsAdministrator();
+//            }
         }
         settings!!.setOnClickListener {
             val intentSettings = Intent(this, SettingsActivity::class.java)
@@ -183,7 +183,7 @@ class MainActivity : AppCompatActivity(){
         }
     }
 
-    private fun startLockAccessibilityService() {
+    fun startLockAccessibilityService() {
         val intent = Intent(
             LockAccessibilityService().ACTION_LOCK, null, this,
             LockAccessibilityService::class.java
