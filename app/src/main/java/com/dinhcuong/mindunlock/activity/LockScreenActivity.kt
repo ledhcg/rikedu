@@ -118,16 +118,17 @@ class LockScreenActivity : AppCompatActivity() {
             val pref: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
             val timeout = pref.getString("time", "0")
             Log.d("[LockScreenActivity]", "Timeout: $timeout")
-            val timeMs: Long = 1000L * timeout.toString().toLong()
-
-            Handler().postDelayed({
-                Toast.makeText(context, "The device will lock in 10 seconds", Toast.LENGTH_SHORT).show()
+            if(timeout.toString().toLong() != 0.toLong()){
+                val timeMs: Long = 1000L * timeout.toString().toLong()
                 Handler().postDelayed({
-                    val mDPM = context.getSystemService(DEVICE_POLICY_SERVICE) as DevicePolicyManager
-                    val mCN = ComponentName(context, AdminReceiver::class.java)
-                    if(mDPM.isAdminActive(mCN)) mDPM.lockNow()
-                }, 10000)
-            }, timeMs-10000)
+                    Toast.makeText(context, "The device will lock in 10 seconds", Toast.LENGTH_SHORT).show()
+                    Handler().postDelayed({
+                        val mDPM = context.getSystemService(DEVICE_POLICY_SERVICE) as DevicePolicyManager
+                        val mCN = ComponentName(context, AdminReceiver::class.java)
+                        if(mDPM.isAdminActive(mCN)) mDPM.lockNow()
+                    }, 10000)
+                }, timeMs-10000)
+            }
         }
 
     }
