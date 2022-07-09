@@ -5,6 +5,7 @@ import android.content.ComponentName
 import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
@@ -67,7 +68,11 @@ class SettingsActivity : AppCompatActivity() {
                     useLockScreenPref!!.isChecked -> {
                         if (prefAdmin!!.isChecked && prefDrawOverOtherApps!!.isChecked){
                             Log.d("[SettingsFragment]","startForegroundService")
-                            activity?.startForegroundService(intentLS)
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                activity?.startForegroundService(intentLS)
+                            } else {
+                                activity?.startService(intentLS)
+                            }
                         } else {
                             useLockScreenPref!!.isChecked = false
                             Toast.makeText(
@@ -85,10 +90,16 @@ class SettingsActivity : AppCompatActivity() {
                 prefAdmin!!.isChecked && prefDrawOverOtherApps!!.isChecked
             }
 
-            prefDrawOverOtherApps!!.setOnPreferenceClickListener {
-                handlePermissionDOOA(prefDrawOverOtherApps!!)
-                true
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                prefDrawOverOtherApps!!.setOnPreferenceClickListener {
+                    handlePermissionDOOA(prefDrawOverOtherApps!!)
+                    true
+                }
+            } else {
+                prefDrawOverOtherApps!!.isChecked = true
+                prefDrawOverOtherApps!!.isEnabled = false
             }
+
 
             screenTimeout!!.setOnPreferenceChangeListener { preference, newValue ->
                 if(preference is ListPreference){
@@ -171,7 +182,9 @@ class SettingsActivity : AppCompatActivity() {
             devicePolicyManager = context?.getSystemService(DEVICE_POLICY_SERVICE) as DevicePolicyManager
             compName = ComponentName(requireContext(), AdminReceiver::class.java)
 
-            prefDrawOverOtherApps?.isChecked = Settings.canDrawOverlays(activity)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                prefDrawOverOtherApps?.isChecked = Settings.canDrawOverlays(activity)
+            }
 
 //            if (Settings.canDrawOverlays(activity)) {
 //                prefDrawOverOtherApps?.isChecked = true

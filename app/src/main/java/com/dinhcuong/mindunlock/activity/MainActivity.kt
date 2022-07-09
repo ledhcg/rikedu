@@ -65,7 +65,12 @@ class MainActivity : AppCompatActivity(){
         notification = findViewById(R.id.notification)
 
         keyguardManager = applicationContext.getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager
-        if(keyguardManager!!.isDeviceSecure()){
+        if(if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                keyguardManager!!.isDeviceSecure
+            } else {
+                keyguardManager!!.isKeyguardSecure
+            }
+        ){
             notification!!.text = "The device is secured with a PIN, pattern or password."
         } else {
             notification!!.text = "The device is not secured."
@@ -113,7 +118,11 @@ class MainActivity : AppCompatActivity(){
 
     fun isDeviceSecure(context: Context): Boolean{
         val manager = context.getSystemService(KEYGUARD_SERVICE) as KeyguardManager
-        return manager.isDeviceSecure
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            manager.isDeviceSecure
+        } else {
+            manager.isKeyguardSecure
+        }
     }
 
 
@@ -125,13 +134,22 @@ class MainActivity : AppCompatActivity(){
         mDPM!!.lockNow()
     }
     private fun checkPermission() {
-        if (!Settings.canDrawOverlays(this)) {
+        if (if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                !Settings.canDrawOverlays(this)
+            } else {
+               true
+            }
+        ) {
             val uri = Uri.fromParts("package", packageName, null)
             val intent = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, uri)
             startActivityForResult(intent, 0)
         } else {
             val intent = Intent(applicationContext, LockScreenService::class.java)
-            startForegroundService(intent)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                startForegroundService(intent)
+            } else {
+                startService(intent)
+            }
         }
     }
 
@@ -176,7 +194,12 @@ class MainActivity : AppCompatActivity(){
 
     override fun onResume() {
         super.onResume()
-        if(keyguardManager!!.isDeviceSecure()){
+        if(if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                keyguardManager!!.isDeviceSecure
+            } else {
+                keyguardManager!!.isKeyguardSecure
+            }
+        ){
             notification!!.text = "The device is secured with a PIN, pattern or password."
         } else {
             notification!!.text = "The device is not secured."
@@ -195,18 +218,20 @@ class MainActivity : AppCompatActivity(){
 
     private fun isAccessibilityServiceEnabled(): Boolean {
         val enabled = booleanArrayOf(false)
-        mAM!!.getEnabledAccessibilityServiceList(AccessibilityServiceInfo.FEEDBACK_ALL_MASK)
-            .forEach(
-                Consumer { enabledAccessibilityService: AccessibilityServiceInfo ->
-                    val enabledServiceInfo: ServiceInfo =
-                        enabledAccessibilityService.resolveInfo.serviceInfo
-                    if (enabledServiceInfo.packageName.equals(packageName) && enabledServiceInfo.name.equals(
-                            LockAccessibilityService::class.java.name
-                        )
-                    ) {
-                        enabled[0] = true
-                    }
-                })
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            mAM!!.getEnabledAccessibilityServiceList(AccessibilityServiceInfo.FEEDBACK_ALL_MASK)
+                .forEach(
+                    Consumer { enabledAccessibilityService: AccessibilityServiceInfo ->
+                        val enabledServiceInfo: ServiceInfo =
+                            enabledAccessibilityService.resolveInfo.serviceInfo
+                        if (enabledServiceInfo.packageName.equals(packageName) && enabledServiceInfo.name.equals(
+                                LockAccessibilityService::class.java.name
+                            )
+                        ) {
+                            enabled[0] = true
+                        }
+                    })
+        }
         return enabled[0]
     }
 }

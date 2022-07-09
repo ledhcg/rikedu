@@ -3,6 +3,7 @@ package com.dinhcuong.mindunlock.receiver
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.util.Log
 import android.widget.Toast
 import com.dinhcuong.mindunlock.activity.LockScreenActivity
@@ -28,7 +29,11 @@ class BootCompleteReceiver: BroadcastReceiver() {
                     val pref = androidx.preference.PreferenceManager.getDefaultSharedPreferences(context)
                     val useLockScreen = pref.getBoolean("useLockScreen", false)
                     if (useLockScreen){
-                        it.startForegroundService(intentLS)
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                            it.startForegroundService(intentLS)
+                        } else {
+                            it.startService(intentLS)
+                        }
                     }
                 }
             }

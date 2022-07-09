@@ -2,9 +2,12 @@ package com.dinhcuong.mindunlock.service
 
 import android.app.*
 import android.content.*
+import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.os.Build
 import android.os.IBinder
 import android.util.Log
+import androidx.core.app.NotificationCompat
 import com.dinhcuong.mindunlock.R
 import com.dinhcuong.mindunlock.receiver.ScreenOnOffReceiver
 
@@ -40,20 +43,44 @@ class LockScreenService: Service() {
         }
         Log.d("[LockScreenService]", "onStartCommand")
 
-        val chan = NotificationChannel(ANDROID_CHANNEL_ID,"AppService", NotificationManager.IMPORTANCE_NONE)
-        chan.lightColor = Color.BLUE
-        chan.lockscreenVisibility = Notification.VISIBILITY_PRIVATE
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val chan = NotificationChannel(ANDROID_CHANNEL_ID,"AppService", NotificationManager.IMPORTANCE_NONE)
+            chan.lightColor = Color.BLUE
+            chan.lockscreenVisibility = Notification.VISIBILITY_PRIVATE
 
-        val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        manager.createNotificationChannel(chan)
+            val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            manager.createNotificationChannel(chan)
 
-        val builder = Notification.Builder(this, ANDROID_CHANNEL_ID)
-            .setContentTitle(getString(R.string.app_name))
-            .setContentText("SmartTracker Running")
-        val notification = builder.build()
+            val builder = Notification.Builder(this, ANDROID_CHANNEL_ID)
+                .setContentTitle(getString(R.string.app_name))
+                .setContentText("SmartTracker Running")
+            val notification = builder.build()
 
-        startForeground(NOTIFICATION_ID, notification)
+            startForeground(NOTIFICATION_ID, notification)
+        } else {
+            val pendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
+            // Create notification builder.
+            val builder = NotificationCompat.Builder(this,"mind_unlock")
+            // Make notification show big text.
+            val bigTextStyle = NotificationCompat.BigTextStyle()
+            bigTextStyle.setBigContentTitle("MIND UNLOCK")
+            bigTextStyle.bigText("Mind unlock")
+            // Set big text style.
+            builder.setStyle(bigTextStyle)
+            builder.setWhen(System.currentTimeMillis())
+            builder.setSmallIcon(R.mipmap.ic_launcher)
+            val largeIconBitmap =
+                BitmapFactory.decodeResource(resources, R.drawable.ic_launcher_background)
+            builder.setLargeIcon(largeIconBitmap)
+            // Make the notification max priority.
+            builder.priority = Notification.PRIORITY_HIGH
+            // Make head-up notification.
+            builder.setFullScreenIntent(pendingIntent, true)
+            val notification: Notification = builder.build()
 
+            // Start foreground service.
+            startForeground(1, notification)
+        }
         return START_REDELIVER_INTENT
     }
 

@@ -47,6 +47,6 @@ class LockAccessibilityService: AccessibilityService() {
 
         this.serviceInfo = info
 
-        Log.d("[LockAccessibilityService]", "onServiceConnected")
+        Log.d("[LockAccessibilityS]", "onServiceConnected")
     }
 }
