@@ -1,5 +1,5 @@
 # .project()
-MindUnlock
+mangon is "Măng non"
 
 # .description()
 Android Lock Screen Application
