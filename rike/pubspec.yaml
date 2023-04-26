@@ -36,6 +36,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_native_splash: ^2.2.19
   flutter_launcher_icons: ^0.13.1
+  rename: ^2.1.1
+  get: ^4.6.5
+  fluentui_system_icons: ^1.1.199
 
 dev_dependencies:
   flutter_test:

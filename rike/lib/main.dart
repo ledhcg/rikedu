@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:rike/src/utils/theme/rikeTheme.dart';
+import 'package:get/get.dart';
+import 'package:rike/src/constants/image_strings.dart';
+import 'package:rike/src/features/authentication/views/login/login.dart';
+import 'package:rike/src/features/chat/views/message.dart';
+import 'package:rike/src/features/settings/views/settings.dart';
+import 'package:rike/src/utils/themes/rikeTheme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,11 +17,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Rikedu',
       theme: RikeTheme.lightTheme,
       darkTheme: RikeTheme.darkTheme,
       themeMode: ThemeMode.system,
-      home: const MyHomePage(title: 'Flutter 1'),
+      home: const MyHomePage(title: 'Rikedu'),
     );
   }
 }
@@ -87,31 +92,42 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'Привет',
-            ),
-            Text(
-              'Tôi đang rất muốn:',
-              style: Theme.of(context).textTheme.displayLarge,
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            ElevatedButton(
-              onPressed: () {},
+            FilledButton(
+              onPressed: () => {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const LoginScreen()))
+              },
               child: const Text(
-                'Hello',
+                'Login',
+              ),
+            ),
+            FilledButton(
+              onPressed: () => {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const MessageScreen()))
+              },
+              child: const Text(
+                'Message',
+              ),
+            ),
+            FilledButton(
+              onPressed: () => {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SettingsScreen()))
+              },
+              child: const Text(
+                'Settings',
               ),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
