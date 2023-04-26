@@ -39,6 +39,13 @@ dependencies:
   rename: ^2.1.1
   get: ^4.6.5
   fluentui_system_icons: ^1.1.199
+  google_maps_flutter: ^2.2.5
+  location: ^4.4.0
+  flutter_polyline_points: ^1.0.0
+  flutter_svg: ^2.0.5
+  firebase_core: ^2.10.0
+  permission_handler: ^10.2.0
+  cloud_firestore: ^4.5.2
 
 dev_dependencies:
   flutter_test:
