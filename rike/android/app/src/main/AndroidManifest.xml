@@ -4,6 +4,11 @@
         android:label="Rikedu"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
+
+        <!-- Added Google Maps API key -->
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyBF2owDNLkC6OELEP971bDHE7h1YMgd6yw"/>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
