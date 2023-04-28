@@ -32,8 +32,8 @@ class UserStatus extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 12.0),
                 child: Text(
                   username.trim(),
-                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                        fontSize: 14.0,
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        fontSize: 16.0,
                         fontWeight: FontWeight.bold,
                       ),
                 ),
@@ -45,7 +45,7 @@ class UserStatus extends StatelessWidget {
                         online ? 'online' : description,
                         style: Theme.of(context)
                             .textTheme
-                            .displaySmall
+                            .bodySmall
                             ?.copyWith(fontStyle: FontStyle.italic),
                       )
                     : Text(

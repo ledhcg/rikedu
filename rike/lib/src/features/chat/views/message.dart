@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rike/src/constants/colors.dart';
-import 'package:rike/src/constants/image_strings.dart';
+import 'package:rike/src/constants/file_strings.dart';
 import 'package:rike/src/constants/sizes.dart';
 import 'package:rike/src/constants/text_strings.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
@@ -13,60 +13,22 @@ class MessageScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        titleSpacing: 0,
-        automaticallyImplyLeading: false,
-        title: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            IconButton(
-                icon: const Icon(FluentIcons.chevron_left_48_filled),
-                onPressed: () {
-                  Navigator.of(context).pop(true);
-                }),
-            const Expanded(
-              child: UserStatus(
-                username: 'John Doe',
-                imageUrl: 'https://picsum.photos/250?image=8',
-                online: true,
-                description: 'Available for chat',
-                typing: '',
-              ),
-            )
-            // Expanded(
-            //     child: BlocBuilder<TypingNotificationBloc,
-            //         TypingNotificationState>(
-            //   bloc: widget.typingNotificationBloc,
-            //   builder: (_, state) {
-            //     String typing;
-            //     if (state is TypingNotificationReceivedSuccess &&
-            //         state.event.event == Typing.start &&
-            //         state.event.chatId == chatId) {
-            //       if (widget.chat.type == ChatType.individual)
-            //         typing = 'typing...';
-            //       else
-            //         typing =
-            //             '${receivers.firstWhere((e) => e.id == state.event.from).username} is typing';
-            //     }
-
-            //     return HeaderStatus(
-            //       widget.chat.name ?? receivers.first.username,
-            //       widget.chat.type == ChatType.individual
-            //           ? receivers.first.photoUrl
-            //           : null,
-            //       widget.chat.type == ChatType.individual
-            //           ? receivers.first.active
-            //           : false,
-            //       description: widget.chat.type == ChatType.individual
-            //           ? 'last seen ${DateFormat.yMd().add_jm().format(receivers.first.lastseen)}'
-            //           : receivers
-            //               .fold<String>('', (p, e) => p + ', ' + e.username)
-            //               .replaceFirst(',', '')
-            //               .trim(),
-            //       typing: typing,
-            //     );
-            //   },
-            // ))
-          ],
+        toolbarHeight: 70,
+        leading: Transform.translate(
+          offset: const Offset(p1, 0),
+          child: IconButton(
+            onPressed: () {
+              Navigator.of(context).pop(true);
+            },
+            icon: const Icon(FluentIcons.chevron_left_48_filled),
+          ),
+        ),
+        title: const UserStatus(
+          username: 'John Doe',
+          imageUrl: 'https://picsum.photos/250?image=8',
+          online: true,
+          description: 'Available for chat',
+          typing: '',
         ),
       ),
       resizeToAvoidBottomInset: true,

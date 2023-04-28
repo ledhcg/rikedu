@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "610308579609",
-    "project_id": "careful-muse-384916",
-    "storage_bucket": "careful-muse-384916.appspot.com"
+    "project_number": "642656145533",
+    "project_id": "com-ledinhcuong-rikedu",
+    "storage_bucket": "com-ledinhcuong-rikedu.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:610308579609:android:b2852eb5e12a7b6c916588",
+        "mobilesdk_app_id": "1:642656145533:android:222cba64458c208aae2114",
         "android_client_info": {
           "package_name": "com.ledinhcuong.rikedu"
         }
       },
       "oauth_client": [
         {
-          "client_id": "610308579609-1c802t8j818qo79li4i1ont3t4ck70ns.apps.googleusercontent.com",
+          "client_id": "642656145533-rs958dnapicck26hvhr4v7ne1udcu85h.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDyktkp7jfi4PxsUCy4uwOYTh_Wi_BUYzc"
+          "current_key": "AIzaSyC3ypBJPHCBrA-P5NbS1XMYnMC9U64P3go"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "610308579609-1c802t8j818qo79li4i1ont3t4ck70ns.apps.googleusercontent.com",
+              "client_id": "642656145533-rs958dnapicck26hvhr4v7ne1udcu85h.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

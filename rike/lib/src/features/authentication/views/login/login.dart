@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rike/src/constants/colors.dart';
-import 'package:rike/src/constants/image_strings.dart';
+import 'package:rike/src/constants/file_strings.dart';
 import 'package:rike/src/constants/sizes.dart';
 import 'package:rike/src/constants/text_strings.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';

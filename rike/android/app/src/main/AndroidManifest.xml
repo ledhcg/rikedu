@@ -7,6 +7,8 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" />
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
 
    <application
         android:label="Rikedu"
@@ -15,7 +17,7 @@
 
         <!-- Added Google Maps API key -->
         <meta-data android:name="com.google.android.geo.API_KEY"
-               android:value="AIzaSyBF2owDNLkC6OELEP971bDHE7h1YMgd6yw"/>
+               android:value="AIzaSyA5rQUNLBA4YmhQETr1hs81FNrBRbGI4oY"/>
 
         <activity
             android:name=".MainActivity"

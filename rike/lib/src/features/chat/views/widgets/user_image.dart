@@ -32,7 +32,7 @@ class UserImage extends StatelessWidget {
                   ),
           ),
           Align(
-            alignment: Alignment.topRight,
+            alignment: Alignment.bottomLeft,
             child: online ? const OnlineIndicator() : Container(),
           )
         ],

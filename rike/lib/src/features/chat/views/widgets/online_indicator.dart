@@ -7,13 +7,14 @@ class OnlineIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 15.0,
-      width: 15.0,
+      height: 10.0,
+      width: 10.0,
       decoration: BoxDecoration(
         color: rikeIndicatorBubble,
         borderRadius: BorderRadius.circular(20.0),
         border: Border.all(
-          width: 3.0,
+          width: 2.0,
+          color: rikeLightColor,
         ),
       ),
     );
