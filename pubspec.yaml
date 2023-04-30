@@ -26,6 +26,23 @@ dependencies:
   battery_plus: ^3.0.5
   app_usage: ^2.1.1
   device_apps: ^2.2.0
+  animate_do: ^3.0.2
+  backdrop: ^0.8.1
+  collection: ^1.17.0
+  easy_refresh: ^3.3.1+2
+  flutter_animation_progress_bar: ^2.3.1
+  flutter_staggered_animations: ^1.1.1
+  provider: ^6.0.5
+  shared_preferences: ^2.1.0
+  requests: ^4.7.0
+  week_of_year: ^2.0.0
+  table_calendar: ^3.0.8
+  syncfusion_flutter_calendar: ^21.1.41
+  clock: ^1.1.1
+  intl: ^0.17.0
+  equatable: ^2.0.5
+  event: ^2.1.2
+  flutter_localization: ^0.1.10
 
 dev_dependencies:
   flutter_test:
