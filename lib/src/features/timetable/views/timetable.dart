@@ -4,6 +4,7 @@ import 'package:rikedu/src/constants/colors.dart';
 import 'package:rikedu/src/features/timetable/controllers/lesson_controller.dart';
 import 'package:rikedu/src/features/timetable/models/lesson.dart';
 import 'package:rikedu/src/features/timetable/views/widgets/lesson_card.dart';
+import 'package:rikedu/src/features/timetable/views/widgets/weekend.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class TimetableScreen extends StatefulWidget {
@@ -104,130 +105,126 @@ class _TimetableScreenState extends State<TimetableScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Timetable'),
-      ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TableCalendar(
-              locale: 'ru_RU',
-              firstDay: _firstDay,
-              lastDay: _lastDay,
-              focusedDay: _focusedDay,
-              calendarFormat: _calendarFormat,
-              selectedDayPredicate: (day) {
-                return isSameDay(_selectedDay, day);
-              },
-              onDaySelected: (selectedDay, focusedDay) {
-                setState(() {
-                  _selectedDay = selectedDay;
+      body: Padding(
+        padding: const EdgeInsets.only(top: 40.0),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TableCalendar(
+                locale: 'ru_RU',
+                firstDay: _firstDay,
+                lastDay: _lastDay,
+                focusedDay: _focusedDay,
+                calendarFormat: _calendarFormat,
+                selectedDayPredicate: (day) {
+                  return isSameDay(_selectedDay, day);
+                },
+                onDaySelected: (selectedDay, focusedDay) {
+                  setState(() {
+                    _selectedDay = selectedDay;
+                    _focusedDay = focusedDay;
+                    _selectedPage = selectedDay.difference(_firstDay).inDays;
+                    _pageController.jumpToPage(selectedDay.weekday - 1);
+                  });
+                },
+                onPageChanged: (focusedDay) {
                   _focusedDay = focusedDay;
-                  _selectedPage = selectedDay.difference(_firstDay).inDays;
-                  _pageController.jumpToPage(selectedDay.weekday - 1);
-                });
-              },
-              onPageChanged: (focusedDay) {
-                _focusedDay = focusedDay;
-              },
-              calendarBuilders: CalendarBuilders(
-                markerBuilder: (context, day, events) {
-                  return Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(
-                      events.length,
-                      (index) => Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 0.0),
-                        child: Container(
-                          width: 5,
-                          height: 5,
-                          margin: const EdgeInsets.symmetric(horizontal: 0.5),
-                          decoration: const BoxDecoration(
-                            color: rikePrimaryColor,
-                            shape: BoxShape.circle,
+                },
+                calendarBuilders: CalendarBuilders(
+                  markerBuilder: (context, day, events) {
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: List.generate(
+                        events.length,
+                        (index) => Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 0.0),
+                          child: Container(
+                            width: 5,
+                            height: 5,
+                            margin: const EdgeInsets.symmetric(horizontal: 0.5),
+                            decoration: const BoxDecoration(
+                              color: rikePrimaryColor,
+                              shape: BoxShape.circle,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  );
+                    );
+                  },
+                ),
+                headerStyle: const HeaderStyle(
+                  formatButtonShowsNext: false,
+                  formatButtonVisible: false,
+                  titleCentered: true,
+                  titleTextStyle: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 20,
+                  ),
+                ),
+                rowHeight: 70,
+                eventLoader: (day) {
+                  if (day.weekday == DateTime.monday) {
+                    return lessonController.convertDataToLessons(
+                        lessonsInWeek.values.elementAt(0));
+                  } else if (day.weekday == DateTime.tuesday) {
+                    return lessonController.convertDataToLessons(
+                        lessonsInWeek.values.elementAt(1));
+                  } else if (day.weekday == DateTime.wednesday) {
+                    return lessonController.convertDataToLessons(
+                        lessonsInWeek.values.elementAt(2));
+                  } else if (day.weekday == DateTime.thursday) {
+                    return lessonController.convertDataToLessons(
+                        lessonsInWeek.values.elementAt(3));
+                  } else if (day.weekday == DateTime.friday) {
+                    return lessonController.convertDataToLessons(
+                        lessonsInWeek.values.elementAt(4));
+                  }
+                  return [];
                 },
               ),
-              headerStyle: const HeaderStyle(
-                formatButtonShowsNext: false,
-                formatButtonVisible: false,
-                titleCentered: true,
-                titleTextStyle: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 20,
+            ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: PageView.builder(
+                  controller: _pageController,
+                  itemCount: lessonsInWeek.length,
+                  itemBuilder: (context, index) {
+                    return _buildLessonList(
+                        lessonController.convertDataToLessons(
+                            lessonsInWeek.values.elementAt(index)),
+                        index);
+                  },
+                  onPageChanged: (index) {
+                    DateTime newSelectedDay = _selectedDay;
+                    if (index == 6) {
+                      int difference = 7 - newSelectedDay.weekday;
+                      newSelectedDay =
+                          newSelectedDay.add(Duration(days: difference));
+                    } else {
+                      if (newSelectedDay.weekday != index + 1) {
+                        newSelectedDay = newSelectedDay.subtract(Duration(
+                            days: newSelectedDay.weekday - (index + 1)));
+                      }
+                    }
+                    setState(() {
+                      _selectedDay = newSelectedDay;
+                      _focusedDay = newSelectedDay;
+                    });
+                  },
                 ),
               ),
-              rowHeight: 70,
-              eventLoader: (day) {
-                if (day.weekday == DateTime.monday) {
-                  return lessonController
-                      .convertDataToLessons(lessonsInWeek.values.elementAt(0));
-                } else if (day.weekday == DateTime.tuesday) {
-                  return lessonController
-                      .convertDataToLessons(lessonsInWeek.values.elementAt(1));
-                } else if (day.weekday == DateTime.wednesday) {
-                  return lessonController
-                      .convertDataToLessons(lessonsInWeek.values.elementAt(2));
-                } else if (day.weekday == DateTime.thursday) {
-                  return lessonController
-                      .convertDataToLessons(lessonsInWeek.values.elementAt(3));
-                } else if (day.weekday == DateTime.friday) {
-                  return lessonController
-                      .convertDataToLessons(lessonsInWeek.values.elementAt(4));
-                }
-                return [];
-              },
-            ),
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: PageView.builder(
-                controller: _pageController,
-                itemCount: lessonsInWeek.length,
-                itemBuilder: (context, index) {
-                  return _buildLessonList(
-                      lessonController.convertDataToLessons(
-                          lessonsInWeek.values.elementAt(index)),
-                      index);
-                },
-                onPageChanged: (index) {
-                  DateTime newSelectedDay = _selectedDay;
-                  if (index == 5 || index == 6) {
-                    int difference = 7 - newSelectedDay.weekday;
-                    newSelectedDay =
-                        newSelectedDay.add(Duration(days: difference));
-                  } else {
-                    if (newSelectedDay.weekday != index + 1) {
-                      newSelectedDay = newSelectedDay.subtract(
-                          Duration(days: newSelectedDay.weekday - (index + 1)));
-                    }
-                  }
-                  setState(() {
-                    _selectedDay = newSelectedDay;
-                    _focusedDay = newSelectedDay;
-                  });
-                },
-              ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }
 
   Widget _buildLessonList(List<Lesson> lessons, int day) {
     if (day == 5 || day == 6) {
-      return const Card(
-        child: ListTile(
-          title: Text('Ngày nghỉ'),
-        ),
-      );
+      return const WeekendTimetable();
     }
     return ListView.builder(
       itemCount: lessons.length,
