@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:intl/intl.dart';
 import 'package:rikedu/firebase_options.dart';
 import 'package:rikedu/src/features/authentication/views/login/login_screen.dart';
 import 'package:rikedu/src/features/authentication/views/login/register_screen.dart';
@@ -17,6 +19,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
       .then((value) => Get.put(AuthenticationRepository()));
+  // Intl.defaultLocale = 'ru_RU';
+  initializeDateFormatting('ru_RU');
   runApp(const MainApp());
 }
 
@@ -30,6 +34,7 @@ class MainApp extends StatelessWidget {
       darkTheme: RikeTheme.darkTheme,
       themeMode: ThemeMode.system,
       home: const HomePage(title: 'Rikedu'),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -95,10 +100,8 @@ class _HomePageState extends State<HomePage> {
             ),
             FilledButton(
               onPressed: () => {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const TimetableScreen()))
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => TimetableScreen()))
               },
               child: const Text(
                 'Timetable',
