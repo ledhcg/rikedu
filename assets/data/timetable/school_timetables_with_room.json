@@ -1,0 +1,692 @@
+[
+  {
+    "class": "10A",
+    "timetable": {
+      "Monday": [
+        {
+          "subject": "Math",
+          "room": "107"
+        },
+        {
+          "subject": "Language",
+          "room": "206"
+        },
+        {
+          "subject": "Language",
+          "room": "208"
+        },
+        {
+          "subject": "Language",
+          "room": "206"
+        },
+        {
+          "subject": "Math",
+          "room": "108"
+        }
+      ],
+      "Tuesday": [
+        {
+          "subject": "Math",
+          "room": "108"
+        },
+        {
+          "subject": "Math",
+          "room": "100"
+        },
+        {
+          "subject": "Language",
+          "room": "202"
+        },
+        {
+          "subject": "X",
+          "room": "0"
+        },
+        {
+          "subject": "Language",
+          "room": "207"
+        }
+      ],
+      "Wednesday": [
+        {
+          "subject": "X",
+          "room": "0"
+        },
+        {
+          "subject": "Math",
+          "room": "101"
+        },
+        {
+          "subject": "Biology",
+          "room": "309"
+        },
+        {
+          "subject": "X",
+          "room": "0"
+        },
+        {
+          "subject": "Chemistry",
+          "room": "209"
+        }
+      ],
+      "Thursday": [
+        {
+          "subject": "Chemistry",
+          "room": "209"
+        },
+        {
+          "subject": "Biology",
+          "room": "309"
+        },
+        {
+          "subject": "Language",
+          "room": "207"
+        },
+        {
+          "subject": "Math",
+          "room": "101"
+        },
+        {
+          "subject": "Physics",
+          "room": "112"
+        }
+      ],
+      "Friday": [
+        {
+          "subject": "Math",
+          "room": "105"
+        },
+        {
+          "subject": "History",
+          "room": "318"
+        },
+        {
+          "subject": "Geography",
+          "room": "316"
+        },
+        {
+          "subject": "Language",
+          "room": "203"
+        },
+        {
+          "subject": "Physics",
+          "room": "112"
+        }
+      ]
+    }
+  },
+  {
+    "class": "10B",
+    "timetable": {
+      "Monday": [
+        {
+          "subject": "Language",
+          "room": "203"
+        },
+        {
+          "subject": "Geography",
+          "room": "316"
+        },
+        {
+          "subject": "Math",
+          "room": "107"
+        },
+        {
+          "subject": "Biology",
+          "room": "309"
+        },
+        {
+          "subject": "X",
+          "room": "0"
+        }
+      ],
+      "Tuesday": [
+        {
+          "subject": "Math",
+          "room": "105"
+        },
+        {
+          "subject": "Language",
+          "room": "207"
+        },
+        {
+          "subject": "Language",
+          "room": "204"
+        },
+        {
+          "subject": "Language",
+          "room": "207"
+        },
+        {
+          "subject": "Language",
+          "room": "208"
+        }
+      ],
+      "Wednesday": [
+        {
+          "subject": "Biology",
+          "room": "310"
+        },
+        {
+          "subject": "Language",
+          "room": "200"
+        },
+        {
+          "subject": "Math",
+          "room": "101"
+        },
+        {
+          "subject": "X",
+          "room": "0"
+        },
+        {
+          "subject": "Chemistry",
+          "room": "210"
+        }
+      ],
+      "Thursday": [
+        {
+          "subject": "Math",
+          "room": "108"
+        },
+        {
+          "subject": "Physics",
+          "room": "113"
+        },
+        {
+          "subject": "Physics",
+          "room": "112"
+        },
+        {
+          "subject": "Math",
+          "room": "107"
+        },
+        {
+          "subject": "History",
+          "room": "318"
+        }
+      ],
+      "Friday": [
+        {
+          "subject": "X",
+          "room": "0"
+        },
+        {
+          "subject": "Language",
+          "room": "203"
+        },
+        {
+          "subject": "Math",
+          "room": "106"
+        },
+        {
+          "subject": "Math",
+          "room": "106"
+        },
+        {
+          "subject": "Chemistry",
+          "room": "210"
+        }
+      ]
+    }
+  },
+  {
+    "class": "10C",
+    "timetable": {
+      "Monday": [
+        {
+          "subject": "X",
+          "room": "0"
+        },
+        {
+          "subject": "Math",
+          "room": "104"
+        },
+        {
+          "subject": "Math",
+          "room": "108"
+        },
+        {
+          "subject": "Language",
+          "room": "207"
+        },
+        {
+          "subject": "Chemistry",
+          "room": "209"
+        }
+      ],
+      "Tuesday": [
+        {
+          "subject": "Language",
+          "room": "205"
+        },
+        {
+          "subject": "Math",
+          "room": "104"
+        },
+        {
+          "subject": "Language",
+          "room": "208"
+        },
+        {
+          "subject": "Physics",
+          "room": "112"
+        },
+        {
+          "subject": "Geography",
+          "room": "315"
+        }
+      ],
+      "Wednesday": [
+        {
+          "subject": "Biology",
+          "room": "309"
+        },
+        {
+          "subject": "Math",
+          "room": "102"
+        },
+        {
+          "subject": "Language",
+          "room": "203"
+        },
+        {
+          "subject": "Language",
+          "room": "204"
+        },
+        {
+          "subject": "Biology",
+          "room": "310"
+        }
+      ],
+      "Thursday": [
+        {
+          "subject": "Math",
+          "room": "108"
+        },
+        {
+          "subject": "Math",
+          "room": "101"
+        },
+        {
+          "subject": "Physics",
+          "room": "114"
+        },
+        {
+          "subject": "Language",
+          "room": "205"
+        },
+        {
+          "subject": "Language",
+          "room": "201"
+        }
+      ],
+      "Friday": [
+        {
+          "subject": "Math",
+          "room": "103"
+        },
+        {
+          "subject": "Chemistry",
+          "room": "209"
+        },
+        {
+          "subject": "X",
+          "room": "0"
+        },
+        {
+          "subject": "X",
+          "room": "0"
+        },
+        {
+          "subject": "History",
+          "room": "319"
+        }
+      ]
+    }
+  },
+  {
+    "class": "11A",
+    "timetable": {
+      "Monday": [
+        {
+          "subject": "X",
+          "room": "0"
+        },
+        {
+          "subject": "Language",
+          "room": "207"
+        },
+        {
+          "subject": "Math",
+          "room": "100"
+        },
+        {
+          "subject": "Chemistry",
+          "room": "211"
+        },
+        {
+          "subject": "Math",
+          "room": "102"
+        }
+      ],
+      "Tuesday": [
+        {
+          "subject": "Physics",
+          "room": "110"
+        },
+        {
+          "subject": "Biology",
+          "room": "309"
+        },
+        {
+          "subject": "Math",
+          "room": "101"
+        },
+        {
+          "subject": "Language",
+          "room": "205"
+        },
+        {
+          "subject": "Math",
+          "room": "100"
+        }
+      ],
+      "Wednesday": [
+        {
+          "subject": "Math",
+          "room": "108"
+        },
+        {
+          "subject": "X",
+          "room": "0"
+        },
+        {
+          "subject": "Biology",
+          "room": "309"
+        },
+        {
+          "subject": "Language",
+          "room": "200"
+        },
+        {
+          "subject": "Language",
+          "room": "204"
+        }
+      ],
+      "Thursday": [
+        {
+          "subject": "X",
+          "room": "0"
+        },
+        {
+          "subject": "History",
+          "room": "318"
+        },
+        {
+          "subject": "Language",
+          "room": "206"
+        },
+        {
+          "subject": "Language",
+          "room": "207"
+        },
+        {
+          "subject": "Language",
+          "room": "207"
+        }
+      ],
+      "Friday": [
+        {
+          "subject": "Physics",
+          "room": "111"
+        },
+        {
+          "subject": "Geography",
+          "room": "316"
+        },
+        {
+          "subject": "Chemistry",
+          "room": "211"
+        },
+        {
+          "subject": "Math",
+          "room": "104"
+        },
+        {
+          "subject": "Math",
+          "room": "105"
+        }
+      ]
+    }
+  },
+  {
+    "class": "11B",
+    "timetable": {
+      "Monday": [
+        {
+          "subject": "Language",
+          "room": "207"
+        },
+        {
+          "subject": "Math",
+          "room": "107"
+        },
+        {
+          "subject": "Language",
+          "room": "208"
+        },
+        {
+          "subject": "Chemistry",
+          "room": "209"
+        },
+        {
+          "subject": "Math",
+          "room": "108"
+        }
+      ],
+      "Tuesday": [
+        {
+          "subject": "Language",
+          "room": "201"
+        },
+        {
+          "subject": "Math",
+          "room": "104"
+        },
+        {
+          "subject": "Language",
+          "room": "203"
+        },
+        {
+          "subject": "Math",
+          "room": "103"
+        },
+        {
+          "subject": "Math",
+          "room": "100"
+        }
+      ],
+      "Wednesday": [
+        {
+          "subject": "Language",
+          "room": "205"
+        },
+        {
+          "subject": "Biology",
+          "room": "309"
+        },
+        {
+          "subject": "Chemistry",
+          "room": "210"
+        },
+        {
+          "subject": "Biology",
+          "room": "309"
+        },
+        {
+          "subject": "Physics",
+          "room": "111"
+        }
+      ],
+      "Thursday": [
+        {
+          "subject": "Math",
+          "room": "107"
+        },
+        {
+          "subject": "Language",
+          "room": "206"
+        },
+        {
+          "subject": "X",
+          "room": "0"
+        },
+        {
+          "subject": "History",
+          "room": "318"
+        },
+        {
+          "subject": "Physics",
+          "room": "109"
+        }
+      ],
+      "Friday": [
+        {
+          "subject": "X",
+          "room": "0"
+        },
+        {
+          "subject": "Math",
+          "room": "103"
+        },
+        {
+          "subject": "X",
+          "room": "0"
+        },
+        {
+          "subject": "Geography",
+          "room": "316"
+        },
+        {
+          "subject": "Language",
+          "room": "206"
+        }
+      ]
+    }
+  },
+  {
+    "class": "11C",
+    "timetable": {
+      "Monday": [
+        {
+          "subject": "Language",
+          "room": "200"
+        },
+        {
+          "subject": "X",
+          "room": "0"
+        },
+        {
+          "subject": "Language",
+          "room": "206"
+        },
+        {
+          "subject": "Chemistry",
+          "room": "214"
+        },
+        {
+          "subject": "Math",
+          "room": "100"
+        }
+      ],
+      "Tuesday": [
+        {
+          "subject": "Math",
+          "room": "100"
+        },
+        {
+          "subject": "Physics",
+          "room": "113"
+        },
+        {
+          "subject": "Biology",
+          "room": "310"
+        },
+        {
+          "subject": "Math",
+          "room": "106"
+        },
+        {
+          "subject": "Math",
+          "room": "101"
+        }
+      ],
+      "Wednesday": [
+        {
+          "subject": "Math",
+          "room": "108"
+        },
+        {
+          "subject": "Math",
+          "room": "107"
+        },
+        {
+          "subject": "X",
+          "room": "0"
+        },
+        {
+          "subject": "Chemistry",
+          "room": "212"
+        },
+        {
+          "subject": "Physics",
+          "room": "112"
+        }
+      ],
+      "Thursday": [
+        {
+          "subject": "Language",
+          "room": "208"
+        },
+        {
+          "subject": "Geography",
+          "room": "316"
+        },
+        {
+          "subject": "History",
+          "room": "318"
+        },
+        {
+          "subject": "Biology",
+          "room": "309"
+        },
+        {
+          "subject": "Language",
+          "room": "207"
+        }
+      ],
+      "Friday": [
+        {
+          "subject": "Language",
+          "room": "207"
+        },
+        {
+          "subject": "Language",
+          "room": "203"
+        },
+        {
+          "subject": "X",
+          "room": "0"
+        },
+        {
+          "subject": "Language",
+          "room": "203"
+        },
+        {
+          "subject": "Math",
+          "room": "102"
+        }
+      ]
+    }
+  }
+]
