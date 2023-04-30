@@ -44,7 +44,7 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAzy1rOXpolOqmlcIlu1QVVu9ezcHwBEpY',
+    apiKey: 'AIzaSyCfhNiLymukOgMUsBKkw8X3CARIAFX6PBw',
     appId: '1:642656145533:web:509e3fd87efe485dae2114',
     messagingSenderId: '642656145533',
     projectId: 'com-ledinhcuong-rikedu',
@@ -55,7 +55,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyC3ypBJPHCBrA-P5NbS1XMYnMC9U64P3go',
+    apiKey: 'AIzaSyAF-CoshTGbM8mFduG7rlhsSGwUU_onu10',
     appId: '1:642656145533:android:222cba64458c208aae2114',
     messagingSenderId: '642656145533',
     projectId: 'com-ledinhcuong-rikedu',
@@ -64,24 +64,22 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyA5rQUNLBA4YmhQETr1hs81FNrBRbGI4oY',
+    apiKey: 'AIzaSyBUvMxdTp_PfY57deFccQnmVp0SBiR-3Xk',
     appId: '1:642656145533:ios:6339dd7197aed1e3ae2114',
     messagingSenderId: '642656145533',
     projectId: 'com-ledinhcuong-rikedu',
     databaseURL: 'https://com-ledinhcuong-rikedu-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'com-ledinhcuong-rikedu.appspot.com',
-    iosClientId: '642656145533-ar91dos70u7aupemj1elt12imgg8m16m.apps.googleusercontent.com',
     iosBundleId: 'com.ledinhcuong.rikedu',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyA5rQUNLBA4YmhQETr1hs81FNrBRbGI4oY',
+    apiKey: 'AIzaSyBUvMxdTp_PfY57deFccQnmVp0SBiR-3Xk',
     appId: '1:642656145533:ios:6339dd7197aed1e3ae2114',
     messagingSenderId: '642656145533',
     projectId: 'com-ledinhcuong-rikedu',
     databaseURL: 'https://com-ledinhcuong-rikedu-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'com-ledinhcuong-rikedu.appspot.com',
-    iosClientId: '642656145533-ar91dos70u7aupemj1elt12imgg8m16m.apps.googleusercontent.com',
     iosBundleId: 'com.ledinhcuong.rikedu',
   );
 }

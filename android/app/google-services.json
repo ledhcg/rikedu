@@ -13,32 +13,15 @@
           "package_name": "com.ledinhcuong.rikedu"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "642656145533-rs958dnapicck26hvhr4v7ne1udcu85h.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyC3ypBJPHCBrA-P5NbS1XMYnMC9U64P3go"
+          "current_key": "AIzaSyAF-CoshTGbM8mFduG7rlhsSGwUU_onu10"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "642656145533-rs958dnapicck26hvhr4v7ne1udcu85h.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "642656145533-ar91dos70u7aupemj1elt12imgg8m16m.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.ledinhcuong.rikedu"
-              }
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }
