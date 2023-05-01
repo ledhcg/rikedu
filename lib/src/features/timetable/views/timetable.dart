@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:rikedu/src/constants/colors.dart';
 import 'package:rikedu/src/features/timetable/controllers/lesson_controller.dart';
 import 'package:rikedu/src/features/timetable/models/lesson.dart';
@@ -23,29 +24,23 @@ class _TimetableScreenState extends State<TimetableScreen> {
   late PageController _pageController;
   late int _selectedPage;
 
-  // late List<Lesson> _lessons;
-
-  // final Map<String, List<Object>> lessonsByDay = {
-  //   "Monday": [
-  //     {"subject": "Language", "room": "A1"},
-  //     {"subject": "Language", "room": "A1"},
-  //     {"subject": "Language", "room": "A1"},
-  //     {"subject": "Language", "room": "A1"},
-  //     {"subject": "Language", "room": "A1"},
-  //     // "Biology",
-  //     // "Language",
-  //     // "Chemistry",
-  //     // "X"
-  //   ],
-  //   "Tuesday": ["X", "Math", "Math", "Math", "Language"],
-  //   "Wednesday": ["History", "Language", "Physics", "Language", "Math"],
-  //   "Thursday": ["Chemistry", "Geography", "Physics", "Math", "Language"],
-  //   "Friday": ["X", "Math", "Math", "Language", "Biology"],
-  //   "Weekend": ["Ngày nghỉ"],
-  // };
+  late Color _todayColorCalendar;
+  late Color _dayOfWeekColorCalendar;
+  late Color _selectedColorCalendar;
+  late Color _headerColorCalendar;
+  late Color _disabledColorCalendar;
+  late Color _outsideColorCalendar;
+  late Color _defaultColorCalendar;
+  late Color _cardColorCalendar;
+  late Color _onCardColorCalendar;
 
   final Map<String, List<Map<String, String>>> lessonsInWeek = {
     "Monday": [
+      {"subject": "Math", "room": "107"},
+      {"subject": "Language", "room": "206"},
+      {"subject": "Language", "room": "208"},
+      {"subject": "Language", "room": "206"},
+      {"subject": "Math", "room": "108"},
       {"subject": "Math", "room": "107"},
       {"subject": "Language", "room": "206"},
       {"subject": "Language", "room": "208"},
@@ -57,28 +52,48 @@ class _TimetableScreenState extends State<TimetableScreen> {
       {"subject": "Math", "room": "100"},
       {"subject": "Language", "room": "202"},
       {"subject": "X", "room": "0"},
-      {"subject": "Language", "room": "207"}
+      {"subject": "Language", "room": "207"},
+      {"subject": "Math", "room": "107"},
+      {"subject": "Language", "room": "206"},
+      {"subject": "Language", "room": "208"},
+      {"subject": "Language", "room": "206"},
+      {"subject": "Math", "room": "108"}
     ],
     "Wednesday": [
       {"subject": "X", "room": "0"},
       {"subject": "Math", "room": "101"},
       {"subject": "Biology", "room": "309"},
       {"subject": "X", "room": "0"},
-      {"subject": "Chemistry", "room": "209"}
+      {"subject": "Chemistry", "room": "209"},
+      {"subject": "Math", "room": "107"},
+      {"subject": "Language", "room": "206"},
+      {"subject": "Language", "room": "208"},
+      {"subject": "Language", "room": "206"},
+      {"subject": "Math", "room": "108"}
     ],
     "Thursday": [
       {"subject": "Chemistry", "room": "209"},
       {"subject": "Biology", "room": "309"},
       {"subject": "Language", "room": "207"},
       {"subject": "Math", "room": "101"},
-      {"subject": "Physics", "room": "112"}
+      {"subject": "Physics", "room": "112"},
+      {"subject": "Math", "room": "107"},
+      {"subject": "Language", "room": "206"},
+      {"subject": "Language", "room": "208"},
+      {"subject": "Language", "room": "206"},
+      {"subject": "Math", "room": "108"}
     ],
     "Friday": [
       {"subject": "Math", "room": "105"},
       {"subject": "History", "room": "318"},
       {"subject": "Geography", "room": "316"},
       {"subject": "Language", "room": "203"},
-      {"subject": "Physics", "room": "112"}
+      {"subject": "Physics", "room": "112"},
+      {"subject": "Math", "room": "107"},
+      {"subject": "Language", "room": "206"},
+      {"subject": "Language", "room": "208"},
+      {"subject": "Language", "room": "206"},
+      {"subject": "Math", "room": "108"}
     ],
     "Saturday": [],
     "Sunday": []
@@ -90,9 +105,9 @@ class _TimetableScreenState extends State<TimetableScreen> {
     _focusedDay = DateTime.now();
     _selectedDay = DateTime.now();
     _firstDay = DateTime.utc(2023, 02, 01);
-    _lastDay = DateTime.utc(2023, 17, 15);
+    _lastDay = DateTime.utc(2023, 07, 15);
     _calendarFormat = CalendarFormat.week;
-    _selectedPage = DateTime.now().difference(_firstDay).inDays;
+    _selectedPage = DateTime.now().difference(_selectedDay).inDays;
     _pageController = PageController(initialPage: _selectedPage);
   }
 
@@ -104,19 +119,29 @@ class _TimetableScreenState extends State<TimetableScreen> {
 
   @override
   Widget build(BuildContext context) {
+    _todayColorCalendar = Theme.of(context).colorScheme.secondary;
+    _dayOfWeekColorCalendar = Theme.of(context).colorScheme.onBackground;
+    _selectedColorCalendar = Theme.of(context).colorScheme.primary;
+    _headerColorCalendar = Theme.of(context).colorScheme.onBackground;
+    _disabledColorCalendar = Theme.of(context).colorScheme.scrim;
+    _outsideColorCalendar = Theme.of(context).colorScheme.surface;
+    _defaultColorCalendar = Theme.of(context).colorScheme.onBackground;
+    _cardColorCalendar = Theme.of(context).colorScheme.primaryContainer;
+    _onCardColorCalendar = Theme.of(context).colorScheme.onSurface;
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.only(top: 40.0),
+        padding: const EdgeInsets.only(top: 30.0),
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: TableCalendar(
                 locale: 'ru_RU',
                 firstDay: _firstDay,
                 lastDay: _lastDay,
                 focusedDay: _focusedDay,
                 calendarFormat: _calendarFormat,
+                startingDayOfWeek: StartingDayOfWeek.monday,
                 selectedDayPredicate: (day) {
                   return isSameDay(_selectedDay, day);
                 },
@@ -132,63 +157,199 @@ class _TimetableScreenState extends State<TimetableScreen> {
                   _focusedDay = focusedDay;
                 },
                 calendarBuilders: CalendarBuilders(
-                  markerBuilder: (context, day, events) {
-                    return Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: List.generate(
-                        events.length,
-                        (index) => Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 0.0),
-                          child: Container(
-                            width: 5,
-                            height: 5,
-                            margin: const EdgeInsets.symmetric(horizontal: 0.5),
-                            decoration: const BoxDecoration(
-                              color: rikePrimaryColor,
-                              shape: BoxShape.circle,
-                            ),
+                  defaultBuilder: (context, day, focusedDay) => Column(
+                    children: [
+                      Container(
+                        alignment: Alignment.center,
+                        child: Text(
+                          day.day.toString().toUpperCase(),
+                          style: TextStyle(
+                            color: _defaultColorCalendar,
+                            fontSize: 25,
                           ),
                         ),
                       ),
-                    );
+                      Container(
+                        width: 5,
+                        height: 5,
+                        decoration: const BoxDecoration(
+                          color: Colors.transparent,
+                          shape: BoxShape.circle,
+                        ),
+                      ),
+                    ],
+                  ),
+                  outsideBuilder: (context, outsideDay, focusedDay) => Column(
+                    children: [
+                      Container(
+                        alignment: Alignment.center,
+                        child: Text(
+                          outsideDay.day.toString().toUpperCase(),
+                          style: TextStyle(
+                            color: _outsideColorCalendar,
+                            fontSize: 25,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: 5,
+                        height: 5,
+                        decoration: const BoxDecoration(
+                          color: Colors.transparent,
+                          shape: BoxShape.circle,
+                        ),
+                      ),
+                    ],
+                  ),
+                  disabledBuilder: (context, disabledDay, focusedDay) => Column(
+                    children: [
+                      Container(
+                        alignment: Alignment.center,
+                        child: Text(
+                          disabledDay.day.toString().toUpperCase(),
+                          style: TextStyle(
+                            color: _disabledColorCalendar,
+                            fontSize: 25,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: 5,
+                        height: 5,
+                        decoration: const BoxDecoration(
+                          color: Colors.transparent,
+                          shape: BoxShape.circle,
+                        ),
+                      ),
+                    ],
+                  ),
+                  dowBuilder: (context, dayOfWeek) {
+                    DateTime today = DateTime.now();
+                    if (dayOfWeek.day == _selectedDay.day &&
+                        dayOfWeek.weekday == _selectedDay.weekday &&
+                        dayOfWeek.year == _selectedDay.year) {
+                      return Column(
+                        children: [
+                          Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                              DateFormat('EEE', 'ru_RU')
+                                  .format(dayOfWeek)
+                                  .toUpperCase(),
+                              style: TextStyle(
+                                color: _selectedColorCalendar,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                          ),
+                        ],
+                      );
+                    } else if (dayOfWeek.day == today.day &&
+                        dayOfWeek.weekday == today.weekday &&
+                        dayOfWeek.year == today.year) {
+                      return Column(
+                        children: [
+                          Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                              DateFormat('EEE', 'ru_RU')
+                                  .format(dayOfWeek)
+                                  .toUpperCase(),
+                              style: TextStyle(
+                                color: _todayColorCalendar,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                          ),
+                        ],
+                      );
+                    } else {
+                      return Column(
+                        children: [
+                          Container(
+                            alignment: Alignment.center,
+                            child: Text(
+                              DateFormat('EEE', 'ru_RU')
+                                  .format(dayOfWeek)
+                                  .toUpperCase(),
+                              style: TextStyle(
+                                color: _dayOfWeekColorCalendar,
+                                fontSize: 12,
+                              ),
+                            ),
+                          ),
+                        ],
+                      );
+                    }
                   },
+                  todayBuilder: (context, today, focusedDay) => Column(
+                    children: [
+                      Container(
+                        alignment: Alignment.center,
+                        child: Text(
+                          today.day.toString().toUpperCase(),
+                          style: TextStyle(
+                            color: _todayColorCalendar,
+                            fontSize: 25,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: 5,
+                        height: 5,
+                        decoration: BoxDecoration(
+                          color: _todayColorCalendar,
+                          shape: BoxShape.circle,
+                        ),
+                      ),
+                    ],
+                  ),
+                  selectedBuilder: (context, selectDay, focusedDay) => Column(
+                    children: [
+                      Container(
+                        alignment: Alignment.center,
+                        child: Text(
+                          selectDay.day.toString().toUpperCase(),
+                          style: TextStyle(
+                            color: _selectedColorCalendar,
+                            fontSize: 25,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: 5,
+                        height: 5,
+                        decoration: BoxDecoration(
+                          color: _selectedColorCalendar,
+                          shape: BoxShape.circle,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                headerStyle: const HeaderStyle(
+                headerStyle: HeaderStyle(
                   formatButtonShowsNext: false,
                   formatButtonVisible: false,
                   titleCentered: true,
                   titleTextStyle: TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 20,
+                    color: _headerColorCalendar,
                   ),
                 ),
-                rowHeight: 70,
-                eventLoader: (day) {
-                  if (day.weekday == DateTime.monday) {
-                    return lessonController.convertDataToLessons(
-                        lessonsInWeek.values.elementAt(0));
-                  } else if (day.weekday == DateTime.tuesday) {
-                    return lessonController.convertDataToLessons(
-                        lessonsInWeek.values.elementAt(1));
-                  } else if (day.weekday == DateTime.wednesday) {
-                    return lessonController.convertDataToLessons(
-                        lessonsInWeek.values.elementAt(2));
-                  } else if (day.weekday == DateTime.thursday) {
-                    return lessonController.convertDataToLessons(
-                        lessonsInWeek.values.elementAt(3));
-                  } else if (day.weekday == DateTime.friday) {
-                    return lessonController.convertDataToLessons(
-                        lessonsInWeek.values.elementAt(4));
-                  }
-                  return [];
-                },
               ),
             ),
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.only(
+                    bottom: 10.0, right: 10.0, left: 10.0),
                 child: PageView.builder(
                   controller: _pageController,
+                  physics: const ClampingScrollPhysics(),
                   itemCount: lessonsInWeek.length,
                   itemBuilder: (context, index) {
                     return _buildLessonList(
@@ -224,23 +385,42 @@ class _TimetableScreenState extends State<TimetableScreen> {
 
   Widget _buildLessonList(List<Lesson> lessons, int day) {
     if (day == 5 || day == 6) {
-      return const WeekendTimetable();
+      return WeekendTimetable(
+        cardColor: _cardColorCalendar,
+        textColor: _onCardColorCalendar,
+      );
     }
-    return ListView.builder(
-      itemCount: lessons.length,
-      itemBuilder: (context, index) {
-        if (lessons[index].subject == 'X') {
-          return EmptyLessonCard(
-              timeStart: lessons[index].timeStart,
-              timeEnd: lessons[index].timeEnd);
-        } else {
-          return LessonCard(
-              subject: lessons[index].subject,
-              room: lessons[index].room,
-              timeStart: lessons[index].timeStart,
-              timeEnd: lessons[index].timeEnd);
-        }
-      },
+    return Card(
+      color: _cardColorCalendar,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30.0),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20.0),
+            child: ListView.builder(
+              padding: const EdgeInsets.all(0),
+              itemCount: lessons.length,
+              itemBuilder: (context, index) {
+                if (lessons[index].subject == 'X') {
+                  return EmptyLessonCard(
+                      timeStart: lessons[index].timeStart,
+                      timeEnd: lessons[index].timeEnd);
+                } else {
+                  return LessonCard(
+                      subject: lessons[index].subject,
+                      room: lessons[index].room,
+                      timeStart: lessons[index].timeStart,
+                      timeEnd: lessons[index].timeEnd);
+                }
+              },
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

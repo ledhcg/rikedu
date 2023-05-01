@@ -3,32 +3,38 @@ import 'package:rikedu/src/constants/colors.dart';
 import 'package:rikedu/src/constants/file_strings.dart';
 
 class WeekendTimetable extends StatelessWidget {
-  const WeekendTimetable({Key? key}) : super(key: key);
+  Color cardColor;
+  Color textColor;
+  WeekendTimetable({Key? key, required this.cardColor, required this.textColor})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Card(
-        shadowColor: Colors.transparent,
-        color: rikeLightColor,
+        color: cardColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
         ),
+        shadowColor: Colors.transparent,
         child: Center(
           child: Column(
-            children: const [
-              Image(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Image(
                 image: AssetImage(weekendTimetable),
                 width: 200,
                 height: 200,
               ),
               Padding(
-                padding: EdgeInsets.only(top: 8.0, bottom: 4.0),
+                padding: const EdgeInsets.only(top: 8.0, bottom: 4.0),
                 child: Text(
                   'Weekend',
                   style: TextStyle(
                     fontWeight: FontWeight.w500,
                     fontSize: 30,
+                    color: textColor,
                   ),
                 ),
               ),
@@ -36,6 +42,7 @@ class WeekendTimetable extends StatelessWidget {
                 'Have a good day!',
                 style: TextStyle(
                   fontSize: 16,
+                  color: textColor,
                 ),
               ),
             ],

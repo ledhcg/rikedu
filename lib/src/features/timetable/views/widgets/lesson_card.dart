@@ -15,83 +15,97 @@ class LessonCard extends StatelessWidget {
     required this.timeEnd,
   }) : super(key: key);
 
-  // static Color getColorByType(String lessonType) {
-  //   if (lessonType.contains('лк') || lessonType.contains('лек')) {
-  //     return AppTheme.colors.colorful01;
-  //   } else if (lessonType.contains('лб') || lessonType.contains('лаб')) {
-  //     return AppTheme.colors.colorful07;
-  //   } else if (lessonType.contains('с/р')) {
-  //     return AppTheme.colors.colorful02;
-  //   } else {
-  //     return AppTheme.colors.colorful03;
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shadowColor: Colors.transparent,
-      color: rikePrimaryColor,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16.0),
-      ),
-      child: Container(
-        constraints: const BoxConstraints(minHeight: 75),
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(right: 20, top: 3),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    timeStart,
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10.0),
+      child: Card(
+        shadowColor: Colors.transparent,
+        color: Theme.of(context).colorScheme.primary,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        child: Center(
+          child: Container(
+            alignment: Alignment.center,
+            constraints: const BoxConstraints(minHeight: 75),
+            padding: const EdgeInsets.all(20),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      timeStart,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.onPrimary,
+                      ),
+                    ),
+                    Text(
+                      timeEnd,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.onPrimary,
+                      ),
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: 40,
+                  child: VerticalDivider(
+                    thickness: 0.5,
+                    color: Theme.of(context).colorScheme.onPrimary,
                   ),
-                  const SizedBox(
-                    height: 5,
+                ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        subject,
+                        maxLines: 8,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      Text(
+                        room,
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                        ),
+                      ),
+                    ],
                   ),
-                  Text(
-                    timeEnd,
-                  )
-                ],
-              ),
+                ),
+                Container(),
+                Container(
+                  alignment: Alignment.centerRight,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100),
+                      color: Theme.of(context).colorScheme.onPrimary,
+                    ),
+                    height: 24,
+                    // width: 10 * 7,
+                    child: Text(
+                      'каб. $room'.toUpperCase(),
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    subject,
-                    maxLines: 8,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  const SizedBox(
-                    height: 4,
-                  ),
-                  Text(
-                    room,
-                  ),
-                ],
-              ),
-            ),
-            Container(),
-            Container(
-              alignment: Alignment.topRight,
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12),
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100),
-                    color: rikePrimaryColor),
-                height: 24,
-                // width: 10 * 7,
-                child: Text(room),
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );
@@ -110,48 +124,69 @@ class EmptyLessonCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shadowColor: Colors.transparent,
-      color: rikePrimaryColor,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12.0),
-      ),
-      child: Container(
-        constraints: const BoxConstraints(minHeight: 55),
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(right: 20, top: 3),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    timeStart,
-                  ),
-                  const SizedBox(height: 5),
-                  Text(
-                    timeEnd,
-                  )
-                ],
-              ),
-            ),
-            Column(
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10.0),
+      child: Card(
+        shadowColor: Colors.transparent,
+        color: Theme.of(context).colorScheme.surface,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        child: Center(
+          child: Container(
+            alignment: Alignment.center,
+            constraints: const BoxConstraints(minHeight: 45),
+            padding: const EdgeInsets.all(20),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  width: 25,
-                  height: 1,
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      timeStart,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.onSurface,
+                      ),
+                    ),
+                    Text(
+                      timeEnd,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.onSurface,
+                      ),
+                    )
+                  ],
                 ),
-                const SizedBox(height: 20),
-                Container(
-                  width: 25,
-                  height: 1,
+                SizedBox(
+                  height: 40,
+                  child: VerticalDivider(
+                    thickness: 0.5,
+                    color: Theme.of(context).colorScheme.onSurface,
+                  ),
+                ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Freetime',
+                        maxLines: 8,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.onSurface,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
-          ],
+          ),
         ),
       ),
     );
