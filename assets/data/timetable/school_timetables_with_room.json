@@ -4,112 +4,137 @@
     "timetable": {
       "Monday": [
         {
-          "subject": "Math",
-          "room": "107"
+          "subject": "Литература",
+          "room": "105",
+          "teacher": "Владимир В.П."
         },
         {
-          "subject": "Language",
-          "room": "206"
+          "subject": "Русский язык",
+          "room": "205",
+          "teacher": "Екатерина А.П."
         },
         {
-          "subject": "Language",
-          "room": "208"
+          "subject": "Физика",
+          "room": "110",
+          "teacher": "Роман А.Д."
         },
         {
-          "subject": "Language",
-          "room": "206"
+          "subject": "Математика",
+          "room": "205",
+          "teacher": "Евгения О.П."
         },
         {
-          "subject": "Math",
-          "room": "108"
+          "subject": "Математика",
+          "room": "108",
+          "teacher": "Алексей С.К."
         }
       ],
       "Tuesday": [
         {
-          "subject": "Math",
-          "room": "108"
+          "subject": "Физика",
+          "room": "114",
+          "teacher": "Игорь В.Н."
         },
         {
-          "subject": "Math",
-          "room": "100"
+          "subject": "Информатика",
+          "room": "107",
+          "teacher": "Анастасия А.М."
         },
         {
-          "subject": "Language",
-          "room": "202"
+          "subject": "Физика",
+          "room": "113",
+          "teacher": "Игорь В.Н."
         },
         {
-          "subject": "X",
-          "room": "0"
+          "subject": "Иностранный язык",
+          "room": "207",
+          "teacher": "Елена В.К."
         },
         {
-          "subject": "Language",
-          "room": "207"
+          "subject": "Русский язык",
+          "room": "213",
+          "teacher": "Александр И.Р."
         }
       ],
       "Wednesday": [
         {
-          "subject": "X",
-          "room": "0"
+          "subject": "Физическая культура",
+          "room": "112",
+          "teacher": "Юлия Н.В."
         },
         {
-          "subject": "Math",
-          "room": "101"
+          "subject": "Обществознание",
+          "room": "213",
+          "teacher": "Наталья Д.З."
         },
         {
-          "subject": "Biology",
-          "room": "309"
+          "subject": "Русский язык",
+          "room": "108",
+          "teacher": "Ольга В.С."
         },
         {
-          "subject": "X",
-          "room": "0"
+          "subject": "Информатика",
+          "room": "107",
+          "teacher": "Игорь В.Н."
         },
         {
-          "subject": "Chemistry",
-          "room": "209"
+          "subject": "Химия",
+          "room": "211",
+          "teacher": "Елена С.Т."
         }
       ],
       "Thursday": [
         {
-          "subject": "Chemistry",
-          "room": "209"
+          "subject": "Обществознание",
+          "room": "214",
+          "teacher": "Наталья Д.З."
         },
         {
-          "subject": "Biology",
-          "room": "309"
+          "subject": "Биология",
+          "room": "309",
+          "teacher": "Андрей П.С."
         },
         {
-          "subject": "Language",
-          "room": "207"
+          "subject": "История",
+          "room": "111",
+          "teacher": "Елена В.К."
         },
         {
-          "subject": "Math",
-          "room": "101"
+          "subject": "Математика",
+          "room": "109",
+          "teacher": "Марина Г.Б."
         },
         {
-          "subject": "Physics",
-          "room": "112"
+          "subject": "География",
+          "room": "109",
+          "teacher": "Василий И.М."
         }
       ],
       "Friday": [
         {
-          "subject": "Math",
-          "room": "105"
+          "subject": "Русский язык",
+          "room": "206",
+          "teacher": "Анна С.И."
         },
         {
-          "subject": "History",
-          "room": "318"
+          "subject": "Математика",
+          "room": "109",
+          "teacher": "Игорь П.В."
         },
         {
-          "subject": "Geography",
-          "room": "316"
+          "subject": "Иностранный язык",
+          "room": "203",
+          "teacher": "Юлия Н.В."
         },
         {
-          "subject": "Language",
-          "room": "203"
+          "subject": "X",
+          "room": "0",
+          "teacher": "X"
         },
         {
-          "subject": "Physics",
-          "room": "112"
+          "subject": "Литература",
+          "room": "207",
+          "teacher": "Светлана А.К."
         }
       ]
     }
@@ -119,112 +144,137 @@
     "timetable": {
       "Monday": [
         {
-          "subject": "Language",
-          "room": "203"
+          "subject": "Информатика",
+          "room": "107",
+          "teacher": "Игорь В.Н."
         },
         {
-          "subject": "Geography",
-          "room": "316"
+          "subject": "Русский язык",
+          "room": "110",
+          "teacher": "Анна С.И."
         },
         {
-          "subject": "Math",
-          "room": "107"
+          "subject": "Иностранный язык",
+          "room": "203",
+          "teacher": "Елена В.К."
         },
         {
-          "subject": "Biology",
-          "room": "309"
+          "subject": "Биология",
+          "room": "309",
+          "teacher": "Андрей П.С."
         },
         {
-          "subject": "X",
-          "room": "0"
+          "subject": "История",
+          "room": "114",
+          "teacher": "Елена В.К."
         }
       ],
       "Tuesday": [
         {
-          "subject": "Math",
-          "room": "105"
+          "subject": "Физическая культура",
+          "room": "112",
+          "teacher": "Светлана А.К."
         },
         {
-          "subject": "Language",
-          "room": "207"
+          "subject": "Математика",
+          "room": "212",
+          "teacher": "Игорь П.В."
         },
         {
-          "subject": "Language",
-          "room": "204"
+          "subject": "Информатика",
+          "room": "107",
+          "teacher": "Алёна В.Л."
         },
         {
-          "subject": "Language",
-          "room": "207"
+          "subject": "Русский язык",
+          "room": "101",
+          "teacher": "Екатерина А.П."
         },
         {
-          "subject": "Language",
-          "room": "208"
+          "subject": "География",
+          "room": "109",
+          "teacher": "Василий И.М."
         }
       ],
       "Wednesday": [
         {
-          "subject": "Biology",
-          "room": "310"
+          "subject": "Физика",
+          "room": "113",
+          "teacher": "Роман А.Д."
         },
         {
-          "subject": "Language",
-          "room": "200"
+          "subject": "Обществознание",
+          "room": "212",
+          "teacher": "Наталья Д.З."
         },
         {
-          "subject": "Math",
-          "room": "101"
+          "subject": "История",
+          "room": "110",
+          "teacher": "Елена В.К."
         },
         {
-          "subject": "X",
-          "room": "0"
+          "subject": "Литература",
+          "room": "103",
+          "teacher": "Светлана А.К."
         },
         {
-          "subject": "Chemistry",
-          "room": "210"
+          "subject": "Литература",
+          "room": "202",
+          "teacher": "Илья В.М."
         }
       ],
       "Thursday": [
         {
-          "subject": "Math",
-          "room": "108"
+          "subject": "Математика",
+          "room": "212",
+          "teacher": "Сергей А.Т."
         },
         {
-          "subject": "Physics",
-          "room": "113"
+          "subject": "Физическая культура",
+          "room": "112",
+          "teacher": "Юлия Н.В."
         },
         {
-          "subject": "Physics",
-          "room": "112"
+          "subject": "Химия",
+          "room": "209",
+          "teacher": "Елена С.Т."
         },
         {
-          "subject": "Math",
-          "room": "107"
+          "subject": "Математика",
+          "room": "205",
+          "teacher": "Игорь П.В."
         },
         {
-          "subject": "History",
-          "room": "318"
+          "subject": "Физика",
+          "room": "114",
+          "teacher": "Игорь В.Н."
         }
       ],
       "Friday": [
         {
-          "subject": "X",
-          "room": "0"
+          "subject": "Русский язык",
+          "room": "110",
+          "teacher": "Александр И.Р."
         },
         {
-          "subject": "Language",
-          "room": "203"
+          "subject": "Математика",
+          "room": "205",
+          "teacher": "Сергей А.Т."
         },
         {
-          "subject": "Math",
-          "room": "106"
+          "subject": "Литература",
+          "room": "209",
+          "teacher": "Георгий Н.М."
         },
         {
-          "subject": "Math",
-          "room": "106"
+          "subject": "Иностранный язык",
+          "room": "206",
+          "teacher": "Юлия Н.В."
         },
         {
-          "subject": "Chemistry",
-          "room": "210"
+          "subject": "Химия",
+          "room": "212",
+          "teacher": "Оксана М.С."
         }
       ]
     }
@@ -234,112 +284,137 @@
     "timetable": {
       "Monday": [
         {
-          "subject": "X",
-          "room": "0"
+          "subject": "Физическая культура",
+          "room": "112",
+          "teacher": "Юлия Н.В."
         },
         {
-          "subject": "Math",
-          "room": "104"
+          "subject": "Русский язык",
+          "room": "206",
+          "teacher": "Александр И.Р."
         },
         {
-          "subject": "Math",
-          "room": "108"
+          "subject": "Математика",
+          "room": "212",
+          "teacher": "Сергей А.Т."
         },
         {
-          "subject": "Language",
-          "room": "207"
+          "subject": "Физика",
+          "room": "113",
+          "teacher": "Роман А.Д."
         },
         {
-          "subject": "Chemistry",
-          "room": "209"
+          "subject": "Русский язык",
+          "room": "213",
+          "teacher": "Михаил С.К."
         }
       ],
       "Tuesday": [
         {
-          "subject": "Language",
-          "room": "205"
+          "subject": "Биология",
+          "room": "309",
+          "teacher": "Светлана А.К."
         },
         {
-          "subject": "Math",
-          "room": "104"
+          "subject": "Русский язык",
+          "room": "213",
+          "teacher": "Михаил С.К."
         },
         {
-          "subject": "Language",
-          "room": "208"
+          "subject": "Литература",
+          "room": "105",
+          "teacher": "Илья В.М."
         },
         {
-          "subject": "Physics",
-          "room": "112"
+          "subject": "История",
+          "room": "110",
+          "teacher": "Елена В.К."
         },
         {
-          "subject": "Geography",
-          "room": "315"
+          "subject": "Информатика",
+          "room": "107",
+          "teacher": "Игорь В.Н."
         }
       ],
       "Wednesday": [
         {
-          "subject": "Biology",
-          "room": "309"
+          "subject": "Математика",
+          "room": "109",
+          "teacher": "Константин В.Л."
         },
         {
-          "subject": "Math",
-          "room": "102"
+          "subject": "Обществознание",
+          "room": "214",
+          "teacher": "Анна С.И."
         },
         {
-          "subject": "Language",
-          "room": "203"
+          "subject": "Биология",
+          "room": "309",
+          "teacher": "Светлана А.К."
         },
         {
-          "subject": "Language",
-          "room": "204"
+          "subject": "Русский язык",
+          "room": "206",
+          "teacher": "Ольга В.С."
         },
         {
-          "subject": "Biology",
-          "room": "310"
+          "subject": "Иностранный язык",
+          "room": "206",
+          "teacher": "Елена В.К."
         }
       ],
       "Thursday": [
         {
-          "subject": "Math",
-          "room": "108"
+          "subject": "Физическая культура",
+          "room": "111",
+          "teacher": "Юлия Н.В."
         },
         {
-          "subject": "Math",
-          "room": "101"
+          "subject": "Математика",
+          "room": "205",
+          "teacher": "Марина Г.Б."
         },
         {
-          "subject": "Physics",
-          "room": "114"
+          "subject": "Обществознание",
+          "room": "214",
+          "teacher": "Анна С.И."
         },
         {
-          "subject": "Language",
-          "room": "205"
+          "subject": "Математика",
+          "room": "108",
+          "teacher": "Евгения О.П."
         },
         {
-          "subject": "Language",
-          "room": "201"
+          "subject": "Литература",
+          "room": "105",
+          "teacher": "Петр И.С."
         }
       ],
       "Friday": [
         {
-          "subject": "Math",
-          "room": "103"
+          "subject": "География",
+          "room": "109",
+          "teacher": "Марина Г.Б."
         },
         {
-          "subject": "Chemistry",
-          "room": "209"
+          "subject": "Математика",
+          "room": "205",
+          "teacher": "Константин В.Л."
         },
         {
-          "subject": "X",
-          "room": "0"
+          "subject": "Химия",
+          "room": "212",
+          "teacher": "Оксана М.С."
         },
         {
-          "subject": "X",
-          "room": "0"
+          "subject": "Литература",
+          "room": "212",
+          "teacher": "Георгий Н.М."
         },
         {
-          "subject": "History",
-          "room": "319"
+          "subject": "Физика",
+          "room": "110",
+          "teacher": "Роман А.Д."
         }
       ]
     }
@@ -349,112 +424,137 @@
     "timetable": {
       "Monday": [
         {
-          "subject": "X",
-          "room": "0"
+          "subject": "Математика",
+          "room": "101",
+          "teacher": "Евгения О.П."
         },
         {
-          "subject": "Language",
-          "room": "207"
+          "subject": "Математика",
+          "room": "205",
+          "teacher": "Алексей С.К."
         },
         {
-          "subject": "Math",
-          "room": "100"
+          "subject": "История",
+          "room": "114",
+          "teacher": "Елена В.К."
         },
         {
-          "subject": "Chemistry",
-          "room": "211"
+          "subject": "Обществознание",
+          "room": "213",
+          "teacher": "Наталья Д.З."
         },
         {
-          "subject": "Math",
-          "room": "102"
+          "subject": "Математика",
+          "room": "212",
+          "teacher": "Марина Г.Б."
         }
       ],
       "Tuesday": [
         {
-          "subject": "Physics",
-          "room": "110"
+          "subject": "Физическая культура",
+          "room": "111",
+          "teacher": "Светлана А.К."
         },
         {
-          "subject": "Biology",
-          "room": "309"
+          "subject": "Русский язык",
+          "room": "101",
+          "teacher": "Екатерина А.П."
         },
         {
-          "subject": "Math",
-          "room": "101"
+          "subject": "X",
+          "room": "0",
+          "teacher": "X"
         },
         {
-          "subject": "Language",
-          "room": "205"
+          "subject": "Иностранный язык",
+          "room": "206",
+          "teacher": "Юлия Н.В."
         },
         {
-          "subject": "Math",
-          "room": "100"
+          "subject": "Обществознание",
+          "room": "212",
+          "teacher": "Наталья Д.З."
         }
       ],
       "Wednesday": [
         {
-          "subject": "Math",
-          "room": "108"
+          "subject": "Литература",
+          "room": "202",
+          "teacher": "Илья В.М."
         },
         {
-          "subject": "X",
-          "room": "0"
+          "subject": "Физика",
+          "room": "110",
+          "teacher": "Игорь В.Н."
         },
         {
-          "subject": "Biology",
-          "room": "309"
+          "subject": "Химия",
+          "room": "211",
+          "teacher": "Елена С.Т."
         },
         {
-          "subject": "Language",
-          "room": "200"
+          "subject": "География",
+          "room": "109",
+          "teacher": "Марина Г.Б."
         },
         {
-          "subject": "Language",
-          "room": "204"
+          "subject": "Математика",
+          "room": "109",
+          "teacher": "Алексей С.К."
         }
       ],
       "Thursday": [
         {
-          "subject": "X",
-          "room": "0"
+          "subject": "Информатика",
+          "room": "107",
+          "teacher": "Алёна В.Л."
         },
         {
-          "subject": "History",
-          "room": "318"
+          "subject": "Литература",
+          "room": "202",
+          "teacher": "Владимир В.П."
         },
         {
-          "subject": "Language",
-          "room": "206"
+          "subject": "История",
+          "room": "111",
+          "teacher": "Елена В.К."
         },
         {
-          "subject": "Language",
-          "room": "207"
+          "subject": "Химия",
+          "room": "209",
+          "teacher": "Елена С.Т."
         },
         {
-          "subject": "Language",
-          "room": "207"
+          "subject": "Литература",
+          "room": "207",
+          "teacher": "Владимир В.П."
         }
       ],
       "Friday": [
         {
-          "subject": "Physics",
-          "room": "111"
+          "subject": "Биология",
+          "room": "310",
+          "teacher": "Светлана А.К."
         },
         {
-          "subject": "Geography",
-          "room": "316"
+          "subject": "Физика",
+          "room": "111",
+          "teacher": "Игорь В.Н."
         },
         {
-          "subject": "Chemistry",
-          "room": "211"
+          "subject": "Русский язык",
+          "room": "213",
+          "teacher": "Александр И.Р."
         },
         {
-          "subject": "Math",
-          "room": "104"
+          "subject": "Математика",
+          "room": "109",
+          "teacher": "Сергей А.Т."
         },
         {
-          "subject": "Math",
-          "room": "105"
+          "subject": "Русский язык",
+          "room": "110",
+          "teacher": "Анна С.И."
         }
       ]
     }
@@ -464,112 +564,137 @@
     "timetable": {
       "Monday": [
         {
-          "subject": "Language",
-          "room": "207"
+          "subject": "Обществознание",
+          "room": "214",
+          "teacher": "Анна С.И."
         },
         {
-          "subject": "Math",
-          "room": "107"
+          "subject": "Литература",
+          "room": "210",
+          "teacher": "Владимир В.П."
         },
         {
-          "subject": "Language",
-          "room": "208"
+          "subject": "Информатика",
+          "room": "107",
+          "teacher": "Игорь В.Н."
         },
         {
-          "subject": "Chemistry",
-          "room": "209"
+          "subject": "Русский язык",
+          "room": "101",
+          "teacher": "Дмитрий А.Ф."
         },
         {
-          "subject": "Math",
-          "room": "108"
+          "subject": "Литература",
+          "room": "202",
+          "teacher": "Владимир В.П."
         }
       ],
       "Tuesday": [
         {
-          "subject": "Language",
-          "room": "201"
+          "subject": "Математика",
+          "room": "104",
+          "teacher": "Алексей С.К."
         },
         {
-          "subject": "Math",
-          "room": "104"
+          "subject": "Математика",
+          "room": "212",
+          "teacher": "Евгения О.П."
         },
         {
-          "subject": "Language",
-          "room": "203"
+          "subject": "Иностранный язык",
+          "room": "208",
+          "teacher": "Елена В.К."
         },
         {
-          "subject": "Math",
-          "room": "103"
+          "subject": "Математика",
+          "room": "109",
+          "teacher": "Марина Г.Б."
         },
         {
-          "subject": "Math",
-          "room": "100"
+          "subject": "Химия",
+          "room": "213",
+          "teacher": "Оксана М.С."
         }
       ],
       "Wednesday": [
         {
-          "subject": "Language",
-          "room": "205"
+          "subject": "Биология",
+          "room": "310",
+          "teacher": "Светлана А.К."
         },
         {
-          "subject": "Biology",
-          "room": "309"
+          "subject": "Математика",
+          "room": "109",
+          "teacher": "Евгения О.П."
         },
         {
-          "subject": "Chemistry",
-          "room": "210"
+          "subject": "Русский язык",
+          "room": "206",
+          "teacher": "Михаил С.К."
         },
         {
-          "subject": "Biology",
-          "room": "309"
+          "subject": "Русский язык",
+          "room": "213",
+          "teacher": "Дмитрий А.Ф."
         },
         {
-          "subject": "Physics",
-          "room": "111"
+          "subject": "География",
+          "room": "111",
+          "teacher": "Марина Г.Б."
         }
       ],
       "Thursday": [
         {
-          "subject": "Math",
-          "room": "107"
-        },
-        {
-          "subject": "Language",
-          "room": "206"
-        },
-        {
           "subject": "X",
-          "room": "0"
+          "room": "0",
+          "teacher": "X"
         },
         {
-          "subject": "History",
-          "room": "318"
+          "subject": "Обществознание",
+          "room": "214",
+          "teacher": "Анна С.И."
         },
         {
-          "subject": "Physics",
-          "room": "109"
+          "subject": "Физическая культура",
+          "room": "112",
+          "teacher": "Светлана А.К."
+        },
+        {
+          "subject": "Физическая культура",
+          "room": "112",
+          "teacher": "Юлия Н.В."
+        },
+        {
+          "subject": "Литература",
+          "room": "202",
+          "teacher": "Илья В.М."
         }
       ],
       "Friday": [
         {
-          "subject": "X",
-          "room": "0"
+          "subject": "Физика",
+          "room": "114",
+          "teacher": "Роман А.Д."
         },
         {
-          "subject": "Math",
-          "room": "103"
+          "subject": "Русский язык",
+          "room": "206",
+          "teacher": "Михаил С.К."
         },
         {
-          "subject": "X",
-          "room": "0"
+          "subject": "Физика",
+          "room": "110",
+          "teacher": "Роман А.Д."
         },
         {
-          "subject": "Geography",
-          "room": "316"
+          "subject": "География",
+          "room": "111",
+          "teacher": "Марина Г.Б."
         },
         {
-          "subject": "Language",
-          "room": "206"
+          "subject": "Биология",
+          "room": "309",
+          "teacher": "Светлана А.К."
         }
       ]
     }
@@ -579,112 +704,137 @@
     "timetable": {
       "Monday": [
         {
-          "subject": "Language",
-          "room": "200"
+          "subject": "Русский язык",
+          "room": "213",
+          "teacher": "Александр И.Р."
         },
         {
-          "subject": "X",
-          "room": "0"
+          "subject": "Физическая культура",
+          "room": "109",
+          "teacher": "Светлана А.К."
         },
         {
-          "subject": "Language",
-          "room": "206"
+          "subject": "Русский язык",
+          "room": "213",
+          "teacher": "Ольга В.С."
         },
         {
-          "subject": "Chemistry",
-          "room": "214"
+          "subject": "Литература",
+          "room": "210",
+          "teacher": "Илья В.М."
         },
         {
-          "subject": "Math",
-          "room": "100"
+          "subject": "Русский язык",
+          "room": "204",
+          "teacher": "Екатерина А.П."
         }
       ],
       "Tuesday": [
         {
-          "subject": "Math",
-          "room": "100"
+          "subject": "География",
+          "room": "111",
+          "teacher": "Марина Г.Б."
         },
         {
-          "subject": "Physics",
-          "room": "113"
+          "subject": "Математика",
+          "room": "108",
+          "teacher": "Марина Г.Б."
         },
         {
-          "subject": "Biology",
-          "room": "310"
+          "subject": "Информатика",
+          "room": "107",
+          "teacher": "Алёна В.Л."
         },
         {
-          "subject": "Math",
-          "room": "106"
+          "subject": "Математика",
+          "room": "109",
+          "teacher": "Евгения О.П."
         },
         {
-          "subject": "Math",
-          "room": "101"
+          "subject": "Физика",
+          "room": "113",
+          "teacher": "Игорь В.Н."
         }
       ],
       "Wednesday": [
         {
-          "subject": "Math",
-          "room": "108"
+          "subject": "Физика",
+          "room": "113",
+          "teacher": "Игорь В.Н."
         },
         {
-          "subject": "Math",
-          "room": "107"
+          "subject": "Математика",
+          "room": "108",
+          "teacher": "Константин В.Л."
         },
         {
           "subject": "X",
-          "room": "0"
+          "room": "0",
+          "teacher": "X"
         },
         {
-          "subject": "Chemistry",
-          "room": "212"
+          "subject": "Литература",
+          "room": "103",
+          "teacher": "Петр И.С."
         },
         {
-          "subject": "Physics",
-          "room": "112"
+          "subject": "География",
+          "room": "109",
+          "teacher": "Василий И.М."
         }
       ],
       "Thursday": [
         {
-          "subject": "Language",
-          "room": "208"
+          "subject": "Химия",
+          "room": "212",
+          "teacher": "Анастасия А.Ф."
         },
         {
-          "subject": "Geography",
-          "room": "316"
+          "subject": "Химия",
+          "room": "212",
+          "teacher": "Оксана М.С."
         },
         {
-          "subject": "History",
-          "room": "318"
+          "subject": "История",
+          "room": "110",
+          "teacher": "Наталья Д.З."
         },
         {
-          "subject": "Biology",
-          "room": "309"
+          "subject": "Литература",
+          "room": "105",
+          "teacher": "Петр И.С."
         },
         {
-          "subject": "Language",
-          "room": "207"
+          "subject": "Иностранный язык",
+          "room": "205",
+          "teacher": "Юлия Н.В."
         }
       ],
       "Friday": [
         {
-          "subject": "Language",
-          "room": "207"
+          "subject": "Математика",
+          "room": "104",
+          "teacher": "Евгения О.П."
         },
         {
-          "subject": "Language",
-          "room": "203"
+          "subject": "Математика",
+          "room": "108",
+          "teacher": "Евгения О.П."
         },
         {
-          "subject": "X",
-          "room": "0"
+          "subject": "Информатика",
+          "room": "107",
+          "teacher": "Игорь В.Н."
         },
         {
-          "subject": "Language",
-          "room": "203"
+          "subject": "Химия",
+          "room": "213",
+          "teacher": "Оксана М.С."
         },
         {
-          "subject": "Math",
-          "room": "102"
+          "subject": "Обществознание",
+          "room": "213",
+          "teacher": "Наталья Д.З."
         }
       ]
     }

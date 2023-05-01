@@ -23,9 +23,10 @@ def convert_timetable_to_json(timetables):
             day_lessons = []
             for lesson in lessons:
                 cell = timetable.at[day, lesson]
-                subject, room = cell.split(" - ")
+                subject, room, teacher = cell.split(" - ")
                 room_number = room.split()[-1]
-                day_lessons.append({"subject": subject, "room": room_number})
+                teacher_name = teacher[9:]
+                day_lessons.append({"subject": subject, "room": room_number, "teacher": teacher_name})
 
             class_timetable["timetable"][day] = day_lessons
 
@@ -36,5 +37,6 @@ def convert_timetable_to_json(timetables):
 timetables = read_timetables_from_excel("school_timetables_with_room.xlsx")
 json_data = convert_timetable_to_json(timetables)
 
-with open("school_timetables_with_room.json", "w") as json_file:
-    json.dump(json_data, json_file, indent=2)
+with open("school_timetables_with_room.json", "w", encoding="utf-8") as json_file:
+    json.dump(json_data, json_file, ensure_ascii=False, indent=2)
+
