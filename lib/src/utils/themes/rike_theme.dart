@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:rikedu/src/constants/colors.dart';
 import 'package:rikedu/src/constants/sizes.dart';
 
@@ -29,11 +30,48 @@ class RikeTheme {
     ),
   );
 
+  static ColorScheme lightColorScheme = const ColorScheme.light(
+    primary: rikePrimaryColorLight,
+    onPrimary: rikeOnPrimaryColorLight,
+    primaryContainer: rikePrimaryContainerColorLight,
+    secondary: rikeSecondaryColorLight,
+    onSecondary: rikeOnSecondaryColorLight,
+    surface: rikeSurfaceColoLight,
+    onSurface: rikeOnSurfaceColoLight,
+    error: rikeErrorColorLight,
+    onError: rikeOnErrorColorLight,
+    background: rikeBackgroundColorLight,
+    onBackground: rikeOnBackgroundColorLight,
+  );
+
+  static ColorScheme darkColorScheme = const ColorScheme.dark(
+    primary: rikePrimaryColorDark,
+    onPrimary: rikeOnPrimaryColorDark,
+    primaryContainer: rikePrimaryContainerColorDark,
+    secondary: rikeSecondaryColorDark,
+    onSecondary: rikeOnSecondaryColorDark,
+    scrim: rikeScrimColoDark,
+    surface: rikeSurfaceColoDark,
+    onSurface: rikeOnSurfaceColoDark,
+    error: rikeErrorColorDark,
+    onError: rikeOnErrorColorDark,
+    background: rikeBackgroundColorDark,
+    onBackground: rikeOnBackgroundColorDark,
+  );
+
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
     fontFamily: 'Google Sans',
-    primaryColor: rikePrimaryColor,
+    colorScheme: lightColorScheme,
     brightness: Brightness.light,
+    appBarTheme: const AppBarTheme(
+      systemOverlayStyle: SystemUiOverlayStyle(
+        statusBarIconBrightness: Brightness.dark,
+        systemNavigationBarIconBrightness: Brightness.dark,
+        systemNavigationBarColor: Colors.transparent,
+        statusBarColor: Colors.transparent,
+      ),
+    ),
     textTheme: const TextTheme(
       headlineLarge: TextStyle(
         fontWeight: FontWeight.w700,
@@ -51,7 +89,15 @@ class RikeTheme {
   static ThemeData darkTheme = ThemeData(
     useMaterial3: true,
     fontFamily: 'Google Sans',
-    primarySwatch: Colors.blue,
+    colorScheme: darkColorScheme,
     brightness: Brightness.dark,
+    appBarTheme: const AppBarTheme(
+      systemOverlayStyle: SystemUiOverlayStyle(
+        statusBarIconBrightness: Brightness.light,
+        systemNavigationBarIconBrightness: Brightness.light,
+        systemNavigationBarColor: Colors.transparent,
+        statusBarColor: Colors.transparent,
+      ),
+    ),
   );
 }
