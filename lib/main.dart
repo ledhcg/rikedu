@@ -1,8 +1,10 @@
+import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:rikedu/firebase_options.dart';
+import 'package:rikedu/src/constants/text_strings.dart';
 import 'package:rikedu/src/features/authentication/views/login/login_screen.dart';
 import 'package:rikedu/src/features/authentication/views/login/register_screen.dart';
 import 'package:rikedu/src/features/chat/views/message.dart';
