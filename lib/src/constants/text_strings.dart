@@ -15,3 +15,6 @@ const String email = "Email";
 const String password = "Password";
 const String login = "Login";
 const String welcomeBack = "Welcome back!";
+
+const String weekend = "Выходные";
+const String haveAGoodDay = "Хорошего дня!";

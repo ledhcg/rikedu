@@ -36,64 +36,53 @@ class _TimetableScreenState extends State<TimetableScreen> {
 
   final Map<String, List<Map<String, String>>> lessonsInWeek = {
     "Monday": [
-      {"subject": "Math", "room": "107"},
-      {"subject": "Language", "room": "206"},
-      {"subject": "Language", "room": "208"},
-      {"subject": "Language", "room": "206"},
-      {"subject": "Math", "room": "108"},
-      {"subject": "Math", "room": "107"},
-      {"subject": "Language", "room": "206"},
-      {"subject": "Language", "room": "208"},
-      {"subject": "Language", "room": "206"},
-      {"subject": "Math", "room": "108"}
+      {"subject": "Биология", "room": "310", "teacher": "Светлана А.К."},
+      {"subject": "Математика", "room": "205", "teacher": "Игорь П.В."},
+      {"subject": "Математика", "room": "205", "teacher": "Константин В.Л."},
+      {"subject": "Физика", "room": "111", "teacher": "Роман А.Д."},
+      {"subject": "Химия", "room": "212", "teacher": "Оксана М.С."},
+      {"subject": "Химия", "room": "212", "teacher": "Оксана М.С."},
+      {"subject": "Русский язык", "room": "110", "teacher": "Александр И.Р."}
     ],
     "Tuesday": [
-      {"subject": "Math", "room": "108"},
-      {"subject": "Math", "room": "100"},
-      {"subject": "Language", "room": "202"},
-      {"subject": "X", "room": "0"},
-      {"subject": "Language", "room": "207"},
-      {"subject": "Math", "room": "107"},
-      {"subject": "Language", "room": "206"},
-      {"subject": "Language", "room": "208"},
-      {"subject": "Language", "room": "206"},
-      {"subject": "Math", "room": "108"}
+      {"subject": "История", "room": "110", "teacher": "Елена В.К."},
+      {"subject": "Русский язык", "room": "205", "teacher": "Михаил С.К."},
+      {"subject": "Биология", "room": "310", "teacher": "Светлана А.К."},
+      {
+        "subject": "Физическая культура",
+        "room": "109",
+        "teacher": "Светлана А.К."
+      },
+      {"subject": "Обществознание", "room": "213", "teacher": "Наталья Д.З."},
+      {"subject": "История", "room": "110", "teacher": "Наталья Д.З."},
+      {"subject": "Математика", "room": "205", "teacher": "Алексей С.К."}
     ],
     "Wednesday": [
-      {"subject": "X", "room": "0"},
-      {"subject": "Math", "room": "101"},
-      {"subject": "Biology", "room": "309"},
-      {"subject": "X", "room": "0"},
-      {"subject": "Chemistry", "room": "209"},
-      {"subject": "Math", "room": "107"},
-      {"subject": "Language", "room": "206"},
-      {"subject": "Language", "room": "208"},
-      {"subject": "Language", "room": "206"},
-      {"subject": "Math", "room": "108"}
+      {"subject": "Физическая культура", "room": "112", "teacher": "Юлия Н.В."},
+      {"subject": "Иностранный язык", "room": "205", "teacher": "Юлия Н.В."},
+      {"subject": "Литература", "room": "202", "teacher": "Светлана А.К."},
+      {"subject": "Математика", "room": "108", "teacher": "Константин В.Л."},
+      {"subject": "Информатика", "room": "107", "teacher": "Анастасия А.М."},
+      {"subject": "Физика", "room": "113", "teacher": "Людмила А.С."},
+      {"subject": "Иностранный язык", "room": "207", "teacher": "Юлия Н.В."}
     ],
     "Thursday": [
-      {"subject": "Chemistry", "room": "209"},
-      {"subject": "Biology", "room": "309"},
-      {"subject": "Language", "room": "207"},
-      {"subject": "Math", "room": "101"},
-      {"subject": "Physics", "room": "112"},
-      {"subject": "Math", "room": "107"},
-      {"subject": "Language", "room": "206"},
-      {"subject": "Language", "room": "208"},
-      {"subject": "Language", "room": "206"},
-      {"subject": "Math", "room": "108"}
+      {"subject": "Физика", "room": "111", "teacher": "Роман А.Д."},
+      {"subject": "X", "room": "0", "teacher": "X"},
+      {"subject": "Химия", "room": "209", "teacher": "Елена С.Т."},
+      {"subject": "Русский язык", "room": "101", "teacher": "Александр И.Р."},
+      {"subject": "Информатика", "room": "107", "teacher": "Алёна В.Л."},
+      {"subject": "География", "room": "111", "teacher": "Василий И.М."},
+      {"subject": "Литература", "room": "209", "teacher": "Надежда С.Б."}
     ],
     "Friday": [
-      {"subject": "Math", "room": "105"},
-      {"subject": "History", "room": "318"},
-      {"subject": "Geography", "room": "316"},
-      {"subject": "Language", "room": "203"},
-      {"subject": "Physics", "room": "112"},
-      {"subject": "Math", "room": "107"},
-      {"subject": "Language", "room": "206"},
-      {"subject": "Language", "room": "208"},
-      {"subject": "Language", "room": "206"},
-      {"subject": "Math", "room": "108"}
+      {"subject": "Русский язык", "room": "110", "teacher": "Анна С.И."},
+      {"subject": "Математика", "room": "205", "teacher": "Алексей С.К."},
+      {"subject": "Математика", "room": "101", "teacher": "Марина Г.Б."},
+      {"subject": "География", "room": "109", "teacher": "Марина Г.Б."},
+      {"subject": "Информатика", "room": "107", "teacher": "Анастасия А.М."},
+      {"subject": "Обществознание", "room": "214", "teacher": "Анна С.И."},
+      {"subject": "Литература", "room": "105", "teacher": "Мария А.К."}
     ],
     "Saturday": [],
     "Sunday": []
@@ -411,10 +400,12 @@ class _TimetableScreenState extends State<TimetableScreen> {
                       timeEnd: lessons[index].timeEnd);
                 } else {
                   return LessonCard(
-                      subject: lessons[index].subject,
-                      room: lessons[index].room,
-                      timeStart: lessons[index].timeStart,
-                      timeEnd: lessons[index].timeEnd);
+                    subject: lessons[index].subject,
+                    room: lessons[index].room,
+                    timeStart: lessons[index].timeStart,
+                    timeEnd: lessons[index].timeEnd,
+                    teacher: lessons[index].teacher,
+                  );
                 }
               },
             ),

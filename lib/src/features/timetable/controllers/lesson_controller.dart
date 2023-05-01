@@ -19,6 +19,7 @@ class LessonController extends GetxController {
         timeStart: timeStart,
         timeEnd: timeEnd,
         room: subject['room']!,
+        teacher: subject['teacher']!,
       );
       lessons.add(lesson);
     });

@@ -6,6 +6,7 @@ class LessonCard extends StatelessWidget {
   final String room;
   final String timeStart;
   final String timeEnd;
+  final String teacher;
 
   const LessonCard({
     Key? key,
@@ -13,6 +14,7 @@ class LessonCard extends StatelessWidget {
     required this.room,
     required this.timeStart,
     required this.timeEnd,
+    required this.teacher,
   }) : super(key: key);
 
   @override
@@ -75,7 +77,7 @@ class LessonCard extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        room,
+                        teacher,
                         style: TextStyle(
                           color: Theme.of(context).colorScheme.onPrimary,
                         ),
