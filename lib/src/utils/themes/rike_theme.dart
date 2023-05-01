@@ -36,6 +36,7 @@ class RikeTheme {
     primaryContainer: rikePrimaryContainerColorLight,
     secondary: rikeSecondaryColorLight,
     onSecondary: rikeOnSecondaryColorLight,
+    scrim: rikeScrimColoLight,
     surface: rikeSurfaceColoLight,
     onSurface: rikeOnSurfaceColoLight,
     error: rikeErrorColorLight,

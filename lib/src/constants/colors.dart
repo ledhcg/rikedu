@@ -20,11 +20,11 @@ const rikeRedBattery = Color(0xFFFF0000);
 
 const rikePrimaryColorLight = Color(0xFF509bf8);
 const rikeOnPrimaryColorLight = Color(0xFFffffff);
-const rikePrimaryContainerColorLight = Color(0xFFeeeded);
+const rikePrimaryContainerColorLight = Color(0xFFf3f3f3);
 const rikeSecondaryColorLight = Color(0xFFFF5733);
 const rikeOnSecondaryColorLight = Color(0xFFfcfff7);
 const rikeScrimColoLight = Color(0xFFdbdada);
-const rikeSurfaceColoLight = Color(0xFFbdbcbc);
+const rikeSurfaceColoLight = Color(0xFFcfcece);
 const rikeOnSurfaceColoLight = Color(0xFF1d2125);
 const rikeBackgroundColorLight = Color(0xFFffffff);
 const rikeOnBackgroundColorLight = Color(0xFF080808);
