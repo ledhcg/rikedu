@@ -4,3 +4,5 @@ const String iconMarker = "assets/images/map/map-marker.png";
 
 const String mapLight = "assets/json/map-light.json";
 const String mapDark = "assets/json/map-dark.json";
+
+const String weekendTimetable = "assets/images/timetable/weekend.png";
