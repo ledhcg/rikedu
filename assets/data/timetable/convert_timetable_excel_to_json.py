@@ -1,9 +1,11 @@
 import pandas as pd
 import json
 
-classes = ["10A", "10B", "10C", "11A", "11B", "11C"]
+classes = ["10А", "10Б", "10В", "11А", "11Б", "11В"]
+
 days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
-lessons = ["Lesson 1", "Lesson 2", "Lesson 3", "Lesson 4", "Lesson 5"]
+
+lessons = ["Lesson 1", "Lesson 2", "Lesson 3", "Lesson 4", "Lesson 5", "Lesson 6", "Lesson 7"]
 
 def read_timetables_from_excel(file_name):
     timetables = {}
@@ -34,9 +36,9 @@ def convert_timetable_to_json(timetables):
 
     return json_data
 
-timetables = read_timetables_from_excel("school_timetables_with_room.xlsx")
+timetables = read_timetables_from_excel("school_timetables.xlsx")
 json_data = convert_timetable_to_json(timetables)
 
-with open("school_timetables_with_room.json", "w", encoding="utf-8") as json_file:
+with open("school_timetables.json", "w", encoding="utf-8") as json_file:
     json.dump(json_data, json_file, ensure_ascii=False, indent=2)
 

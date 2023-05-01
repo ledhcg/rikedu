@@ -4,27 +4,15 @@ import pandas as pd
 import random
 from openpyxl import Workbook
 
-classes = ["10A", "10B", "10C", "11A", "11B", "11C"]
+classes = ["10А", "10Б", "10В", "11А", "11Б", "11В"]
+
 days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+
 lessons = ["Lesson 1", "Lesson 2", "Lesson 3", "Lesson 4", "Lesson 5", "Lesson 6", "Lesson 7"]
-# subjects = ["Math", "Language", "Physics", "Chemistry", "Biology", "History", "Geography", "X"]
+
 subjects = ["Русский язык", "Литература", "Математика", "Физика", "Химия", "Биология", "Информатика", "Иностранный язык", "История", "Обществознание", "География", "Физическая культура", "X"]
 
-# subject_counts = {"Math": 7, "Language": 7, "Physics": 2, "Chemistry": 2, "Biology": 2, "History": 1, "Geography": 1, "X": 3}
 subject_counts = {"Русский язык": 4, "Литература": 3, "Математика": 6, "Физика": 3, "Химия": 3, "Биология": 2, "Информатика": 3, "Иностранный язык": 2, "История": 2, "Обществознание": 2, "География": 2, "Физическая культура": 2, "X":1}
-
-
-
-# rooms = {
-#     "Math": [100, 101, 102, 103, 104, 105, 106, 107, 108],
-#     "Language": [200, 201, 202, 203, 204, 205, 206, 207, 208],
-#     "Physics": [109, 110, 111, 112, 113, 114],
-#     "Chemistry": [209, 210, 211, 212, 213, 214],
-#     "Biology": [309, 310],
-#     "History": [318, 319],
-#     "Geography": [315, 316],
-#     "X": [000],
-# }
 
 rooms = {
     "Русский язык": [205, 213, 108, 101, 206, 110, 204],
@@ -79,7 +67,7 @@ def generate_timetable():
     return timetable
 
 def export_to_excel(timetables):
-    with pd.ExcelWriter("school_timetables_with_room.xlsx") as writer:
+    with pd.ExcelWriter("school_timetables.xlsx") as writer:
         for cls, timetable in timetables.items():
             timetable.to_excel(writer, sheet_name=cls)
 
