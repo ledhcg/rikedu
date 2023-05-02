@@ -4,6 +4,7 @@ import 'package:rikedu/src/constants/file_strings.dart';
 import 'package:rikedu/src/constants/sizes.dart';
 import 'package:rikedu/src/constants/text_strings.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
+import 'package:rikedu/src/features/settings/views/widgets/theme_mode_widget.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -65,10 +66,20 @@ class SettingsScreen extends StatelessWidget {
                 ],
               ),
             ),
-            const ListTile(
-              title: Text(settings),
-              leading: Icon(FluentIcons.settings_24_filled),
-              trailing: Icon(FluentIcons.chevron_right_24_regular),
+            ListTile(
+              title: const Text(settings),
+              leading: const Icon(FluentIcons.settings_24_filled),
+              trailing: const Icon(FluentIcons.chevron_right_24_regular),
+              onTap: () => showModalBottomSheet(
+                // barrierColor: rikeAccentColor,
+                backgroundColor: Colors.transparent,
+                context: context,
+                builder: (context) {
+                  return const Popover(
+                    child: SettingsModal(),
+                  );
+                },
+              ),
             ),
             const ListTile(
               title: Text(language),
