@@ -10,6 +10,8 @@ const String notificationsAndSounds = "Notifications & Sounds";
 const String devices = "Devices";
 const String logout = "Logout";
 
+const String appUsage = "App Usage Stats";
+
 /*-- Login Text String --*/
 const String email = "Email";
 const String password = "Password";
@@ -18,3 +20,4 @@ const String welcomeBack = "Welcome back!";
 
 const String weekend = "Выходные";
 const String haveAGoodDay = "Хорошего дня!";
+const String timetable = "Расписание";

@@ -11,6 +11,8 @@ import 'package:rikedu/src/features/timetable/views/widgets/weekend.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class TimetableScreen extends StatefulWidget {
+  const TimetableScreen({super.key});
+
   @override
   _TimetableScreenState createState() => _TimetableScreenState();
 }
@@ -127,7 +129,7 @@ class _TimetableScreenState extends State<TimetableScreen> {
     _textSizeHeader = 40;
     _textSizeSubHeader = 16;
     _sizeHeightRowCalendar = 50;
-    _sizeHeightDayOfWeekCalendar = 16;
+    _sizeHeightDayOfWeekCalendar = 20;
     _todayColorCalendar = Theme.of(context).colorScheme.secondary;
     _dayOfWeekColorCalendar = Theme.of(context).colorScheme.onBackground;
     _selectedColorCalendar = Theme.of(context).colorScheme.primary;

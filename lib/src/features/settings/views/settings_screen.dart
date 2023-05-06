@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:rikedu/src/constants/colors.dart';
 import 'package:rikedu/src/constants/file_strings.dart';
 import 'package:rikedu/src/constants/sizes.dart';
 import 'package:rikedu/src/constants/text_strings.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
+import 'package:rikedu/src/features/settings/views/widgets/logout_modal.dart';
 import 'package:rikedu/src/features/settings/views/widgets/theme_mode_widget.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -15,6 +15,7 @@ class SettingsScreen extends StatelessWidget {
       appBar: AppBar(
         toolbarHeight: 100,
         automaticallyImplyLeading: true,
+        backgroundColor: Colors.transparent,
         title: Text(
           settings,
           style: Theme.of(context).textTheme.headlineLarge,
@@ -113,9 +114,18 @@ class SettingsScreen extends StatelessWidget {
             //   onChanged: (value) {},
             //   value: true,
             // ),
-            const ListTile(
-              title: Text(logout),
-              leading: Icon(FluentIcons.panel_left_expand_24_filled),
+            ListTile(
+              title: const Text(logout),
+              leading: const Icon(FluentIcons.panel_left_expand_24_filled),
+              onTap: () => showModalBottomSheet(
+                backgroundColor: Colors.transparent,
+                context: context,
+                builder: (context) {
+                  return const Popover(
+                    child: LogoutModal(),
+                  );
+                },
+              ),
             )
           ],
         ),

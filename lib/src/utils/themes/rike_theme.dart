@@ -84,8 +84,6 @@ class RikeTheme {
         fontWeight: FontWeight.w500,
       ),
     ),
-    filledButtonTheme: lightFilledButtonTheme,
-    inputDecorationTheme: lightInputDecorationTheme,
   );
   static ThemeData darkTheme = ThemeData(
     useMaterial3: true,
