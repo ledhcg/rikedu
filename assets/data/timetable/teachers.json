@@ -1,0 +1,362 @@
+[
+  {
+    "firstName": "Александр",
+    "lastName": "Иванович Романов",
+    "shortName": "Александр И.Р.",
+    "username": "aleksandrir"
+  },
+  {
+    "firstName": "Екатерина",
+    "lastName": "Андреевна Петрова",
+    "shortName": "Екатерина А.П.",
+    "username": "ekaterinaap"
+  },
+  {
+    "firstName": "Михаил",
+    "lastName": "Сергеевич Кузнецов",
+    "shortName": "Михаил С.К.",
+    "username": "mikhailsk"
+  },
+  {
+    "firstName": "Ольга",
+    "lastName": "Викторовна Смирнова",
+    "shortName": "Ольга В.С.",
+    "username": "olgavs"
+  },
+  {
+    "firstName": "Дмитрий",
+    "lastName": "Александрович Федоров",
+    "shortName": "Дмитрий А.Ф.",
+    "username": "dmitriiaf"
+  },
+  {
+    "firstName": "Анна",
+    "lastName": "Степановна Иванова",
+    "shortName": "Анна С.И.",
+    "username": "annasi"
+  },
+  {
+    "firstName": "Андрей",
+    "lastName": "Петрович Соколов",
+    "shortName": "Андрей П.С.",
+    "username": "andreips"
+  },
+  {
+    "firstName": "Юлия",
+    "lastName": "Николаевна Васильева",
+    "shortName": "Юлия Н.В.",
+    "username": "iuliianv"
+  },
+  {
+    "firstName": "Владимир",
+    "lastName": "Викторович Попов",
+    "shortName": "Владимир В.П.",
+    "username": "vladimirvp"
+  },
+  {
+    "firstName": "Светлана",
+    "lastName": "Александровна Ковалева",
+    "shortName": "Светлана А.К.",
+    "username": "svetlanaak"
+  },
+  {
+    "firstName": "Илья",
+    "lastName": "Валерьевич Морозов",
+    "shortName": "Илья В.М.",
+    "username": "iliavm"
+  },
+  {
+    "firstName": "Татьяна",
+    "lastName": "Дмитриевна Новикова",
+    "shortName": "Татьяна Д.Н.",
+    "username": "tatianadn"
+  },
+  {
+    "firstName": "Георгий",
+    "lastName": "Николаевич Медведев",
+    "shortName": "Георгий Н.М.",
+    "username": "georgiinm"
+  },
+  {
+    "firstName": "Мария",
+    "lastName": "Алексеевна Козлова",
+    "shortName": "Мария А.К.",
+    "username": "mariiaak"
+  },
+  {
+    "firstName": "Петр",
+    "lastName": "Игоревич Сидоров",
+    "shortName": "Петр И.С.",
+    "username": "petris"
+  },
+  {
+    "firstName": "Надежда",
+    "lastName": "Сергеевна Белова",
+    "shortName": "Надежда С.Б.",
+    "username": "nadezhdasb"
+  },
+  {
+    "firstName": "Константин",
+    "lastName": "Владимирович Лебедев",
+    "shortName": "Константин В.Л.",
+    "username": "konstantinvl"
+  },
+  {
+    "firstName": "Елена",
+    "lastName": "Викторовна Кузьмина",
+    "shortName": "Елена В.К.",
+    "username": "elenavk"
+  },
+  {
+    "firstName": "Сергей",
+    "lastName": "Александрович Тихонов",
+    "shortName": "Сергей А.Т.",
+    "username": "sergeiat"
+  },
+  {
+    "firstName": "Анастасия",
+    "lastName": "Андреевна Михайлова",
+    "shortName": "Анастасия А.М.",
+    "username": "anastasiiaam"
+  },
+  {
+    "firstName": "Игорь",
+    "lastName": "Валерьевич Николаев",
+    "shortName": "Игорь В.Н.",
+    "username": "igorvn"
+  },
+  {
+    "firstName": "Наталья",
+    "lastName": "Денисовна Зайцева",
+    "shortName": "Наталья Д.З.",
+    "username": "nataliadz"
+  },
+  {
+    "firstName": "Алексей",
+    "lastName": "Сергеевич Казанцев",
+    "shortName": "Алексей С.К.",
+    "username": "alekseisk"
+  },
+  {
+    "firstName": "Марина",
+    "lastName": "Геннадьевна Борисова",
+    "shortName": "Марина Г.Б.",
+    "username": "marinagb"
+  },
+  {
+    "firstName": "Василий",
+    "lastName": "Иванович Макаров",
+    "shortName": "Василий И.М.",
+    "username": "vasiliiim"
+  },
+  {
+    "firstName": "Евгения",
+    "lastName": "Олеговна Полякова",
+    "shortName": "Евгения О.П.",
+    "username": "evgeniiaop"
+  },
+  {
+    "firstName": "Роман",
+    "lastName": "Александрович Дмитриев",
+    "shortName": "Роман А.Д.",
+    "username": "romanad"
+  },
+  {
+    "firstName": "Людмила",
+    "lastName": "Андреевна Соколова",
+    "shortName": "Людмила А.С.",
+    "username": "liudmilaas"
+  },
+  {
+    "firstName": "Игорь",
+    "lastName": "Павлович Воробьев",
+    "shortName": "Игорь П.В.",
+    "username": "igorpv"
+  },
+  {
+    "firstName": "Оксана",
+    "lastName": "Михайловна Сергеева",
+    "shortName": "Оксана М.С.",
+    "username": "oksanams"
+  },
+  {
+    "firstName": "Алёна",
+    "lastName": "Викторовна Лебедева",
+    "shortName": "Алёна В.Л.",
+    "username": "alionavl"
+  },
+  {
+    "firstName": "Елена",
+    "lastName": "Сергеевна Тимофеева",
+    "shortName": "Елена С.Т.",
+    "username": "elenast"
+  },
+  {
+    "firstName": "Ирина",
+    "lastName": "Владимировна Соловьёва",
+    "shortName": "Ирина В.С.",
+    "username": "irinavs"
+  },
+  {
+    "firstName": "Анастасия",
+    "lastName": "Александровна Федотова",
+    "shortName": "Анастасия А.Ф.",
+    "username": "anastasiiaaf"
+  },
+  {
+    "firstName": "Оксана",
+    "lastName": "Валерьевна Щербакова",
+    "shortName": "Оксана В.Щ.",
+    "username": "oksanavshch"
+  },
+  {
+    "firstName": "Тамара",
+    "lastName": "Ивановна Новикова",
+    "shortName": "Тамара И.Н.",
+    "username": "tamarain"
+  },
+  {
+    "firstName": "Нина",
+    "lastName": "Александровна Калинина",
+    "shortName": "Нина А.К.",
+    "username": "ninaak"
+  },
+  {
+    "firstName": "Ирина",
+    "lastName": "Викторовна Медведева",
+    "shortName": "Ирина В.М.",
+    "username": "irinavm"
+  },
+  {
+    "firstName": "Александра",
+    "lastName": "Дмитриевна Степанова",
+    "shortName": "Александра Д.С.",
+    "username": "aleksandrads"
+  },
+  {
+    "firstName": "Валентина",
+    "lastName": "Сергеевна Романова",
+    "shortName": "Валентина С.Р.",
+    "username": "valentinasr"
+  },
+  {
+    "firstName": "Лариса",
+    "lastName": "Петровна Сидорова",
+    "shortName": "Лариса П.С.",
+    "username": "larisaps"
+  },
+  {
+    "firstName": "Ольга",
+    "lastName": "Валерьевна Васильева",
+    "shortName": "Ольга В.В.",
+    "username": "olgavv"
+  },
+  {
+    "firstName": "Татьяна",
+    "lastName": "Анатольевна Гусева",
+    "shortName": "Татьяна А.Г.",
+    "username": "tatianaag"
+  },
+  {
+    "firstName": "Марина",
+    "lastName": "Владимировна Кузнецова",
+    "shortName": "Марина В.К.",
+    "username": "marinavk"
+  },
+  {
+    "firstName": "Людмила",
+    "lastName": "Николаевна Петрова",
+    "shortName": "Людмила Н.П.",
+    "username": "liudmilanp"
+  },
+  {
+    "firstName": "Виктория",
+    "lastName": "Валерьевна Попова",
+    "shortName": "Виктория В.П.",
+    "username": "viktoriiavp"
+  },
+  {
+    "firstName": "Наталья",
+    "lastName": "Владимировна Ковалева",
+    "shortName": "Наталья В.К.",
+    "username": "nataliavk"
+  },
+  {
+    "firstName": "Екатерина",
+    "lastName": "Алексеевна Белова",
+    "shortName": "Екатерина А.Б.",
+    "username": "ekaterinaab"
+  },
+  {
+    "firstName": "Анастасия",
+    "lastName": "Ивановна Соколова",
+    "shortName": "Анастасия И.С.",
+    "username": "anastasiiais"
+  },
+  {
+    "firstName": "Светлана",
+    "lastName": "Андреевна Тихомирова",
+    "shortName": "Светлана А.Т.",
+    "username": "svetlanaat"
+  },
+  {
+    "firstName": "Надежда",
+    "lastName": "Петровна Иванова",
+    "shortName": "Надежда П.И.",
+    "username": "nadezhdapi"
+  },
+  {
+    "firstName": "Инна",
+    "lastName": "Сергеевна Казакова",
+    "shortName": "Инна С.К.",
+    "username": "innask"
+  },
+  {
+    "firstName": "Оксана",
+    "lastName": "Владимировна Громова",
+    "shortName": "Оксана В.Г.",
+    "username": "oksanavg"
+  },
+  {
+    "firstName": "Лидия",
+    "lastName": "Ивановна Трофимова",
+    "shortName": "Лидия И.Т.",
+    "username": "lidiiait"
+  },
+  {
+    "firstName": "Алла",
+    "lastName": "Алексеевна Борисова",
+    "shortName": "Алла А.Б.",
+    "username": "allaab"
+  },
+  {
+    "firstName": "Маргарита",
+    "lastName": "Сергеевна Кузьмина",
+    "shortName": "Маргарита С.К.",
+    "username": "margaritask"
+  },
+  {
+    "firstName": "Юлия",
+    "lastName": "Александровна Николаева",
+    "shortName": "Юлия А.Н.",
+    "username": "iuliiaan"
+  },
+  {
+    "firstName": "Елена",
+    "lastName": "Игоревна Дмитриева",
+    "shortName": "Елена И.Д.",
+    "username": "elenaid"
+  },
+  {
+    "firstName": "Софья",
+    "lastName": "Владимировна Калинина",
+    "shortName": "Софья В.К.",
+    "username": "sofiavk"
+  },
+  {
+    "firstName": "Ирина",
+    "lastName": "Александровна Соколова",
+    "shortName": "Ирина А.С.",
+    "username": "irinaas"
+  }
+]
