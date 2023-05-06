@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:rikedu/firebase_options.dart';
 import 'package:rikedu/src/constants/text_strings.dart';
@@ -11,16 +10,18 @@ import 'package:rikedu/src/features/authentication/views/login/login_screen.dart
 import 'package:rikedu/src/features/authentication/views/login/register_screen.dart';
 import 'package:rikedu/src/features/chat/views/message.dart';
 import 'package:rikedu/src/features/parental_controls/views/app_usage.dart';
+import 'package:rikedu/src/features/parental_controls/views/app_usage_screen.dart';
 import 'package:rikedu/src/features/parental_controls/views/location.dart';
-import 'package:rikedu/src/features/parental_controls/views/test.dart';
+import 'package:rikedu/src/features/parental_controls/views/control_page.dart';
+import 'package:rikedu/src/features/performance/screens/performance.dart';
 import 'package:rikedu/src/features/settings/views/settings_screen.dart';
 import 'package:rikedu/src/features/timetable/views/timetable.dart';
+import 'package:rikedu/src/providers/auth_provider.dart';
 import 'package:rikedu/src/providers/theme_mode.dart';
 import 'package:rikedu/src/repository/authentication/authentication_repository.dart';
 import 'package:rikedu/src/utils/themes/rike_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:line_icons/line_icons.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -46,6 +47,7 @@ void main() async {
   );
 
   final themeModeManager = ThemeModeManager();
+  final authService = AuthService();
   await themeModeManager.init();
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
@@ -53,12 +55,15 @@ void main() async {
   // Intl.defaultLocale = 'ru_RU';
   initializeDateFormatting('ru_RU');
 
-  runApp(
-    ChangeNotifierProvider(
-      create: (_) => themeModeManager,
-      child: const MainApp(),
-    ),
-  );
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(create: (_) => themeModeManager),
+    ChangeNotifierProvider(create: (_) => authService),
+  ], child: const MainApp())
+      // ChangeNotifierProvider(
+      //   create: (_) => themeModeManager,
+      //   child: const MainApp(),
+      // ),
+      );
 }
 
 class MainApp extends StatelessWidget {
@@ -100,6 +105,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       // resizeToAvoidBottomInset: false,
       body: _pages[_selectedIndex],
       bottomNavigationBar: ClipRRect(
@@ -171,7 +177,7 @@ class MainPage extends StatelessWidget {
           FilledButton(
             onPressed: () => {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const LoginScreen()))
+                  MaterialPageRoute(builder: (context) => const LoginPage()))
             },
             child: const Text(
               'Login',
@@ -246,6 +252,28 @@ class MainPage extends StatelessWidget {
             },
             child: const Text(
               'Settings',
+            ),
+          ),
+          FilledButton(
+            onPressed: () => {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const AppUsageStats()))
+            },
+            child: const Text(
+              'Usage',
+            ),
+          ),
+          FilledButton(
+            onPressed: () => {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const PerformancePage()))
+            },
+            child: const Text(
+              'Performance',
             ),
           ),
         ],
