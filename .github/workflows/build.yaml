@@ -24,10 +24,12 @@ jobs:
       - name: Build release APK
         run: flutter build apk --release
 
-      - name: Upload
-        uses: ncipollo/release-action@v1
+      - name: Upload release APK
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         with:
-          artifacts: "build/app/outputs/flutter-apk/app-release.apk"
-          token: ${{ secrets.TOKEN_GITHUB }}
-          commit: master
-          tag: v2.5.0
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: build/app/outputs/flutter-apk/app-release.apk
+          asset_name: MyApp-${{ github.ref }}.apk
+          asset_content_type: application/vnd.android.package-archive
