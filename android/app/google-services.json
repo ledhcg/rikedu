@@ -13,7 +13,16 @@
           "package_name": "com.ledinhcuong.rikedu"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "642656145533-a9hp9u08v0ak45mjvsgbvgtm6it5tovp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ledinhcuong.rikedu",
+            "certificate_hash": "2e8d41c290b2782838677b6517552a7cd9bf9cab"
+          }
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAF-CoshTGbM8mFduG7rlhsSGwUU_onu10"

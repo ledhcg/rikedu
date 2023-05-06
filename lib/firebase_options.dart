@@ -70,6 +70,7 @@ class DefaultFirebaseOptions {
     projectId: 'com-ledinhcuong-rikedu',
     databaseURL: 'https://com-ledinhcuong-rikedu-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'com-ledinhcuong-rikedu.appspot.com',
+    androidClientId: '642656145533-a9hp9u08v0ak45mjvsgbvgtm6it5tovp.apps.googleusercontent.com',
     iosBundleId: 'com.ledinhcuong.rikedu',
   );
 
@@ -80,6 +81,7 @@ class DefaultFirebaseOptions {
     projectId: 'com-ledinhcuong-rikedu',
     databaseURL: 'https://com-ledinhcuong-rikedu-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'com-ledinhcuong-rikedu.appspot.com',
+    androidClientId: '642656145533-a9hp9u08v0ak45mjvsgbvgtm6it5tovp.apps.googleusercontent.com',
     iosBundleId: 'com.ledinhcuong.rikedu',
   );
 }
