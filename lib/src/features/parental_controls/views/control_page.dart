@@ -220,7 +220,7 @@ class _TestRealtimeLocationState extends State<TestRealtimeLocation> {
                                       Padding(
                                         padding: const EdgeInsets.all(10.0),
                                         child: Icon(
-                                          FluentIcons.book_contacts_28_regular,
+                                          FluentIcons.book_pulse_24_regular,
                                           size: 50,
                                           color: Theme.of(context)
                                               .colorScheme
@@ -228,7 +228,7 @@ class _TestRealtimeLocationState extends State<TestRealtimeLocation> {
                                         ),
                                       ),
                                       Text(
-                                        'Results',
+                                        'Analytics',
                                         style: TextStyle(
                                             fontWeight: FontWeight.w500,
                                             color: Theme.of(context)
