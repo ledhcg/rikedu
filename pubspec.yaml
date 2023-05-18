@@ -47,6 +47,9 @@ dependencies:
   introduction_screen: ^3.1.8
   dio: ^5.1.1
   firebase_performance: ^0.9.1+2
+  flutter_secure_storage: ^8.0.0
+  circle_flags: ^1.0.4
+  get_storage: ^2.1.1
 
 dev_dependencies:
   flutter_test:

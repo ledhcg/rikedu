@@ -1,4 +1,4 @@
-class ScheduleUtils {
+class ScheduleHelper {
   static Map<String, int> get schoolTimesStart => const {
         "09:00": 1,
         "10:40": 2,

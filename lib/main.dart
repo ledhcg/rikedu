@@ -2,26 +2,33 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:provider/provider.dart';
 import 'package:rikedu/firebase_options.dart';
-import 'package:rikedu/src/constants/text_strings.dart';
-import 'package:rikedu/src/features/authentication/views/login/login_screen.dart';
-import 'package:rikedu/src/features/authentication/views/login/register_screen.dart';
-import 'package:rikedu/src/features/chat/views/message.dart';
+import 'package:rikedu/src/config/routes/app_pages.dart';
+import 'package:rikedu/src/config/routes/routers.dart';
+import 'package:rikedu/src/config/themes/themes.dart';
 import 'package:rikedu/src/features/parental_controls/views/app_usage.dart';
 import 'package:rikedu/src/features/parental_controls/views/app_usage_screen.dart';
-import 'package:rikedu/src/features/parental_controls/views/location.dart';
-import 'package:rikedu/src/features/parental_controls/views/control_page.dart';
 import 'package:rikedu/src/features/performance/screens/performance.dart';
-import 'package:rikedu/src/features/settings/views/settings_screen.dart';
-import 'package:rikedu/src/features/timetable/views/timetable.dart';
-import 'package:rikedu/src/providers/auth_provider.dart';
+import 'package:rikedu/src/features/settings/bindings/settings_binding.dart';
+import 'package:rikedu/src/features/settings/controllers/setting_controller.dart';
+import 'package:rikedu/src/utils/constants/text_strings.dart';
+import 'package:rikedu/src/features/chat/views/message.dart';
+import 'package:rikedu/src/features/parental_controls/views/location.dart';
+import 'package:rikedu/src/features/parental_controls/views/parental_controls_page.dart';
+import 'package:rikedu/src/features/settings/views/settings_page.dart';
+import 'package:rikedu/src/features/timetable/views/timetable_page.dart';
+import 'package:rikedu/src/languages/languages.dart';
+// import 'package:rikedu/src/providers/auth_provider.dart';
 import 'package:rikedu/src/providers/theme_mode.dart';
 import 'package:rikedu/src/repository/authentication/authentication_repository.dart';
-import 'package:rikedu/src/utils/themes/rike_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+
+import 'src/features/authentication/bindings/auth_binding.dart';
+import 'src/utils/service/auth_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -49,6 +56,7 @@ void main() async {
   final themeModeManager = ThemeModeManager();
   final authService = AuthService();
   await themeModeManager.init();
+  await GetStorage.init();
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
       .then((value) => Get.put(AuthenticationRepository()));
@@ -68,6 +76,7 @@ void main() async {
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     final themeModeManager = Provider.of<ThemeModeManager>(context);
@@ -80,6 +89,13 @@ class MainApp extends StatelessWidget {
           : ThemeMode.light,
       home: const HomePage(title: 'Rikedu'),
       debugShowCheckedModeBanner: false,
+      initialRoute: Routes.HOME,
+      // getPages: RikeRoutes.routes,
+      getPages: AppPages.pages,
+      initialBinding: AppBinding(),
+      translations: LanguageStrings(),
+      locale: Get.deviceLocale,
+      fallbackLocale: const Locale('en', 'US'),
     );
   }
 }
@@ -96,18 +112,17 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
-  final List<Widget> _pages = [
+  final List<Widget> _navigationPages = [
     const MainPage(),
-    TimetableScreen(),
-    const TestRealtimeLocation(),
-    const SettingsScreen(),
+    const TimetablePage(),
+    const ParentalControlsPage(),
+    const SettingsPage(),
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      // resizeToAvoidBottomInset: false,
-      body: _pages[_selectedIndex],
+      body: _navigationPages[_selectedIndex],
       bottomNavigationBar: ClipRRect(
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(30),
@@ -175,12 +190,23 @@ class MainPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           FilledButton(
-            onPressed: () => {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const LoginPage()))
-            },
+            // onPressed: () => {
+            //   Navigator.push(context,
+            //       MaterialPageRoute(builder: (context) => const LoginPage()))
+            //   // Get.to(
+            //   //   () => const LoginPage(),
+            //   //   binding: AuthBinding(),
+            //   // )
+            // },
+            onPressed: () => {Get.toNamed(Routes.LOGIN)},
             child: const Text(
               'Login',
+            ),
+          ),
+          FilledButton(
+            onPressed: () => {Get.toNamed(Routes.SETTINGS)},
+            child: const Text(
+              'Settings',
             ),
           ),
           FilledButton(
@@ -196,8 +222,10 @@ class MainPage extends StatelessWidget {
           ),
           FilledButton(
             onPressed: () => {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => TimetableScreen()))
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const TimetablePage()))
             },
             child: const Text(
               'Timetable',
@@ -205,8 +233,10 @@ class MainPage extends StatelessWidget {
           ),
           FilledButton(
             onPressed: () => {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => RealtimeLocation()))
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const RealtimeLocation()))
             },
             child: const Text(
               'Map',
@@ -214,21 +244,8 @@ class MainPage extends StatelessWidget {
           ),
           FilledButton(
             onPressed: () => {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const RegisterScreen()))
-            },
-            child: const Text(
-              'Signup',
-            ),
-          ),
-          FilledButton(
-            onPressed: () => {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const TestRealtimeLocation()))
+              // Get.to(() => const TestRealtimeLocation())
+              Get.toNamed(RikeRoutes.getParentalControlsRoute())
             },
             child: const Text(
               'Test Map',
@@ -241,17 +258,6 @@ class MainPage extends StatelessWidget {
             },
             child: const Text(
               'Usage',
-            ),
-          ),
-          FilledButton(
-            onPressed: () => {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const SettingsScreen()))
-            },
-            child: const Text(
-              'Settings',
             ),
           ),
           FilledButton(
@@ -279,5 +285,12 @@ class MainPage extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class AppBinding extends Bindings {
+  @override
+  void dependencies() {
+    Get.lazyPut<SettingsController>(() => SettingsController());
   }
 }

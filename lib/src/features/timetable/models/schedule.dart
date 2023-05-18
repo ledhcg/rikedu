@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-import 'lesson.dart';
+import 'lesson_model.dart';
 
 class Schedule extends Equatable {
   const Schedule({

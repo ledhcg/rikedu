@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rikedu/src/constants/colors.dart';
 
 class LessonCard extends StatelessWidget {
   final String subject;

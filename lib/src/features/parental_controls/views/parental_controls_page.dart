@@ -1,29 +1,22 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart' as loc;
 import 'package:permission_handler/permission_handler.dart';
-import 'package:rikedu/src/constants/file_strings.dart';
+import 'package:rikedu/src/utils/constants/file_strings.dart';
 import 'package:rikedu/src/features/parental_controls/views/battery.dart';
 import 'package:rikedu/src/features/parental_controls/views/map.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  runApp(const MaterialApp(home: TestRealtimeLocation()));
-}
-
-class TestRealtimeLocation extends StatefulWidget {
-  const TestRealtimeLocation({super.key});
+class ParentalControlsPage extends StatefulWidget {
+  const ParentalControlsPage({super.key});
 
   @override
-  _TestRealtimeLocationState createState() => _TestRealtimeLocationState();
+  _ParentalControlsPageState createState() => _ParentalControlsPageState();
 }
 
-class _TestRealtimeLocationState extends State<TestRealtimeLocation> {
+class _ParentalControlsPageState extends State<ParentalControlsPage> {
   final loc.Location location = loc.Location();
   StreamSubscription<loc.LocationData>? _locationSubscription;
 

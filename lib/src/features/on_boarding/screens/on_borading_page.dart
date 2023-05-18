@@ -2,8 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:rikedu/main.dart';
-import 'package:rikedu/src/constants/file_strings.dart';
-import 'package:rikedu/src/features/authentication/views/login/login_screen.dart';
+import 'package:rikedu/src/utils/constants/file_strings.dart';
 
 class OnBoardingPage extends StatefulWidget {
   const OnBoardingPage({Key? key}) : super(key: key);
@@ -63,28 +62,29 @@ class OnBoardingPageState extends State<OnBoardingPage> {
               title: "Another title page",
               body: "Another beautiful body text for this example onboarding",
               image: _buildImage(onBoarding3),
-              footer: ElevatedButton(
-                onPressed: () {
-                  introKey.currentState?.animateScroll(0);
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.lightBlue,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                ),
-                child: FilledButton(
-                  onPressed: () => {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const LoginPage()))
-                  },
-                  child: const Text(
-                    'Login',
-                  ),
-                ),
-              ),
+              // footer: ElevatedButton(
+              //   onPressed: () {
+              //     introKey.currentState?.animateScroll(0);
+              //   },
+              //   style: ElevatedButton.styleFrom(
+              //     backgroundColor: Colors.lightBlue,
+              //     shape: RoundedRectangleBorder(
+              //       borderRadius: BorderRadius.circular(8.0),
+              //     ),
+              //   ),
+              //   child: FilledButton(
+              //     // onPressed: () => {
+              //     //   Navigator.push(
+              //     //       context,
+              //     //       MaterialPageRoute(
+              //     //           builder: (context) => const LoginPage()))
+              //     // },
+              //     onPressed: () => {Get.toNamed(Routes.LOGIN)},
+              //     child: const Text(
+              //       'Login',
+              //     ),
+              //   ),
+              // ),
               decoration: pageDecoration.copyWith(
                 bodyFlex: 6,
                 imageFlex: 6,

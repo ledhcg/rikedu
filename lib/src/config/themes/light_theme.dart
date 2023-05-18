@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:rikedu/src/constants/colors.dart';
-import 'package:rikedu/src/constants/sizes.dart';
+import 'package:rikedu/src/utils/constants/colors.dart';
+import 'package:rikedu/src/utils/constants/sizes.dart';
 
-class RikeTheme {
-  RikeTheme._();
-
+class LightTheme {
   static FilledButtonThemeData lightFilledButtonTheme = FilledButtonThemeData(
     style: FilledButton.styleFrom(
         backgroundColor: rikePrimaryColor,
@@ -45,22 +43,7 @@ class RikeTheme {
     onBackground: rikeOnBackgroundColorLight,
   );
 
-  static ColorScheme darkColorScheme = const ColorScheme.dark(
-    primary: rikePrimaryColorDark,
-    onPrimary: rikeOnPrimaryColorDark,
-    primaryContainer: rikePrimaryContainerColorDark,
-    secondary: rikeSecondaryColorDark,
-    onSecondary: rikeOnSecondaryColorDark,
-    scrim: rikeScrimColoDark,
-    surface: rikeSurfaceColoDark,
-    onSurface: rikeOnSurfaceColoDark,
-    error: rikeErrorColorDark,
-    onError: rikeOnErrorColorDark,
-    background: rikeBackgroundColorDark,
-    onBackground: rikeOnBackgroundColorDark,
-  );
-
-  static ThemeData lightTheme = ThemeData(
+  static ThemeData themeData = ThemeData(
     useMaterial3: true,
     fontFamily: 'Google Sans',
     colorScheme: lightColorScheme,
@@ -82,20 +65,6 @@ class RikeTheme {
       ),
       headlineSmall: TextStyle(
         fontWeight: FontWeight.w500,
-      ),
-    ),
-  );
-  static ThemeData darkTheme = ThemeData(
-    useMaterial3: true,
-    fontFamily: 'Google Sans',
-    colorScheme: darkColorScheme,
-    brightness: Brightness.dark,
-    appBarTheme: const AppBarTheme(
-      systemOverlayStyle: SystemUiOverlayStyle(
-        statusBarIconBrightness: Brightness.light,
-        systemNavigationBarIconBrightness: Brightness.light,
-        systemNavigationBarColor: Colors.transparent,
-        statusBarColor: Colors.transparent,
       ),
     ),
   );

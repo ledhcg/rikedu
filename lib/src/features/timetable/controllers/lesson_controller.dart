@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rikedu/src/features/timetable/models/lesson.dart';
-import 'package:rikedu/src/utils/calendar/schedule_utlis.dart';
+import 'package:rikedu/src/features/timetable/models/lesson_model.dart';
+import 'package:rikedu/src/utils/helpers/schedule_helper.dart';
 
 class LessonController extends GetxController {
   static LessonController get instance => Get.find();
@@ -11,9 +11,9 @@ class LessonController extends GetxController {
 
     data.forEach((subject) {
       final timeStart =
-          ScheduleUtils.schoolTimesStart.keys.toList()[data.indexOf(subject)];
+          ScheduleHelper.schoolTimesStart.keys.toList()[data.indexOf(subject)];
       final timeEnd =
-          ScheduleUtils.schoolTimesEnd.keys.toList()[data.indexOf(subject)];
+          ScheduleHelper.schoolTimesEnd.keys.toList()[data.indexOf(subject)];
       final lesson = Lesson(
         subject: subject['subject']!,
         timeStart: timeStart,

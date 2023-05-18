@@ -2,8 +2,8 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:device_apps/device_apps.dart';
 import 'package:app_usage/app_usage.dart';
-import 'package:rikedu/src/constants/sizes.dart';
-import 'package:rikedu/src/constants/text_strings.dart';
+import 'package:rikedu/src/utils/constants/sizes.dart';
+import 'package:rikedu/src/utils/constants/text_strings.dart';
 
 class AppUsageStats extends StatefulWidget {
   const AppUsageStats({super.key});

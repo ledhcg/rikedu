@@ -1,9 +1,7 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:battery_plus/battery_plus.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
-import 'package:rikedu/src/constants/colors.dart';
+import 'package:rikedu/src/utils/constants/colors.dart';
 import 'package:rikedu/src/features/parental_controls/views/widgets/phone_status.dart';
 
 class BatteryPage extends StatefulWidget {

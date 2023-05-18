@@ -1,24 +1,24 @@
-import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:rikedu/src/constants/colors.dart';
-import 'package:rikedu/src/constants/text_strings.dart';
+import 'package:rikedu/src/utils/constants/file_strings.dart';
 import 'package:rikedu/src/features/timetable/controllers/lesson_controller.dart';
-import 'package:rikedu/src/features/timetable/models/lesson.dart';
+import 'package:rikedu/src/features/timetable/models/lesson_model.dart';
 import 'package:rikedu/src/features/timetable/views/widgets/lesson_card.dart';
 import 'package:rikedu/src/features/timetable/views/widgets/weekend.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-class TimetableScreen extends StatefulWidget {
-  const TimetableScreen({super.key});
+class TimetablePage extends StatefulWidget {
+  const TimetablePage({super.key});
 
   @override
-  _TimetableScreenState createState() => _TimetableScreenState();
+  _TimetablePageState createState() => _TimetablePageState();
 }
 
-class _TimetableScreenState extends State<TimetableScreen> {
+class _TimetablePageState extends State<TimetablePage> {
   final lessonController = Get.put(LessonController());
+
+  late String locale = Get.locale.toString();
 
   late CalendarFormat _calendarFormat;
   late DateTime _focusedDay;
@@ -148,7 +148,7 @@ class _TimetableScreenState extends State<TimetableScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: TableCalendar(
-                locale: 'ru_RU',
+                locale: locale,
                 firstDay: _firstDay,
                 lastDay: _lastDay,
                 focusedDay: _focusedDay,
@@ -247,7 +247,7 @@ class _TimetableScreenState extends State<TimetableScreen> {
                           Container(
                             alignment: Alignment.center,
                             child: Text(
-                              DateFormat('EEE', 'ru_RU')
+                              DateFormat('EEE', locale)
                                   .format(dayOfWeek)
                                   .toUpperCase(),
                               style: TextStyle(
@@ -267,7 +267,7 @@ class _TimetableScreenState extends State<TimetableScreen> {
                           Container(
                             alignment: Alignment.center,
                             child: Text(
-                              DateFormat('EEE', 'ru_RU')
+                              DateFormat('EEE', locale)
                                   .format(dayOfWeek)
                                   .toUpperCase(),
                               style: TextStyle(
@@ -285,7 +285,7 @@ class _TimetableScreenState extends State<TimetableScreen> {
                           Container(
                             alignment: Alignment.center,
                             child: Text(
-                              DateFormat('EEE', 'ru_RU')
+                              DateFormat('EEE', locale)
                                   .format(dayOfWeek)
                                   .toUpperCase(),
                               style: TextStyle(
@@ -347,33 +347,51 @@ class _TimetableScreenState extends State<TimetableScreen> {
                   headerTitleBuilder: (context, day) => Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 20.0, vertical: 0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "11A - ${DateFormat.yMMMM(locale).format(day).toUpperCase()}",
+                                  style: TextStyle(
+                                    color: _defaultColorCalendar,
+                                    fontSize: _textSizeSubHeader,
+                                  ),
+                                ),
+                              ],
+                            ),
                             Text(
-                              DateFormat.yMMMM('ru_Ru')
-                                  .format(day)
-                                  .toUpperCase(),
+                              'timetable'.tr,
                               style: TextStyle(
                                 color: _defaultColorCalendar,
-                                fontSize: _textSizeSubHeader,
+                                fontSize: _textSizeHeader,
+                                fontWeight: FontWeight.w700,
                               ),
                             ),
                           ],
                         ),
-                        Text(
-                          timetable,
-                          style: TextStyle(
-                            color: _defaultColorCalendar,
-                            fontSize: _textSizeHeader,
-                            fontWeight: FontWeight.w700,
+                        CircleAvatar(
+                          backgroundColor: Colors.transparent,
+                          child: Stack(
+                            fit: StackFit.expand,
+                            children: [
+                              ClipRRect(
+                                  borderRadius: BorderRadius.circular(126.0),
+                                  child: Image.asset(avatarDefault)),
+                              Align(
+                                alignment: Alignment.bottomLeft,
+                                child: Container(),
+                              )
+                            ],
                           ),
-                        ),
+                        )
                       ],
                     ),
                   ),

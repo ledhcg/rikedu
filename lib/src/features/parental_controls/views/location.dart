@@ -6,7 +6,7 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart' as loc;
 import 'package:permission_handler/permission_handler.dart';
-import 'package:rikedu/src/constants/colors.dart';
+import 'package:rikedu/src/utils/constants/colors.dart';
 import 'package:rikedu/src/features/parental_controls/views/map.dart';
 import 'package:rikedu/firebase_options.dart';
 
@@ -17,6 +17,8 @@ void main() async {
 }
 
 class RealtimeLocation extends StatefulWidget {
+  const RealtimeLocation({super.key});
+
   @override
   _RealtimeLocationState createState() => _RealtimeLocationState();
 }
@@ -37,7 +39,7 @@ class _RealtimeLocationState extends State<RealtimeLocation> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('live location tracker'),
+        title: const Text('live location tracker'),
       ),
       body: Column(
         children: [
@@ -45,17 +47,17 @@ class _RealtimeLocationState extends State<RealtimeLocation> {
               onPressed: () {
                 _getLocation();
               },
-              child: Text('add my location')),
+              child: const Text('add my location')),
           TextButton(
               onPressed: () {
                 _listenLocation();
               },
-              child: Text('enable live location')),
+              child: const Text('enable live location')),
           TextButton(
               onPressed: () {
                 _stopListening();
               },
-              child: Text('stop live location')),
+              child: const Text('stop live location')),
           Expanded(
               child: StreamBuilder(
             stream:
@@ -128,10 +130,10 @@ class _RealtimeLocationState extends State<RealtimeLocation> {
 
   _getLocation() async {
     try {
-      final loc.LocationData _locationResult = await location.getLocation();
+      final loc.LocationData locationResult = await location.getLocation();
       await FirebaseFirestore.instance.collection('location').doc('user1').set({
-        'latitude': _locationResult.latitude,
-        'longitude': _locationResult.longitude,
+        'latitude': locationResult.latitude,
+        'longitude': locationResult.longitude,
         'name': 'john'
       }, SetOptions(merge: true));
     } catch (e) {

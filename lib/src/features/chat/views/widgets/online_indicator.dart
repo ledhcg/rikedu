@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rikedu/src/constants/colors.dart';
+import 'package:rikedu/src/utils/constants/colors.dart';
 
 class OnlineIndicator extends StatelessWidget {
   const OnlineIndicator({Key? key}) : super(key: key);

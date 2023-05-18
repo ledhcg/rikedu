@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rikedu/src/constants/colors.dart';
-import 'package:rikedu/src/constants/file_strings.dart';
-import 'package:rikedu/src/constants/sizes.dart';
-import 'package:rikedu/src/constants/text_strings.dart';
+import 'package:rikedu/src/utils/constants/sizes.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 
 import 'widgets/user_status.dart';

@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart' as loc;
-import 'package:rikedu/src/constants/file_strings.dart';
+import 'package:rikedu/src/utils/constants/file_strings.dart';
 
 class RealtimeMap extends StatefulWidget {
   final String user_id;
