@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:rikedu/main.dart';
-import 'package:rikedu/src/features/on_boarding/screens/on_borading_page.dart';
+import 'package:rikedu/src/features/on_boarding/screens/on_boarding_page.dart';
 import 'package:rikedu/src/repository/authentication/exceptions/register_failure.dart';
 
 class AuthenticationRepository extends GetxController {
@@ -20,7 +20,7 @@ class AuthenticationRepository extends GetxController {
 
   _setInitialScreen(User? rikeUser) {
     rikeUser == null
-        ? Get.offAll(() => const OnBoardingPage())
+        ? Get.offAll(() => OnBoardingPage())
         : Get.offAll(() => const HomePage());
   }
 
@@ -31,7 +31,7 @@ class AuthenticationRepository extends GetxController {
           email: email, password: password);
       rikeUser.value != null
           ? Get.offAll(() => const HomePage())
-          : Get.offAll(() => const OnBoardingPage());
+          : Get.offAll(() => OnBoardingPage());
     } on FirebaseAuthException catch (e) {
       final ex = RegisterFailure.code(e.code);
       if (kDebugMode) {
