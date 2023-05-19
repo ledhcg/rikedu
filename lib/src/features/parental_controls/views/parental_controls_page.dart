@@ -5,9 +5,9 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart' as loc;
 import 'package:permission_handler/permission_handler.dart';
-import 'package:rikedu/src/utils/constants/file_strings.dart';
 import 'package:rikedu/src/features/parental_controls/views/battery.dart';
 import 'package:rikedu/src/features/parental_controls/views/map.dart';
+import 'package:rikedu/src/utils/constants/files_constants.dart';
 
 class ParentalControlsPage extends StatefulWidget {
   const ParentalControlsPage({super.key});
@@ -264,7 +264,7 @@ class _ParentalControlsPageState extends State<ParentalControlsPage> {
                               children: [
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(126.0),
-                                  child: Image.asset(avatarDefault),
+                                  child: Image.asset(FilesConst.AVATAR_DEFAULT),
                                   // child: Image.network(
                                   //     'https://picsum.photos/seed/avatar/600/600.webp'),
                                   // child: imageUrl != ''

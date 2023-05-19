@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart' as loc;
-import 'package:rikedu/src/utils/constants/file_strings.dart';
+import 'package:rikedu/src/utils/constants/files_constants.dart';
 
 class RealtimeMap extends StatefulWidget {
   final String user_id;
@@ -57,8 +57,8 @@ class _RealtimeMapState extends State<RealtimeMap> {
             tilt: 45.0,
           ),
           onMapCreated: (GoogleMapController controller) async {
-            String value =
-                await DefaultAssetBundle.of(context).loadString(mapLight);
+            String value = await DefaultAssetBundle.of(context)
+                .loadString(FilesConst.MAP_LIGHT);
             setState(() {
               _controller = controller;
               _controller.setMapStyle(value);
@@ -71,7 +71,8 @@ class _RealtimeMapState extends State<RealtimeMap> {
   }
 
   void setLocationMarker() {
-    BitmapDescriptor.fromAssetImage(ImageConfiguration.empty, iconMarker)
+    BitmapDescriptor.fromAssetImage(
+            ImageConfiguration.empty, FilesConst.ICON_MARKER)
         .then((marker) => locationMarker = marker);
   }
 

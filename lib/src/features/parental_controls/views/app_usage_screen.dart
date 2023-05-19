@@ -2,8 +2,7 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:device_apps/device_apps.dart';
 import 'package:app_usage/app_usage.dart';
-import 'package:rikedu/src/utils/constants/sizes.dart';
-import 'package:rikedu/src/utils/constants/text_strings.dart';
+import 'package:rikedu/src/utils/constants/sizes_constants.dart';
 
 class AppUsageStats extends StatefulWidget {
   const AppUsageStats({super.key});
@@ -46,12 +45,12 @@ class _AppUsageStatsState extends State<AppUsageStats> {
         automaticallyImplyLeading: true,
         backgroundColor: Colors.transparent,
         title: Text(
-          appUsage,
+          'appUsage',
           style: Theme.of(context).textTheme.headlineLarge,
         ),
         centerTitle: true,
         leading: Transform.translate(
-          offset: const Offset(p1, 0),
+          offset: const Offset(SizesConst.P1, 0),
           child: IconButton(
             onPressed: () {
               Navigator.of(context).pop(true);

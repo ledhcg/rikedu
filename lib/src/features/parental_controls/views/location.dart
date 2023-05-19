@@ -6,14 +6,14 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart' as loc;
 import 'package:permission_handler/permission_handler.dart';
-import 'package:rikedu/src/utils/constants/colors.dart';
+import 'package:rikedu/src/utils/constants/colors_constants.dart';
 import 'package:rikedu/src/features/parental_controls/views/map.dart';
 import 'package:rikedu/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(MaterialApp(home: RealtimeLocation()));
+  runApp(const MaterialApp(home: RealtimeLocation()));
 }
 
 class RealtimeLocation extends StatefulWidget {
