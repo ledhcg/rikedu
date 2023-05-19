@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:rikedu/main.dart';
 import 'package:rikedu/src/features/authentication/bindings/auth_binding.dart';
 import 'package:rikedu/src/features/authentication/views/login_page.dart';
-import 'package:rikedu/src/features/on_boarding/screens/on_borading_page.dart';
+import 'package:rikedu/src/features/on_boarding/screens/on_boarding_page.dart';
 import 'package:rikedu/src/features/parental_controls/views/parental_controls_page.dart';
 import 'package:rikedu/src/features/settings/views/settings_page.dart';
 import 'package:rikedu/src/features/timetable/views/timetable_page.dart';
@@ -29,7 +29,7 @@ class RikeRoutes {
       page: () => const LoginPage(),
       binding: AuthBinding(),
     ),
-    GetPage(name: onBoarding, page: () => const OnBoardingPage()),
+    GetPage(name: onBoarding, page: () => OnBoardingPage()),
     GetPage(name: timetable, page: () => const TimetablePage()),
     GetPage(name: settings, page: () => const SettingsPage()),
     GetPage(name: parentalControls, page: () => const ParentalControlsPage()),
