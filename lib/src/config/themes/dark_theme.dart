@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:rikedu/src/utils/constants/colors.dart';
+import 'package:rikedu/src/utils/constants/colors_constants.dart';
 
 class DarkTheme {
   static ColorScheme darkColorScheme = const ColorScheme.dark(

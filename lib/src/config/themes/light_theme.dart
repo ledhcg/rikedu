@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:rikedu/src/utils/constants/colors.dart';
-import 'package:rikedu/src/utils/constants/sizes.dart';
+import 'package:rikedu/src/utils/constants/colors_constants.dart';
+import 'package:rikedu/src/utils/constants/sizes_constants.dart';
 
 class LightTheme {
   static FilledButtonThemeData lightFilledButtonTheme = FilledButtonThemeData(
     style: FilledButton.styleFrom(
         backgroundColor: rikePrimaryColor,
-        padding: const EdgeInsets.symmetric(vertical: p1)),
+        padding: const EdgeInsets.symmetric(vertical: SizesConst.P1)),
   );
 
   static InputDecorationTheme lightInputDecorationTheme =
