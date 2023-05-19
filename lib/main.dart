@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -5,30 +6,32 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:provider/provider.dart';
-import 'package:rikedu/firebase_options.dart';
 import 'package:rikedu/src/config/routes/app_pages.dart';
 import 'package:rikedu/src/config/routes/routers.dart';
 import 'package:rikedu/src/config/themes/themes.dart';
+import 'package:rikedu/src/features/authentication/controllers/auth_controller.dart';
+import 'package:rikedu/src/features/authentication/providers/auth_provider.dart';
+import 'package:rikedu/src/features/authentication/views/login_page.dart';
 import 'package:rikedu/src/features/parental_controls/views/app_usage.dart';
 import 'package:rikedu/src/features/parental_controls/views/app_usage_screen.dart';
 import 'package:rikedu/src/features/performance/screens/performance.dart';
-import 'package:rikedu/src/features/settings/bindings/settings_binding.dart';
+import 'package:rikedu/src/features/settings/controllers/language_controller.dart';
+import 'package:rikedu/src/features/settings/controllers/logout_controller.dart';
 import 'package:rikedu/src/features/settings/controllers/setting_controller.dart';
-import 'package:rikedu/src/utils/constants/text_strings.dart';
+import 'package:rikedu/src/features/settings/controllers/theme_controller.dart';
+import 'package:rikedu/src/features/settings/providers/locale_provider.dart';
+import 'package:rikedu/src/features/settings/providers/theme_provider.dart';
 import 'package:rikedu/src/features/chat/views/message.dart';
 import 'package:rikedu/src/features/parental_controls/views/location.dart';
 import 'package:rikedu/src/features/parental_controls/views/parental_controls_page.dart';
 import 'package:rikedu/src/features/settings/views/settings_page.dart';
 import 'package:rikedu/src/features/timetable/views/timetable_page.dart';
-import 'package:rikedu/src/languages/languages.dart';
-// import 'package:rikedu/src/providers/auth_provider.dart';
-import 'package:rikedu/src/providers/theme_mode.dart';
-import 'package:rikedu/src/repository/authentication/authentication_repository.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:rikedu/src/languages/languages.dart';
+import 'package:rikedu/src/utils/service/api_service.dart';
+import 'package:rikedu/src/utils/service/storage_service.dart';
 
-import 'src/features/authentication/bindings/auth_binding.dart';
-import 'src/utils/service/auth_service.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -52,20 +55,26 @@ void main() async {
       statusBarColor: Colors.transparent,
     ),
   );
-
-  final themeModeManager = ThemeModeManager();
-  final authService = AuthService();
-  await themeModeManager.init();
-  await GetStorage.init();
-
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
-      .then((value) => Get.put(AuthenticationRepository()));
-  // Intl.defaultLocale = 'ru_RU';
+  Get.put(ApiService());
+  await Get.putAsync<StorageService>(() => StorageService().init());
   initializeDateFormatting('ru_RU');
 
+  final authProvider = AuthProvider();
+  final themeProvider = ThemeProvider();
+  final localProvider = LocaleProvider();
+  await authProvider.init();
+  await themeProvider.init();
+  await localProvider.init();
+  await GetStorage.init();
+
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  // .then((value) => Get.put(AuthenticationRepository()));
+  // Intl.defaultLocale = 'ru_RU';
+
   runApp(MultiProvider(providers: [
-    ChangeNotifierProvider(create: (_) => themeModeManager),
-    ChangeNotifierProvider(create: (_) => authService),
+    ChangeNotifierProvider(create: (_) => themeProvider),
+    ChangeNotifierProvider(create: (_) => localProvider),
+    ChangeNotifierProvider(create: (_) => authProvider),
   ], child: const MainApp())
       // ChangeNotifierProvider(
       //   create: (_) => themeModeManager,
@@ -79,31 +88,28 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeModeManager = Provider.of<ThemeModeManager>(context);
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final localProvider = Provider.of<LocaleProvider>(context);
+    final authProvider = Provider.of<AuthProvider>(context);
+
     return GetMaterialApp(
-      title: 'Rikedu',
+      debugShowCheckedModeBanner: false,
       theme: RikeTheme.lightTheme,
       darkTheme: RikeTheme.darkTheme,
-      themeMode: themeModeManager.themeModeType == ThemeModeType.dark
-          ? ThemeMode.dark
-          : ThemeMode.light,
-      home: const HomePage(title: 'Rikedu'),
-      debugShowCheckedModeBanner: false,
-      initialRoute: Routes.HOME,
-      // getPages: RikeRoutes.routes,
+      themeMode: themeProvider.isDarkMode ? ThemeMode.dark : ThemeMode.light,
+      home: authProvider.isAuthenticated ? const HomePage() : const LoginPage(),
+      // initialRoute: Routes.HOME,
       getPages: AppPages.pages,
       initialBinding: AppBinding(),
       translations: LanguageStrings(),
-      locale: Get.deviceLocale,
-      fallbackLocale: const Locale('en', 'US'),
+      locale: localProvider.locale,
+      fallbackLocale: localProvider.localeDefault,
     );
   }
 }
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key, required this.title});
-
-  final String title;
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -147,22 +153,22 @@ class _HomePageState extends State<HomePage> {
                 duration: const Duration(milliseconds: 400),
                 tabBackgroundColor: Theme.of(context).colorScheme.primary,
                 color: Theme.of(context).colorScheme.onBackground,
-                tabs: const [
+                tabs: [
                   GButton(
                     icon: FluentIcons.home_24_regular,
-                    text: 'Home',
+                    text: 'Home'.tr,
                   ),
                   GButton(
                     icon: FluentIcons.calendar_ltr_24_regular,
-                    text: timetable,
+                    text: 'Timetable'.tr,
                   ),
                   GButton(
                     icon: FluentIcons.communication_person_24_regular,
-                    text: 'Control',
+                    text: 'Parental Controls'.tr,
                   ),
                   GButton(
                     icon: FluentIcons.settings_24_regular,
-                    text: settings,
+                    text: 'Settings'.tr,
                   ),
                 ],
                 selectedIndex: _selectedIndex,
@@ -190,14 +196,6 @@ class MainPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           FilledButton(
-            // onPressed: () => {
-            //   Navigator.push(context,
-            //       MaterialPageRoute(builder: (context) => const LoginPage()))
-            //   // Get.to(
-            //   //   () => const LoginPage(),
-            //   //   binding: AuthBinding(),
-            //   // )
-            // },
             onPressed: () => {Get.toNamed(Routes.LOGIN)},
             child: const Text(
               'Login',
@@ -291,6 +289,10 @@ class MainPage extends StatelessWidget {
 class AppBinding extends Bindings {
   @override
   void dependencies() {
+    Get.lazyPut<AuthController>(() => AuthController());
     Get.lazyPut<SettingsController>(() => SettingsController());
+    Get.lazyPut<ThemeController>(() => ThemeController());
+    Get.lazyPut<LanguageController>(() => LanguageController());
+    Get.lazyPut<LogoutController>(() => LogoutController());
   }
 }
