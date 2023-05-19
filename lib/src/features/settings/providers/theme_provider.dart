@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:rikedu/src/utils/constants/storage_constants.dart';
 import 'package:rikedu/src/utils/service/storage_service.dart';
@@ -33,6 +34,20 @@ class ThemeProvider extends ChangeNotifier {
         StorageConst.SETTING_THEME_MODE, themeModeType.toString());
     _themeModeType = themeModeType;
     _isDarkMode = checkIsDarkMode(_themeModeType);
+    updateSystemUI();
     notifyListeners();
+  }
+
+  Future<void> updateSystemUI() async {
+    Brightness statusBarIconBrightness =
+        isDarkMode ? Brightness.light : Brightness.dark;
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarIconBrightness: statusBarIconBrightness,
+        systemNavigationBarIconBrightness: statusBarIconBrightness,
+        systemNavigationBarColor: Colors.transparent,
+        statusBarColor: Colors.transparent,
+      ),
+    );
   }
 }

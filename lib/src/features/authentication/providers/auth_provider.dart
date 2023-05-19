@@ -27,8 +27,6 @@ class AuthProvider extends ChangeNotifier {
 
   void checkIsAuthenticated() {
     _authenticated = _storageService.hasData(StorageConst.USER_TOKEN);
-    print("H1: $_authenticated");
-    print("H2: $isAuthenticated");
   }
 
   Future<void> login(String emailUsername, String password) async {
@@ -59,6 +57,7 @@ class AuthProvider extends ChangeNotifier {
   Future<void> logout(String id) async {
     try {
       _storageService.clearData();
+      _authenticated = false;
       _apiService.post(ApiConst.LOGOUT_ENDPOINT, {'id': id});
     } catch (e) {
       rethrow;
