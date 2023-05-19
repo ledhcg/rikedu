@@ -11,7 +11,6 @@ class AuthController extends GetxController {
   final authProvider = Provider.of<AuthProvider>(Get.context!);
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  final localStorage = GetStorage();
 
   final Rx<User> _user = User(
     id: '',
@@ -55,12 +54,10 @@ class AuthController extends GetxController {
 
   void setEmail(String? value) {
     _email.value = value!.trim();
-    print(_email.value);
   }
 
   void setPassword(String? value) {
     _password.value = value!.trim();
-    print(_password.value);
   }
 
   String? emailValidator(String? value) {
