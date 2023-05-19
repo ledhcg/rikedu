@@ -1,17 +1,20 @@
 Map<String, String> get enKeys => {
-      //Timetable
-      'weekend': "Weekend",
-      'haveAGoodDay': "Have a good day!",
-      'timetable': "Timetable",
+      'Home': 'Home',
+      'Timetable': 'Timetable',
+      'Parental Controls': 'Controls',
+      'Settings': 'Settings',
+      //
+      'Weekend': 'Weekend',
+      'Have A Good Day!': 'Have A Good Day!',
+      //
+      'Edit Profile': 'Edit Profile',
+      'Language': 'Language',
+      'Privacy And Security': 'Privacy And Security',
+      'Notifications And Sounds': 'Notifications And Sounds',
+      'Devices': 'Devices',
+      'Logout': 'Logout',
+      'Dark Mode': 'Dark Mode',
 
-      /*-- Settings Text String --*/
-      'settings': 'Settings',
-      'editProfile': 'Edit Profile',
-      'language': 'Language',
-      'privacyAndSecurity': 'Privacy & Security',
-      'notificationsAndSounds': 'Notifications & Sounds',
-      'devices': 'Devices',
-      'logout': 'Logout',
-
-      // Login Page
+      'Are you sure you want to log out?': 'Are you sure you want to log out?',
+      'Confirm': 'Confirm',
     };
