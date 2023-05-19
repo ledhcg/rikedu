@@ -19,7 +19,7 @@ abstract class AppPages {
     ),
     GetPage(
       name: Routes.HOME,
-      page: () => const HomePage(title: 'Rikedu'),
+      page: () => const HomePage(),
       // binding: HomeBinding(),
     ),
     GetPage(
@@ -39,7 +39,7 @@ class NavigationPages extends GetxController {
   final List<GetPage> pages = [
     GetPage(
       name: Routes.HOME,
-      page: () => const HomePage(title: 'Rikedu'),
+      page: () => const HomePage(),
       // binding: HomeBinding(),
     ),
     GetPage(

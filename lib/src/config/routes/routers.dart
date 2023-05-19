@@ -23,7 +23,7 @@ class RikeRoutes {
   static String getParentalControlsRoute() => parentalControls;
 
   static List<GetPage> routes = [
-    GetPage(name: home, page: () => const HomePage(title: 'Rikedu')),
+    GetPage(name: home, page: () => const HomePage()),
     GetPage(
       name: login,
       page: () => const LoginPage(),
