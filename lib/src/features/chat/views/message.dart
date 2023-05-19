@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rikedu/src/utils/constants/sizes.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
+import 'package:rikedu/src/utils/constants/sizes_constants.dart';
 
 import 'widgets/user_status.dart';
 
@@ -12,7 +12,7 @@ class MessageScreen extends StatelessWidget {
       appBar: AppBar(
         toolbarHeight: 70,
         leading: Transform.translate(
-          offset: const Offset(p1, 0),
+          offset: const Offset(SizesConst.P1, 0),
           child: IconButton(
             onPressed: () {
               Navigator.of(context).pop(true);

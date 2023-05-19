@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:rikedu/main.dart';
-import 'package:rikedu/src/utils/constants/file_strings.dart';
+import 'package:rikedu/src/utils/constants/files_constants.dart';
 
 class OnBoardingPage extends StatefulWidget {
   const OnBoardingPage({Key? key}) : super(key: key);
@@ -16,7 +16,7 @@ class OnBoardingPageState extends State<OnBoardingPage> {
 
   void _onIntroEnd(context) {
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => const HomePage(title: 'Rikedu')),
+      MaterialPageRoute(builder: (_) => const HomePage()),
     );
   }
 
@@ -48,20 +48,20 @@ class OnBoardingPageState extends State<OnBoardingPage> {
               title: "Fractional shares",
               body:
                   "Instead of having to buy an entire share, invest any amount you want.",
-              image: _buildImage(onBoarding1),
+              image: _buildImage(FilesConst.ON_BOARDING_1),
               decoration: pageDecoration,
             ),
             PageViewModel(
               title: "Learn as you go",
               body:
                   "Download the Stockpile app and master the market with our mini-lesson.",
-              image: _buildImage(onBoarding2),
+              image: _buildImage(FilesConst.ON_BOARDING_2),
               decoration: pageDecoration,
             ),
             PageViewModel(
               title: "Another title page",
               body: "Another beautiful body text for this example onboarding",
-              image: _buildImage(onBoarding3),
+              image: _buildImage(FilesConst.ON_BOARDING_2),
               // footer: ElevatedButton(
               //   onPressed: () {
               //     introKey.currentState?.animateScroll(0);
