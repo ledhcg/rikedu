@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rikedu/src/utils/constants/file_strings.dart';
+import 'package:rikedu/src/utils/constants/files_constants.dart';
 
 class WeekendTimetable extends StatelessWidget {
   Color cardColor;
@@ -27,14 +27,14 @@ class WeekendTimetable extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Image(
-                  image: AssetImage(weekendTimetable),
+                  image: AssetImage(FilesConst.WEEKEND_TIMETABLE),
                   width: 200,
                   height: 200,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0, bottom: 4.0),
                   child: Text(
-                    'weekend'.tr,
+                    'Weekend'.tr,
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: 30,
@@ -43,7 +43,7 @@ class WeekendTimetable extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'haveAGoodDay'.tr,
+                  'Have A Good Day!'.tr,
                   style: TextStyle(
                     fontSize: 16,
                     color: textColor,

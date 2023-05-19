@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:rikedu/src/utils/constants/file_strings.dart';
 import 'package:rikedu/src/features/timetable/controllers/lesson_controller.dart';
 import 'package:rikedu/src/features/timetable/models/lesson_model.dart';
 import 'package:rikedu/src/features/timetable/views/widgets/lesson_card.dart';
 import 'package:rikedu/src/features/timetable/views/widgets/weekend.dart';
+import 'package:rikedu/src/utils/constants/files_constants.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class TimetablePage extends StatefulWidget {
@@ -368,7 +368,7 @@ class _TimetablePageState extends State<TimetablePage> {
                               ],
                             ),
                             Text(
-                              'timetable'.tr,
+                              'Timetable'.tr,
                               style: TextStyle(
                                 color: _defaultColorCalendar,
                                 fontSize: _textSizeHeader,
@@ -384,7 +384,8 @@ class _TimetablePageState extends State<TimetablePage> {
                             children: [
                               ClipRRect(
                                   borderRadius: BorderRadius.circular(126.0),
-                                  child: Image.asset(avatarDefault)),
+                                  child:
+                                      Image.asset(FilesConst.AVATAR_DEFAULT)),
                               Align(
                                 alignment: Alignment.bottomLeft,
                                 child: Container(),

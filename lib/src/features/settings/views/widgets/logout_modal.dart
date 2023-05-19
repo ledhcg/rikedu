@@ -1,32 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:rikedu/src/features/settings/controllers/logout_controller.dart';
 
-class LogoutModal extends StatefulWidget {
-  const LogoutModal({Key? key}) : super(key: key);
+class LogoutModal extends GetView<LogoutController> {
+  const LogoutModal({super.key});
 
-  @override
-  _LogoutModalState createState() => _LogoutModalState();
-}
-
-class _LogoutModalState extends State<LogoutModal> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        const Padding(
-          padding: EdgeInsets.symmetric(vertical: 15.0),
-          child: Text('Are you sure you want to log out?'),
-        ),
-        FilledButton(
-          onPressed: _logout,
-          child: const Text('Confirm'),
-        ),
-      ],
+    return Container(
+      padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 15.0),
+              child: Text('Are you sure you want to log out?'.tr),
+            ),
+          ),
+          FilledButton(
+            onPressed: controller.logout,
+            child: Text('Confirm'.tr),
+          ),
+        ],
+      ),
     );
-  }
-
-  void _logout() {
-    print('Hello');
   }
 }

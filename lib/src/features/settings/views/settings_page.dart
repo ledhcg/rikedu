@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rikedu/src/features/authentication/models/user_model.dart';
 import 'package:rikedu/src/features/settings/controllers/setting_controller.dart';
-import 'package:rikedu/src/utils/constants/file_strings.dart';
-import 'package:rikedu/src/utils/constants/sizes.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:rikedu/src/features/settings/views/widgets/language_modal.dart';
 import 'package:rikedu/src/features/settings/views/widgets/logout_modal.dart';
 import 'package:rikedu/src/features/settings/views/widgets/popover.dart';
-import 'package:rikedu/src/features/settings/views/widgets/theme_mode_widget.dart';
+import 'package:rikedu/src/features/settings/views/widgets/theme_modal.dart';
+import 'package:rikedu/src/utils/constants/sizes_constants.dart';
 
 class SettingsPage extends GetView<SettingsController> {
   const SettingsPage({Key? key}) : super(key: key);
@@ -21,12 +20,12 @@ class SettingsPage extends GetView<SettingsController> {
         automaticallyImplyLeading: true,
         backgroundColor: Colors.transparent,
         title: Text(
-          'settings'.tr,
+          'Settings'.tr,
           style: Theme.of(context).textTheme.headlineLarge,
         ),
         centerTitle: true,
         leading: Transform.translate(
-          offset: const Offset(p1, 0),
+          offset: const Offset(SizesConst.P1, 0),
           child: IconButton(
             onPressed: () {
               Navigator.of(context).pop(true);
@@ -36,7 +35,7 @@ class SettingsPage extends GetView<SettingsController> {
         ),
       ),
       body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: p1),
+        padding: const EdgeInsets.symmetric(horizontal: SizesConst.P1),
         child: Obx(() {
           User user = controller.user;
           return Column(
@@ -46,11 +45,27 @@ class SettingsPage extends GetView<SettingsController> {
                 height: 120,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(100),
-                  child: const Image(image: AssetImage(avatarDefault)),
+                  child: Image.network(
+                    user.avatarUrl,
+                    loadingBuilder: (BuildContext context, Widget child,
+                        ImageChunkEvent? loadingProgress) {
+                      if (loadingProgress == null) {
+                        return child;
+                      }
+                      return Center(
+                        child: CircularProgressIndicator(
+                          value: loadingProgress.expectedTotalBytes != null
+                              ? loadingProgress.cumulativeBytesLoaded /
+                                  loadingProgress.expectedTotalBytes!
+                              : null,
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: p2),
+                padding: const EdgeInsets.symmetric(vertical: SizesConst.P2),
                 child: Column(
                   children: [
                     Text(
@@ -62,19 +77,21 @@ class SettingsPage extends GetView<SettingsController> {
                       style: Theme.of(context).textTheme.bodyLarge,
                     ),
                     Container(
-                      padding:
-                          const EdgeInsets.only(top: p2, left: p1, right: p1),
+                      padding: const EdgeInsets.only(
+                          top: SizesConst.P2,
+                          left: SizesConst.P1,
+                          right: SizesConst.P1),
                       width: double.infinity,
                       child: FilledButton(
                         onPressed: () => {},
-                        child: Text('editProfile'.tr),
+                        child: Text('Edit Profile'.tr),
                       ),
                     ),
                   ],
                 ),
               ),
               ListTile(
-                title: Text('settings'.tr),
+                title: Text('Settings'.tr),
                 leading: const Icon(FluentIcons.settings_24_filled),
                 trailing: const Icon(FluentIcons.chevron_right_24_regular),
                 onTap: () => showModalBottomSheet(
@@ -83,13 +100,13 @@ class SettingsPage extends GetView<SettingsController> {
                   context: context,
                   builder: (context) {
                     return const Popover(
-                      child: SettingsModal(),
+                      child: ThemeModal(),
                     );
                   },
                 ),
               ),
               ListTile(
-                title: Text('language'.tr),
+                title: Text('Language'.tr),
                 leading: const Icon(FluentIcons.earth_24_filled),
                 trailing: const Icon(FluentIcons.chevron_right_24_regular),
                 onTap: () => showModalBottomSheet(
@@ -103,23 +120,23 @@ class SettingsPage extends GetView<SettingsController> {
                 ),
               ),
               ListTile(
-                title: Text('privacyAndSecurity'.tr),
+                title: Text('Privacy And Security'.tr),
                 leading: const Icon(FluentIcons.lock_closed_24_filled),
                 trailing: const Icon(FluentIcons.chevron_right_24_regular),
               ),
               ListTile(
-                title: Text('devices'.tr),
+                title: Text('Devices'.tr),
                 leading: const Icon(
                     FluentIcons.device_meeting_room_remote_24_filled),
                 trailing: const Icon(FluentIcons.chevron_right_24_regular),
               ),
               ListTile(
-                title: Text('notificationsAndSounds'.tr),
+                title: Text('Notifications And Sounds'.tr),
                 leading: const Icon(FluentIcons.alert_badge_24_filled),
                 trailing: const Icon(FluentIcons.chevron_right_24_regular),
               ),
               ListTile(
-                title: Text('logout'.tr),
+                title: Text('Logout'.tr),
                 leading: const Icon(FluentIcons.panel_left_expand_24_filled),
                 onTap: () => showModalBottomSheet(
                   backgroundColor: Colors.transparent,
