@@ -12,15 +12,16 @@ class ThemeModal extends GetView<ThemeController> {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SwitchListTile(
-          title: Text('Dark Mode'.tr),
-          secondary: const Icon(FluentIcons.weather_moon_24_filled),
-          onChanged: (isOn) {
-            controller.setTheme(isOn);
-            controller.setIsOn();
-          },
-          value: controller.isOn,
-        ),
+        Obx(
+          () => SwitchListTile(
+            title: Text('Dark Mode'.tr),
+            secondary: const Icon(FluentIcons.weather_moon_24_filled),
+            onChanged: (isOn) {
+              controller.setTheme(isOn);
+            },
+            value: controller.isOn,
+          ),
+        )
       ],
     );
   }

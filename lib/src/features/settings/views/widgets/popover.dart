@@ -17,7 +17,8 @@ class Popover extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
         color: theme.colorScheme.primaryContainer,
-        borderRadius: const BorderRadius.all(Radius.circular(30.0)),
+        borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0)),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
