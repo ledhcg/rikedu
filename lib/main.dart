@@ -11,7 +11,8 @@ import 'package:rikedu/src/config/routes/routers.dart';
 import 'package:rikedu/src/config/themes/themes.dart';
 import 'package:rikedu/src/features/authentication/controllers/auth_controller.dart';
 import 'package:rikedu/src/features/authentication/providers/auth_provider.dart';
-import 'package:rikedu/src/features/authentication/views/login_page.dart';
+import 'package:rikedu/src/features/on_boarding/controllers/on_boarding_controller.dart';
+import 'package:rikedu/src/features/on_boarding/screens/on_boarding_page.dart';
 import 'package:rikedu/src/features/parental_controls/views/app_usage.dart';
 import 'package:rikedu/src/features/parental_controls/views/app_usage_screen.dart';
 import 'package:rikedu/src/features/performance/screens/performance.dart';
@@ -28,6 +29,7 @@ import 'package:rikedu/src/features/settings/views/settings_page.dart';
 import 'package:rikedu/src/features/timetable/views/timetable_page.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:rikedu/src/languages/languages.dart';
+import 'package:rikedu/src/utils/constants/storage_constants.dart';
 import 'package:rikedu/src/utils/service/api_service.dart';
 import 'package:rikedu/src/utils/service/storage_service.dart';
 
@@ -35,26 +37,26 @@ import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations(
-      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  // SystemChrome.setPreferredOrientations(
+  //     [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+  // SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
 
-  bool isDarkMode = MediaQueryData.fromWindow(WidgetsBinding.instance.window)
-          .platformBrightness ==
-      Brightness.dark;
+  // bool isDarkMode = MediaQueryData.fromWindow(WidgetsBinding.instance.window)
+  //         .platformBrightness ==
+  //     Brightness.dark;
 
-  Brightness statusBarIconBrightness =
-      isDarkMode ? Brightness.light : Brightness.dark;
+  // Brightness statusBarIconBrightness =
+  //     isDarkMode ? Brightness.light : Brightness.dark;
 
-  SystemChrome.setSystemUIOverlayStyle(
-    SystemUiOverlayStyle(
-      statusBarIconBrightness: statusBarIconBrightness,
-      systemNavigationBarIconBrightness: statusBarIconBrightness,
-      systemNavigationBarColor: Colors.transparent,
-      statusBarColor: Colors.transparent,
-    ),
-  );
+  // SystemChrome.setSystemUIOverlayStyle(
+  //   SystemUiOverlayStyle(
+  //     statusBarIconBrightness: statusBarIconBrightness,
+  //     systemNavigationBarIconBrightness: statusBarIconBrightness,
+  //     systemNavigationBarColor: Colors.transparent,
+  //     statusBarColor: Colors.transparent,
+  //   ),
+  // );
   Get.put(ApiService());
   await Get.putAsync<StorageService>(() => StorageService().init());
   initializeDateFormatting('ru_RU');
@@ -70,17 +72,48 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   // .then((value) => Get.put(AuthenticationRepository()));
   // Intl.defaultLocale = 'ru_RU';
+  initializeSystemUI();
 
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (_) => themeProvider),
     ChangeNotifierProvider(create: (_) => localProvider),
     ChangeNotifierProvider(create: (_) => authProvider),
-  ], child: const MainApp())
-      // ChangeNotifierProvider(
-      //   create: (_) => themeModeManager,
-      //   child: const MainApp(),
-      // ),
-      );
+  ], child: const MainApp()));
+}
+
+bool isDarkMode() {
+  final StorageService storageService = Get.find();
+  final themeModeTypeString =
+      storageService.readData(StorageConst.SETTING_THEME_MODE);
+  if (themeModeTypeString != null) {
+    final themeModeType = ThemeModeType.values
+        .firstWhere((e) => e.toString() == themeModeTypeString);
+    return checkIsDarkMode(themeModeType);
+  }
+  return false;
+}
+
+bool checkIsDarkMode(ThemeModeType themeModeType) {
+  return themeModeType == ThemeModeType.dark ? true : false;
+}
+
+void initializeSystemUI() {
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+
+  Brightness statusBarIconBrightness =
+      isDarkMode() ? Brightness.light : Brightness.dark;
+
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle(
+      statusBarIconBrightness: statusBarIconBrightness,
+      systemNavigationBarIconBrightness: statusBarIconBrightness,
+      systemNavigationBarColor: Colors.transparent,
+      statusBarColor: Colors.transparent,
+    ),
+  );
 }
 
 class MainApp extends StatelessWidget {
@@ -97,8 +130,7 @@ class MainApp extends StatelessWidget {
       theme: RikeTheme.lightTheme,
       darkTheme: RikeTheme.darkTheme,
       themeMode: themeProvider.isDarkMode ? ThemeMode.dark : ThemeMode.light,
-      home: authProvider.isAuthenticated ? const HomePage() : const LoginPage(),
-      // initialRoute: Routes.HOME,
+      home: authProvider.isAuthenticated ? const HomePage() : OnBoardingPage(),
       getPages: AppPages.pages,
       initialBinding: AppBinding(),
       translations: LanguageStrings(),
@@ -289,6 +321,7 @@ class MainPage extends StatelessWidget {
 class AppBinding extends Bindings {
   @override
   void dependencies() {
+    Get.lazyPut<OnBoardingController>(() => OnBoardingController());
     Get.lazyPut<AuthController>(() => AuthController());
     Get.lazyPut<SettingsController>(() => SettingsController());
     Get.lazyPut<ThemeController>(() => ThemeController());
