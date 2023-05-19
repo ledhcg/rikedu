@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rikedu/src/features/authentication/controllers/auth_controller.dart';
-import 'package:rikedu/src/utils/constants/size_constants.dart';
-import 'package:rikedu/src/utils/widgets/custom_text_field.dart';
+import 'package:rikedu/src/utils/constants/sizes_constants.dart';
 import 'package:rikedu/src/utils/widgets/loading_widget.dart';
 
 class LoginPage extends GetView<AuthController> {

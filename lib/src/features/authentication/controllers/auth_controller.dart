@@ -1,19 +1,14 @@
-// import 'package:flutter/material.dart';
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:provider/provider.dart';
 import 'package:rikedu/src/config/routes/app_pages.dart';
 import 'package:rikedu/src/features/authentication/models/user_model.dart';
 import 'package:rikedu/src/features/authentication/providers/auth_provider.dart';
-import 'package:rikedu/src/features/timetable/models/group_model.dart';
-import 'package:rikedu/src/utils/constants/keys_storage_constants.dart';
-import 'package:rikedu/src/utils/constants/roles_constants.dart';
 import 'package:rikedu/src/utils/widgets/snackbar_widget.dart';
 
 class AuthController extends GetxController {
-  final authProvider = AuthProvider();
+  final authProvider = Provider.of<AuthProvider>(Get.context!);
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final localStorage = GetStorage();
@@ -91,55 +86,16 @@ class AuthController extends GetxController {
   void login() async {
     if (formKey.currentState!.validate()) {
       _isLoading.value = true;
-      final response = await authProvider.login(_email.value, _password.value);
-      // print(response.body);
+      await authProvider.login(_email.value, _password.value);
       _isLoading.value = false;
-      if (response.body['success']) {
-        print(response.body['data']['user']);
-        _user.value = User.fromJson(response.body['data']['user']);
-        setUser(_user.value);
-        setData(response.body['data']);
+      if (authProvider.isAuthenticated) {
         Get.offAllNamed(Routes.HOME);
-        print('Logged in successfully');
+        SnackbarWidget.showSnackbar(authProvider.responseMessage);
       } else {
-        SnackbarWidget.showSnackbar('Invalid email or password');
+        SnackbarWidget.showSnackbar(authProvider.responseMessage);
       }
     } else {
-      print('Please enter valid credentials');
-    }
-  }
-
-  void setData(dynamic data) {
-    String userToken = data['authentication']['access_token'][0];
-    localStorage.write(KeysStorageConst.USER_TOKEN, userToken);
-    String userRole = data['authorization']['role'][0];
-    localStorage.write(KeysStorageConst.USER_ROLE, userRole);
-
-    if (userRole == RolesConst.PARENT) {
-      User student = User.fromJson(data['student'][0]);
-      localStorage.write(
-          KeysStorageConst.STUDENT_DATA, jsonEncode(student.toJson()));
-    }
-    if (userRole == RolesConst.STUDENT) {
-      User parent = User.fromJson(data['parent']);
-      Group group = Group.fromJson(data['group'][0]);
-      localStorage.write(
-          KeysStorageConst.PARENT_DATA, jsonEncode(parent.toJson()));
-      localStorage.write(
-          KeysStorageConst.GROUP_DATA, jsonEncode(group.toJson()));
-    }
-  }
-
-  void setUser(User user) {
-    localStorage.write(KeysStorageConst.USER_DATA, jsonEncode(user.toJson()));
-  }
-
-  Future<User?> getUser() async {
-    try {
-      final userJson = await localStorage.read(KeysStorageConst.USER_DATA);
-      return userJson ? User.fromJson(userJson) : null;
-    } catch (e) {
-      rethrow;
+      SnackbarWidget.showSnackbar('Please enter valid credentials');
     }
   }
 }

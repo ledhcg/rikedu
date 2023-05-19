@@ -21,7 +21,7 @@ class AuthenticationRepository extends GetxController {
   _setInitialScreen(User? rikeUser) {
     rikeUser == null
         ? Get.offAll(() => const OnBoardingPage())
-        : Get.offAll(() => const HomePage(title: 'Rikedu'));
+        : Get.offAll(() => const HomePage());
   }
 
   Future<void> createUserWithEmailAndPassword(
@@ -30,7 +30,7 @@ class AuthenticationRepository extends GetxController {
       await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       rikeUser.value != null
-          ? Get.offAll(() => const HomePage(title: 'Rikedu'))
+          ? Get.offAll(() => const HomePage())
           : Get.offAll(() => const OnBoardingPage());
     } on FirebaseAuthException catch (e) {
       final ex = RegisterFailure.code(e.code);
