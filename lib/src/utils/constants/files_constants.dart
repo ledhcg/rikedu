@@ -1,5 +1,6 @@
 class FilesConst {
   static const String LOGO = "assets/images/logo/logo.png";
+  static const String LOGO_ROUNDED = "assets/images/logo/logo-r.png";
   static const String AVATAR_DEFAULT = "assets/images/default/avatar/6.png";
 
   static const String WEEKEND_TIMETABLE = "assets/images/timetable/weekend.png";
