@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:rikedu/src/features/authentication/models/user_model.dart';
-import 'package:rikedu/src/utils/constants/keys_storage_constants.dart';
+import 'package:rikedu/src/utils/constants/storage_constants.dart';
 
 class SettingsController extends GetxController {
   final localStorage = GetStorage();
@@ -31,7 +31,7 @@ class SettingsController extends GetxController {
   void getUser() async {
     try {
       final userJson =
-          jsonDecode(await localStorage.read(KeysStorageConst.USER_DATA));
+          jsonDecode(await localStorage.read(StorageConst.USER_DATA));
       if (userJson != null) {
         _user.value = User.fromJson(userJson);
       }
