@@ -15,12 +15,11 @@ class TimetableController extends GetxController {
   //CONST
   Timetable _timetable = Timetable.defaultTimetable();
 
+  final DateTime _firstDay = DateTime.utc(2023, 01, 30);
+  final DateTime _lastDay = DateTime.utc(2023, 07, 15);
   final CalendarFormat _calendarFormat = CalendarFormat.week;
   final PageController _pageController = PageController(
-      initialPage: DateTime.now().difference(DateTime.now()).inDays);
-
-  final DateTime _firstDay = DateTime.utc(2023, 02, 01);
-  final DateTime _lastDay = DateTime.utc(2023, 07, 15);
+      initialPage: (DateTime.now().weekday - DateTime.monday) % 7);
 
   Timetable get timetable => _timetable;
   CalendarFormat get calendarFormat => _calendarFormat;
