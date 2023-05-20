@@ -24,7 +24,7 @@ abstract class AppPages {
     ),
     GetPage(
       name: Routes.TIMETABLE,
-      page: () => const TimetablePage(),
+      page: () => TimetablePage(),
       binding: TimetableBinding(),
     ),
     GetPage(
@@ -44,7 +44,7 @@ class NavigationPages extends GetxController {
     ),
     GetPage(
       name: Routes.TIMETABLE,
-      page: () => const TimetablePage(),
+      page: () => TimetablePage(),
       binding: TimetableBinding(),
     ),
     GetPage(

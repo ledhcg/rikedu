@@ -30,7 +30,7 @@ class RikeRoutes {
       binding: AuthBinding(),
     ),
     GetPage(name: onBoarding, page: () => OnBoardingPage()),
-    GetPage(name: timetable, page: () => const TimetablePage()),
+    GetPage(name: timetable, page: () => TimetablePage()),
     GetPage(name: settings, page: () => const SettingsPage()),
     GetPage(name: parentalControls, page: () => const ParentalControlsPage()),
   ];
