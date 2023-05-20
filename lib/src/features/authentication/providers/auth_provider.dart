@@ -64,18 +64,20 @@ class AuthProvider extends ChangeNotifier {
     }
   }
 
-  void setData(dynamic data) {
+  void setData(Map<String, dynamic> data) {
     String userToken = data['authentication']['access_token'][0];
     _storageService.writeData(StorageConst.USER_TOKEN, userToken);
     String userRole = data['authorization']['role'][0];
     _storageService.writeData(StorageConst.USER_ROLE, userRole);
 
     if (userRole == RolesConst.PARENT) {
+      // print(data['student'][0]);
       User student = User.fromJson(data['student'][0]);
       _storageService.writeData(
           StorageConst.STUDENT_DATA, jsonEncode(student.toJson()));
     }
     if (userRole == RolesConst.STUDENT) {
+      print(data['parent'][0]);
       User parent = User.fromJson(data['parent']);
       Group group = Group.fromJson(data['group'][0]);
       _storageService.writeData(
