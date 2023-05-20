@@ -26,6 +26,8 @@ import 'package:rikedu/src/features/chat/views/message.dart';
 import 'package:rikedu/src/features/parental_controls/views/location.dart';
 import 'package:rikedu/src/features/parental_controls/views/parental_controls_page.dart';
 import 'package:rikedu/src/features/settings/views/settings_page.dart';
+import 'package:rikedu/src/features/timetable/controllers/timetable_controller.dart';
+import 'package:rikedu/src/features/timetable/providers/timetable_provider.dart';
 import 'package:rikedu/src/features/timetable/views/timetable_page.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:rikedu/src/languages/languages.dart';
@@ -64,9 +66,11 @@ void main() async {
   final authProvider = AuthProvider();
   final themeProvider = ThemeProvider();
   final localProvider = LocaleProvider();
+  final timetableProvider = TimetableProvider();
   await authProvider.init();
   await themeProvider.init();
   await localProvider.init();
+  await timetableProvider.init();
   await GetStorage.init();
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
@@ -78,6 +82,7 @@ void main() async {
     ChangeNotifierProvider(create: (_) => themeProvider),
     ChangeNotifierProvider(create: (_) => localProvider),
     ChangeNotifierProvider(create: (_) => authProvider),
+    ChangeNotifierProvider(create: (_) => timetableProvider),
   ], child: const MainApp()));
 }
 
@@ -327,5 +332,6 @@ class AppBinding extends Bindings {
     Get.lazyPut<ThemeController>(() => ThemeController());
     Get.lazyPut<LanguageController>(() => LanguageController());
     Get.lazyPut<LogoutController>(() => LogoutController());
+    Get.lazyPut<TimetableController>(() => TimetableController());
   }
 }
