@@ -10,4 +10,6 @@ class StorageConst {
 
   static const String SETTING_THEME_MODE = "SETTING THEME MODE";
   static const String SETTING_LOCALE = "SETTING LOCALE";
+
+  static const String TIMETABLE_DATA = "TIMETABLE DATA";
 }
