@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
+import 'package:rikedu/src/features/settings/providers/locale_provider.dart';
 import 'package:rikedu/src/features/timetable/controllers/timetable_controller.dart';
 import 'package:rikedu/src/features/timetable/models/lesson_card_model.dart';
 import 'package:rikedu/src/features/timetable/views/widgets/lesson_card_widget.dart';
@@ -10,10 +12,31 @@ import 'package:rikedu/src/utils/widgets/loading_widget.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class TimetablePage extends GetView<TimetableController> {
-  const TimetablePage({super.key});
+  TimetablePage({super.key});
+
+  late Color cardColorCalendar;
+  late Color onCardColorCalendar;
 
   @override
   Widget build(BuildContext context) {
+    String locale = context.watch<LocaleProvider>().locale.toString();
+    double textSizeDayOfWeek = 12.0;
+    double textSizeDay = 25.0;
+    double textSizeHeader = 40.0;
+    double textSizeSubHeader = 16.0;
+    double sizeHeightRowCalendar = 50.0;
+    double sizeHeightDayOfWeekCalendar = 20.0;
+
+    Color todayColorCalendar = Theme.of(context).colorScheme.secondary;
+    Color dayOfWeekColorCalendar = Theme.of(context).colorScheme.onBackground;
+    Color selectedColorCalendar = Theme.of(context).colorScheme.primary;
+    Color headerColorCalendar = Theme.of(context).colorScheme.onBackground;
+    Color disabledColorCalendar = Theme.of(context).colorScheme.scrim;
+    Color outsideColorCalendar = Theme.of(context).colorScheme.surface;
+    Color defaultColorCalendar = Theme.of(context).colorScheme.onBackground;
+    cardColorCalendar = Theme.of(context).colorScheme.primaryContainer;
+    onCardColorCalendar = Theme.of(context).colorScheme.onSurface;
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Obx(
@@ -26,7 +49,7 @@ class TimetablePage extends GetView<TimetableController> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10.0),
                       child: TableCalendar(
-                        locale: controller.locale,
+                        locale: locale,
                         firstDay: controller.firstDay,
                         lastDay: controller.lastDay,
                         focusedDay: controller.focusedDay,
@@ -47,9 +70,8 @@ class TimetablePage extends GetView<TimetableController> {
                         onPageChanged: (focusedDay) {
                           controller.focusedDay = focusedDay;
                         },
-                        rowHeight: controller.sizeHeightRowCalendar,
-                        daysOfWeekHeight:
-                            controller.sizeHeightDayOfWeekCalendar,
+                        rowHeight: sizeHeightRowCalendar,
+                        daysOfWeekHeight: sizeHeightDayOfWeekCalendar,
                         calendarBuilders: CalendarBuilders(
                           defaultBuilder: (context, day, focusedDay) => Column(
                             children: [
@@ -58,8 +80,8 @@ class TimetablePage extends GetView<TimetableController> {
                                 child: Text(
                                   day.day.toString().toUpperCase(),
                                   style: TextStyle(
-                                    color: controller.defaultColorCalendar,
-                                    fontSize: controller.textSizeDay,
+                                    color: defaultColorCalendar,
+                                    fontSize: textSizeDay,
                                   ),
                                 ),
                               ),
@@ -81,8 +103,8 @@ class TimetablePage extends GetView<TimetableController> {
                                 child: Text(
                                   outsideDay.day.toString().toUpperCase(),
                                   style: TextStyle(
-                                    color: controller.outsideColorCalendar,
-                                    fontSize: controller.textSizeDay,
+                                    color: outsideColorCalendar,
+                                    fontSize: textSizeDay,
                                   ),
                                 ),
                               ),
@@ -104,8 +126,8 @@ class TimetablePage extends GetView<TimetableController> {
                                 child: Text(
                                   disabledDay.day.toString().toUpperCase(),
                                   style: TextStyle(
-                                    color: controller.disabledColorCalendar,
-                                    fontSize: controller.textSizeDay,
+                                    color: disabledColorCalendar,
+                                    fontSize: textSizeDay,
                                   ),
                                 ),
                               ),
@@ -130,12 +152,12 @@ class TimetablePage extends GetView<TimetableController> {
                                   Container(
                                     alignment: Alignment.center,
                                     child: Text(
-                                      DateFormat('EEE', controller.locale)
+                                      DateFormat('EEE', locale)
                                           .format(dayOfWeek)
                                           .toUpperCase(),
                                       style: TextStyle(
-                                        color: controller.selectedColorCalendar,
-                                        fontSize: controller.textSizeDayOfWeek,
+                                        color: selectedColorCalendar,
+                                        fontSize: textSizeDayOfWeek,
                                         fontWeight: FontWeight.w700,
                                       ),
                                     ),
@@ -150,12 +172,12 @@ class TimetablePage extends GetView<TimetableController> {
                                   Container(
                                     alignment: Alignment.center,
                                     child: Text(
-                                      DateFormat('EEE', controller.locale)
+                                      DateFormat('EEE', locale)
                                           .format(dayOfWeek)
                                           .toUpperCase(),
                                       style: TextStyle(
-                                        color: controller.todayColorCalendar,
-                                        fontSize: controller.textSizeDayOfWeek,
+                                        color: todayColorCalendar,
+                                        fontSize: textSizeDayOfWeek,
                                         fontWeight: FontWeight.w700,
                                       ),
                                     ),
@@ -168,13 +190,12 @@ class TimetablePage extends GetView<TimetableController> {
                                   Container(
                                     alignment: Alignment.center,
                                     child: Text(
-                                      DateFormat('EEE', controller.locale)
+                                      DateFormat('EEE', locale)
                                           .format(dayOfWeek)
                                           .toUpperCase(),
                                       style: TextStyle(
-                                        color:
-                                            controller.dayOfWeekColorCalendar,
-                                        fontSize: controller.textSizeDayOfWeek,
+                                        color: dayOfWeekColorCalendar,
+                                        fontSize: textSizeDayOfWeek,
                                       ),
                                     ),
                                   ),
@@ -189,8 +210,8 @@ class TimetablePage extends GetView<TimetableController> {
                                 child: Text(
                                   today.day.toString().toUpperCase(),
                                   style: TextStyle(
-                                    color: controller.todayColorCalendar,
-                                    fontSize: controller.textSizeDay,
+                                    color: todayColorCalendar,
+                                    fontSize: textSizeDay,
                                     fontWeight: FontWeight.w700,
                                   ),
                                 ),
@@ -199,7 +220,7 @@ class TimetablePage extends GetView<TimetableController> {
                                 width: 5,
                                 height: 5,
                                 decoration: BoxDecoration(
-                                  color: controller.todayColorCalendar,
+                                  color: todayColorCalendar,
                                   shape: BoxShape.circle,
                                 ),
                               ),
@@ -213,8 +234,8 @@ class TimetablePage extends GetView<TimetableController> {
                                 child: Text(
                                   selectDay.day.toString().toUpperCase(),
                                   style: TextStyle(
-                                    color: controller.selectedColorCalendar,
-                                    fontSize: controller.textSizeDay,
+                                    color: selectedColorCalendar,
+                                    fontSize: textSizeDay,
                                     fontWeight: FontWeight.w700,
                                   ),
                                 ),
@@ -223,7 +244,7 @@ class TimetablePage extends GetView<TimetableController> {
                                 width: 5,
                                 height: 5,
                                 decoration: BoxDecoration(
-                                  color: controller.selectedColorCalendar,
+                                  color: selectedColorCalendar,
                                   shape: BoxShape.circle,
                                 ),
                               ),
@@ -246,12 +267,10 @@ class TimetablePage extends GetView<TimetableController> {
                                           CrossAxisAlignment.center,
                                       children: [
                                         Text(
-                                          "${controller.timetable.group} - ${DateFormat.yMMMM(controller.locale).format(day).toUpperCase()}",
+                                          "${controller.timetable.group} - ${DateFormat.yMMMM(locale).format(day).toUpperCase()}",
                                           style: TextStyle(
-                                            color:
-                                                controller.defaultColorCalendar,
-                                            fontSize:
-                                                controller.textSizeSubHeader,
+                                            color: defaultColorCalendar,
+                                            fontSize: textSizeSubHeader,
                                           ),
                                         ),
                                       ],
@@ -259,8 +278,8 @@ class TimetablePage extends GetView<TimetableController> {
                                     Text(
                                       'Timetable'.tr,
                                       style: TextStyle(
-                                        color: controller.defaultColorCalendar,
-                                        fontSize: controller.textSizeHeader,
+                                        color: defaultColorCalendar,
+                                        fontSize: textSizeHeader,
                                         fontWeight: FontWeight.w700,
                                       ),
                                     ),
@@ -335,8 +354,8 @@ class TimetablePage extends GetView<TimetableController> {
   Widget _buildLessonList(List<LessonCard> lessons, int day) {
     if (day == 5 || day == 6) {
       return WeekendTimetable(
-        cardColor: controller.cardColorCalendar,
-        textColor: controller.onCardColorCalendar,
+        cardColor: cardColorCalendar,
+        textColor: onCardColorCalendar,
       );
     }
     return ClipRRect(
@@ -347,7 +366,7 @@ class TimetablePage extends GetView<TimetableController> {
         bottomRight: Radius.zero,
       ),
       child: Container(
-        color: controller.cardColorCalendar,
+        color: cardColorCalendar,
         padding: const EdgeInsets.all(25),
         child: ClipRRect(
           borderRadius: const BorderRadius.only(

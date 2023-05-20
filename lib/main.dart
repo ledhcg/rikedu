@@ -157,7 +157,7 @@ class _HomePageState extends State<HomePage> {
 
   final List<Widget> _navigationPages = [
     const MainPage(),
-    const TimetablePage(),
+    TimetablePage(),
     const ParentalControlsPage(),
     const SettingsPage(),
   ];
@@ -257,10 +257,8 @@ class MainPage extends StatelessWidget {
           ),
           FilledButton(
             onPressed: () => {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const TimetablePage()))
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => TimetablePage()))
             },
             child: const Text(
               'Timetable',
