@@ -7,7 +7,6 @@ import 'package:rikedu/src/features/timetable/controllers/timetable_controller.d
 import 'package:rikedu/src/features/timetable/models/lesson_card_model.dart';
 import 'package:rikedu/src/features/timetable/views/widgets/lesson_card_widget.dart';
 import 'package:rikedu/src/features/timetable/views/widgets/weekend.dart';
-import 'package:rikedu/src/utils/constants/files_constants.dart';
 import 'package:rikedu/src/utils/widgets/loading_widget.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -293,8 +292,8 @@ class TimetablePage extends GetView<TimetableController> {
                                       ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(126.0),
-                                          child: Image.asset(
-                                              FilesConst.AVATAR_DEFAULT)),
+                                          child: Image.network(
+                                              controller.student.avatarUrl)),
                                       Align(
                                         alignment: Alignment.bottomLeft,
                                         child: Container(),

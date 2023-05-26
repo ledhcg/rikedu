@@ -2,14 +2,12 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rikedu/src/config/routes/app_pages.dart';
+import 'package:rikedu/src/features/news/views/widgets/image_container_widget.dart';
 import 'package:rikedu/src/features/parental_controls/controllers/parental_controls_controller.dart';
-import 'package:rikedu/src/features/parental_controls/views/widgets/map_widget.dart';
-import 'package:rikedu/src/features/parental_controls/views/widgets/message_dialog.dart';
-import 'package:rikedu/src/features/parental_controls/views/widgets/phone_status_widget.dart';
-import 'package:rikedu/src/utils/widgets/loading_widget.dart';
+import 'package:rikedu/src/features/parental_controls/controllers/school_controller.dart';
 
-class ParentalControlsPage extends GetView<ParentalControlsController> {
-  const ParentalControlsPage({super.key});
+class SchoolPage extends GetView<SchoolController> {
+  const SchoolPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +22,51 @@ class ParentalControlsPage extends GetView<ParentalControlsController> {
                 children: [
                   Container(
                     margin: EdgeInsets.only(
-                        bottom: MediaQuery.of(context).size.height * 0.35),
-                    child: const MapWidget(),
+                        bottom: MediaQuery.of(context).size.height * 0.4),
+                    child: Obx(
+                      () => ImageContainer(
+                        width: double.infinity,
+                        height: double.infinity,
+                        imageUrl: controller.imageURL,
+                        overlay: true,
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  '"${controller.quote}"',
+                                  textAlign: TextAlign.center,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineSmall!
+                                      .copyWith(
+                                        color: Colors.white,
+                                        height: 1.25,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                ),
+                                const SizedBox(height: 10),
+                                Text(
+                                  '- ${controller.author} -',
+                                  textAlign: TextAlign.center,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium!
+                                      .copyWith(
+                                        color: Colors.white,
+                                        fontStyle: FontStyle.italic,
+                                        height: 1.25,
+                                      ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                   Positioned(
                     bottom: 100,
@@ -51,17 +92,6 @@ class ParentalControlsPage extends GetView<ParentalControlsController> {
                           ),
                         ),
                       ],
-                    ),
-                  ),
-                  Positioned(
-                    top: 50,
-                    right: 20,
-                    left: 20,
-                    height: 80,
-                    child: Obx(
-                      () => controller.isLoading
-                          ? const LoadingWidget()
-                          : const InfoBox(),
                     ),
                   ),
                 ],
@@ -105,16 +135,6 @@ class FunctionBox extends GetView<ParentalControlsController> {
       child: Column(
         children: [
           FunctionItem(
-            function: 'App Usage'.tr,
-            icon: Icon(
-              FluentIcons.apps_48_regular,
-              size: 30,
-              color: Theme.of(context).colorScheme.onPrimary,
-            ),
-            onPressed: () => Get.toNamed(Routes.APP_USAGE),
-          ),
-          const SizedBox(height: 15),
-          FunctionItem(
             function: 'Notifications'.tr,
             icon: Icon(
               FluentIcons.alert_urgent_24_regular,
@@ -154,74 +174,6 @@ class FunctionBox extends GetView<ParentalControlsController> {
             onPressed: () => Get.toNamed(Routes.EXERCISE),
           )
         ],
-      ),
-    );
-  }
-}
-
-class InfoBox extends GetView<ParentalControlsController> {
-  const InfoBox({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(20.0),
-      child: Container(
-        color: Theme.of(context).colorScheme.primaryContainer,
-        child: Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                textBaseline: TextBaseline.alphabetic,
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(126.0),
-                    child: Image.network(controller.student.avatarUrl),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        left: 12.0, top: 8.0, bottom: 4.0),
-                    child: Stack(
-                      children: [
-                        Container(
-                          alignment: Alignment.topLeft,
-                          height: 50,
-                          child: Text(
-                            controller.student.fullName,
-                            style:
-                                Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                      fontSize: 16.0,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                          ),
-                        ),
-                        Container(
-                          alignment: Alignment.bottomRight,
-                          height: 50,
-                          child: const PhoneStatusWidget(),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              IconButton(
-                icon: Icon(
-                  FluentIcons.mail_inbox_add_28_filled,
-                  size: 25,
-                  color: Theme.of(context).colorScheme.primary,
-                ),
-                onPressed: () => Get.dialog(const MessageDialog()),
-              ),
-            ],
-          ),
-        ),
       ),
     );
   }

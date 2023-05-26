@@ -81,22 +81,23 @@ class OnBoardingPage extends GetView<OnBoardingController> {
           ),
           pages: [
             PageViewModel(
-              title: "Fractional shares",
+              title: "Не упустите",
               body:
-                  "Instead of having to buy an entire share, invest any amount you want.",
+                  "Вся информация о учениках в школе будет своевременно и быстро обновляться",
               image: _buildImage(FilesConst.ON_BOARDING_1),
               decoration: pageDecoration,
             ),
             PageViewModel(
-              title: "Learn as you go",
+              title: "Всегда рядом",
               body:
-                  "Download the Stockpile app and master the market with our mini-lesson.",
+                  "Родители будут в курсе информации о местоположении, состоянии и уровне использования мобильного устройства своего ребенка",
               image: _buildImage(FilesConst.ON_BOARDING_2),
               decoration: pageDecoration,
             ),
             PageViewModel(
-              title: "Another title page",
-              body: "Another beautiful body text for this example onboarding",
+              title: "Удобно и быстро",
+              body:
+                  "Информация обновляется быстро и отображается в реальном времени.",
               image: _buildImage(FilesConst.ON_BOARDING_2),
               footer: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 50),

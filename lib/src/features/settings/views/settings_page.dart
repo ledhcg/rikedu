@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:rikedu/src/features/authentication/models/user_model.dart';
 import 'package:rikedu/src/features/settings/controllers/setting_controller.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
+import 'package:rikedu/src/features/settings/views/widgets/about_modal.dart';
 import 'package:rikedu/src/features/settings/views/widgets/language_modal.dart';
 import 'package:rikedu/src/features/settings/views/widgets/logout_modal.dart';
 import 'package:rikedu/src/features/settings/views/widgets/popover.dart';
@@ -95,7 +96,6 @@ class SettingsPage extends GetView<SettingsController> {
                 leading: const Icon(FluentIcons.settings_24_filled),
                 trailing: const Icon(FluentIcons.chevron_right_24_regular),
                 onTap: () => showModalBottomSheet(
-                  // barrierColor: rikeAccentColor,
                   backgroundColor: Colors.transparent,
                   context: context,
                   builder: (context) {
@@ -125,15 +125,25 @@ class SettingsPage extends GetView<SettingsController> {
                 trailing: const Icon(FluentIcons.chevron_right_24_regular),
               ),
               ListTile(
-                title: Text('Devices'.tr),
-                leading: const Icon(
-                    FluentIcons.device_meeting_room_remote_24_filled),
-                trailing: const Icon(FluentIcons.chevron_right_24_regular),
-              ),
-              ListTile(
                 title: Text('Notifications And Sounds'.tr),
                 leading: const Icon(FluentIcons.alert_badge_24_filled),
                 trailing: const Icon(FluentIcons.chevron_right_24_regular),
+              ),
+              ListTile(
+                title: Text('About'.tr),
+                leading: const Icon(FluentIcons.info_24_filled),
+                trailing: const Icon(FluentIcons.chevron_right_24_regular),
+                onTap: () => showModalBottomSheet(
+                  isScrollControlled: true,
+                  useRootNavigator: true,
+                  backgroundColor: Colors.transparent,
+                  context: context,
+                  builder: (context) {
+                    return const Popover(
+                      child: AboutModal(),
+                    );
+                  },
+                ),
               ),
               ListTile(
                 title: Text('Logout'.tr),
