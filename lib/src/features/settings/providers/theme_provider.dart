@@ -50,4 +50,20 @@ class ThemeProvider extends ChangeNotifier {
       ),
     );
   }
+
+  Future<void> setLightIconStatusBar() async {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarIconBrightness: Brightness.light,
+      ),
+    );
+  }
+
+  Future<void> setDarkIconStatusBar() async {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarIconBrightness: Brightness.dark,
+      ),
+    );
+  }
 }
