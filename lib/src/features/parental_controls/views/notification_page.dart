@@ -2,7 +2,7 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rikedu/src/features/parental_controls/controllers/notification_controller.dart';
-import 'package:rikedu/src/features/parental_controls/models/notification_dart.dart';
+import 'package:rikedu/src/features/parental_controls/models/notification_model.dart';
 
 import 'package:rikedu/src/utils/constants/sizes_constants.dart';
 import 'package:rikedu/src/utils/widgets/loading_widget.dart';

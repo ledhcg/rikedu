@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:rikedu/src/features/authentication/models/user_model.dart';
 import 'package:rikedu/src/features/authentication/providers/auth_provider.dart';
-import 'package:rikedu/src/features/parental_controls/models/notification_dart.dart';
+import 'package:rikedu/src/features/parental_controls/models/notification_model.dart';
 import 'package:rikedu/src/utils/constants/api_constants.dart';
 import 'package:rikedu/src/utils/service/api_service.dart';
 
