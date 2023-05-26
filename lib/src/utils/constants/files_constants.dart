@@ -6,6 +6,8 @@ class FilesConst {
   static const String WEEKEND_TIMETABLE = "assets/images/timetable/weekend.png";
 
   static const String ICON_MARKER = "assets/images/map/map-marker.png";
+  static const String ICON_SCHOOL_MARKER =
+      "assets/images/map/school-marker.png";
 
   static const String MAP_LIGHT = "assets/json/map-light.json";
   static const String MAP_DARK = "assets/json/map-dark.json";
