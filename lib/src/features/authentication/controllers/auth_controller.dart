@@ -12,18 +12,7 @@ class AuthController extends GetxController {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  final Rx<User> _user = User(
-    id: '',
-    username: '',
-    email: '',
-    fullName: '',
-    avatarUrl: '',
-    gender: '',
-    dateOfBirth: DateTime.now(),
-    phone: '',
-    address: '',
-    department: '',
-  ).obs;
+  final Rx<User> _user = User.defaultUser().obs;
 
   final RxBool _isLoading = false.obs;
   final RxBool _isObscure = true.obs;
