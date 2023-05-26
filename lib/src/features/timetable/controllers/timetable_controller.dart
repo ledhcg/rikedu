@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
+import 'package:rikedu/src/features/authentication/models/user_model.dart';
+import 'package:rikedu/src/features/authentication/providers/auth_provider.dart';
 import 'package:rikedu/src/features/settings/providers/locale_provider.dart';
 import 'package:rikedu/src/features/timetable/models/lesson_card_model.dart';
 import 'package:rikedu/src/features/timetable/models/timetable_modal.dart';
@@ -10,6 +12,7 @@ import 'package:table_calendar/table_calendar.dart';
 
 class TimetableController extends GetxController {
   final timetableProvider = Provider.of<TimetableProvider>(Get.context!);
+  final authProvider = Provider.of<AuthProvider>(Get.context!);
   final localProvider = Provider.of<LocaleProvider>(Get.context!, listen: true);
 
   //CONST
@@ -44,11 +47,14 @@ class TimetableController extends GetxController {
   set selectedDay(DateTime value) => _selectedDay.value = value;
   set selectedPage(int value) => _selectedPage.value = value;
 
+  final Rx<User> _student = User.defaultUser().obs;
+  User get student => _student.value;
+
   @override
   void onInit() async {
     super.onInit();
     getInit();
-
+    _student.value = authProvider.student;
     if (!timetableProvider.isExist) {
       await timetableProvider.getGroupID();
       await timetableProvider.fetchData();
