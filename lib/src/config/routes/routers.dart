@@ -23,7 +23,7 @@ class RikeRoutes {
   static String getParentalControlsRoute() => parentalControls;
 
   static List<GetPage> routes = [
-    GetPage(name: home, page: () => const HomePage()),
+    GetPage(name: home, page: () => HomePage()),
     GetPage(
       name: login,
       page: () => const LoginPage(),
@@ -32,6 +32,6 @@ class RikeRoutes {
     GetPage(name: onBoarding, page: () => OnBoardingPage()),
     GetPage(name: timetable, page: () => TimetablePage()),
     GetPage(name: settings, page: () => const SettingsPage()),
-    GetPage(name: parentalControls, page: () => const ParentalControlsPage()),
+    GetPage(name: parentalControls, page: () => ParentalControlsPage()),
   ];
 }

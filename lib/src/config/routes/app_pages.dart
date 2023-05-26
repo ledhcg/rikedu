@@ -1,11 +1,16 @@
 import 'package:get/get.dart';
 import 'package:rikedu/main.dart';
-import 'package:rikedu/src/features/authentication/bindings/auth_binding.dart';
 import 'package:rikedu/src/features/authentication/views/login_page.dart';
-import 'package:rikedu/src/features/parental_controls/views/parental_controls_page.dart';
-import 'package:rikedu/src/features/settings/bindings/settings_binding.dart';
+import 'package:rikedu/src/features/news/views/news_detail_page.dart';
+import 'package:rikedu/src/features/news/views/news_page.dart';
+import 'package:rikedu/src/features/parental_controls/bindings/parental_controls_binding.dart';
+import 'package:rikedu/src/features/parental_controls/views/app_usage_page.dart';
+import 'package:rikedu/src/features/parental_controls/views/exercise_detail_page.dart';
+import 'package:rikedu/src/features/parental_controls/views/exercise_page.dart';
+import 'package:rikedu/src/features/parental_controls/views/group_page.dart';
+import 'package:rikedu/src/features/parental_controls/views/notification_page.dart';
+import 'package:rikedu/src/features/parental_controls/views/results_page.dart';
 import 'package:rikedu/src/features/settings/views/settings_page.dart';
-import 'package:rikedu/src/features/timetable/bindings/timetable_binding.dart';
 import 'package:rikedu/src/features/timetable/views/timetable_page.dart';
 
 part 'app_routes.dart';
@@ -15,47 +20,55 @@ abstract class AppPages {
     GetPage(
       name: Routes.LOGIN,
       page: () => const LoginPage(),
-      binding: AuthBinding(),
     ),
     GetPage(
       name: Routes.HOME,
-      page: () => const HomePage(),
-      // binding: HomeBinding(),
+      page: () => HomePage(),
     ),
     GetPage(
       name: Routes.TIMETABLE,
       page: () => TimetablePage(),
-      binding: TimetableBinding(),
     ),
     GetPage(
       name: Routes.SETTINGS,
       page: () => const SettingsPage(),
-      binding: SettingsBinding(),
-    ),
-  ];
-}
-
-class NavigationPages extends GetxController {
-  final List<GetPage> pages = [
-    GetPage(
-      name: Routes.HOME,
-      page: () => const HomePage(),
-      // binding: HomeBinding(),
     ),
     GetPage(
-      name: Routes.TIMETABLE,
-      page: () => TimetablePage(),
-      binding: TimetableBinding(),
+      name: Routes.NEWS,
+      page: () => const NewsPage(),
     ),
     GetPage(
-      name: Routes.PARENTAL_CONTROLS,
-      page: () => const ParentalControlsPage(),
-      // binding: TimetableBinding(),
+      name: Routes.NEWS_DETAIL,
+      page: () => const NewsDetailPage(),
     ),
     GetPage(
-      name: Routes.SETTINGS,
-      page: () => const SettingsPage(),
-      binding: SettingsBinding(),
+      name: Routes.GROUP,
+      page: () => const GroupPage(),
+      binding: ParentalControlsBinding(),
+    ),
+    GetPage(
+      name: Routes.APP_USAGE,
+      page: () => const AppUsagePage(),
+    ),
+    GetPage(
+      name: Routes.RESULTS,
+      page: () => const ResultsPage(),
+      binding: ParentalControlsBinding(),
+    ),
+    GetPage(
+      name: Routes.NOTIFICATION,
+      page: () => const NotificationPage(),
+      binding: ParentalControlsBinding(),
+    ),
+    GetPage(
+      name: Routes.EXERCISE,
+      page: () => const ExercisePage(),
+      binding: ParentalControlsBinding(),
+    ),
+    GetPage(
+      name: Routes.EXERCISE_DETAIL,
+      page: () => const ExerciseDetailPage(),
+      binding: ParentalControlsBinding(),
     ),
   ];
 }
