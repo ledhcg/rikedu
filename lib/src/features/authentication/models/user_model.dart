@@ -25,6 +25,19 @@ class User {
     required this.department,
   });
 
+  factory User.defaultUser() => User(
+        id: '',
+        username: '',
+        email: '',
+        fullName: '',
+        avatarUrl: '',
+        gender: '',
+        dateOfBirth: DateTime.now(),
+        phone: '',
+        address: '',
+        department: '',
+      );
+
   factory User.fromRawJson(String str) => User.fromJson(json.decode(str));
 
   String toRawJson() => json.encode(toJson());
