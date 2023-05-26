@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class LessonCardWidget extends StatelessWidget {
   final String subject;
@@ -170,7 +171,7 @@ class EmptyLessonCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Freetime',
+                          'Free time'.tr,
                           maxLines: 8,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
