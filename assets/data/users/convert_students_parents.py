@@ -20,7 +20,7 @@ def convert_students_parents(students_parents):
         # STUDENT
         student_first_name, student_middle_name, student_last_name = student.split(" ")
         student_short_name = student_last_name + " " + student_first_name[0] + "." + student_middle_name[0] + "."
-        student_first_name = student_middle_name + " " + student_first_name
+        student_first_name = student_first_name + " " + student_middle_name
         
         student_username = student_short_name.replace(" ", "")
         student_username = ''.join(filter(lambda x: x.isalpha() or x.isspace(), student_username)).lower()
@@ -41,7 +41,7 @@ def convert_students_parents(students_parents):
         # PARENT
         parent_first_name, parent_middle_name, parent_last_name = parent.split(" ")
         parent_short_name = parent_last_name + " " + parent_first_name[0] + "." + parent_middle_name[0] + "."
-        parent_first_name = parent_middle_name + " " + parent_first_name
+        parent_first_name = parent_first_name + " " + parent_middle_name
         
         parent_username = parent_short_name.replace(" ", "")
         parent_username = ''.join(filter(lambda x: x.isalpha() or x.isspace(), parent_username)).lower()

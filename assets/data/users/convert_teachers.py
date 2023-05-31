@@ -14,7 +14,7 @@ def convert_teachers(teachers):
         full_name, gender, mother = data.split(" - ")
         first_name, middle_name, last_name = full_name.split(" ")
         short_name = last_name + " " + first_name[0] + "." + middle_name[0] + "."
-        first_name = middle_name + " " + first_name
+        first_name = first_name + " " + middle_name
         
         # Chuyển shortname thành username, loại bỏ dấu chấm và khoảng cách
         username = short_name.replace(" ", "")
