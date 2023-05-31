@@ -98,7 +98,7 @@ class OnBoardingPage extends GetView<OnBoardingController> {
               title: "Удобно и быстро",
               body:
                   "Информация обновляется быстро и отображается в реальном времени.",
-              image: _buildImage(FilesConst.ON_BOARDING_2),
+              image: _buildImage(FilesConst.ON_BOARDING_3),
               footer: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 50),
                 child: FilledButton(

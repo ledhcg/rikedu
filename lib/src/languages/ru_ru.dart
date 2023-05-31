@@ -31,9 +31,9 @@ Map<String, String> get ruKeys => {
       'Confirm': 'Подтвердить',
 
       //News
-      'Read more': 'Прочитайте больше',
+      'Read more': 'Подробнее',
       'News of the Day': 'Новости дня',
-      'Breaking News': 'Горячие новости',
+      'Breaking News': 'Последние новости',
 
       'Online': 'Онлайн',
       'Offline': 'Оффлайн',
@@ -79,5 +79,6 @@ Map<String, String> get ruKeys => {
       'File should be *.pdf, *.doc': 'Файл должен быть *.pdf", *.doc',
       'Upload your file': 'Загрузите ваш файл',
       'Deadline': 'Крайний срок',
-      'Exercises': 'Упражнения'
+      'Exercises': 'Упражнения',
+      'About': 'О нас',
     };

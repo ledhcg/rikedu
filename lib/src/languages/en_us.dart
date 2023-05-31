@@ -79,5 +79,6 @@ Map<String, String> get enKeys => {
       'File should be *.pdf, *.doc': 'File should be *.pdf", *.doc',
       'Upload your file': 'Upload your file',
       'Deadline': 'Deadline',
-      'Exercises': 'Exercises'
+      'Exercises': 'Exercises',
+      'About': 'About'
     };

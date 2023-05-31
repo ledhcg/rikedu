@@ -74,5 +74,6 @@ Map<String, String> get viKeys => {
       'File should be *.pdf, *.doc': 'File phải có định dạng *.pdf, *.doc',
       'Upload your file': 'Tải lên tệp của bạn',
       'Deadline': 'Hạn chót',
-      'Exercises': 'Bài tập'
+      'Exercises': 'Bài tập',
+      'About': 'Về chúng tôi'
     };
