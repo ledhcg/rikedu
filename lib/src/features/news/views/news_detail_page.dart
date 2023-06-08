@@ -1,12 +1,12 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rikedu/src/features/news/controllers/post_controller.dart';
 import 'package:rikedu/src/features/news/models/post_model.dart';
 import 'package:rikedu/src/features/news/views/widgets/image_container_widget.dart';
 import 'package:rikedu/src/features/news/views/widgets/tag_widget.dart';
-import 'package:rikedu/src/features/settings/controllers/setting_controller.dart';
 
-class NewsDetailPage extends GetView<SettingsController> {
+class NewsDetailPage extends GetView<PostController> {
   const NewsDetailPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -37,27 +37,33 @@ class NewsDetailPage extends GetView<SettingsController> {
             post: post,
           ),
           Container(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.fromLTRB(20, 5, 20, 20),
             // color: Colors.white,
-            decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
+            decoration: BoxDecoration(
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(20),
                   topRight: Radius.circular(20),
                 ),
-                color: Colors.white),
+                color: Theme.of(context).colorScheme.background),
             child: Column(children: [
+              buildHandleBar(context),
+              const SizedBox(height: 5),
               TagWidget(
-                backgroundColor: Colors.black38,
+                backgroundColor: Colors.grey.shade200,
                 children: [
-                  const CircleAvatar(
-                      radius: 10,
-                      backgroundImage: NetworkImage(
-                          "https://api.ledinhcuong.com/storage/images/default/avatar/1.png")),
-                  const SizedBox(width: 10),
+                  ImageContainer(
+                    width: 20,
+                    height: 20,
+                    margin: const EdgeInsets.all(0),
+                    borderRadius: 10,
+                    isLoading: controller.isLoading,
+                    imageUrl: controller.admin.avatarUrl,
+                  ),
+                  const SizedBox(width: 5),
                   Text(
-                    'Admin'.tr,
+                    controller.admin.fullName,
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: Colors.white,
+                          color: Colors.grey.shade600,
                         ),
                   )
                 ],
@@ -66,7 +72,6 @@ class NewsDetailPage extends GetView<SettingsController> {
               Text(
                 post.title,
                 style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                      color: Colors.black,
                       height: 1.25,
                       fontWeight: FontWeight.bold,
                     ),
@@ -80,21 +85,18 @@ class NewsDetailPage extends GetView<SettingsController> {
               Text(
                 post.content,
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                      color: Colors.black,
                       height: 1.25,
                     ),
               ),
               Text(
                 post.content,
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                      color: Colors.black,
                       height: 1.25,
                     ),
               ),
               Text(
                 post.content,
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                      color: Colors.black,
                       height: 1.25,
                     ),
               ),
@@ -162,4 +164,24 @@ class NewsHeadline extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget buildHandleBar(BuildContext context) {
+  final theme = Theme.of(context);
+  return FractionallySizedBox(
+    widthFactor: 0.10,
+    child: Container(
+      margin: const EdgeInsets.only(
+        top: 10.0,
+        bottom: 10.0,
+      ),
+      child: Container(
+        height: 5.0,
+        decoration: BoxDecoration(
+          color: theme.colorScheme.surface,
+          borderRadius: const BorderRadius.all(Radius.circular(2.5)),
+        ),
+      ),
+    ),
+  );
 }
