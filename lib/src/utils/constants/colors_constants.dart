@@ -43,3 +43,74 @@ const rikeBackgroundColorDark = Color(0xFF1d2125);
 const rikeOnBackgroundColorDark = Color(0xFFfcfff7);
 const rikeErrorColorDark = Color(0xFFCF6679);
 const rikeOnErrorColorDark = Color(0xFF1d2125);
+
+class SkeletonColorStyle {
+  static const LinearGradient DEFAULT_SHIMMER_LIGHT = LinearGradient(
+    colors: [
+      Color(0xFFF1F2EE),
+      Color(0xFFF1F2EE),
+      Color(0xFFF4F4F2),
+      Color(0xFFF1F2EE),
+      Color(0xFFF1F2EE),
+      Color(0xFFF4F4F2),
+    ],
+    stops: [
+      0.1,
+      0.3,
+      0.5,
+      0.7,
+      0.9,
+      1,
+    ],
+    begin: Alignment(-2.4, -0.2),
+    end: Alignment(2.4, 0.2),
+    transform: GradientRotation(45 * 3.1415927 / 180),
+    tileMode: TileMode.clamp,
+  );
+
+  static const LinearGradient ON_SHIMMER_LIGHT = LinearGradient(
+    colors: [
+      Color(0xFFE0E4DE),
+      Color(0xFFE0E4DE),
+      Color(0xFFD2D7D1),
+      Color(0xFFE0E4DE),
+      Color(0xFFE0E4DE),
+      Color(0xFFD2D7D1),
+    ],
+    stops: [
+      0.1,
+      0.3,
+      0.5,
+      0.7,
+      0.9,
+      1,
+    ],
+    begin: Alignment(-2.4, -0.2),
+    end: Alignment(2.4, 0.2),
+    transform: GradientRotation(45 * 3.1415927 / 180),
+    tileMode: TileMode.clamp,
+  );
+
+  static const LinearGradient DEFAULT_SHIMMER_DARK = LinearGradient(
+    colors: [
+      Color(0xFF70726F),
+      Color(0xFF70726F),
+      Color(0xFF3D3F3D),
+      Color(0xFF70726F),
+      Color(0xFF70726F),
+      Color(0xFF3D3F3D),
+    ],
+    stops: [
+      0.1,
+      0.3,
+      0.5,
+      0.7,
+      0.9,
+      1,
+    ],
+    begin: Alignment(-2.4, -0.2),
+    end: Alignment(2.4, 0.2),
+    transform: GradientRotation(45 * 3.1415927 / 180),
+    tileMode: TileMode.clamp,
+  );
+}

@@ -1,5 +1,5 @@
 class ApiConst {
-  static const String BASE_URL = "https://api.ledinhcuong.com/v1";
+  static const String BASE_URL = "https://api.rikedu.ru/v1";
   static const String TIMETABLE_ENDPOINT = "/timetables";
   static const String PARENTAL_CONTROLS_ENDPOINT = "/parental-controls";
   static const String LOGIN_ENDPOINT = "/login";
@@ -13,4 +13,5 @@ class ApiConst {
 
   static const String NOTIFICATIONS_ENDPOINT = '/notifications';
   static const String EXERCISES_ENDPOINT = '/exercises';
+  static const String USER_SUPER_ADMIN_ENDPOINT = '/users/super-admin';
 }
