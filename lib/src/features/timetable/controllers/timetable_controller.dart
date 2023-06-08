@@ -85,11 +85,12 @@ class TimetableController extends GetxController {
       final timeEnd =
           ScheduleHelper.schoolTimesEnd.keys.toList()[data.indexOf(subject)];
       final lesson = LessonCard(
-        subject: subject['subject']!,
+        subject: subject['subject_name']!,
         timeStart: timeStart,
         timeEnd: timeEnd,
-        room: subject['room']!,
-        teacher: subject['teacher']!,
+        room: subject['room_name']!,
+        teacherImage: subject['teacher_avatar_url']!,
+        teacherName: subject['teacher_short_name']!,
       );
       lessons.add(lesson);
     }

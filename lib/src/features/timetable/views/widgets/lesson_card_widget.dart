@@ -6,7 +6,8 @@ class LessonCardWidget extends StatelessWidget {
   final String room;
   final String timeStart;
   final String timeEnd;
-  final String teacher;
+  final String teacherImage;
+  final String teacherName;
 
   const LessonCardWidget({
     Key? key,
@@ -14,7 +15,8 @@ class LessonCardWidget extends StatelessWidget {
     required this.room,
     required this.timeStart,
     required this.timeEnd,
-    required this.teacher,
+    required this.teacherImage,
+    required this.teacherName,
   }) : super(key: key);
 
   @override
@@ -74,11 +76,47 @@ class LessonCardWidget extends StatelessWidget {
                             fontWeight: FontWeight.w500,
                           ),
                         ),
-                        Text(
-                          teacher,
-                          style: TextStyle(
-                            color: Theme.of(context).colorScheme.onPrimary,
-                          ),
+                        Row(
+                          children: [
+                            SizedBox(
+                              width: 20,
+                              height: 20,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child: Image.network(
+                                  teacherImage,
+                                  loadingBuilder: (BuildContext context,
+                                      Widget child,
+                                      ImageChunkEvent? loadingProgress) {
+                                    if (loadingProgress == null) {
+                                      return child;
+                                    }
+                                    return Center(
+                                      child: CircularProgressIndicator(
+                                        value: loadingProgress
+                                                    .expectedTotalBytes !=
+                                                null
+                                            ? loadingProgress
+                                                    .cumulativeBytesLoaded /
+                                                loadingProgress
+                                                    .expectedTotalBytes!
+                                            : null,
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              teacherName,
+                              style: TextStyle(
+                                color: Theme.of(context).colorScheme.onPrimary,
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),

@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:skeletons/skeletons.dart';
 
 class ImageContainer extends StatelessWidget {
   const ImageContainer({
@@ -10,6 +12,7 @@ class ImageContainer extends StatelessWidget {
     this.margin,
     this.child,
     this.overlay = false,
+    this.isLoading = false,
     super.key,
   });
 
@@ -21,28 +24,80 @@ class ImageContainer extends StatelessWidget {
   final double borderRadius;
   final Widget? child;
   final bool overlay;
+  final bool isLoading;
 
+  // @override
+  // Widget build(BuildContext context) {
+  //   return Container(
+  //     height: height,
+  //     width: width,
+  //     padding: padding,
+  //     margin: margin,
+  //     decoration: BoxDecoration(
+  //       borderRadius: BorderRadius.circular(borderRadius),
+  //       image: overlay
+  //           ? DecorationImage(
+  //               image: NetworkImage(imageUrl),
+  //               fit: BoxFit.cover,
+  //               colorFilter: ColorFilter.mode(
+  //                   Colors.black.withOpacity(0.5), BlendMode.srcOver))
+  //           : DecorationImage(
+  //               image: NetworkImage(imageUrl),
+  //               fit: BoxFit.cover,
+  //             ),
+  //     ),
+  //     child: child,
+  //   );
+  // }
   @override
   Widget build(BuildContext context) {
     return Container(
       height: height,
       width: width,
-      padding: padding,
       margin: margin,
-      decoration: BoxDecoration(
+      child: ClipRRect(
         borderRadius: BorderRadius.circular(borderRadius),
-        image: overlay
-            ? DecorationImage(
-                image: NetworkImage(imageUrl),
-                fit: BoxFit.cover,
-                colorFilter: ColorFilter.mode(
-                    Colors.black.withOpacity(0.5), BlendMode.srcOver))
-            : DecorationImage(
-                image: NetworkImage(imageUrl),
-                fit: BoxFit.cover,
+        child: Stack(
+          children: [
+            Skeleton(
+              isLoading: isLoading,
+              duration: const Duration(seconds: 4),
+              skeleton: const SkeletonAvatar(
+                style: SkeletonAvatarStyle(
+                    width: double.infinity, height: double.infinity),
               ),
+              child: overlay
+                  ? ColorFiltered(
+                      colorFilter: const ColorFilter.mode(
+                          Colors.grey, BlendMode.modulate),
+                      child: CachedNetworkImage(
+                        imageUrl: imageUrl,
+                        width: double.infinity,
+                        height: double.infinity,
+                        fit: BoxFit.cover,
+                        placeholder: (context, url) => Container(
+                          color: Colors.grey.shade400,
+                        ),
+                        errorWidget: (context, url, error) =>
+                            const Icon(Icons.error),
+                      ),
+                    )
+                  : CachedNetworkImage(
+                      imageUrl: imageUrl,
+                      width: double.infinity,
+                      height: double.infinity,
+                      fit: BoxFit.cover,
+                      placeholder: (context, url) => Container(
+                        color: Colors.grey.shade400,
+                      ),
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error),
+                    ),
+            ),
+            Container(padding: padding, child: child),
+          ],
+        ),
       ),
-      child: child,
     );
   }
 }

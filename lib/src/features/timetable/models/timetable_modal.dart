@@ -95,14 +95,16 @@ class Data {
 }
 
 class Lesson {
-  final String subject;
-  final String room;
-  final String teacher;
+  final String subjectName;
+  final String teacherShortName;
+  final String teacherAvatarUrl;
+  final String roomName;
 
   Lesson({
-    required this.subject,
-    required this.room,
-    required this.teacher,
+    required this.subjectName,
+    required this.teacherShortName,
+    required this.teacherAvatarUrl,
+    required this.roomName,
   });
 
   factory Lesson.fromRawJson(String str) => Lesson.fromJson(json.decode(str));
@@ -110,14 +112,16 @@ class Lesson {
   String toRawJson() => json.encode(toJson());
 
   factory Lesson.fromJson(Map<String, dynamic> json) => Lesson(
-        subject: json["subject"],
-        room: json["room"],
-        teacher: json["teacher"],
+        subjectName: json["subject_name"],
+        teacherShortName: json["teacher_short_name"],
+        teacherAvatarUrl: json["teacher_avatar_url"],
+        roomName: json["room_name"],
       );
 
   Map<String, dynamic> toJson() => {
-        "subject": subject,
-        "room": room,
-        "teacher": teacher,
+        "subject_name": subjectName,
+        "teacher_short_name": teacherShortName,
+        "teacher_avatar_url": teacherAvatarUrl,
+        "room_name": roomName,
       };
 }

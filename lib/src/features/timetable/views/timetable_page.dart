@@ -388,7 +388,8 @@ class TimetablePage extends GetView<TimetableController> {
                   room: lessons[index].room,
                   timeStart: lessons[index].timeStart,
                   timeEnd: lessons[index].timeEnd,
-                  teacher: lessons[index].teacher,
+                  teacherImage: lessons[index].teacherImage,
+                  teacherName: lessons[index].teacherName,
                 );
               }
             },

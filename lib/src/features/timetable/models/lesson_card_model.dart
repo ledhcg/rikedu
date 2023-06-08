@@ -6,15 +6,18 @@ class LessonCard extends Equatable {
     required this.timeStart,
     required this.timeEnd,
     required this.room,
-    required this.teacher,
+    required this.teacherImage,
+    required this.teacherName,
   });
 
   final String subject;
   final String timeStart;
   final String timeEnd;
   final String room;
-  final String teacher;
+  final String teacherImage;
+  final String teacherName;
 
   @override
-  List<Object?> get props => [subject, timeStart, timeEnd, room, teacher];
+  List<Object?> get props =>
+      [subject, timeStart, timeEnd, room, teacherImage, teacherName];
 }
