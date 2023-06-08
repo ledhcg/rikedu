@@ -1,0 +1,1922 @@
+[
+  {
+    "student": {
+      "firstName": "Елена Дмитриевна",
+      "lastName": "Иванова",
+      "shortName": "Иванова Е.Д.",
+      "gender": "женский",
+      "username": "ivanovaed"
+    },
+    "parent": {
+      "firstName": "Ольга Владимировна",
+      "lastName": "Иванова",
+      "shortName": "Иванова О.В.",
+      "gender": "женский",
+      "username": "ivanovaov"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Игорь Александрович",
+      "lastName": "Смирнов",
+      "shortName": "Смирнов И.А.",
+      "gender": "мужской",
+      "username": "smirnovia"
+    },
+    "parent": {
+      "firstName": "Наталья Сергеевна",
+      "lastName": "Смирнова",
+      "shortName": "Смирнова Н.С.",
+      "gender": "женский",
+      "username": "smirnovans"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Анна Владимировна",
+      "lastName": "Петрова",
+      "shortName": "Петрова А.В.",
+      "gender": "женский",
+      "username": "petrovaav"
+    },
+    "parent": {
+      "firstName": "Елена Ивановна",
+      "lastName": "Петрова",
+      "shortName": "Петрова Е.И.",
+      "gender": "женский",
+      "username": "petrovaei"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Сергей Васильевич",
+      "lastName": "Кузнецов",
+      "shortName": "Кузнецов С.В.",
+      "gender": "мужской",
+      "username": "kuznetsovsv"
+    },
+    "parent": {
+      "firstName": "Евгения Ивановна",
+      "lastName": "Кузнецова",
+      "shortName": "Кузнецова Е.И.",
+      "gender": "женский",
+      "username": "kuznetsovaei"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Надежда Ивановна",
+      "lastName": "Морозова",
+      "shortName": "Морозова Н.И.",
+      "gender": "женский",
+      "username": "morozovani"
+    },
+    "parent": {
+      "firstName": "Анна Александровна",
+      "lastName": "Морозова",
+      "shortName": "Морозова А.А.",
+      "gender": "женский",
+      "username": "morozovaaa"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Петр Николаевич",
+      "lastName": "Васильев",
+      "shortName": "Васильев П.Н.",
+      "gender": "мужской",
+      "username": "vasilevpn"
+    },
+    "parent": {
+      "firstName": "Мария Александровна",
+      "lastName": "Васильева",
+      "shortName": "Васильева М.А.",
+      "gender": "женский",
+      "username": "vasilevama"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Татьяна Сергеевна",
+      "lastName": "Ковалева",
+      "shortName": "Ковалева Т.С.",
+      "gender": "женский",
+      "username": "kovalevats"
+    },
+    "parent": {
+      "firstName": "Оксана Владимировна",
+      "lastName": "Ковалева",
+      "shortName": "Ковалева О.В.",
+      "gender": "женский",
+      "username": "kovalevaov"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Илья Павлович",
+      "lastName": "Новиков",
+      "shortName": "Новиков И.П.",
+      "gender": "мужской",
+      "username": "novikovip"
+    },
+    "parent": {
+      "firstName": "Людмила Викторовна",
+      "lastName": "Новикова",
+      "shortName": "Новикова Л.В.",
+      "gender": "женский",
+      "username": "novikovalv"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Екатерина Александровна",
+      "lastName": "Соколова",
+      "shortName": "Соколова Е.А.",
+      "gender": "женский",
+      "username": "sokolovaea"
+    },
+    "parent": {
+      "firstName": "Ирина Валерьевна",
+      "lastName": "Соколова",
+      "shortName": "Соколова И.В.",
+      "gender": "женский",
+      "username": "sokolovaiv"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Андрей Викторович",
+      "lastName": "Козлов",
+      "shortName": "Козлов А.В.",
+      "gender": "мужской",
+      "username": "kozlovav"
+    },
+    "parent": {
+      "firstName": "Татьяна Сергеевна",
+      "lastName": "Козлова",
+      "shortName": "Козлова Т.С.",
+      "gender": "женский",
+      "username": "kozlovats"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Ольга Васильевна",
+      "lastName": "Федорова",
+      "shortName": "Федорова О.В.",
+      "gender": "женский",
+      "username": "fedorovaov"
+    },
+    "parent": {
+      "firstName": "Елена Александровна",
+      "lastName": "Федорова",
+      "shortName": "Федорова Е.А.",
+      "gender": "женский",
+      "username": "fedorovaea"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Дмитрий Сергеевич",
+      "lastName": "Ильин",
+      "shortName": "Ильин Д.С.",
+      "gender": "мужской",
+      "username": "ilinds"
+    },
+    "parent": {
+      "firstName": "Евгения Петровна",
+      "lastName": "Ильина",
+      "shortName": "Ильина Е.П.",
+      "gender": "женский",
+      "username": "ilinaep"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Анастасия Андреевна",
+      "lastName": "Смирнова",
+      "shortName": "Смирнова А.А.",
+      "gender": "женский",
+      "username": "smirnovaaa"
+    },
+    "parent": {
+      "firstName": "Лариса Сергеевна",
+      "lastName": "Смирнова",
+      "shortName": "Смирнова Л.С.",
+      "gender": "женский",
+      "username": "smirnovals"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Владимир Владимирович",
+      "lastName": "Петров",
+      "shortName": "Петров В.В.",
+      "gender": "мужской",
+      "username": "petrovvv"
+    },
+    "parent": {
+      "firstName": "Оксана Владимировна",
+      "lastName": "Петрова",
+      "shortName": "Петрова О.В.",
+      "gender": "женский",
+      "username": "petrovaov"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Алина Сергеевна",
+      "lastName": "Кузнецова",
+      "shortName": "Кузнецова А.С.",
+      "gender": "женский",
+      "username": "kuznetsovaas"
+    },
+    "parent": {
+      "firstName": "Татьяна Александровна",
+      "lastName": "Кузнецова",
+      "shortName": "Кузнецова Т.А.",
+      "gender": "женский",
+      "username": "kuznetsovata"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Георгий Иванович",
+      "lastName": "Морозов",
+      "shortName": "Морозов Г.И.",
+      "gender": "мужской",
+      "username": "morozovgi"
+    },
+    "parent": {
+      "firstName": "Елена Викторовна",
+      "lastName": "Морозова",
+      "shortName": "Морозова Е.В.",
+      "gender": "женский",
+      "username": "morozovaev"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Елена Дмитриевна",
+      "lastName": "Васильева",
+      "shortName": "Васильева Е.Д.",
+      "gender": "женский",
+      "username": "vasilevaed"
+    },
+    "parent": {
+      "firstName": "Нина Николаевна",
+      "lastName": "Васильева",
+      "shortName": "Васильева Н.Н.",
+      "gender": "женский",
+      "username": "vasilevann"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Иван Владимирович",
+      "lastName": "Ковалев",
+      "shortName": "Ковалев И.В.",
+      "gender": "мужской",
+      "username": "kovaleviv"
+    },
+    "parent": {
+      "firstName": "Надежда Андреевна",
+      "lastName": "Ковалева",
+      "shortName": "Ковалева Н.А.",
+      "gender": "женский",
+      "username": "kovalevana"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Александра Павловна",
+      "lastName": "Новикова",
+      "shortName": "Новикова А.П.",
+      "gender": "женский",
+      "username": "novikovaap"
+    },
+    "parent": {
+      "firstName": "Ольга Викторовна",
+      "lastName": "Новикова",
+      "shortName": "Новикова О.В.",
+      "gender": "женский",
+      "username": "novikovaov"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Максим Александрович",
+      "lastName": "Соколов",
+      "shortName": "Соколов М.А.",
+      "gender": "мужской",
+      "username": "sokolovma"
+    },
+    "parent": {
+      "firstName": "Алла Владимировна",
+      "lastName": "Соколова",
+      "shortName": "Соколова А.В.",
+      "gender": "женский",
+      "username": "sokolovaav"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Артем Сергеевич",
+      "lastName": "Федоров",
+      "shortName": "Федоров А.С.",
+      "gender": "мужской",
+      "username": "fedorovas"
+    },
+    "parent": {
+      "firstName": "Ирина Анатольевна",
+      "lastName": "Федорова",
+      "shortName": "Федорова И.А.",
+      "gender": "женский",
+      "username": "fedorovaia"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Анастасия Дмитриевна",
+      "lastName": "Иванова",
+      "shortName": "Иванова А.Д.",
+      "gender": "женский",
+      "username": "ivanovaad"
+    },
+    "parent": {
+      "firstName": "Марина Викторовна",
+      "lastName": "Иванова",
+      "shortName": "Иванова М.В.",
+      "gender": "женский",
+      "username": "ivanovamv"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Денис Андреевич",
+      "lastName": "Смирнов",
+      "shortName": "Смирнов Д.А.",
+      "gender": "мужской",
+      "username": "smirnovda"
+    },
+    "parent": {
+      "firstName": "Лидия Петровна",
+      "lastName": "Смирнова",
+      "shortName": "Смирнова Л.П.",
+      "gender": "женский",
+      "username": "smirnovalp"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Софья Владимировна",
+      "lastName": "Петрова",
+      "shortName": "Петрова С.В.",
+      "gender": "женский",
+      "username": "petrovasv"
+    },
+    "parent": {
+      "firstName": "Евгения Викторовна",
+      "lastName": "Петрова",
+      "shortName": "Петрова Е.В.",
+      "gender": "женский",
+      "username": "petrovaev"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Владислав Васильевич",
+      "lastName": "Кузнецов",
+      "shortName": "Кузнецов В.В.",
+      "gender": "мужской",
+      "username": "kuznetsovvv"
+    },
+    "parent": {
+      "firstName": "Анна Ивановна",
+      "lastName": "Кузнецова",
+      "shortName": "Кузнецова А.И.",
+      "gender": "женский",
+      "username": "kuznetsovaai"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Людмила Ивановна",
+      "lastName": "Морозова",
+      "shortName": "Морозова Л.И.",
+      "gender": "женский",
+      "username": "morozovali"
+    },
+    "parent": {
+      "firstName": "Евгения Владимировна",
+      "lastName": "Морозова",
+      "shortName": "Морозова Е.В.",
+      "gender": "женский",
+      "username": "morozovaev2"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Николай Николаевич",
+      "lastName": "Васильев",
+      "shortName": "Васильев Н.Н.",
+      "gender": "мужской",
+      "username": "vasilevnn"
+    },
+    "parent": {
+      "firstName": "Наталья Степановна",
+      "lastName": "Васильева",
+      "shortName": "Васильева Н.С.",
+      "gender": "женский",
+      "username": "vasilevans"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Анастасия Сергеевна",
+      "lastName": "Ковалева",
+      "shortName": "Ковалева А.С.",
+      "gender": "женский",
+      "username": "kovalevaas"
+    },
+    "parent": {
+      "firstName": "Наталья Николаевна",
+      "lastName": "Ковалева",
+      "shortName": "Ковалева Н.Н.",
+      "gender": "женский",
+      "username": "kovalevann"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Дмитрий Викторович",
+      "lastName": "Новиков",
+      "shortName": "Новиков Д.В.",
+      "gender": "мужской",
+      "username": "novikovdv"
+    },
+    "parent": {
+      "firstName": "Елена Сергеевна",
+      "lastName": "Новикова",
+      "shortName": "Новикова Е.С.",
+      "gender": "женский",
+      "username": "novikovaes"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Александра Александровна",
+      "lastName": "Соколова",
+      "shortName": "Соколова А.А.",
+      "gender": "женский",
+      "username": "sokolovaaa"
+    },
+    "parent": {
+      "firstName": "Ирина Николаевна",
+      "lastName": "Соколова",
+      "shortName": "Соколова И.Н.",
+      "gender": "женский",
+      "username": "sokolovain"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Илья Петрович",
+      "lastName": "Козлов",
+      "shortName": "Козлов И.П.",
+      "gender": "мужской",
+      "username": "kozlovip"
+    },
+    "parent": {
+      "firstName": "Мария Александровна",
+      "lastName": "Козлова",
+      "shortName": "Козлова М.А.",
+      "gender": "женский",
+      "username": "kozlovama"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Елизавета Сергеевна",
+      "lastName": "Федорова",
+      "shortName": "Федорова Е.С.",
+      "gender": "женский",
+      "username": "fedorovaes"
+    },
+    "parent": {
+      "firstName": "Людмила Ивановна",
+      "lastName": "Федорова",
+      "shortName": "Федорова Л.И.",
+      "gender": "женский",
+      "username": "fedorovali"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Андрей Дмитриевич",
+      "lastName": "Иванов",
+      "shortName": "Иванов А.Д.",
+      "gender": "мужской",
+      "username": "ivanovad"
+    },
+    "parent": {
+      "firstName": "Марина Ивановна",
+      "lastName": "Иванова",
+      "shortName": "Иванова М.И.",
+      "gender": "женский",
+      "username": "ivanovami"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Мария Андреевна",
+      "lastName": "Смирнова",
+      "shortName": "Смирнова М.А.",
+      "gender": "женский",
+      "username": "smirnovama"
+    },
+    "parent": {
+      "firstName": "Анна Андреевна",
+      "lastName": "Смирнова",
+      "shortName": "Смирнова А.А.",
+      "gender": "женский",
+      "username": "smirnovaaa"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Сергей Викторович",
+      "lastName": "Петров",
+      "shortName": "Петров С.В.",
+      "gender": "мужской",
+      "username": "petrovsv"
+    },
+    "parent": {
+      "firstName": "Нина Александровна",
+      "lastName": "Петрова",
+      "shortName": "Петрова Н.А.",
+      "gender": "женский",
+      "username": "petrovana"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Екатерина Николаевна",
+      "lastName": "Кузнецова",
+      "shortName": "Кузнецова Е.Н.",
+      "gender": "женский",
+      "username": "kuznetsovaen"
+    },
+    "parent": {
+      "firstName": "Елена Петровна",
+      "lastName": "Кузнецова",
+      "shortName": "Кузнецова Е.П.",
+      "gender": "женский",
+      "username": "kuznetsovaep"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Игорь Иванович",
+      "lastName": "Морозов",
+      "shortName": "Морозов И.И.",
+      "gender": "мужской",
+      "username": "morozovii"
+    },
+    "parent": {
+      "firstName": "Елена Анатольевна",
+      "lastName": "Морозова",
+      "shortName": "Морозова Е.А.",
+      "gender": "женский",
+      "username": "morozovaea"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Наталья Дмитриевна",
+      "lastName": "Васильева",
+      "shortName": "Васильева Н.Д.",
+      "gender": "женский",
+      "username": "vasilevand"
+    },
+    "parent": {
+      "firstName": "Оксана Павловна",
+      "lastName": "Васильева",
+      "shortName": "Васильева О.П.",
+      "gender": "женский",
+      "username": "vasilevaop"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Павел Александрович",
+      "lastName": "Ковалев",
+      "shortName": "Ковалев П.А.",
+      "gender": "мужской",
+      "username": "kovalevpa"
+    },
+    "parent": {
+      "firstName": "Ирина Петровна",
+      "lastName": "Ковалева",
+      "shortName": "Ковалева И.П.",
+      "gender": "женский",
+      "username": "kovalevaip"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Екатерина Павловна",
+      "lastName": "Новикова",
+      "shortName": "Новикова Е.П.",
+      "gender": "женский",
+      "username": "novikovaep"
+    },
+    "parent": {
+      "firstName": "Татьяна Владимировна",
+      "lastName": "Новикова",
+      "shortName": "Новикова Т.В.",
+      "gender": "женский",
+      "username": "novikovatv"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Владислав Андреевич",
+      "lastName": "Соколов",
+      "shortName": "Соколов В.А.",
+      "gender": "мужской",
+      "username": "sokolovva"
+    },
+    "parent": {
+      "firstName": "Наталья Игоревна",
+      "lastName": "Соколова",
+      "shortName": "Соколова Н.И.",
+      "gender": "женский",
+      "username": "sokolovani"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Александра Дмитриевна",
+      "lastName": "Козлова",
+      "shortName": "Козлова А.Д.",
+      "gender": "женский",
+      "username": "kozlovaad"
+    },
+    "parent": {
+      "firstName": "Елена Андреевна",
+      "lastName": "Козлова",
+      "shortName": "Козлова Е.А.",
+      "gender": "женский",
+      "username": "kozlovaea"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Максим Сергеевич",
+      "lastName": "Федоров",
+      "shortName": "Федоров М.С.",
+      "gender": "мужской",
+      "username": "fedorovms"
+    },
+    "parent": {
+      "firstName": "Татьяна Александровна",
+      "lastName": "Федорова",
+      "shortName": "Федорова Т.А.",
+      "gender": "женский",
+      "username": "fedorovata"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Анна Андреевна",
+      "lastName": "Иванова",
+      "shortName": "Иванова А.А.",
+      "gender": "женский",
+      "username": "ivanovaaa"
+    },
+    "parent": {
+      "firstName": "Екатерина Владимировна",
+      "lastName": "Иванова",
+      "shortName": "Иванова Е.В.",
+      "gender": "женский",
+      "username": "ivanovaev"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Георгий Петрович",
+      "lastName": "Смирнов",
+      "shortName": "Смирнов Г.П.",
+      "gender": "мужской",
+      "username": "smirnovgp"
+    },
+    "parent": {
+      "firstName": "Марина Сергеевна",
+      "lastName": "Смирнова",
+      "shortName": "Смирнова М.С.",
+      "gender": "женский",
+      "username": "smirnovams"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Марина Владимировна",
+      "lastName": "Петрова",
+      "shortName": "Петрова М.В.",
+      "gender": "женский",
+      "username": "petrovamv"
+    },
+    "parent": {
+      "firstName": "Александра Александровна",
+      "lastName": "Петрова",
+      "shortName": "Петрова А.А.",
+      "gender": "женский",
+      "username": "petrovaaa"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Иван Анатольевич",
+      "lastName": "Кузнецов",
+      "shortName": "Кузнецов И.А.",
+      "gender": "мужской",
+      "username": "kuznetsovia"
+    },
+    "parent": {
+      "firstName": "Наталья Михайловна",
+      "lastName": "Кузнецова",
+      "shortName": "Кузнецова Н.М.",
+      "gender": "женский",
+      "username": "kuznetsovanm"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Надежда Ивановна",
+      "lastName": "Морозова",
+      "shortName": "Морозова Н.И.",
+      "gender": "женский",
+      "username": "morozovani2"
+    },
+    "parent": {
+      "firstName": "Евгения Петровна",
+      "lastName": "Морозова",
+      "shortName": "Морозова Е.П.",
+      "gender": "женский",
+      "username": "morozovaep"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Дмитрий Николаевич",
+      "lastName": "Васильев",
+      "shortName": "Васильев Д.Н.",
+      "gender": "мужской",
+      "username": "vasilevdn"
+    },
+    "parent": {
+      "firstName": "Анастасия Сергеевна",
+      "lastName": "Васильева",
+      "shortName": "Васильева А.С.",
+      "gender": "женский",
+      "username": "vasilevaas"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Анна Сергеевна",
+      "lastName": "Ковалева",
+      "shortName": "Ковалева А.С.",
+      "gender": "женский",
+      "username": "kovalevaas2"
+    },
+    "parent": {
+      "firstName": "Татьяна Викторовна",
+      "lastName": "Ковалева",
+      "shortName": "Ковалева Т.В.",
+      "gender": "женский",
+      "username": "kovalevatv"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Андрей Викторович",
+      "lastName": "Новиков",
+      "shortName": "Новиков А.В.",
+      "gender": "мужской",
+      "username": "novikovav"
+    },
+    "parent": {
+      "firstName": "Нина Александровна",
+      "lastName": "Новикова",
+      "shortName": "Новикова Н.А.",
+      "gender": "женский",
+      "username": "novikovana"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Екатерина Александровна",
+      "lastName": "Соколова",
+      "shortName": "Соколова Е.А.",
+      "gender": "женский",
+      "username": "sokolovaea2"
+    },
+    "parent": {
+      "firstName": "Елена Владимировна",
+      "lastName": "Соколова",
+      "shortName": "Соколова Е.В.",
+      "gender": "женский",
+      "username": "sokolovaev"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Степан Александрович",
+      "lastName": "Козлов",
+      "shortName": "Козлов С.А.",
+      "gender": "мужской",
+      "username": "kozlovsa"
+    },
+    "parent": {
+      "firstName": "Анна Анатольевна",
+      "lastName": "Козлова",
+      "shortName": "Козлова А.А.",
+      "gender": "женский",
+      "username": "kozlovaaa"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Екатерина Владимировна",
+      "lastName": "Федорова",
+      "shortName": "Федорова Е.В.",
+      "gender": "женский",
+      "username": "fedorovaev"
+    },
+    "parent": {
+      "firstName": "Ирина Николаевна",
+      "lastName": "Федорова",
+      "shortName": "Федорова И.Н.",
+      "gender": "женский",
+      "username": "fedorovain"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Алексей Андреевич",
+      "lastName": "Иванов",
+      "shortName": "Иванов А.А.",
+      "gender": "мужской",
+      "username": "ivanovaa"
+    },
+    "parent": {
+      "firstName": "Лариса Викторовна",
+      "lastName": "Иванова",
+      "shortName": "Иванова Л.В.",
+      "gender": "женский",
+      "username": "ivanovalv"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Мария Викторовна",
+      "lastName": "Смирнова",
+      "shortName": "Смирнова М.В.",
+      "gender": "женский",
+      "username": "smirnovamv"
+    },
+    "parent": {
+      "firstName": "Елена Васильевна",
+      "lastName": "Смирнова",
+      "shortName": "Смирнова Е.В.",
+      "gender": "женский",
+      "username": "smirnovaev"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Сергей Петрович",
+      "lastName": "Петров",
+      "shortName": "Петров С.П.",
+      "gender": "мужской",
+      "username": "petrovsp"
+    },
+    "parent": {
+      "firstName": "Татьяна Анатольевна",
+      "lastName": "Петрова",
+      "shortName": "Петрова Т.А.",
+      "gender": "женский",
+      "username": "petrovata"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Дарья Николаевна",
+      "lastName": "Кузнецова",
+      "shortName": "Кузнецова Д.Н.",
+      "gender": "женский",
+      "username": "kuznetsovadn"
+    },
+    "parent": {
+      "firstName": "Екатерина Петровна",
+      "lastName": "Кузнецова",
+      "shortName": "Кузнецова Е.П.",
+      "gender": "женский",
+      "username": "kuznetsovaep2"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Михаил Иванович",
+      "lastName": "Морозов",
+      "shortName": "Морозов М.И.",
+      "gender": "мужской",
+      "username": "morozovmi"
+    },
+    "parent": {
+      "firstName": "Александра Владимировна",
+      "lastName": "Морозова",
+      "shortName": "Морозова А.В.",
+      "gender": "женский",
+      "username": "morozovaav"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Анна Дмитриевна",
+      "lastName": "Васильева",
+      "shortName": "Васильева А.Д.",
+      "gender": "женский",
+      "username": "vasilevaad"
+    },
+    "parent": {
+      "firstName": "Ольга Викторовна",
+      "lastName": "Васильева",
+      "shortName": "Васильева О.В.",
+      "gender": "женский",
+      "username": "vasilevaov"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Василий Павлович",
+      "lastName": "Ковалев",
+      "shortName": "Ковалев В.П.",
+      "gender": "мужской",
+      "username": "kovalevvp"
+    },
+    "parent": {
+      "firstName": "Наталья Сергеевна",
+      "lastName": "Ковалева",
+      "shortName": "Ковалева Н.С.",
+      "gender": "женский",
+      "username": "kovalevans"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Алина Александровна",
+      "lastName": "Новикова",
+      "shortName": "Новикова А.А.",
+      "gender": "женский",
+      "username": "novikovaaa"
+    },
+    "parent": {
+      "firstName": "Марина Игоревна",
+      "lastName": "Новикова",
+      "shortName": "Новикова М.И.",
+      "gender": "женский",
+      "username": "novikovami"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Илья Андреевич",
+      "lastName": "Соколов",
+      "shortName": "Соколов И.А.",
+      "gender": "мужской",
+      "username": "sokolovia"
+    },
+    "parent": {
+      "firstName": "Екатерина Петровна",
+      "lastName": "Соколова",
+      "shortName": "Соколова Е.П.",
+      "gender": "женский",
+      "username": "sokolovaep"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Маргарита Дмитриевна",
+      "lastName": "Козлова",
+      "shortName": "Козлова М.Д.",
+      "gender": "женский",
+      "username": "kozlovamd"
+    },
+    "parent": {
+      "firstName": "Ирина Владимировна",
+      "lastName": "Козлова",
+      "shortName": "Козлова И.В.",
+      "gender": "женский",
+      "username": "kozlovaiv"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Алексей Сергеевич",
+      "lastName": "Федоров",
+      "shortName": "Федоров А.С.",
+      "gender": "мужской",
+      "username": "fedorovas2"
+    },
+    "parent": {
+      "firstName": "Елена Николаевна",
+      "lastName": "Федорова",
+      "shortName": "Федорова Е.Н.",
+      "gender": "женский",
+      "username": "fedorovaen"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Лидия Владимировна",
+      "lastName": "Иванова",
+      "shortName": "Иванова Л.В.",
+      "gender": "женский",
+      "username": "ivanovalv"
+    },
+    "parent": {
+      "firstName": "Мария Викторовна",
+      "lastName": "Иванова",
+      "shortName": "Иванова М.В.",
+      "gender": "женский",
+      "username": "ivanovamv2"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Даниил Викторович",
+      "lastName": "Смирнов",
+      "shortName": "Смирнов Д.В.",
+      "gender": "мужской",
+      "username": "smirnovdv"
+    },
+    "parent": {
+      "firstName": "Елена Сергеевна",
+      "lastName": "Смирнова",
+      "shortName": "Смирнова Е.С.",
+      "gender": "женский",
+      "username": "smirnovaes"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Софья Андреевна",
+      "lastName": "Петрова",
+      "shortName": "Петрова С.А.",
+      "gender": "женский",
+      "username": "petrovasa"
+    },
+    "parent": {
+      "firstName": "Ольга Анатольевна",
+      "lastName": "Петрова",
+      "shortName": "Петрова О.А.",
+      "gender": "женский",
+      "username": "petrovaoa"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Валерия Игоревна",
+      "lastName": "Кузнецова",
+      "shortName": "Кузнецова В.И.",
+      "gender": "женский",
+      "username": "kuznetsovavi"
+    },
+    "parent": {
+      "firstName": "Марина Николаевна",
+      "lastName": "Кузнецова",
+      "shortName": "Кузнецова М.Н.",
+      "gender": "женский",
+      "username": "kuznetsovamn"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Матвей Николаевич",
+      "lastName": "Морозов",
+      "shortName": "Морозов М.Н.",
+      "gender": "мужской",
+      "username": "morozovmn"
+    },
+    "parent": {
+      "firstName": "Людмила Викторовна",
+      "lastName": "Морозова",
+      "shortName": "Морозова Л.В.",
+      "gender": "женский",
+      "username": "morozovalv"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Анастасия Владимировна",
+      "lastName": "Васильева",
+      "shortName": "Васильева А.В.",
+      "gender": "женский",
+      "username": "vasilevaav"
+    },
+    "parent": {
+      "firstName": "Марина Андреевна",
+      "lastName": "Васильева",
+      "shortName": "Васильева М.А.",
+      "gender": "женский",
+      "username": "vasilevama2"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Артем Анатольевич",
+      "lastName": "Ковалев",
+      "shortName": "Ковалев А.А.",
+      "gender": "мужской",
+      "username": "kovalevaa"
+    },
+    "parent": {
+      "firstName": "Людмила Владимировна",
+      "lastName": "Ковалева",
+      "shortName": "Ковалева Л.В.",
+      "gender": "женский",
+      "username": "kovalevalv"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Ольга Игоревна",
+      "lastName": "Новикова",
+      "shortName": "Новикова О.И.",
+      "gender": "женский",
+      "username": "novikovaoi"
+    },
+    "parent": {
+      "firstName": "Наталья Александровна",
+      "lastName": "Новикова",
+      "shortName": "Новикова Н.А.",
+      "gender": "женский",
+      "username": "novikovana2"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Владимир Сергеевич",
+      "lastName": "Соколов",
+      "shortName": "Соколов В.С.",
+      "gender": "мужской",
+      "username": "sokolovvs"
+    },
+    "parent": {
+      "firstName": "Марина Анатольевна",
+      "lastName": "Соколова",
+      "shortName": "Соколова М.А.",
+      "gender": "женский",
+      "username": "sokolovama"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Юлия Александровна",
+      "lastName": "Козлова",
+      "shortName": "Козлова Ю.А.",
+      "gender": "женский",
+      "username": "kozlovaiua"
+    },
+    "parent": {
+      "firstName": "Татьяна Сергеевна",
+      "lastName": "Козлова",
+      "shortName": "Козлова Т.С.",
+      "gender": "женский",
+      "username": "kozlovats2"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Илья Васильевич",
+      "lastName": "Федоров",
+      "shortName": "Федоров И.В.",
+      "gender": "мужской",
+      "username": "fedoroviv"
+    },
+    "parent": {
+      "firstName": "Ольга Петровна",
+      "lastName": "Федорова",
+      "shortName": "Федорова О.П.",
+      "gender": "женский",
+      "username": "fedorovaop"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Вероника Анатольевна",
+      "lastName": "Иванова",
+      "shortName": "Иванова В.А.",
+      "gender": "женский",
+      "username": "ivanovava"
+    },
+    "parent": {
+      "firstName": "Екатерина Николаевна",
+      "lastName": "Иванова",
+      "shortName": "Иванова Е.Н.",
+      "gender": "женский",
+      "username": "ivanovaen"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Антон Сергеевич",
+      "lastName": "Смирнов",
+      "shortName": "Смирнов А.С.",
+      "gender": "мужской",
+      "username": "smirnovas"
+    },
+    "parent": {
+      "firstName": "Анна Владимировна",
+      "lastName": "Смирнова",
+      "shortName": "Смирнова А.В.",
+      "gender": "женский",
+      "username": "smirnovaav"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Ольга Петровна",
+      "lastName": "Петрова",
+      "shortName": "Петрова О.П.",
+      "gender": "женский",
+      "username": "petrovaop"
+    },
+    "parent": {
+      "firstName": "Любовь Васильевна",
+      "lastName": "Петрова",
+      "shortName": "Петрова Л.В.",
+      "gender": "женский",
+      "username": "petrovalv"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Дмитрий Викторович",
+      "lastName": "Кузнецов",
+      "shortName": "Кузнецов Д.В.",
+      "gender": "мужской",
+      "username": "kuznetsovdv"
+    },
+    "parent": {
+      "firstName": "Татьяна Ивановна",
+      "lastName": "Кузнецова",
+      "shortName": "Кузнецова Т.И.",
+      "gender": "женский",
+      "username": "kuznetsovati"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Елена Анатольевна",
+      "lastName": "Морозова",
+      "shortName": "Морозова Е.А.",
+      "gender": "женский",
+      "username": "morozovaea"
+    },
+    "parent": {
+      "firstName": "Ирина Владимировна",
+      "lastName": "Морозова",
+      "shortName": "Морозова И.В.",
+      "gender": "женский",
+      "username": "morozovaiv"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Иван Александрович",
+      "lastName": "Васильев",
+      "shortName": "Васильев И.А.",
+      "gender": "мужской",
+      "username": "vasilevia"
+    },
+    "parent": {
+      "firstName": "Наталья Сергеевна",
+      "lastName": "Васильева",
+      "shortName": "Васильева Н.С.",
+      "gender": "женский",
+      "username": "vasilevans2"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Екатерина Викторовна",
+      "lastName": "Ковалева",
+      "shortName": "Ковалева Е.В.",
+      "gender": "женский",
+      "username": "kovalevaev"
+    },
+    "parent": {
+      "firstName": "Тамара Петровна",
+      "lastName": "Ковалева",
+      "shortName": "Ковалева Т.П.",
+      "gender": "женский",
+      "username": "kovalevatp"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Павел Сергеевич",
+      "lastName": "Новиков",
+      "shortName": "Новиков П.С.",
+      "gender": "мужской",
+      "username": "novikovps"
+    },
+    "parent": {
+      "firstName": "Ольга Ивановна",
+      "lastName": "Новикова",
+      "shortName": "Новикова О.И.",
+      "gender": "женский",
+      "username": "novikovaoi"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Марина Валерьевна",
+      "lastName": "Соколова",
+      "shortName": "Соколова М.В.",
+      "gender": "женский",
+      "username": "sokolovamv"
+    },
+    "parent": {
+      "firstName": "Татьяна Анатольевна",
+      "lastName": "Соколова",
+      "shortName": "Соколова Т.А.",
+      "gender": "женский",
+      "username": "sokolovata"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Артемий Александрович",
+      "lastName": "Козлов",
+      "shortName": "Козлов А.А.",
+      "gender": "мужской",
+      "username": "kozlovaa"
+    },
+    "parent": {
+      "firstName": "Екатерина Андреевна",
+      "lastName": "Козлова",
+      "shortName": "Козлова Е.А.",
+      "gender": "женский",
+      "username": "kozlovaea2"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Оксана Ильинична",
+      "lastName": "Федорова",
+      "shortName": "Федорова О.И.",
+      "gender": "женский",
+      "username": "fedorovaoi"
+    },
+    "parent": {
+      "firstName": "Елена Викторовна",
+      "lastName": "Федорова",
+      "shortName": "Федорова Е.В.",
+      "gender": "женский",
+      "username": "fedorovaev"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Михаил Викторович",
+      "lastName": "Иванов",
+      "shortName": "Иванов М.В.",
+      "gender": "мужской",
+      "username": "ivanovmv"
+    },
+    "parent": {
+      "firstName": "Александра Александровна",
+      "lastName": "Иванова",
+      "shortName": "Иванова А.А.",
+      "gender": "женский",
+      "username": "ivanovaaa"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Анастасия Владимировна",
+      "lastName": "Смирнова",
+      "shortName": "Смирнова А.В.",
+      "gender": "женский",
+      "username": "smirnovaav"
+    },
+    "parent": {
+      "firstName": "Ольга Владимировна",
+      "lastName": "Смирнова",
+      "shortName": "Смирнова О.В.",
+      "gender": "женский",
+      "username": "smirnovaov"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Вадим Андреевич",
+      "lastName": "Петров",
+      "shortName": "Петров В.А.",
+      "gender": "мужской",
+      "username": "petrovva"
+    },
+    "parent": {
+      "firstName": "Наталья Васильевна",
+      "lastName": "Петрова",
+      "shortName": "Петрова Н.В.",
+      "gender": "женский",
+      "username": "petrovanv"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Ирина Владимировна",
+      "lastName": "Кузнецова",
+      "shortName": "Кузнецова И.В.",
+      "gender": "женский",
+      "username": "kuznetsovaiv"
+    },
+    "parent": {
+      "firstName": "Татьяна Игоревна",
+      "lastName": "Кузнецова",
+      "shortName": "Кузнецова Т.И.",
+      "gender": "женский",
+      "username": "kuznetsovati2"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Константин Николаевич",
+      "lastName": "Морозов",
+      "shortName": "Морозов К.Н.",
+      "gender": "мужской",
+      "username": "morozovkn"
+    },
+    "parent": {
+      "firstName": "Евгения Сергеевна",
+      "lastName": "Морозова",
+      "shortName": "Морозова Е.С.",
+      "gender": "женский",
+      "username": "morozovaes"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Светлана Анатольевна",
+      "lastName": "Васильева",
+      "shortName": "Васильева С.А.",
+      "gender": "женский",
+      "username": "vasilevasa"
+    },
+    "parent": {
+      "firstName": "Елена Владимировна",
+      "lastName": "Васильева",
+      "shortName": "Васильева Е.В.",
+      "gender": "женский",
+      "username": "vasilevaev"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Андрей Викторович",
+      "lastName": "Ковалев",
+      "shortName": "Ковалев А.В.",
+      "gender": "мужской",
+      "username": "kovalevav"
+    },
+    "parent": {
+      "firstName": "Ирина Андреевна",
+      "lastName": "Ковалева",
+      "shortName": "Ковалева И.А.",
+      "gender": "женский",
+      "username": "kovalevaia"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Евгения Павловна",
+      "lastName": "Новикова",
+      "shortName": "Новикова Е.П.",
+      "gender": "женский",
+      "username": "novikovaep2"
+    },
+    "parent": {
+      "firstName": "Нина Валерьевна",
+      "lastName": "Новикова",
+      "shortName": "Новикова Н.В.",
+      "gender": "женский",
+      "username": "novikovanv"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Никита Андреевич",
+      "lastName": "Соколов",
+      "shortName": "Соколов Н.А.",
+      "gender": "мужской",
+      "username": "sokolovna"
+    },
+    "parent": {
+      "firstName": "Татьяна Валерьевна",
+      "lastName": "Соколова",
+      "shortName": "Соколова Т.В.",
+      "gender": "женский",
+      "username": "sokolovatv"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Алиса Александровна",
+      "lastName": "Козлова",
+      "shortName": "Козлова А.А.",
+      "gender": "женский",
+      "username": "kozlovaaa"
+    },
+    "parent": {
+      "firstName": "Екатерина Викторовна",
+      "lastName": "Козлова",
+      "shortName": "Козлова Е.В.",
+      "gender": "женский",
+      "username": "kozlovaev"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Георгий Сергеевич",
+      "lastName": "Федоров",
+      "shortName": "Федоров Г.С.",
+      "gender": "мужской",
+      "username": "fedorovgs"
+    },
+    "parent": {
+      "firstName": "Наталья Александровна",
+      "lastName": "Федорова",
+      "shortName": "Федорова Н.А.",
+      "gender": "женский",
+      "username": "fedorovana"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Анастасия Александровна",
+      "lastName": "Иванова",
+      "shortName": "Иванова А.А.",
+      "gender": "женский",
+      "username": "ivanovaaa2"
+    },
+    "parent": {
+      "firstName": "Мария Александровна",
+      "lastName": "Иванова",
+      "shortName": "Иванова М.А.",
+      "gender": "женский",
+      "username": "ivanovama"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Денис Васильевич",
+      "lastName": "Смирнов",
+      "shortName": "Смирнов Д.В.",
+      "gender": "мужской",
+      "username": "smirnovdv2"
+    },
+    "parent": {
+      "firstName": "Ольга Николаевна",
+      "lastName": "Смирнова",
+      "shortName": "Смирнова О.Н.",
+      "gender": "женский",
+      "username": "smirnovaon"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Елена Игоревна",
+      "lastName": "Петрова",
+      "shortName": "Петрова Е.И.",
+      "gender": "женский",
+      "username": "petrovaei"
+    },
+    "parent": {
+      "firstName": "Нина Владимировна",
+      "lastName": "Петрова",
+      "shortName": "Петрова Н.В.",
+      "gender": "женский",
+      "username": "petrovanv2"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Антонина Александровна",
+      "lastName": "Кузнецова",
+      "shortName": "Кузнецова А.А.",
+      "gender": "женский",
+      "username": "kuznetsovaaa"
+    },
+    "parent": {
+      "firstName": "Татьяна Викторовна",
+      "lastName": "Кузнецова",
+      "shortName": "Кузнецова Т.В.",
+      "gender": "женский",
+      "username": "kuznetsovatv"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Роман Викторович",
+      "lastName": "Морозов",
+      "shortName": "Морозов Р.В.",
+      "gender": "мужской",
+      "username": "morozovrv"
+    },
+    "parent": {
+      "firstName": "Любовь Владимировна",
+      "lastName": "Морозова",
+      "shortName": "Морозова Л.В.",
+      "gender": "женский",
+      "username": "morozovalv2"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Ирина Васильевна",
+      "lastName": "Васильева",
+      "shortName": "Васильева И.В.",
+      "gender": "женский",
+      "username": "vasilevaiv"
+    },
+    "parent": {
+      "firstName": "Екатерина Андреевна",
+      "lastName": "Васильева",
+      "shortName": "Васильева Е.А.",
+      "gender": "женский",
+      "username": "vasilevaea"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Александр Владимирович",
+      "lastName": "Ковалев",
+      "shortName": "Ковалев А.В.",
+      "gender": "мужской",
+      "username": "kovalevav2"
+    },
+    "parent": {
+      "firstName": "Наталья Сергеевна",
+      "lastName": "Ковалева",
+      "shortName": "Ковалева Н.С.",
+      "gender": "женский",
+      "username": "kovalevans2"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Ольга Павловна",
+      "lastName": "Новикова",
+      "shortName": "Новикова О.П.",
+      "gender": "женский",
+      "username": "novikovaop"
+    },
+    "parent": {
+      "firstName": "Елена Николаевна",
+      "lastName": "Новикова",
+      "shortName": "Новикова Е.Н.",
+      "gender": "женский",
+      "username": "novikovaen"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Сергей Игоревич",
+      "lastName": "Соколов",
+      "shortName": "Соколов С.И.",
+      "gender": "мужской",
+      "username": "sokolovsi"
+    },
+    "parent": {
+      "firstName": "Марина Валерьевна",
+      "lastName": "Соколова",
+      "shortName": "Соколова М.В.",
+      "gender": "женский",
+      "username": "sokolovamv"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Маргарита Александровна",
+      "lastName": "Козлова",
+      "shortName": "Козлова М.А.",
+      "gender": "женский",
+      "username": "kozlovama"
+    },
+    "parent": {
+      "firstName": "Анна Петровна",
+      "lastName": "Козлова",
+      "shortName": "Козлова А.П.",
+      "gender": "женский",
+      "username": "kozlovaap"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Анатолий Владимирович",
+      "lastName": "Федоров",
+      "shortName": "Федоров А.В.",
+      "gender": "мужской",
+      "username": "fedorovav"
+    },
+    "parent": {
+      "firstName": "Валентина Владимировна",
+      "lastName": "Федорова",
+      "shortName": "Федорова В.В.",
+      "gender": "женский",
+      "username": "fedorovavv"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Вера Ивановна",
+      "lastName": "Иванова",
+      "shortName": "Иванова В.И.",
+      "gender": "женский",
+      "username": "ivanovavi"
+    },
+    "parent": {
+      "firstName": "Галина Сергеевна",
+      "lastName": "Иванова",
+      "shortName": "Иванова Г.С.",
+      "gender": "женский",
+      "username": "ivanovags"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Игорь Викторович",
+      "lastName": "Смирнов",
+      "shortName": "Смирнов И.В.",
+      "gender": "мужской",
+      "username": "smirnoviv"
+    },
+    "parent": {
+      "firstName": "Людмила Николаевна",
+      "lastName": "Смирнова",
+      "shortName": "Смирнова Л.Н.",
+      "gender": "женский",
+      "username": "smirnovaln"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Ольга Владимировна",
+      "lastName": "Петрова",
+      "shortName": "Петрова О.В.",
+      "gender": "женский",
+      "username": "petrovaov"
+    },
+    "parent": {
+      "firstName": "Ирина Николаевна",
+      "lastName": "Петрова",
+      "shortName": "Петрова И.Н.",
+      "gender": "женский",
+      "username": "petrovain"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Владимир Андреевич",
+      "lastName": "Кузнецов",
+      "shortName": "Кузнецов В.А.",
+      "gender": "мужской",
+      "username": "kuznetsovva"
+    },
+    "parent": {
+      "firstName": "Лариса Викторовна",
+      "lastName": "Кузнецова",
+      "shortName": "Кузнецова Л.В.",
+      "gender": "женский",
+      "username": "kuznetsovalv"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Марина Александровна",
+      "lastName": "Морозова",
+      "shortName": "Морозова М.А.",
+      "gender": "женский",
+      "username": "morozovama"
+    },
+    "parent": {
+      "firstName": "Надежда Владимировна",
+      "lastName": "Морозова",
+      "shortName": "Морозова Н.В.",
+      "gender": "женский",
+      "username": "morozovanv"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Артем Васильевич",
+      "lastName": "Васильев",
+      "shortName": "Васильев А.В.",
+      "gender": "мужской",
+      "username": "vasilevav"
+    },
+    "parent": {
+      "firstName": "Ольга Сергеевна",
+      "lastName": "Васильева",
+      "shortName": "Васильева О.С.",
+      "gender": "женский",
+      "username": "vasilevaos"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Евгения Владимировна",
+      "lastName": "Ковалева",
+      "shortName": "Ковалева Е.В.",
+      "gender": "женский",
+      "username": "kovalevaev2"
+    },
+    "parent": {
+      "firstName": "Елена Александровна",
+      "lastName": "Ковалева",
+      "shortName": "Ковалева Е.А.",
+      "gender": "женский",
+      "username": "kovalevaea"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Артемий Павлович",
+      "lastName": "Новиков",
+      "shortName": "Новиков А.П.",
+      "gender": "мужской",
+      "username": "novikovap"
+    },
+    "parent": {
+      "firstName": "Светлана Николаевна",
+      "lastName": "Новикова",
+      "shortName": "Новикова С.Н.",
+      "gender": "женский",
+      "username": "novikovasn"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Елизавета Николаевна",
+      "lastName": "Соколова",
+      "shortName": "Соколова Е.Н.",
+      "gender": "женский",
+      "username": "sokolovaen"
+    },
+    "parent": {
+      "firstName": "Марина Ивановна",
+      "lastName": "Соколова",
+      "shortName": "Соколова М.И.",
+      "gender": "женский",
+      "username": "sokolovami"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Виталий Владимирович",
+      "lastName": "Козлов",
+      "shortName": "Козлов В.В.",
+      "gender": "мужской",
+      "username": "kozlovvv"
+    },
+    "parent": {
+      "firstName": "Елена Ивановна",
+      "lastName": "Козлова",
+      "shortName": "Козлова Е.И.",
+      "gender": "женский",
+      "username": "kozlovaei"
+    }
+  },
+  {
+    "student": {
+      "firstName": "Ирина Александровна",
+      "lastName": "Попова",
+      "shortName": "Попова И.А.",
+      "gender": "женский",
+      "username": "popovaia"
+    },
+    "parent": {
+      "firstName": "Анна Ивановна",
+      "lastName": "Попова",
+      "shortName": "Попова А.И.",
+      "gender": "женский",
+      "username": "popovaai"
+    }
+  }
+]

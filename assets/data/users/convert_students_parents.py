@@ -9,8 +9,7 @@ with open('constants/list_students_parents.txt', 'r', encoding="utf-8") as file:
 list_students_parents = [line.rstrip() for line in lines]
 
 def convert_students_parents(students_parents):
-    list_students = []
-    list_parents = []
+    list_all = []
 
     student_usernames = []
     parent_usernames = []
@@ -58,30 +57,27 @@ def convert_students_parents(students_parents):
 
         parent_usernames.append(parent_username)
 
-        list_students.append({
-            "firstName": student_first_name,
-            "lastName": student_last_name,
-            "shortName": student_short_name,
-            "gender": student_gender,
-            "username": student_username
+        list_all.append({
+            "student": {
+                "firstName": student_first_name,
+                "lastName": student_last_name,
+                "shortName": student_short_name,
+                "gender": student_gender,
+                "username": student_username
+            },
+            "parent": {
+                "firstName": parent_first_name,
+                "lastName": parent_last_name,
+                "shortName": parent_short_name,
+                "gender": 'женский',
+                "username": parent_username
+            }
         })
 
-        list_parents.append({
-            "firstName": parent_first_name,
-            "lastName": parent_last_name,
-            "shortName": parent_short_name,
-            "gender": 'женский',
-            "username": parent_username
-        })
-
-    return [list_students, list_parents]
+    return list_all
 
 
-students = convert_students_parents(list_students_parents)[0]
-parents = convert_students_parents(list_students_parents)[1]
+students_parents = convert_students_parents(list_students_parents)
 
-with open("students.json", "w", encoding="utf-8") as f:
-    json.dump(students, f, indent=2, ensure_ascii=False)
-
-with open("parents.json", "w", encoding="utf-8") as f:
-    json.dump(parents, f, indent=2, ensure_ascii=False)
+with open("students_parents.json", "w", encoding="utf-8") as f:
+    json.dump(students_parents, f, indent=2, ensure_ascii=False)
