@@ -17,7 +17,7 @@ class PostCategory {
     required this.description,
   });
 
-  factory PostCategory.defaultPost() => PostCategory(
+  factory PostCategory.defaultPostCategory() => PostCategory(
         id: '',
         title: '',
         slug: '',
