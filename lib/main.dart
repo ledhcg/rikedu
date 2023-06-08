@@ -39,11 +39,13 @@ import 'package:rikedu/src/features/timetable/providers/timetable_provider.dart'
 import 'package:rikedu/src/features/timetable/views/timetable_page.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:rikedu/src/languages/languages.dart';
+import 'package:rikedu/src/utils/constants/colors_constants.dart';
 import 'package:rikedu/src/utils/constants/roles_constants.dart';
 import 'package:rikedu/src/utils/constants/storage_constants.dart';
 import 'package:rikedu/src/utils/service/api_service.dart';
 import 'package:rikedu/src/utils/service/firebase_service.dart';
 import 'package:rikedu/src/utils/service/storage_service.dart';
+import 'package:skeletons/skeletons.dart';
 
 import 'firebase_options.dart';
 
@@ -63,11 +65,14 @@ void main() async {
   final locationProvider = LocationProvider();
   final batteryProvider = BatteryProvider();
   await authProvider.init();
-  await themeProvider.init();
-  await localProvider.init();
-  await timetableProvider.init();
-  await locationProvider.init();
-  await batteryProvider.init();
+
+  await Future.wait([
+    themeProvider.init(),
+    localProvider.init(),
+    if (authProvider.isAuthenticated) timetableProvider.init(),
+    if (authProvider.isAuthenticated) locationProvider.init(),
+    if (authProvider.isAuthenticated) batteryProvider.init()
+  ]);
 
   initializeSystemUI();
 
@@ -161,17 +166,22 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
     final localProvider = Provider.of<LocaleProvider>(context);
     final authProvider = Provider.of<AuthProvider>(context);
 
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: RikeTheme.lightTheme,
-      darkTheme: RikeTheme.darkTheme,
-      themeMode: themeProvider.isDarkMode ? ThemeMode.dark : ThemeMode.light,
-      home: authProvider.isAuthenticated ? const HomePage() : OnBoardingPage(),
-      getPages: AppPages.pages,
-      initialBinding: AppBinding(),
-      translations: LanguageStrings(),
-      locale: localProvider.locale,
-      fallbackLocale: localProvider.localeDefault,
+    return SkeletonTheme(
+      shimmerGradient: SkeletonColorStyle.DEFAULT_SHIMMER_LIGHT,
+      darkShimmerGradient: SkeletonColorStyle.DEFAULT_SHIMMER_DARK,
+      child: GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: RikeTheme.lightTheme,
+        darkTheme: RikeTheme.darkTheme,
+        themeMode: themeProvider.isDarkMode ? ThemeMode.dark : ThemeMode.light,
+        home:
+            authProvider.isAuthenticated ? const HomePage() : OnBoardingPage(),
+        getPages: AppPages.pages,
+        initialBinding: AppBinding(),
+        translations: LanguageStrings(),
+        locale: localProvider.locale,
+        fallbackLocale: localProvider.localeDefault,
+      ),
     );
   }
 }
