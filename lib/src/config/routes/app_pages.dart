@@ -23,7 +23,7 @@ abstract class AppPages {
     ),
     GetPage(
       name: Routes.HOME,
-      page: () => HomePage(),
+      page: () => const HomePage(),
     ),
     GetPage(
       name: Routes.TIMETABLE,
