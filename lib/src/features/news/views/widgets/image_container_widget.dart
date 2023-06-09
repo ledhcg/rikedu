@@ -61,7 +61,6 @@ class ImageContainer extends StatelessWidget {
           children: [
             Skeleton(
               isLoading: isLoading,
-              duration: const Duration(seconds: 4),
               skeleton: const SkeletonAvatar(
                 style: SkeletonAvatarStyle(
                     width: double.infinity, height: double.infinity),
@@ -92,6 +91,8 @@ class ImageContainer extends StatelessWidget {
                       ),
                       errorWidget: (context, url, error) =>
                           const Icon(Icons.error),
+                      fadeInDuration: const Duration(milliseconds: 0),
+                      fadeOutDuration: const Duration(milliseconds: 0),
                     ),
             ),
             Container(padding: padding, child: child),
