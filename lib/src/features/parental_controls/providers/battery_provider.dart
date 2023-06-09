@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rikedu/src/utils/constants/firebase_constants.dart';
+import 'package:rikedu/src/utils/constants/roles_constants.dart';
 import 'package:rikedu/src/utils/constants/storage_constants.dart';
 import 'package:rikedu/src/utils/service/firebase_service.dart';
 import 'package:rikedu/src/utils/service/storage_service.dart';
@@ -24,23 +25,37 @@ class BatteryProvider with ChangeNotifier {
   final RxString _studentID = ''.obs;
   String get studentID => _studentID.value;
 
+  final RxString _userRole = ''.obs;
+  String get userRole => _userRole.value;
+
   Future<void> init() async {
+    await getRoleUser();
     await getStudentID();
-    _getBatteryInfo();
-    battery.onBatteryStateChanged.listen((BatteryState batteryState) {
-      _getBatteryInfo();
-    });
+    if (userRole == RolesConst.STUDENT) {
+      _updateBatteryInfo();
+      battery.onBatteryStateChanged.listen((BatteryState batteryState) {
+        _updateBatteryInfo();
+      });
+    }
   }
 
   Future<void> getStudentID() async {
     if (storageService.hasData(StorageConst.STUDENT_ID)) {
-      final studentID = await storageService.readData(StorageConst.STUDENT_ID);
-      _studentID.value =
-          storageService.hasData(StorageConst.STUDENT_ID) ? studentID : '';
+      _studentID.value = await storageService.readData(StorageConst.STUDENT_ID);
     }
   }
 
-  void _getBatteryInfo() async {
+  Future<void> getRoleUser() async {
+    if (storageService.hasData(StorageConst.USER_ROLE)) {
+      _userRole.value = await storageService.readData(StorageConst.USER_ROLE);
+    }
+  }
+
+  Future<Stream<DocumentSnapshot<Object?>>> streamBattery() async {
+    return await firebaseService.streamData(FirebaseConst.USER, studentID);
+  }
+
+  void _updateBatteryInfo() async {
     _batteryLevel.value = await battery.batteryLevel;
     _batteryState.value = await battery.batteryState;
     await firebaseService.setData(

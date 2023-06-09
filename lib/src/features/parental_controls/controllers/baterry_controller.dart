@@ -1,4 +1,5 @@
 import 'package:battery_plus/battery_plus.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,6 +9,8 @@ import 'package:rikedu/src/utils/constants/colors_constants.dart';
 
 class BatteryController extends GetxController {
   final batteryProvider = Provider.of<BatteryProvider>(Get.context!);
+
+  Stream<DocumentSnapshot<Object?>>? _dataStream;
 
   final Rx<Icon?> _iconBattery = Rx<Icon?>(null);
   Icon? get iconBattery => _iconBattery.value;
@@ -24,11 +27,26 @@ class BatteryController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
-    _batteryState.value = batteryProvider.batteryState.toString();
-    _batteryLevel.value = batteryProvider.batteryLevel;
-    print("Battery: $batteryState - $batteryLevel");
-    _iconBattery.value = await setBatteryIcon(batteryLevel, batteryState);
+    listenDataLocation();
     _isLoading.value = false;
+  }
+
+  Future<void> listenDataLocation() async {
+    _dataStream = await batteryProvider.streamBattery();
+    _dataStream!.listen((snapshot) async {
+      // Handle the received snapshot
+      if (snapshot.exists) {
+        Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
+        _batteryState.value = data['batteryState'];
+        _batteryLevel.value = data['batteryLevel'];
+        _iconBattery.value = await setBatteryIcon(batteryLevel, batteryState);
+        print("BATTERY: ${data['batteryState']} - ${data['batteryLevel']}");
+      } else {
+        print("The document doesn't exist");
+      }
+    }, onError: (error) {
+      print(error);
+    });
   }
 
   Future<Icon> setBatteryIcon(int batteryLevel, String batteryState) async {
