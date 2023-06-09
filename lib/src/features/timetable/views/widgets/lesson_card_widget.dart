@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rikedu/src/features/news/views/widgets/image_container_widget.dart';
 
 class LessonCardWidget extends StatelessWidget {
   final String subject;
@@ -78,34 +79,13 @@ class LessonCardWidget extends StatelessWidget {
                         ),
                         Row(
                           children: [
-                            SizedBox(
+                            ImageContainer(
                               width: 20,
                               height: 20,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: Image.network(
-                                  teacherImage,
-                                  loadingBuilder: (BuildContext context,
-                                      Widget child,
-                                      ImageChunkEvent? loadingProgress) {
-                                    if (loadingProgress == null) {
-                                      return child;
-                                    }
-                                    return Center(
-                                      child: CircularProgressIndicator(
-                                        value: loadingProgress
-                                                    .expectedTotalBytes !=
-                                                null
-                                            ? loadingProgress
-                                                    .cumulativeBytesLoaded /
-                                                loadingProgress
-                                                    .expectedTotalBytes!
-                                            : null,
-                                      ),
-                                    );
-                                  },
-                                ),
-                              ),
+                              margin: const EdgeInsets.all(0),
+                              borderRadius: 10,
+                              isLoading: false,
+                              imageUrl: teacherImage,
                             ),
                             const SizedBox(
                               width: 5,

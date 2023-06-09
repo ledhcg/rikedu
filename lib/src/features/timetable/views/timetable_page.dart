@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:rikedu/src/features/news/views/widgets/image_container_widget.dart';
 import 'package:rikedu/src/features/settings/providers/locale_provider.dart';
 import 'package:rikedu/src/features/timetable/controllers/timetable_controller.dart';
 import 'package:rikedu/src/features/timetable/models/lesson_card_model.dart';
@@ -254,6 +255,7 @@ class TimetablePage extends GetView<TimetableController> {
                                 horizontal: 20.0, vertical: 0),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -284,23 +286,14 @@ class TimetablePage extends GetView<TimetableController> {
                                     ),
                                   ],
                                 ),
-                                CircleAvatar(
-                                  backgroundColor: Colors.transparent,
-                                  child: Stack(
-                                    fit: StackFit.expand,
-                                    children: [
-                                      ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(126.0),
-                                          child: Image.network(
-                                              controller.student.avatarUrl)),
-                                      Align(
-                                        alignment: Alignment.bottomLeft,
-                                        child: Container(),
-                                      )
-                                    ],
-                                  ),
-                                )
+                                ImageContainer(
+                                  width: 40,
+                                  height: 40,
+                                  margin: const EdgeInsets.all(0),
+                                  borderRadius: 25,
+                                  isLoading: false,
+                                  imageUrl: controller.student.avatarUrl,
+                                ),
                               ],
                             ),
                           ),
