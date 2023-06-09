@@ -4,8 +4,9 @@ import 'package:get/get.dart';
 import 'package:rikedu/src/config/routes/app_pages.dart';
 import 'package:rikedu/src/features/parental_controls/controllers/parental_controls_controller.dart';
 import 'package:rikedu/src/features/parental_controls/views/widgets/map_widget.dart';
-import 'package:rikedu/src/features/parental_controls/views/widgets/message_dialog.dart';
+import 'package:rikedu/src/features/parental_controls/views/widgets/message_modal.dart';
 import 'package:rikedu/src/features/parental_controls/views/widgets/phone_status_widget.dart';
+import 'package:rikedu/src/features/settings/views/widgets/popover.dart';
 import 'package:rikedu/src/utils/widgets/loading_widget.dart';
 
 class ParentalControlsPage extends GetView<ParentalControlsController> {
@@ -217,7 +218,20 @@ class InfoBox extends GetView<ParentalControlsController> {
                   size: 25,
                   color: Theme.of(context).colorScheme.primary,
                 ),
-                onPressed: () => Get.dialog(const MessageDialog()),
+                onPressed: () => showModalBottomSheet(
+                  context: context,
+                  isScrollControlled: true,
+                  backgroundColor: Colors.transparent,
+                  builder: (context) {
+                    return Padding(
+                      padding: EdgeInsets.only(
+                          bottom: MediaQuery.of(context).viewInsets.bottom),
+                      child: const Popover(
+                        child: MessageModal(),
+                      ),
+                    );
+                  },
+                ),
               ),
             ],
           ),
