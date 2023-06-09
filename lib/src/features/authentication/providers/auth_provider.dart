@@ -43,24 +43,23 @@ class AuthProvider extends ChangeNotifier {
     await getData();
   }
 
-  Future<void> listenStudentActive() async {
-    Stream<DocumentSnapshot<Object?>> dataStream =
-        await firebaseService.streamData(FirebaseConst.USER, student.id);
-    dataStream.listen((snapshot) async {
-      // Handle the received snapshot
-      if (snapshot.exists) {
-        Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
-        _studentIsActive.value = data['isActive'];
-      } else {
-        // The document doesn't exist
-      }
-    }, onError: (error) {
-      // Handle any errors that occur during streaming
-    });
-  }
+  // Future<void> listenStudentActive() async {
+  //   Stream<DocumentSnapshot<Object?>> dataStream =
+  //       await firebaseService.streamData(FirebaseConst.USER, student.id);
+  //   dataStream.listen((snapshot) async {
+  //     // Handle the received snapshot
+  //     if (snapshot.exists) {
+  //       Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
+  //       _studentIsActive.value = data['isActive'];
+  //     } else {
+  //       // The document doesn't exist
+  //     }
+  //   }, onError: (error) {
+  //     // Handle any errors that occur during streaming
+  //   });
+  // }
 
   Future<void> setStudentOnline() async {
-    print("STUDENT ID: ${student.id}");
     await firebaseService.setData(
       FirebaseConst.USER,
       student.id,
@@ -69,7 +68,7 @@ class AuthProvider extends ChangeNotifier {
       },
       SetOptions(merge: true),
     );
-    print("Kich hoat trang thai o provider");
+    print("Student active: Online");
   }
 
   Future<void> setStudentOffline() async {
@@ -81,7 +80,7 @@ class AuthProvider extends ChangeNotifier {
       },
       SetOptions(merge: true),
     );
-    print("Huy trang thai o provider");
+    print("Student active: Offline");
   }
 
   Future<void> getData() async {
@@ -97,7 +96,7 @@ class AuthProvider extends ChangeNotifier {
         _student.value = user;
         _parent.value = await getParent();
         await setStudentOnline();
-        await listenStudentActive();
+        // await listenStudentActive();
       }
     }
   }
