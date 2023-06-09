@@ -12,10 +12,17 @@ class SettingsController extends GetxController {
   final RxBool _isLoading = true.obs;
   bool get isLoading => _isLoading.value;
 
+  final RxBool _isSettingMode = true.obs;
+  bool get isSettingMode => _isSettingMode.value;
+
   @override
   void onInit() {
     super.onInit();
     _user.value = authProvider.user;
     _isLoading.value = false;
+  }
+
+  void changeSettingMode() {
+    _isSettingMode.value = !isSettingMode;
   }
 }
