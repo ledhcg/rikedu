@@ -12,19 +12,10 @@ class LightTheme {
 
   static InputDecorationTheme lightInputDecorationTheme =
       const InputDecorationTheme(
-    prefixIconColor: rikePrimaryColor,
-    suffixIconColor: rikePrimaryColor,
-    labelStyle: TextStyle(
-      color: rikePrimaryColor,
-    ),
-    enabledBorder: UnderlineInputBorder(
-      borderSide: BorderSide(
-        color: rikePrimaryColor,
-      ),
-    ),
-    focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(50.0)),
-      borderSide: BorderSide(color: rikePrimaryColor),
+    isDense: true,
+    floatingLabelAlignment: FloatingLabelAlignment.center,
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(10.0)),
     ),
   );
 
@@ -56,6 +47,7 @@ class LightTheme {
         statusBarColor: Colors.transparent,
       ),
     ),
+    inputDecorationTheme: lightInputDecorationTheme,
     textTheme: const TextTheme(
       headlineLarge: TextStyle(
         fontWeight: FontWeight.w700,
