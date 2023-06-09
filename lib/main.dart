@@ -5,36 +5,22 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:provider/provider.dart';
+import 'package:rikedu/src/config/routes/app_binding.dart';
 import 'package:rikedu/src/config/routes/app_pages.dart';
 import 'package:rikedu/src/config/themes/themes.dart';
-import 'package:rikedu/src/features/authentication/controllers/auth_controller.dart';
 import 'package:rikedu/src/features/authentication/controllers/home_controller.dart';
 import 'package:rikedu/src/features/authentication/providers/auth_provider.dart';
-import 'package:rikedu/src/features/news/controllers/post_controller.dart';
 import 'package:rikedu/src/features/news/views/news_page.dart';
-import 'package:rikedu/src/features/on_boarding/controllers/on_boarding_controller.dart';
 import 'package:rikedu/src/features/on_boarding/screens/on_boarding_page.dart';
-import 'package:rikedu/src/features/parental_controls/controllers/baterry_controller.dart';
-import 'package:rikedu/src/features/parental_controls/controllers/group_controller.dart';
-import 'package:rikedu/src/features/parental_controls/controllers/map_controller.dart';
-import 'package:rikedu/src/features/parental_controls/controllers/parental_controls_controller.dart';
-import 'package:rikedu/src/features/parental_controls/controllers/school_controller.dart';
-import 'package:rikedu/src/features/parental_controls/controllers/student_active_controller.dart';
 import 'package:rikedu/src/features/parental_controls/providers/battery_provider.dart';
 import 'package:rikedu/src/features/parental_controls/providers/location_provider.dart';
 import 'package:rikedu/src/features/parental_controls/views/school_page.dart';
 import 'package:rikedu/src/features/parental_controls/views/widgets/map_widget.dart';
 import 'package:rikedu/src/features/performance/screens/performance.dart';
-import 'package:rikedu/src/features/settings/controllers/about_controller.dart';
-import 'package:rikedu/src/features/settings/controllers/language_controller.dart';
-import 'package:rikedu/src/features/settings/controllers/logout_controller.dart';
-import 'package:rikedu/src/features/settings/controllers/setting_controller.dart';
-import 'package:rikedu/src/features/settings/controllers/theme_controller.dart';
 import 'package:rikedu/src/features/settings/providers/locale_provider.dart';
 import 'package:rikedu/src/features/settings/providers/theme_provider.dart';
 import 'package:rikedu/src/features/parental_controls/views/parental_controls_page.dart';
 import 'package:rikedu/src/features/settings/views/settings_page.dart';
-import 'package:rikedu/src/features/timetable/controllers/timetable_controller.dart';
 import 'package:rikedu/src/features/timetable/providers/timetable_provider.dart';
 import 'package:rikedu/src/features/timetable/views/timetable_page.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -328,27 +314,5 @@ class MainPage extends StatelessWidget {
         ],
       ),
     );
-  }
-}
-
-class AppBinding extends Bindings {
-  @override
-  void dependencies() {
-    Get.lazyPut<OnBoardingController>(() => OnBoardingController());
-    Get.lazyPut<AuthController>(() => AuthController());
-    Get.lazyPut<SettingsController>(() => SettingsController());
-    Get.lazyPut<ThemeController>(() => ThemeController());
-    Get.lazyPut<LanguageController>(() => LanguageController());
-    Get.lazyPut<LogoutController>(() => LogoutController());
-    Get.lazyPut<TimetableController>(() => TimetableController());
-    Get.lazyPut<MapController>(() => MapController());
-    Get.lazyPut<BatteryController>(() => BatteryController());
-    Get.lazyPut<PostController>(() => PostController());
-    Get.lazyPut<ParentalControlsController>(() => ParentalControlsController());
-    Get.lazyPut<StudentActiveController>(() => StudentActiveController());
-    Get.lazyPut<HomeController>(() => HomeController());
-    Get.lazyPut<GroupController>(() => GroupController());
-    Get.lazyPut<AboutController>(() => AboutController());
-    Get.lazyPut<SchoolController>(() => SchoolController());
   }
 }
