@@ -140,10 +140,11 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
 
   void setUserActive(bool isActive) {
     final authProvider = Provider.of<AuthProvider>(context, listen: false);
-    isActive
-        ? authProvider.setStudentOnline()
-        : authProvider.setStudentOffline();
-    print("Student active: $isActive");
+    authProvider.role == RolesConst.STUDENT
+        ? isActive
+            ? authProvider.setStudentOnline()
+            : authProvider.setStudentOffline()
+        : print("User active: $isActive");
   }
 
   @override
