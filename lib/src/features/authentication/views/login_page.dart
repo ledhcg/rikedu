@@ -41,6 +41,8 @@ class LoginPage extends GetView<AuthController> {
                                 controller: controller.emailController,
                                 decoration: InputDecoration(
                                   labelText: 'Email'.tr,
+                                  prefixIcon:
+                                      const Icon(FluentIcons.mail_24_regular),
                                 ),
                                 validator: controller.emailValidator,
                               ),
@@ -53,11 +55,13 @@ class LoginPage extends GetView<AuthController> {
                                   suffixIcon: IconButton(
                                     icon: Icon(
                                       controller.isObscure
-                                          ? FluentIcons.eye_off_24_filled
-                                          : FluentIcons.eye_24_filled,
+                                          ? FluentIcons.eye_off_24_regular
+                                          : FluentIcons.eye_24_regular,
                                     ),
                                     onPressed: controller.toggleObscure,
                                   ),
+                                  prefixIcon:
+                                      const Icon(FluentIcons.key_24_regular),
                                   labelText: 'Password'.tr,
                                 ),
                                 obscureText: controller.isObscure,
