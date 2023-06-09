@@ -34,11 +34,6 @@ class MapController extends GetxController {
   void onInit() async {
     super.onInit();
     setLocationMarker();
-    if (locationProvider.studentID == '') {
-      await locationProvider.getStudentID();
-      await locationProvider.listenLocation();
-    }
-    _currentPosition.value = locationProvider.currentPosition;
     listenDataLocation();
     _isLoading.value = false;
   }
