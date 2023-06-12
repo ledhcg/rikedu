@@ -21,6 +21,8 @@ class PostController extends GetxController {
     Post.defaultPost(),
     Post.defaultPost(),
     Post.defaultPost(),
+    Post.defaultPost(),
+    Post.defaultPost(),
   ]);
   final Rx<List<PostCategory>> _categories =
       Rx<List<PostCategory>>(<PostCategory>[
@@ -44,6 +46,10 @@ class PostController extends GetxController {
 
   final Rx<User> _admin = User.defaultUser().obs;
   User get admin => _admin.value;
+
+  final RxInt _pageIndex = 0.obs;
+  int get pageIndex => _pageIndex.value;
+  set pageIndex(int value) => _pageIndex.value = value;
 
   @override
   void onInit() async {
@@ -75,7 +81,7 @@ class PostController extends GetxController {
         _listNews.value = posts.map((post) => Post.fromJson(post)).toList();
 
         _newsOfTheDay.value = listNews[0];
-        _breakingNews.value = listNews.sublist(1, 10).toList();
+        _breakingNews.value = listNews.sublist(1, 6).toList();
       }
     });
   }

@@ -14,7 +14,7 @@ dependencies:
   flutter_launcher_icons: ^0.13.1
   get: ^4.6.5
   fluentui_system_icons: ^1.1.199
-  google_maps_flutter: ^2.2.5
+  google_maps_flutter: ^2.3.0
   location: ^4.4.0
   firebase_core: ^2.10.0
   firebase_analytics: ^10.2.1
@@ -52,6 +52,9 @@ dependencies:
   cached_network_image: ^3.2.3
   animated_shimmer: ^1.0.0
   skeletons: ^0.0.3
+  carousel_indicator: ^1.0.6
+  usage_stats: ^1.2.0
+  flutter_animarker: ^3.2.0
 
 dev_dependencies:
   flutter_test:
