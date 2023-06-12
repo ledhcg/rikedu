@@ -56,7 +56,7 @@ class EditProfileController extends GetxController
   @override
   void onInit() async {
     super.onInit();
-    _user.value = authProvider.student;
+    _user.value = authProvider.user;
     await getDataFields();
     _isLoading.value = false;
     loadingController = AnimationController(

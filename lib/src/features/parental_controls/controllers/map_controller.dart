@@ -33,8 +33,8 @@ class MapController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
-    setLocationMarker();
     listenDataLocation();
+    setLocationMarker();
     _isLoading.value = false;
   }
 

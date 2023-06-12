@@ -29,8 +29,8 @@ class StudentActiveController extends GetxController {
   }
 
   Future<void> _listenStudentStatus() async {
-    _dataStream =
-        await firebaseService.streamData(FirebaseConst.USER, studentID);
+    _dataStream = await firebaseService.streamData(
+        FirebaseConst.STUDENT_STATUS, studentID);
     _dataStream!.listen((snapshot) async {
       // Handle the received snapshot
       if (snapshot.exists) {

@@ -52,14 +52,15 @@ class BatteryProvider with ChangeNotifier {
   }
 
   Future<Stream<DocumentSnapshot<Object?>>> streamBattery() async {
-    return await firebaseService.streamData(FirebaseConst.USER, studentID);
+    return await firebaseService.streamData(
+        FirebaseConst.STUDENT_BATTERY, studentID);
   }
 
   void _updateBatteryInfo() async {
     _batteryLevel.value = await battery.batteryLevel;
     _batteryState.value = await battery.batteryState;
     await firebaseService.setData(
-      FirebaseConst.USER,
+      FirebaseConst.STUDENT_BATTERY,
       studentID,
       {
         'batteryLevel': batteryLevel,

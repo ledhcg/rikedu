@@ -61,7 +61,7 @@ class AuthProvider extends ChangeNotifier {
 
   Future<void> setStudentOnline() async {
     await firebaseService.setData(
-      FirebaseConst.USER,
+      FirebaseConst.STUDENT_STATUS,
       student.id,
       {
         'isActive': true,
@@ -73,7 +73,7 @@ class AuthProvider extends ChangeNotifier {
 
   Future<void> setStudentOffline() async {
     await firebaseService.setData(
-      FirebaseConst.USER,
+      FirebaseConst.STUDENT_STATUS,
       student.id,
       {
         'isActive': false,
