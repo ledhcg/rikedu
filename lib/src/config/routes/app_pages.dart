@@ -49,6 +49,7 @@ abstract class AppPages {
     GetPage(
       name: Routes.APP_USAGE,
       page: () => const AppUsagePage(),
+      binding: ParentalControlsBinding(),
     ),
     GetPage(
       name: Routes.RESULTS,

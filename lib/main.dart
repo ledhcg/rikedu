@@ -12,6 +12,7 @@ import 'package:rikedu/src/features/authentication/controllers/home_controller.d
 import 'package:rikedu/src/features/authentication/providers/auth_provider.dart';
 import 'package:rikedu/src/features/news/views/news_page.dart';
 import 'package:rikedu/src/features/on_boarding/screens/on_boarding_page.dart';
+import 'package:rikedu/src/features/parental_controls/providers/app_usage_provider.dart';
 import 'package:rikedu/src/features/parental_controls/providers/battery_provider.dart';
 import 'package:rikedu/src/features/parental_controls/providers/location_provider.dart';
 import 'package:rikedu/src/features/parental_controls/views/school_page.dart';
@@ -50,6 +51,7 @@ void main() async {
   final timetableProvider = TimetableProvider();
   final locationProvider = LocationProvider();
   final batteryProvider = BatteryProvider();
+  final appUsageProvider = AppUsageProvider();
   await authProvider.init();
 
   await Future.wait([
@@ -57,7 +59,8 @@ void main() async {
     localProvider.init(),
     if (authProvider.isAuthenticated) timetableProvider.init(),
     if (authProvider.isAuthenticated) locationProvider.init(),
-    if (authProvider.isAuthenticated) batteryProvider.init()
+    if (authProvider.isAuthenticated) batteryProvider.init(),
+    if (authProvider.isAuthenticated) appUsageProvider.init()
   ]);
 
   initializeSystemUI();
@@ -69,6 +72,7 @@ void main() async {
     ChangeNotifierProvider(create: (_) => timetableProvider),
     ChangeNotifierProvider(create: (_) => locationProvider),
     ChangeNotifierProvider(create: (_) => batteryProvider),
+    ChangeNotifierProvider(create: (_) => appUsageProvider),
   ], child: const MainApp()));
 }
 

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:rikedu/src/features/parental_controls/controllers/app_usage_controller.dart';
 import 'package:rikedu/src/features/parental_controls/controllers/exercise_controller.dart';
 import 'package:rikedu/src/features/parental_controls/controllers/group_controller.dart';
 import 'package:rikedu/src/features/parental_controls/controllers/map_controller.dart';
@@ -13,5 +14,6 @@ class ParentalControlsBinding extends Bindings {
     Get.lazyPut<NotificationController>(() => NotificationController());
     Get.lazyPut<ExerciseController>(() => ExerciseController());
     Get.lazyPut<MapController>(() => MapController());
+    Get.lazyPut<AppUsageController>(() => AppUsageController());
   }
 }

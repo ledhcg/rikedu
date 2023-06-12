@@ -49,7 +49,8 @@ class LocationProvider with ChangeNotifier {
   }
 
   Future<Stream<DocumentSnapshot<Object?>>> streamLocation() async {
-    return await firebaseService.streamData(FirebaseConst.USER, studentID);
+    return await firebaseService.streamData(
+        FirebaseConst.STUDENT_LOCATION, studentID);
   }
 
   void listenLocation() {
@@ -59,7 +60,7 @@ class LocationProvider with ChangeNotifier {
       notifyListeners();
     }).listen((LocationData currentLocation) async {
       await firebaseService.setData(
-        FirebaseConst.USER,
+        FirebaseConst.STUDENT_LOCATION,
         studentID,
         {
           'latitude': currentLocation.latitude,
