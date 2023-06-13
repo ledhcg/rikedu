@@ -35,4 +35,14 @@ class FirebaseService extends GetxService {
       String collection, String documentId) async {
     return _firestore!.collection(collection).doc(documentId).snapshots();
   }
+
+  Future<Stream<QuerySnapshot<Map<String, dynamic>>>> listenDataChange(
+      String collection) async {
+    return _firestore!.collection(collection).snapshots();
+  }
+
+  CollectionReference<Map<String, dynamic>> collectionReference(
+      String collection) {
+    return _firestore!.collection(collection);
+  }
 }

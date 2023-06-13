@@ -3,4 +3,5 @@ class FirebaseConst {
   static const String STUDENT_LOCATION = "student_location";
   static const String STUDENT_STATUS = "student_status";
   static const String STUDENT_APP_USAGE = "student_app_usage";
+  static const String USER_NOTIFICATION = "user_notification";
 }

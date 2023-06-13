@@ -47,7 +47,11 @@ class MessageModal extends GetView<ParentalControlsController> {
                 ),
                 const SizedBox(height: 16.0),
                 FilledButton(
-                  onPressed: () => controller.sendNoti(),
+                  onPressed: () {
+                    controller.sendNoti();
+                    controller.clearForm();
+                    FocusScope.of(context).requestFocus(FocusNode());
+                  },
                   child: Text('Send'.tr),
                 ),
               ],

@@ -31,6 +31,7 @@ import 'package:rikedu/src/utils/constants/roles_constants.dart';
 import 'package:rikedu/src/utils/constants/storage_constants.dart';
 import 'package:rikedu/src/utils/service/api_service.dart';
 import 'package:rikedu/src/utils/service/firebase_service.dart';
+import 'package:rikedu/src/utils/service/notification_service.dart';
 import 'package:rikedu/src/utils/service/storage_service.dart';
 import 'package:skeletons/skeletons.dart';
 
@@ -43,6 +44,9 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await Get.putAsync<StorageService>(() => StorageService().init());
   await Get.putAsync<FirebaseService>(() => FirebaseService().init());
+  final notificationService = NotificationService();
+  await Get.putAsync<NotificationService>(() => notificationService.init());
+  notificationService.listenToNotificationChanges();
   initializeDateFormatting(Get.locale.toString());
 
   final authProvider = AuthProvider();

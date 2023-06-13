@@ -3,10 +3,13 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:rikedu/src/features/authentication/models/user_model.dart';
 import 'package:rikedu/src/features/authentication/providers/auth_provider.dart';
+import 'package:rikedu/src/utils/constants/firebase_constants.dart';
+import 'package:rikedu/src/utils/service/firebase_service.dart';
 import 'package:rikedu/src/utils/widgets/snackbar_widget.dart';
 
 class ParentalControlsController extends GetxController {
   final authProvider = Provider.of<AuthProvider>(Get.context!);
+  final FirebaseService firebaseService = Get.find();
 
   final Rx<User> _student = User.defaultUser().obs;
   User get student => _student.value;
@@ -42,19 +45,22 @@ class ParentalControlsController extends GetxController {
     return null;
   }
 
+  void clearForm() {
+    titleController.clear();
+    messageController.clear();
+  }
+
   void sendNoti() async {
     if (formKey.currentState!.validate()) {
-      SnackbarWidget.showSnackbar('Thành công');
-
-      // _isLoading.value = true;
-      // await authProvider.login(_email.value, _password.value);
-      // _isLoading.value = false;
-      // if (authProvider.isAuthenticated) {
-      //   Get.offAllNamed(Routes.HOME);
-      //   SnackbarWidget.showSnackbar(authProvider.responseMessage);
-      // } else {
-      //   SnackbarWidget.showSnackbar(authProvider.responseMessage);
-      // }
+      final collectionRef =
+          firebaseService.collectionReference(FirebaseConst.USER_NOTIFICATION);
+      final documentRef = await collectionRef.add({
+        'title': titleNoti,
+        'message': messageNoti,
+        'to_user_id': student.id,
+        'from': 'Other',
+      });
+      print('Notification added with ID: ${documentRef.id}');
     } else {
       SnackbarWidget.showSnackbar('Please enter valid credentials');
     }
