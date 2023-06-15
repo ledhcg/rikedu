@@ -2,6 +2,7 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rikedu/src/config/routes/app_pages.dart';
+import 'package:rikedu/src/features/news/views/widgets/image_container_widget.dart';
 import 'package:rikedu/src/features/parental_controls/controllers/parental_controls_controller.dart';
 import 'package:rikedu/src/features/parental_controls/views/widgets/map_widget.dart';
 import 'package:rikedu/src/features/parental_controls/views/widgets/message_modal.dart';
@@ -55,7 +56,7 @@ class ParentalControlsPage extends GetView<ParentalControlsController> {
                     ),
                   ),
                   Positioned(
-                    top: 50,
+                    top: 60,
                     right: 20,
                     left: 20,
                     height: 80,
@@ -178,12 +179,16 @@ class InfoBox extends GetView<ParentalControlsController> {
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 textBaseline: TextBaseline.alphabetic,
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(126.0),
-                    child: Image.network(controller.student.avatarUrl),
+                  ImageContainer(
+                    width: 50,
+                    height: 50,
+                    margin: const EdgeInsets.all(0),
+                    borderRadius: 25,
+                    isLoading: false,
+                    imageUrl: controller.student.avatarUrl,
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
