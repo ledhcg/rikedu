@@ -6,6 +6,7 @@ import 'package:rikedu/src/features/news/views/news_page.dart';
 import 'package:rikedu/src/features/parental_controls/bindings/parental_controls_binding.dart';
 import 'package:rikedu/src/features/parental_controls/views/app_usage_page.dart';
 import 'package:rikedu/src/features/parental_controls/views/exercise_detail_page.dart';
+import 'package:rikedu/src/features/parental_controls/views/exercise_detail_view_file.dart';
 import 'package:rikedu/src/features/parental_controls/views/exercise_page.dart';
 import 'package:rikedu/src/features/parental_controls/views/group_page.dart';
 import 'package:rikedu/src/features/parental_controls/views/notification_page.dart';
@@ -69,6 +70,11 @@ abstract class AppPages {
     GetPage(
       name: Routes.EXERCISE_DETAIL,
       page: () => const ExerciseDetailPage(),
+      binding: ParentalControlsBinding(),
+    ),
+    GetPage(
+      name: Routes.EXERCISE_DETAIL_VIEW_FILE,
+      page: () => const ExerciseDetailViewFilePage(),
       binding: ParentalControlsBinding(),
     ),
   ];

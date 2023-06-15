@@ -16,4 +16,5 @@ abstract class Routes {
 
   static const EXERCISE = '/exercise';
   static const EXERCISE_DETAIL = '/exercise_detail';
+  static const EXERCISE_DETAIL_VIEW_FILE = '/exercise_detail_view_file';
 }
