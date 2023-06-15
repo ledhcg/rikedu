@@ -6,6 +6,7 @@ import 'package:rikedu/src/features/authentication/providers/auth_provider.dart'
 import 'package:rikedu/src/utils/constants/firebase_constants.dart';
 import 'package:rikedu/src/utils/service/firebase_service.dart';
 import 'package:rikedu/src/utils/widgets/snackbar_widget.dart';
+import 'package:uuid/uuid.dart';
 
 class ParentalControlsController extends GetxController {
   final authProvider = Provider.of<AuthProvider>(Get.context!);
@@ -55,10 +56,14 @@ class ParentalControlsController extends GetxController {
       final collectionRef =
           firebaseService.collectionReference(FirebaseConst.USER_NOTIFICATION);
       final documentRef = await collectionRef.add({
+        'id': const Uuid().v1(),
         'title': titleNoti,
         'message': messageNoti,
         'to_user_id': student.id,
         'from': 'Other',
+        'is_read': 0,
+        'created_at': DateTime.now(),
+        'updated_at': DateTime.now(),
       });
       print('Notification added with ID: ${documentRef.id}');
     } else {
