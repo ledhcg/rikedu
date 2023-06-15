@@ -76,7 +76,7 @@ class AuthController extends GetxController {
       _isLoading.value = false;
       if (authProvider.isAuthenticated) {
         Get.offAllNamed(Routes.HOME);
-        SnackbarWidget.showSnackbar(authProvider.responseMessage);
+        SnackbarWidget.showSnackbarSuccess(authProvider.responseMessage);
       } else {
         SnackbarWidget.showSnackbar(authProvider.responseMessage);
       }
