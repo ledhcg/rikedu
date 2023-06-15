@@ -5,7 +5,7 @@ class FilesConst {
 
   static const String WEEKEND_TIMETABLE = "assets/images/timetable/weekend.png";
 
-  static const String ICON_MARKER = "assets/images/map/map-marker.png";
+  static const String ICON_MARKER = "assets/images/map/map2-marker.png";
   static const String ICON_SCHOOL_MARKER =
       "assets/images/map/school-marker.png";
 
