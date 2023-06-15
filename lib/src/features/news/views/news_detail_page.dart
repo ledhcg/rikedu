@@ -13,6 +13,7 @@ class NewsDetailPage extends GetView<PostController> {
     final post = Get.arguments as Post;
 
     return ImageContainer(
+      borderRadius: 0,
       width: double.infinity,
       imageUrl: post.image.coverUrl,
       overlay: true,
