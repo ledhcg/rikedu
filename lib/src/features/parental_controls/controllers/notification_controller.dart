@@ -1,23 +1,34 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:rikedu/src/features/authentication/models/user_model.dart';
 import 'package:rikedu/src/features/authentication/providers/auth_provider.dart';
 import 'package:rikedu/src/features/parental_controls/models/notification_model.dart';
 import 'package:rikedu/src/utils/constants/api_constants.dart';
+import 'package:rikedu/src/utils/constants/firebase_constants.dart';
 import 'package:rikedu/src/utils/service/api_service.dart';
+import 'package:rikedu/src/utils/service/firebase_service.dart';
 
 class NotificationController extends GetxController {
   final ApiService _apiService = Get.find();
+  final FirebaseService _firebaseService = Get.find();
   final authProvider = Provider.of<AuthProvider>(Get.context!);
 
   final Rx<List<Notifi>> _notifications = Rx<List<Notifi>>(<Notifi>[]);
   List<Notifi> get notifications => _notifications.value;
+
+  final Rx<List<Notifi>> _notificationsRealtime = Rx<List<Notifi>>(<Notifi>[]);
+  List<Notifi> get notificationsRealtime => _notificationsRealtime.value;
 
   final Rx<User> _user = User.defaultUser().obs;
   User get user => _user.value;
 
   final RxBool _isLoading = true.obs;
   bool get isLoading => _isLoading.value;
+
+  final RxBool _isLoadingRealtime = true.obs;
+  bool get isLoadingRealtime => _isLoadingRealtime.value;
 
   List<String> tabs = ['School', 'Other'];
 
@@ -26,10 +37,22 @@ class NotificationController extends GetxController {
     super.onInit();
     _user.value = authProvider.user;
     await _fetchData();
+    _listenNotificationsRealtime();
     _isLoading.value = false;
   }
 
   Future<void> _fetchData() async {
+    try {
+      await Future.wait([
+        _fetchNotifications(),
+        _fetchNotificationsRealtime(),
+      ]);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> _fetchNotifications() async {
     try {
       final response = await _apiService
           .get("${ApiConst.NOTIFICATIONS_ENDPOINT}/user/${user.id}");
@@ -45,6 +68,65 @@ class NotificationController extends GetxController {
     }
   }
 
+  Future<void> _fetchNotificationsRealtime() async {
+    try {
+      await _firebaseService
+          .getDataCollection(FirebaseConst.USER_NOTIFICATION)
+          .then((querySnapshot) {
+        List<dynamic> notificationsSource = [];
+        for (final DocumentSnapshot doc in querySnapshot.docs) {
+          final data = doc.data() as Map<String, dynamic>;
+
+          notificationsSource.add({
+            'id': doc.id,
+            'title': data['title'],
+            'message': data['message'],
+            'to_user_id': data['to_user_id'],
+            'from': data['from'],
+            'is_read': data['is_read'],
+            'created_at': formatTimestamp(data['created_at']),
+            'updated_at': formatTimestamp(data['updated_at']),
+          });
+        }
+        List<dynamic> notificationsRealtime =
+            List<dynamic>.from(notificationsSource);
+        _notificationsRealtime.value = notificationsRealtime
+            .map((notification) => Notifi.fromJson(notification))
+            .toList();
+      });
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> _listenNotificationsRealtime() async {
+    _firebaseService
+        .listenDataChange(FirebaseConst.USER_NOTIFICATION)
+        .then((stream) {
+      stream.listen((snapshot) {
+        List<dynamic> notificationsSource = [];
+        for (var doc in snapshot.docs) {
+          final data = doc.data();
+          notificationsSource.add({
+            'id': doc.id,
+            'title': data['title'],
+            'message': data['message'],
+            'to_user_id': data['to_user_id'],
+            'from': data['from'],
+            'is_read': data['is_read'],
+            'created_at': formatTimestamp(data['created_at']),
+            'updated_at': formatTimestamp(data['updated_at']),
+          });
+        }
+        List<dynamic> notificationsRealtime =
+            List<dynamic>.from(notificationsSource);
+        _notificationsRealtime.value = notificationsRealtime
+            .map((notification) => Notifi.fromJson(notification))
+            .toList();
+      });
+    });
+  }
+
   Future<void> markAsRead(String notificationID) async {
     try {
       final response = await _apiService.put(
@@ -56,5 +138,19 @@ class NotificationController extends GetxController {
     } catch (e) {
       rethrow;
     }
+  }
+
+  Future<void> markAsReadRealtime(String notificationId) async {
+    final notificationRef = _firebaseService
+        .collectionReference(FirebaseConst.USER_NOTIFICATION)
+        .doc(notificationId);
+    await notificationRef.update({'is_read': true});
+  }
+
+  String formatTimestamp(Timestamp timestamp) {
+    DateTime dateTime = timestamp.toDate();
+    String formattedString =
+        DateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(dateTime);
+    return formattedString;
   }
 }
