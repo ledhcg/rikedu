@@ -30,19 +30,20 @@ class ParentalControlsPage extends GetView<ParentalControlsController> {
                     child: const MapWidget(),
                   ),
                   Positioned(
-                    bottom: 100,
+                    bottom: 50,
                     right: 0,
                     left: 0,
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Container(
+                          padding: const EdgeInsets.only(bottom: 60),
                           decoration: BoxDecoration(
                             color:
                                 Theme.of(context).colorScheme.primaryContainer,
                             borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(30),
-                              topRight: Radius.circular(30),
+                              topLeft: Radius.circular(40),
+                              topRight: Radius.circular(40),
                             ),
                           ),
                           child: Column(
@@ -103,7 +104,7 @@ class FunctionBox extends GetView<ParentalControlsController> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.fromLTRB(40, 20, 40, 20),
       child: Column(
         children: [
           FunctionItem(
@@ -139,7 +140,7 @@ class FunctionBox extends GetView<ParentalControlsController> {
           FunctionItem(
             function: 'Group'.tr,
             icon: Icon(
-              FluentIcons.book_pulse_24_regular,
+              FluentIcons.group_24_regular,
               size: 30,
               color: Theme.of(context).colorScheme.onPrimary,
             ),
@@ -149,7 +150,7 @@ class FunctionBox extends GetView<ParentalControlsController> {
           FunctionItem(
             function: 'Exercises'.tr,
             icon: Icon(
-              FluentIcons.box_24_regular,
+              FluentIcons.clipboard_text_32_regular,
               size: 30,
               color: Theme.of(context).colorScheme.onPrimary,
             ),
