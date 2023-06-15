@@ -5,6 +5,7 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
+import 'package:rikedu/src/config/routes/app_pages.dart';
 import 'package:rikedu/src/features/authentication/models/user_model.dart';
 import 'package:rikedu/src/features/authentication/providers/auth_provider.dart';
 import 'package:rikedu/src/features/parental_controls/models/exercise_model.dart';
@@ -25,8 +26,17 @@ class ExerciseController extends GetxController
   final Rx<List<Exercise>> _exercises = Rx<List<Exercise>>(<Exercise>[]);
   List<Exercise> get exercises => _exercises.value;
 
+  final Rx<Exercise> _exerciseSubmit = Rx<Exercise>(Exercise.defaultExercise());
+  Exercise get exerciseSubmit => _exerciseSubmit.value;
+
   final RxBool _isLoading = true.obs;
   bool get isLoading => _isLoading.value;
+
+  final RxBool _isLoadingSubmit = false.obs;
+  bool get isLoadingSubmit => _isLoadingSubmit.value;
+
+  final RxBool _hasDataSubmit = false.obs;
+  bool get hasDataSubmit => _hasDataSubmit.value;
 
   final RxDouble _loadingValue = 0.0.obs;
   double get loadingValue => _loadingValue.value;
@@ -36,6 +46,15 @@ class ExerciseController extends GetxController
 
   final Rx<User> _student = User.defaultUser().obs;
   User get student => _student.value;
+
+  final Rx<TextEditingController> _markController =
+      Rx<TextEditingController>(TextEditingController());
+  TextEditingController get markController => _markController.value;
+
+  final Rx<TextEditingController> _reviewController =
+      Rx<TextEditingController>(TextEditingController());
+
+  TextEditingController get reviewController => _reviewController.value;
 
   @override
   void onInit() async {
@@ -51,6 +70,12 @@ class ExerciseController extends GetxController
     await _fetchData();
     super.onInit();
     _isLoading.value = false;
+  }
+
+  void getDataExerciseSubmit() {
+    markController.text = exerciseSubmit.mark.toString();
+    reviewController.text = exerciseSubmit.review;
+    _hasDataSubmit.value = true;
   }
 
   Future<void> _fetchData() async {
@@ -85,6 +110,54 @@ class ExerciseController extends GetxController
       _icon.value = setExtensionIcon(platformFile!);
     }
     loadingController.forward();
+  }
+
+  void onSubmit(String exerciseID, int exerciseIndex) async {
+    _isLoadingSubmit.value = true;
+    print("ExerciseID: $exerciseID");
+    try {
+      String? filePath = platformFile!.path;
+      File file = File(filePath!);
+      String fileName = file.path.split('/').last;
+
+      final formData = FormData({
+        'file': MultipartFile(
+          await file.readAsBytes(),
+          filename: fileName,
+        ),
+        '_method': 'PUT',
+      });
+      final response = await _apiService.post(
+          "${ApiConst.EXERCISES_ENDPOINT}/$exerciseID/submit", formData);
+      print("Response message: ${response.body['message']}");
+      if (response.body['success']) {
+        dynamic exercise = response.body['data'];
+        _exerciseSubmit.value = Exercise.fromJson(exercise);
+        _exercises.value[exerciseIndex] = Exercise.fromJson(exercise);
+        getDataExerciseSubmit();
+        resetDataDefault(false);
+      } else {}
+    } catch (e) {
+      rethrow;
+    }
+    _isLoadingSubmit.value = false;
+  }
+
+  void resetDataDefault(bool allData) {
+    _platformFile.value = null;
+    _file.value = null;
+    _loadingValue.value = 0.0;
+    if (allData) {
+      _exerciseSubmit.value = Exercise.defaultExercise();
+      markController.text = '';
+      reviewController.text = '';
+      _hasDataSubmit.value = false;
+      loadingController.reset();
+    }
+  }
+
+  void openFile(Exercise exercise) async {
+    Get.toNamed(Routes.EXERCISE_DETAIL_VIEW_FILE, arguments: exercise);
   }
 
   Icon setExtensionIcon(PlatformFile platformFile) {

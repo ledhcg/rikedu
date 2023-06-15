@@ -11,7 +11,10 @@ class ExerciseDetailPage extends GetView<ExerciseController> {
 
   @override
   Widget build(BuildContext context) {
-    final exercise = Get.arguments as Exercise;
+    final data = Get.arguments;
+    final exercise = data[0] as Exercise;
+    final index = data[1];
+    controller.resetDataDefault(true);
 
     return Scaffold(
       appBar: AppBar(
@@ -63,116 +66,141 @@ class ExerciseDetailPage extends GetView<ExerciseController> {
                 style: const TextStyle(fontSize: 16),
               ),
               const SizedBox(height: 16),
-              Obx(
-                () => GestureDetector(
-                  onTap: controller.selectFile,
-                  child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20.0),
-                      child: DottedBorder(
-                        borderType: BorderType.RRect,
-                        radius: const Radius.circular(20),
-                        dashPattern: const [10, 4],
-                        strokeCap: StrokeCap.round,
-                        color: Colors.blue.shade400,
-                        child: Container(
-                          width: double.infinity,
-                          height: 250,
-                          decoration: BoxDecoration(
-                              color: Colors.blue.shade50.withOpacity(.3),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Obx(() {
-                                if (controller.platformFile != null) {
-                                  return const SizedBox(
-                                    height: 30,
-                                  );
-                                } else {
-                                  return Container();
-                                }
-                              }),
-                              Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    controller.platformFile != null
-                                        ? controller.icon!
-                                        : const Icon(
-                                            FluentIcons
-                                                .document_queue_24_filled,
-                                            color: Colors.blue,
-                                            size: 40,
-                                          ),
-                                    const SizedBox(
-                                      height: 15,
+              Obx(() {
+                if (exercise.mark == 0) {
+                  controller.markController.text = 'No reviews yet.'.tr;
+                  controller.reviewController.text = 'No reviews yet.'.tr;
+                } else {
+                  controller.markController.text = exercise.mark.toString();
+                  controller.reviewController.text = exercise.review;
+                }
+                return exercise.file != ''
+                    ? ContainerResult(exercise: exercise)
+                    : controller.hasDataSubmit
+                        ? ContainerResult(exercise: controller.exerciseSubmit)
+                        : GestureDetector(
+                            onTap: controller.selectFile,
+                            child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 20.0),
+                                child: DottedBorder(
+                                  borderType: BorderType.RRect,
+                                  radius: const Radius.circular(20),
+                                  dashPattern: const [10, 4],
+                                  strokeCap: StrokeCap.round,
+                                  color: Colors.blue.shade400,
+                                  child: Container(
+                                    width: double.infinity,
+                                    height: 250,
+                                    decoration: BoxDecoration(
+                                        color:
+                                            Colors.blue.shade50.withOpacity(.3),
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Obx(() {
+                                          if (controller.platformFile != null) {
+                                            return const SizedBox(
+                                              height: 30,
+                                            );
+                                          } else {
+                                            return Container();
+                                          }
+                                        }),
+                                        Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              controller.platformFile != null
+                                                  ? controller.icon!
+                                                  : const Icon(
+                                                      FluentIcons
+                                                          .document_queue_24_filled,
+                                                      color: Colors.blue,
+                                                      size: 40,
+                                                    ),
+                                              const SizedBox(
+                                                height: 15,
+                                              ),
+                                              controller.platformFile != null
+                                                  ? Text(
+                                                      controller
+                                                          .platformFile!.name,
+                                                      style: const TextStyle(
+                                                          fontSize: 20,
+                                                          color: Colors.blue,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    )
+                                                  : Text(
+                                                      'Upload your file'.tr,
+                                                      style: const TextStyle(
+                                                          fontSize: 20,
+                                                          color: Colors.blue,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    ),
+                                              controller.platformFile != null
+                                                  ? Text(
+                                                      '${(controller.platformFile!.size / 1024).ceil()} KB',
+                                                      style: const TextStyle(
+                                                          fontSize: 15,
+                                                          color: Colors.blue),
+                                                    )
+                                                  : Text(
+                                                      'File should be *.pdf, *.doc'
+                                                          .tr,
+                                                      style: const TextStyle(
+                                                          fontSize: 15,
+                                                          color: Colors.blue),
+                                                    ),
+                                            ]),
+                                        Obx(() {
+                                          if (controller.platformFile != null) {
+                                            return Container(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                20,
+                                                0,
+                                                20,
+                                                20,
+                                              ),
+                                              child: Container(
+                                                height: 10,
+                                                clipBehavior: Clip.hardEdge,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(5),
+                                                  color: Colors.blue.shade50,
+                                                ),
+                                                child: LinearProgressIndicator(
+                                                  value:
+                                                      controller.loadingValue,
+                                                ),
+                                              ),
+                                            );
+                                          } else {
+                                            return Container();
+                                          }
+                                        }),
+                                      ],
                                     ),
-                                    controller.platformFile != null
-                                        ? Text(
-                                            controller.platformFile!.name,
-                                            style: const TextStyle(
-                                                fontSize: 20,
-                                                color: Colors.blue,
-                                                fontWeight: FontWeight.bold),
-                                          )
-                                        : Text(
-                                            'Upload your file'.tr,
-                                            style: const TextStyle(
-                                                fontSize: 20,
-                                                color: Colors.blue,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                    controller.platformFile != null
-                                        ? Text(
-                                            '${(controller.platformFile!.size / 1024).ceil()} KB',
-                                            style: const TextStyle(
-                                                fontSize: 15,
-                                                color: Colors.blue),
-                                          )
-                                        : Text(
-                                            'File should be *.pdf, *.doc'.tr,
-                                            style: const TextStyle(
-                                                fontSize: 15,
-                                                color: Colors.blue),
-                                          ),
-                                  ]),
-                              Obx(() {
-                                if (controller.platformFile != null) {
-                                  return Container(
-                                    padding: const EdgeInsets.fromLTRB(
-                                      20,
-                                      0,
-                                      20,
-                                      20,
-                                    ),
-                                    child: Container(
-                                      height: 10,
-                                      clipBehavior: Clip.hardEdge,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(5),
-                                        color: Colors.blue.shade50,
-                                      ),
-                                      child: LinearProgressIndicator(
-                                        value: controller.loadingValue,
-                                      ),
-                                    ),
-                                  );
-                                } else {
-                                  return Container();
-                                }
-                              }),
-                            ],
-                          ),
-                        ),
-                      )),
-                ),
-              ),
+                                  ),
+                                )),
+                          );
+              }),
               Obx(() {
                 if (controller.platformFile != null) {
                   return SizedBox(
                     width: double.infinity,
                     child: FilledButton(
-                      onPressed: () => {},
-                      child: Text('Submit'.tr),
+                      onPressed: () => controller.onSubmit(exercise.id, index),
+                      child: controller.isLoadingSubmit
+                          ? Text('Uploading'.tr)
+                          : Text('Submit'.tr),
                     ),
                   );
                 } else {
@@ -186,6 +214,105 @@ class ExerciseDetailPage extends GetView<ExerciseController> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class ContainerResult extends GetView<ExerciseController> {
+  const ContainerResult({
+    super.key,
+    required this.exercise,
+  });
+
+  final Exercise exercise;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20.0),
+          child: Container(
+            height: 250,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.blue.shade400, //color of border
+                width: 1, //width of border
+              ),
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Container(
+              margin: const EdgeInsets.all(5),
+              width: double.infinity,
+              height: 250,
+              decoration: BoxDecoration(
+                  color: Colors.blue.shade50.withOpacity(.3),
+                  borderRadius: BorderRadius.circular(15)),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(
+                          FluentIcons.document_checkmark_24_filled,
+                          color: Colors.blue,
+                          size: 40,
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        Text(
+                          'The file has been uploaded.'.tr,
+                          style:
+                              const TextStyle(fontSize: 15, color: Colors.blue),
+                        ),
+                      ]),
+                  Container(
+                    padding: const EdgeInsets.fromLTRB(
+                      20,
+                      0,
+                      20,
+                      20,
+                    ),
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: FilledButton(
+                        onPressed: () => controller.openFile(exercise),
+                        child: Text('Open'.tr),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        Column(
+          children: [
+            TextField(
+              controller: controller.markController,
+              readOnly: true,
+              decoration: InputDecoration(
+                labelText: 'Mark'.tr,
+                prefixIcon: const Icon(FluentIcons.target_arrow_24_regular),
+              ),
+            ),
+            const SizedBox(height: 16.0),
+            TextField(
+              controller: controller.reviewController,
+              readOnly: true,
+              decoration: InputDecoration(
+                labelText: 'Review'.tr,
+                prefixIcon: const Icon(FluentIcons.note_24_regular),
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }
