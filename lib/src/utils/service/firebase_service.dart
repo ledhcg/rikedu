@@ -17,6 +17,10 @@ class FirebaseService extends GetxService {
     return _firestore!.collection(collection).doc(documentId).get();
   }
 
+  Future<QuerySnapshot> getDataCollection(String collection) async {
+    return _firestore!.collection(collection).get();
+  }
+
   Future<void> setData(
       String collection, String documentId, Map<String, dynamic> data,
       [SetOptions? options]) async {
