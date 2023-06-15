@@ -4,62 +4,184 @@ import 'package:get/get.dart';
 import 'package:rikedu/src/features/authentication/models/user_model.dart';
 import 'package:rikedu/src/features/parental_controls/controllers/results_controller.dart';
 import 'package:rikedu/src/utils/constants/sizes_constants.dart';
-import 'package:rikedu/src/utils/widgets/loading_widget.dart';
+import 'package:skeletons/skeletons.dart';
 
 class ResultsPage extends GetView<ResultsController> {
   const ResultsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    List<dynamic> listLoading = List.generate(20, (index) => null);
     return Obx(
-      () => controller.isLoading
-          ? const LoadingWidget()
-          : Scaffold(
-              appBar: AppBar(
-                toolbarHeight: 100,
-                automaticallyImplyLeading: true,
-                backgroundColor: Colors.transparent,
-                title: BoxStudent(student: controller.student),
-                centerTitle: true,
-                leading: Transform.translate(
-                  offset: const Offset(SizesConst.P1, 0),
-                  child: IconButton(
-                    onPressed: () {
-                      Navigator.of(context).pop(true);
-                    },
-                    icon: const Icon(FluentIcons.chevron_left_48_filled),
-                  ),
+      () => Scaffold(
+        appBar: AppBar(
+          toolbarHeight: 100,
+          automaticallyImplyLeading: true,
+          backgroundColor: Colors.transparent,
+          title: BoxStudent(student: controller.student),
+          centerTitle: true,
+          leading: Transform.translate(
+            offset: const Offset(SizesConst.P1, 0),
+            child: IconButton(
+              onPressed: () {
+                Navigator.of(context).pop(true);
+              },
+              icon: const Icon(FluentIcons.chevron_left_48_filled),
+            ),
+          ),
+        ),
+        body: Skeleton(
+          isLoading: controller.isLoading,
+          skeleton: ListView(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(bottom: 30),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: const [
+                    SkeletonLine(
+                      style: SkeletonLineStyle(
+                          width: 100,
+                          height: 30,
+                          borderRadius: BorderRadius.all(Radius.circular(15)),
+                          alignment: Alignment.center),
+                    ),
+                    SizedBox(width: 20),
+                    SkeletonLine(
+                      style: SkeletonLineStyle(
+                          width: 100,
+                          height: 30,
+                          borderRadius: BorderRadius.all(Radius.circular(15)),
+                          alignment: Alignment.center),
+                    ),
+                  ],
                 ),
               ),
-              body: ListView(
-                padding: EdgeInsets.zero,
-                children: [
-                  DefaultTabController(
-                    length: controller.tabs.length,
-                    child: Column(
-                      children: [
-                        TabBar(
-                          isScrollable: true,
-                          padding: EdgeInsets.zero,
-                          tabs: controller.tabs
-                              .map((tab) => Tab(text: tab.tr))
-                              .toList(),
-                        ),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.height,
-                          child: TabBarView(
-                              children: controller.tabs
-                                  .map(
-                                    (tab) => TabContent(tab: tab),
-                                  )
-                                  .toList()),
-                        )
-                      ],
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: const [
+                    SkeletonLine(
+                      style: SkeletonLineStyle(
+                          width: 200,
+                          height: 30,
+                          borderRadius: BorderRadius.all(Radius.circular(15)),
+                          alignment: Alignment.center),
                     ),
-                  ),
-                ],
+                    SizedBox(width: 20),
+                    SkeletonLine(
+                      style: SkeletonLineStyle(
+                          width: 40,
+                          height: 30,
+                          borderRadius: BorderRadius.all(Radius.circular(15)),
+                          alignment: Alignment.center),
+                    ),
+                    SizedBox(width: 20),
+                    SkeletonLine(
+                      style: SkeletonLineStyle(
+                          width: 40,
+                          height: 30,
+                          borderRadius: BorderRadius.all(Radius.circular(15)),
+                          alignment: Alignment.center),
+                    ),
+                    SizedBox(width: 20),
+                    SkeletonLine(
+                      style: SkeletonLineStyle(
+                          width: 40,
+                          height: 30,
+                          borderRadius: BorderRadius.all(Radius.circular(15)),
+                          alignment: Alignment.center),
+                    ),
+                  ],
+                ),
               ),
-            ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: listLoading
+                    .map(
+                      (result) => Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: const [
+                            SkeletonLine(
+                              style: SkeletonLineStyle(
+                                  width: 200,
+                                  height: 20,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  alignment: Alignment.center),
+                            ),
+                            SizedBox(width: 20),
+                            SkeletonLine(
+                              style: SkeletonLineStyle(
+                                  width: 40,
+                                  height: 20,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  alignment: Alignment.center),
+                            ),
+                            SizedBox(width: 20),
+                            SkeletonLine(
+                              style: SkeletonLineStyle(
+                                  width: 40,
+                                  height: 20,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  alignment: Alignment.center),
+                            ),
+                            SizedBox(width: 20),
+                            SkeletonLine(
+                              style: SkeletonLineStyle(
+                                  width: 40,
+                                  height: 20,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10)),
+                                  alignment: Alignment.center),
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                    .toList(),
+              )
+            ],
+          ),
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              DefaultTabController(
+                length: controller.tabs.length,
+                child: Column(
+                  children: [
+                    TabBar(
+                      isScrollable: true,
+                      padding: const EdgeInsets.only(bottom: 30),
+                      tabs: controller.tabs
+                          .map((tab) => Tab(text: tab.tr))
+                          .toList(),
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height,
+                      child: TabBarView(
+                          children: controller.tabs
+                              .map(
+                                (tab) => TabContent(tab: tab),
+                              )
+                              .toList()),
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

@@ -5,6 +5,8 @@ import 'package:rikedu/src/config/routes/app_pages.dart';
 import 'package:rikedu/src/features/news/views/widgets/image_container_widget.dart';
 import 'package:rikedu/src/features/parental_controls/controllers/parental_controls_controller.dart';
 import 'package:rikedu/src/features/parental_controls/controllers/school_controller.dart';
+import 'package:rikedu/src/utils/constants/colors_constants.dart';
+import 'package:skeletons/skeletons.dart';
 
 class SchoolPage extends GetView<SchoolController> {
   const SchoolPage({super.key});
@@ -28,40 +30,83 @@ class SchoolPage extends GetView<SchoolController> {
                         width: double.infinity,
                         height: double.infinity,
                         imageUrl: controller.imageURL,
+                        isLoading: controller.isLoading,
+                        borderRadius: 0,
                         overlay: true,
-                        child: Center(
-                          child: Padding(
-                            padding: const EdgeInsets.all(20.0),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text(
-                                  '"${controller.quote}"',
-                                  textAlign: TextAlign.center,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headlineSmall!
-                                      .copyWith(
-                                        color: Colors.white,
-                                        height: 1.25,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                ),
-                                const SizedBox(height: 10),
-                                Text(
-                                  '- ${controller.author} -',
-                                  textAlign: TextAlign.center,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyMedium!
-                                      .copyWith(
-                                        color: Colors.white,
-                                        fontStyle: FontStyle.italic,
-                                        height: 1.25,
-                                      ),
-                                ),
-                              ],
+                        child: Skeleton(
+                          shimmerGradient: SkeletonColorStyle.ON_SHIMMER_LIGHT,
+                          darkShimmerGradient:
+                              SkeletonColorStyle.DEFAULT_SHIMMER_LIGHT,
+                          isLoading: controller.isLoading,
+                          duration: const Duration(seconds: 4),
+                          skeleton: Center(
+                            child: Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  SkeletonParagraph(
+                                    style: SkeletonParagraphStyle(
+                                        lines: 3,
+                                        spacing: 5,
+                                        padding: const EdgeInsets.all(0),
+                                        lineStyle: SkeletonLineStyle(
+                                          randomLength: true,
+                                          alignment: Alignment.center,
+                                          height: 30,
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                          minLength: 250,
+                                        )),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  const SkeletonLine(
+                                    style: SkeletonLineStyle(
+                                        alignment: Alignment.center,
+                                        width: 150,
+                                        height: 10,
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(15))),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          child: Center(
+                            child: Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    '"${controller.quote}"',
+                                    textAlign: TextAlign.center,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineSmall!
+                                        .copyWith(
+                                          color: Colors.white,
+                                          height: 1.25,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  Text(
+                                    '- ${controller.author} -',
+                                    textAlign: TextAlign.center,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .copyWith(
+                                          color: Colors.white,
+                                          fontStyle: FontStyle.italic,
+                                          height: 1.25,
+                                        ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -69,19 +114,20 @@ class SchoolPage extends GetView<SchoolController> {
                     ),
                   ),
                   Positioned(
-                    bottom: 100,
+                    bottom: 50,
                     right: 0,
                     left: 0,
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Container(
+                          padding: const EdgeInsets.only(bottom: 60),
                           decoration: BoxDecoration(
                             color:
                                 Theme.of(context).colorScheme.primaryContainer,
                             borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(30),
-                              topRight: Radius.circular(30),
+                              topLeft: Radius.circular(40),
+                              topRight: Radius.circular(40),
                             ),
                           ),
                           child: Column(
@@ -131,7 +177,7 @@ class FunctionBox extends GetView<ParentalControlsController> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.fromLTRB(40, 20, 40, 20),
       child: Column(
         children: [
           FunctionItem(
@@ -157,7 +203,7 @@ class FunctionBox extends GetView<ParentalControlsController> {
           FunctionItem(
             function: 'Group'.tr,
             icon: Icon(
-              FluentIcons.book_pulse_24_regular,
+              FluentIcons.group_24_regular,
               size: 30,
               color: Theme.of(context).colorScheme.onPrimary,
             ),
@@ -167,7 +213,7 @@ class FunctionBox extends GetView<ParentalControlsController> {
           FunctionItem(
             function: 'Exercises'.tr,
             icon: Icon(
-              FluentIcons.box_24_regular,
+              FluentIcons.clipboard_text_32_regular,
               size: 30,
               color: Theme.of(context).colorScheme.onPrimary,
             ),
