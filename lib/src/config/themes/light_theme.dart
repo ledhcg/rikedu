@@ -42,6 +42,7 @@ class LightTheme {
     appBarTheme: const AppBarTheme(
       systemOverlayStyle: SystemUiOverlayStyle(
         statusBarIconBrightness: Brightness.dark,
+        statusBarBrightness: Brightness.light,
         systemNavigationBarIconBrightness: Brightness.dark,
         systemNavigationBarColor: Colors.transparent,
         statusBarColor: Colors.transparent,

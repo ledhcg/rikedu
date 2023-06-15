@@ -102,13 +102,16 @@ void initializeSystemUI() {
 
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
 
-  Brightness statusBarIconBrightness =
+  Brightness statusBarBrightness =
       isDarkMode() ? Brightness.light : Brightness.dark;
+  Brightness statusBarIOSBrightness =
+      isDarkMode() ? Brightness.dark : Brightness.light;
 
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
-      statusBarIconBrightness: statusBarIconBrightness,
-      systemNavigationBarIconBrightness: statusBarIconBrightness,
+      statusBarIconBrightness: statusBarBrightness,
+      statusBarBrightness: statusBarIOSBrightness,
+      systemNavigationBarIconBrightness: statusBarBrightness,
       systemNavigationBarColor: Colors.transparent,
       statusBarColor: Colors.transparent,
     ),
