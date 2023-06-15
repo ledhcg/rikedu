@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
+import 'package:rikedu/src/utils/constants/files_constants.dart';
 
 class LoadingWidget extends StatelessWidget {
   const LoadingWidget({super.key});
@@ -7,9 +8,8 @@ class LoadingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: CircularProgressIndicator(
-        valueColor: AlwaysStoppedAnimation<Color>(Get.theme.primaryColor),
-      ),
+      child: Lottie.asset(FilesConst.LOTTIE_LOADING,
+          width: MediaQuery.of(context).size.width / 4),
     );
   }
 }
