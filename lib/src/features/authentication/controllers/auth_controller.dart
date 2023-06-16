@@ -5,10 +5,23 @@ import 'package:provider/provider.dart';
 import 'package:rikedu/src/config/routes/app_pages.dart';
 import 'package:rikedu/src/features/authentication/models/user_model.dart';
 import 'package:rikedu/src/features/authentication/providers/auth_provider.dart';
+import 'package:rikedu/src/features/parental_controls/providers/app_usage_provider.dart';
+import 'package:rikedu/src/features/parental_controls/providers/battery_provider.dart';
+import 'package:rikedu/src/features/parental_controls/providers/location_provider.dart';
+import 'package:rikedu/src/features/timetable/providers/timetable_provider.dart';
 import 'package:rikedu/src/utils/widgets/snackbar_widget.dart';
+import 'package:rikedu/src/utils/service/notification_service.dart';
 
 class AuthController extends GetxController {
+  final NotificationService notificationService = Get.find();
+
   final authProvider = Provider.of<AuthProvider>(Get.context!);
+
+  final timetableProvider = Provider.of<TimetableProvider>(Get.context!);
+  final locationProvider = Provider.of<LocationProvider>(Get.context!);
+  final batteryProvider = Provider.of<BatteryProvider>(Get.context!);
+  final appUsageProvider = Provider.of<AppUsageProvider>(Get.context!);
+
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
@@ -75,6 +88,7 @@ class AuthController extends GetxController {
       await authProvider.login(_email.value, _password.value);
       _isLoading.value = false;
       if (authProvider.isAuthenticated) {
+        setupServiceAndProvider();
         Get.offAllNamed(Routes.HOME);
         SnackbarWidget.showSnackbarSuccess(authProvider.responseMessage.tr);
       } else {
@@ -83,5 +97,13 @@ class AuthController extends GetxController {
     } else {
       SnackbarWidget.showSnackbar('Please enter valid credentials');
     }
+  }
+
+  void setupServiceAndProvider() {
+    notificationService.getUserID();
+    timetableProvider.init();
+    locationProvider.init();
+    batteryProvider.init();
+    appUsageProvider.init();
   }
 }
