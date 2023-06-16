@@ -9,7 +9,9 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:rikedu/src/features/settings/views/widgets/about_modal.dart';
 import 'package:rikedu/src/features/settings/views/widgets/language_modal.dart';
 import 'package:rikedu/src/features/settings/views/widgets/logout_modal.dart';
+import 'package:rikedu/src/features/settings/views/widgets/notifications_and_sounds_modal.dart';
 import 'package:rikedu/src/features/settings/views/widgets/popover.dart';
+import 'package:rikedu/src/features/settings/views/widgets/privacy_and_security_modal.dart';
 import 'package:rikedu/src/features/settings/views/widgets/theme_modal.dart';
 import 'package:rikedu/src/utils/constants/sizes_constants.dart';
 
@@ -142,53 +144,153 @@ class TabEditProfile extends GetView<EditProfileController> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: controller.formKey,
-      child: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            TextFormField(
-              onChanged: (value) => controller.phoneText = value,
-              controller: controller.phoneController,
-              keyboardType: TextInputType.phone,
-              decoration: InputDecoration(
-                labelText: 'Phone'.tr,
-                prefixIcon: const Icon(FluentIcons.phone_24_regular),
+    return Column(
+      children: [
+        const ChangePasswordWidget(),
+        Form(
+          key: controller.formKey,
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                TextFormField(
+                  onChanged: (value) => controller.phoneText = value,
+                  controller: controller.phoneController,
+                  keyboardType: TextInputType.phone,
+                  decoration: InputDecoration(
+                    labelText: 'Phone'.tr,
+                    prefixIcon: const Icon(FluentIcons.phone_24_regular),
+                  ),
+                  validator: controller.validator,
+                ),
+                const SizedBox(height: 16.0),
+                TextFormField(
+                  onChanged: (value) => controller.addressText = value,
+                  controller: controller.addressController,
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                    labelText: 'Address'.tr,
+                    prefixIcon: const Icon(FluentIcons.location_24_regular),
+                  ),
+                  validator: controller.validator,
+                ),
+                const SizedBox(height: 16.0),
+                TextFormField(
+                  onChanged: (value) => controller.dobText = value,
+                  controller: controller.dobController,
+                  keyboardType: TextInputType.datetime,
+                  decoration: InputDecoration(
+                    labelText: 'Department'.tr,
+                    prefixIcon: const Icon(FluentIcons.toolbox_24_regular),
+                  ),
+                  validator: controller.validator,
+                ),
+                const SizedBox(height: 16.0),
+                FilledButton(
+                  style: FilledButton.styleFrom(
+                      backgroundColor: Theme.of(context).colorScheme.secondary),
+                  onPressed: () {},
+                  child: controller.isLoadingUpdateProfile
+                      ? Text('Loading'.tr)
+                      : Text('Update'.tr),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class ChangePasswordWidget extends GetView<EditProfileController> {
+  const ChangePasswordWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Obx(
+      () => Form(
+        key: controller.formChangePasswordKey,
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              TextFormField(
+                onChanged: (value) => controller.setOldPassword(value),
+                controller: controller.oldPasswordController,
+                decoration: InputDecoration(
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      controller.isObscure
+                          ? FluentIcons.eye_off_24_regular
+                          : FluentIcons.eye_24_regular,
+                    ),
+                    onPressed: controller.toggleObscure,
+                  ),
+                  prefixIcon: const Icon(FluentIcons.shield_keyhole_24_regular),
+                  labelText: 'Old Password'.tr,
+                ),
+                obscureText: controller.isObscure,
+                validator: controller.checkOldPassword,
               ),
-              validator: controller.validator,
-            ),
-            const SizedBox(height: 16.0),
-            TextFormField(
-              onChanged: (value) => controller.addressText = value,
-              controller: controller.addressController,
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-                labelText: 'Address'.tr,
-                prefixIcon: const Icon(FluentIcons.location_24_regular),
+              const SizedBox(height: 16.0),
+              TextFormField(
+                onChanged: (value) => controller.setNewPassword(value),
+                controller: controller.newPasswordController,
+                decoration: InputDecoration(
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      controller.isObscure
+                          ? FluentIcons.eye_off_24_regular
+                          : FluentIcons.eye_24_regular,
+                    ),
+                    onPressed: controller.toggleObscure,
+                  ),
+                  prefixIcon: const Icon(FluentIcons.key_24_regular),
+                  labelText: 'New Password'.tr,
+                ),
+                obscureText: controller.isObscure,
+                validator: controller.passwordValidator,
               ),
-              validator: controller.validator,
-            ),
-            const SizedBox(height: 16.0),
-            TextFormField(
-              onChanged: (value) => controller.dobText = value,
-              controller: controller.dobController,
-              keyboardType: TextInputType.datetime,
-              decoration: InputDecoration(
-                labelText: 'Date of birth'.tr,
-                prefixIcon: const Icon(FluentIcons.food_cake_24_regular),
+              const SizedBox(height: 16.0),
+              TextFormField(
+                onChanged: (value) => controller.setConfirmPassword(value),
+                controller: controller.confirmPasswordController,
+                decoration: InputDecoration(
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      controller.isObscure
+                          ? FluentIcons.eye_off_24_regular
+                          : FluentIcons.eye_24_regular,
+                    ),
+                    onPressed: controller.toggleObscure,
+                  ),
+                  prefixIcon: const Icon(FluentIcons.key_reset_24_regular),
+                  labelText: 'Confirm New Password'.tr,
+                ),
+                obscureText: controller.isObscure,
+                validator: controller.passwordValidator,
               ),
-              validator: controller.validator,
-            ),
-            const SizedBox(height: 16.0),
-            FilledButton(
-              onPressed: () {},
-              child: Text('Send'.tr),
-            ),
-          ],
+              const SizedBox(height: 16.0),
+              FilledButton(
+                style: FilledButton.styleFrom(
+                    backgroundColor: Theme.of(context).colorScheme.secondary),
+                onPressed: () {
+                  controller.updatePassword();
+                  FocusScope.of(context).requestFocus(FocusNode());
+                },
+                child: controller.isLoadingChangePassword
+                    ? Text('Loading'.tr)
+                    : Text('Change Password'.tr),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -212,8 +314,13 @@ class TabSetting extends StatelessWidget {
             backgroundColor: Colors.transparent,
             context: context,
             builder: (context) {
-              return const Popover(
-                child: ThemeModal(),
+              return Popover(
+                child: Column(
+                  children: const [
+                    ThemeModal(),
+                    MoreSettingsWidget(),
+                  ],
+                ),
               );
             },
           ),
@@ -236,11 +343,31 @@ class TabSetting extends StatelessWidget {
           title: Text('Privacy And Security'.tr),
           leading: const Icon(FluentIcons.lock_closed_24_filled),
           trailing: const Icon(FluentIcons.chevron_right_24_regular),
+          onTap: () => showModalBottomSheet(
+            isScrollControlled: true,
+            backgroundColor: Colors.transparent,
+            context: context,
+            builder: (context) {
+              return const Popover(
+                child: PrivacyAndSecurityModal(),
+              );
+            },
+          ),
         ),
         ListTile(
           title: Text('Notifications And Sounds'.tr),
           leading: const Icon(FluentIcons.alert_badge_24_filled),
           trailing: const Icon(FluentIcons.chevron_right_24_regular),
+          onTap: () => showModalBottomSheet(
+            isScrollControlled: true,
+            backgroundColor: Colors.transparent,
+            context: context,
+            builder: (context) {
+              return const Popover(
+                child: NotificationsAndSoundsModal(),
+              );
+            },
+          ),
         ),
         ListTile(
           title: Text('About'.tr),
@@ -272,6 +399,48 @@ class TabSetting extends StatelessWidget {
           ),
         )
       ],
+    );
+  }
+}
+
+class MoreSettingsWidget extends GetView<SettingsController> {
+  const MoreSettingsWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Obx(
+      () => Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SwitchListTile(
+            title: Text('Show Map'.tr),
+            secondary: const Icon(FluentIcons.map_24_filled),
+            onChanged: (isOn) {
+              controller.changeSwitchShowMap();
+            },
+            value: controller.isShowMap,
+          ),
+          SwitchListTile(
+            title: Text('Show Battery'.tr),
+            secondary: const Icon(FluentIcons.battery_3_24_filled),
+            onChanged: (isOn) {
+              controller.changeSwitchShowBattery();
+            },
+            value: controller.isShowBattery,
+          ),
+          SwitchListTile(
+            title: Text('Show Student Status'.tr),
+            secondary: const Icon(FluentIcons.dumbbell_24_filled),
+            onChanged: (isOn) {
+              controller.changeSwitchShowStudentStatus();
+            },
+            value: controller.isShowStudentStatus,
+          ),
+        ],
+      ),
     );
   }
 }
