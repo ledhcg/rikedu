@@ -14,4 +14,5 @@ class ApiConst {
   static const String NOTIFICATIONS_ENDPOINT = '/notifications';
   static const String EXERCISES_ENDPOINT = '/exercises';
   static const String USER_SUPER_ADMIN_ENDPOINT = '/users/super-admin';
+  static const String USERS_ENDPOINT = '/users';
 }
