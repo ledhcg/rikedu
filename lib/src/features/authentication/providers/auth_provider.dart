@@ -11,13 +11,11 @@ import 'package:rikedu/src/utils/constants/roles_constants.dart';
 import 'package:rikedu/src/utils/constants/storage_constants.dart';
 import 'package:rikedu/src/utils/service/api_service.dart';
 import 'package:rikedu/src/utils/service/firebase_service.dart';
-import 'package:rikedu/src/utils/service/notification_service.dart';
 import 'package:rikedu/src/utils/service/storage_service.dart';
 
 class AuthProvider extends ChangeNotifier {
   final ApiService _apiService = Get.find();
   final StorageService _storageService = Get.find();
-  final NotificationService _notificationService = Get.find();
   final FirebaseService firebaseService = Get.find();
 
   bool _authenticated = false;
@@ -123,7 +121,6 @@ class AuthProvider extends ChangeNotifier {
         await setUser(User.fromJson(response.body['data']['user']));
         await setData(response.body['data']);
         await getData();
-        await setListenNotification();
         responseSuccess(response.body['message']);
         notifyListeners();
       } else {
@@ -143,14 +140,6 @@ class AuthProvider extends ChangeNotifier {
       _storageService.clearData();
       _authenticated = false;
       _apiService.post(ApiConst.LOGOUT_ENDPOINT, {'id': id});
-    } catch (e) {
-      rethrow;
-    }
-  }
-
-  Future<void> setListenNotification() async {
-    try {
-      _notificationService.getUserID();
     } catch (e) {
       rethrow;
     }
