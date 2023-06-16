@@ -121,64 +121,87 @@ class BuildItemsNotificationList extends GetView<NotificationController> {
       shrinkWrap: true,
       itemCount: isLoading ? 10 : notificationItems.length,
       itemBuilder: (context, index) {
-        return Padding(
-          padding: const EdgeInsets.only(bottom: 20.0),
-          child: ClipRRect(
+        return Dismissible(
+          key: Key(index.toString()),
+          background: ClipRRect(
             borderRadius: BorderRadius.circular(20),
             child: Container(
-              color: Theme.of(context).colorScheme.background,
-              child: isLoading
-                  ? ListTile(
-                      leading: const SkeletonAvatar(
-                        style: SkeletonAvatarStyle(
-                            shape: BoxShape.circle, width: 30, height: 30),
+                color: Colors.red,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Icon(
+                        FluentIcons.delete_20_regular,
+                        size: 30,
+                        color: Theme.of(context).colorScheme.onPrimary,
                       ),
-                      title: const SkeletonLine(
-                        style: SkeletonLineStyle(
-                            width: 250,
-                            height: 20,
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            padding: EdgeInsets.only(bottom: 10)),
-                      ),
-                      subtitle: SkeletonParagraph(
-                        style: SkeletonParagraphStyle(
-                            lines: 3,
-                            spacing: 5,
-                            padding: const EdgeInsets.all(0),
-                            lineStyle: SkeletonLineStyle(
-                              randomLength: true,
-                              height: 10,
-                              borderRadius: BorderRadius.circular(10),
-                              minLength: MediaQuery.of(context).size.width / 2,
-                            )),
-                      ),
-                      trailing: const SkeletonAvatar(
-                        style: SkeletonAvatarStyle(
-                            shape: BoxShape.circle, width: 30, height: 30),
-                      ),
-                    )
-                  : ListTile(
-                      leading: SizedBox(
-                        height: double.infinity,
-                        child: Icon(
-                          FluentIcons.alert_urgent_24_regular,
-                          size: 30,
-                          color: Theme.of(context).colorScheme.primary,
-                        ),
-                      ),
-                      title: Text(notificationItems[index].title),
-                      subtitle: Text(notificationItems[index].message),
-                      trailing: SizedBox(
-                        height: double.infinity,
-                        child: Icon(
-                          FluentIcons.mail_inbox_checkmark_28_regular,
-                          size: 20,
-                          color: Theme.of(context).colorScheme.onBackground,
-                        ),
-                      ),
-                      onLongPress: () =>
-                          controller.markAsRead(notificationItems[index].id),
                     ),
+                  ],
+                )),
+          ),
+          direction: DismissDirection.endToStart,
+          onDismissed: (direction) {
+            controller.markAsRead(notificationItems[index].id, index, tab);
+          },
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 20.0),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Container(
+                color: Theme.of(context).colorScheme.background,
+                child: isLoading
+                    ? ListTile(
+                        leading: const SkeletonAvatar(
+                          style: SkeletonAvatarStyle(
+                              shape: BoxShape.circle, width: 40, height: 40),
+                        ),
+                        title: const SkeletonLine(
+                          style: SkeletonLineStyle(
+                              width: 250,
+                              height: 20,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              padding: EdgeInsets.only(bottom: 10)),
+                        ),
+                        subtitle: SkeletonParagraph(
+                          style: SkeletonParagraphStyle(
+                              lines: 3,
+                              spacing: 5,
+                              padding: const EdgeInsets.all(0),
+                              lineStyle: SkeletonLineStyle(
+                                randomLength: true,
+                                height: 10,
+                                borderRadius: BorderRadius.circular(10),
+                                minLength:
+                                    MediaQuery.of(context).size.width / 2,
+                              )),
+                        ),
+                      )
+                    : ListTile(
+                        leading: SizedBox(
+                          height: double.infinity,
+                          child: Icon(
+                            FluentIcons.alert_urgent_24_regular,
+                            size: 40,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                        ),
+                        title: Text(notificationItems[index].title),
+                        subtitle: Text(notificationItems[index].message),
+                        // trailing: SizedBox(
+                        //   height: double.infinity,
+                        //   child: Icon(
+                        //     FluentIcons.mail_inbox_checkmark_28_regular,
+                        //     size: 20,
+                        //     color: Theme.of(context).colorScheme.onBackground,
+                        //   ),
+                        // ),
+                        // onLongPress: () =>
+                        //     controller.markAsRead(notificationItems[index].id),
+                      ),
+              ),
             ),
           ),
         );
