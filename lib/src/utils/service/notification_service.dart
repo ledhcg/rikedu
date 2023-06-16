@@ -4,15 +4,20 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:rikedu/src/utils/constants/firebase_constants.dart';
+import 'package:rikedu/src/utils/constants/storage_constants.dart';
 import 'package:rikedu/src/utils/service/firebase_service.dart';
+import 'package:rikedu/src/utils/service/storage_service.dart';
 
 class NotificationService extends GetxService {
   static NotificationService get to => Get.find();
   final FirebaseService firebaseService = Get.find();
+  final StorageService storageService = Get.find();
   final FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin =
       FlutterLocalNotificationsPlugin();
 
   int notificationIdCounter = 0;
+
+  String userID = '';
 
   Future<NotificationService> init() async {
     const initializationSettingsAndroid = AndroidInitializationSettings('logo');
@@ -23,7 +28,14 @@ class NotificationService extends GetxService {
     await _flutterLocalNotificationsPlugin.initialize(initializationSettings);
     _isAndroidPermissionGranted();
     _requestPermissions();
+    getUserID();
     return this;
+  }
+
+  Future<void> getUserID() async {
+    if (storageService.hasData(StorageConst.USER_ID)) {
+      userID = await storageService.readData(StorageConst.USER_ID);
+    }
   }
 
   Future<void> _isAndroidPermissionGranted() async {
@@ -91,8 +103,13 @@ class NotificationService extends GetxService {
           if (change.type == DocumentChangeType.added) {
             final title = change.doc['title'];
             final message = change.doc['message'];
+            final toUserId = change.doc['to_user_id'];
+            print("User ID: $userID");
+            print("ToUserId ID: $toUserId");
             print("New notification detail: ${change.doc['message']}");
-            showNotification(title, message);
+            if (toUserId == userID) {
+              showNotification(title, message);
+            }
           }
         }
       });
