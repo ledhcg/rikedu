@@ -11,6 +11,7 @@ import 'package:rikedu/src/features/authentication/providers/auth_provider.dart'
 import 'package:rikedu/src/features/parental_controls/models/exercise_model.dart';
 import 'package:rikedu/src/utils/constants/api_constants.dart';
 import 'package:rikedu/src/utils/service/api_service.dart';
+import 'package:rikedu/src/utils/widgets/snackbar_widget.dart';
 
 class ExerciseController extends GetxController
     with GetSingleTickerProviderStateMixin {
@@ -136,6 +137,8 @@ class ExerciseController extends GetxController
         _exercises.value[exerciseIndex] = Exercise.fromJson(exercise);
         getDataExerciseSubmit();
         resetDataDefault(false);
+        SnackbarWidget.showSnackbarSuccess(
+            response.body['message'].toString().tr);
       } else {}
     } catch (e) {
       rethrow;
