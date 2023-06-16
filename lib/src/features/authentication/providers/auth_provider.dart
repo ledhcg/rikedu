@@ -11,11 +11,13 @@ import 'package:rikedu/src/utils/constants/roles_constants.dart';
 import 'package:rikedu/src/utils/constants/storage_constants.dart';
 import 'package:rikedu/src/utils/service/api_service.dart';
 import 'package:rikedu/src/utils/service/firebase_service.dart';
+import 'package:rikedu/src/utils/service/notification_service.dart';
 import 'package:rikedu/src/utils/service/storage_service.dart';
 
 class AuthProvider extends ChangeNotifier {
   final ApiService _apiService = Get.find();
   final StorageService _storageService = Get.find();
+  final NotificationService _notificationService = Get.find();
   final FirebaseService firebaseService = Get.find();
 
   bool _authenticated = false;
@@ -121,6 +123,7 @@ class AuthProvider extends ChangeNotifier {
         await setUser(User.fromJson(response.body['data']['user']));
         await setData(response.body['data']);
         await getData();
+        await setListenNotification();
         responseSuccess(response.body['message']);
         notifyListeners();
       } else {
@@ -145,7 +148,17 @@ class AuthProvider extends ChangeNotifier {
     }
   }
 
+  Future<void> setListenNotification() async {
+    try {
+      _notificationService.getUserID();
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<void> setData(Map<String, dynamic> data) async {
+    String userID = data['user']['id'];
+    _storageService.writeData(StorageConst.USER_ID, userID);
     String userToken = data['authentication']['access_token'][0];
     _storageService.writeData(StorageConst.USER_TOKEN, userToken);
     String userRole = data['authorization']['role'][0];
@@ -212,6 +225,18 @@ class AuthProvider extends ChangeNotifier {
   }
 
   Future<User> getParent() async {
+    try {
+      final parentJson =
+          await _storageService.readData(StorageConst.PARENT_DATA);
+      return parentJson != null
+          ? User.fromJson(jsonDecode(parentJson))
+          : User.defaultUser();
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<User> updateUser() async {
     try {
       final parentJson =
           await _storageService.readData(StorageConst.PARENT_DATA);
