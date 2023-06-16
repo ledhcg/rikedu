@@ -68,7 +68,7 @@ class MapController extends GetxController {
 
   void setLocationMarker() async {
     final Uint8List markerIcon =
-        await getBytesFromAsset(FilesConst.ICON_MARKER, 100);
+        await getBytesFromAsset(FilesConst.ICON_MARKER, 80);
     locationMarker = BitmapDescriptor.fromBytes(markerIcon);
   }
 
