@@ -199,7 +199,7 @@ class ExerciseDetailPage extends GetView<ExerciseController> {
                     child: FilledButton(
                       onPressed: () => controller.onSubmit(exercise.id, index),
                       child: controller.isLoadingSubmit
-                          ? Text('Uploading'.tr)
+                          ? Text('Loading'.tr)
                           : Text('Submit'.tr),
                     ),
                   );
