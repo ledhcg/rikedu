@@ -110,7 +110,8 @@ class BuildItemsExerciseList extends GetView<ExerciseController> {
                           color: Theme.of(context).colorScheme.primary,
                         ),
                       ),
-                      title: Text(exerciseItems[index].topic),
+                      title: Text(
+                          '[${exerciseItems[index].subjectName}] ${exerciseItems[index].topic}'),
                       subtitle: Text(exerciseItems[index].note),
                       trailing: SizedBox(
                         height: double.infinity,
