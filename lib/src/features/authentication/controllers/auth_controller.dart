@@ -86,10 +86,11 @@ class AuthController extends GetxController {
     if (formKey.currentState!.validate()) {
       _isLoading.value = true;
       await authProvider.login(_email.value, _password.value);
-      _isLoading.value = false;
+
       if (authProvider.isAuthenticated) {
         setupServiceAndProvider();
         Get.offAllNamed(Routes.HOME);
+        _isLoading.value = false;
         SnackbarWidget.showSnackbarSuccess(authProvider.responseMessage.tr);
       } else {
         SnackbarWidget.showSnackbar(authProvider.responseMessage);
