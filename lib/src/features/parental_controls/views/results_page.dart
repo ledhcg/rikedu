@@ -2,6 +2,7 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rikedu/src/features/authentication/models/user_model.dart';
+import 'package:rikedu/src/features/news/views/widgets/image_container_widget.dart';
 import 'package:rikedu/src/features/parental_controls/controllers/results_controller.dart';
 import 'package:rikedu/src/utils/constants/sizes_constants.dart';
 import 'package:skeletons/skeletons.dart';
@@ -355,8 +356,14 @@ class BoxStudent extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          CircleAvatar(
-              radius: 10, backgroundImage: NetworkImage(student.avatarUrl)),
+          ImageContainer(
+            width: 20,
+            height: 20,
+            margin: const EdgeInsets.all(0),
+            borderRadius: 10,
+            isLoading: false,
+            imageUrl: student.avatarUrl,
+          ),
           const SizedBox(width: 10),
           Text(
             student.fullName,
