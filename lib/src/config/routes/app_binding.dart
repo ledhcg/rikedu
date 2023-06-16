@@ -12,6 +12,8 @@ import 'package:rikedu/src/features/settings/controllers/about_controller.dart';
 import 'package:rikedu/src/features/settings/controllers/edit_profile_controller.dart';
 import 'package:rikedu/src/features/settings/controllers/language_controller.dart';
 import 'package:rikedu/src/features/settings/controllers/logout_controller.dart';
+import 'package:rikedu/src/features/settings/controllers/notifications_and_sounds_controller.dart';
+import 'package:rikedu/src/features/settings/controllers/privacy_and_security_controller.dart';
 import 'package:rikedu/src/features/settings/controllers/setting_controller.dart';
 import 'package:rikedu/src/features/settings/controllers/theme_controller.dart';
 import 'package:rikedu/src/features/timetable/controllers/timetable_controller.dart';
@@ -37,5 +39,9 @@ class AppBinding extends Bindings {
     Get.lazyPut<AboutController>(() => AboutController());
     Get.lazyPut<SchoolController>(() => SchoolController());
     Get.lazyPut<EditProfileController>(() => EditProfileController());
+    Get.lazyPut<PrivacyAndSecurityController>(
+        () => PrivacyAndSecurityController());
+    Get.lazyPut<NotificationsAndSoundsController>(
+        () => NotificationsAndSoundsController());
   }
 }

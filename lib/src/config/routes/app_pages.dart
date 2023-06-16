@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:rikedu/main.dart';
+import 'package:rikedu/src/config/routes/app_binding.dart';
 import 'package:rikedu/src/features/authentication/views/login_page.dart';
 import 'package:rikedu/src/features/news/views/news_detail_page.dart';
 import 'package:rikedu/src/features/news/views/news_page.dart';
@@ -21,6 +22,7 @@ abstract class AppPages {
     GetPage(
       name: Routes.LOGIN,
       page: () => const LoginPage(),
+      binding: AppBinding(),
     ),
     GetPage(
       name: Routes.HOME,
