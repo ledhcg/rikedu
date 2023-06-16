@@ -76,17 +76,18 @@ class NotificationController extends GetxController {
         List<dynamic> notificationsSource = [];
         for (final DocumentSnapshot doc in querySnapshot.docs) {
           final data = doc.data() as Map<String, dynamic>;
-
-          notificationsSource.add({
-            'id': doc.id,
-            'title': data['title'],
-            'message': data['message'],
-            'to_user_id': data['to_user_id'],
-            'from': data['from'],
-            'is_read': data['is_read'],
-            'created_at': formatTimestamp(data['created_at']),
-            'updated_at': formatTimestamp(data['updated_at']),
-          });
+          if (data['is_read'] == 0) {
+            notificationsSource.add({
+              'id': doc.id,
+              'title': data['title'],
+              'message': data['message'],
+              'to_user_id': data['to_user_id'],
+              'from': data['from'],
+              'is_read': data['is_read'],
+              'created_at': formatTimestamp(data['created_at']),
+              'updated_at': formatTimestamp(data['updated_at']),
+            });
+          }
         }
         List<dynamic> notificationsRealtime =
             List<dynamic>.from(notificationsSource);
@@ -107,16 +108,18 @@ class NotificationController extends GetxController {
         List<dynamic> notificationsSource = [];
         for (var doc in snapshot.docs) {
           final data = doc.data();
-          notificationsSource.add({
-            'id': doc.id,
-            'title': data['title'],
-            'message': data['message'],
-            'to_user_id': data['to_user_id'],
-            'from': data['from'],
-            'is_read': data['is_read'],
-            'created_at': formatTimestamp(data['created_at']),
-            'updated_at': formatTimestamp(data['updated_at']),
-          });
+          if (data['is_read'] == 0) {
+            notificationsSource.add({
+              'id': doc.id,
+              'title': data['title'],
+              'message': data['message'],
+              'to_user_id': data['to_user_id'],
+              'from': data['from'],
+              'is_read': data['is_read'],
+              'created_at': formatTimestamp(data['created_at']),
+              'updated_at': formatTimestamp(data['updated_at']),
+            });
+          }
         }
         List<dynamic> notificationsRealtime =
             List<dynamic>.from(notificationsSource);
@@ -127,24 +130,27 @@ class NotificationController extends GetxController {
     });
   }
 
-  Future<void> markAsRead(String notificationID) async {
-    try {
-      final response = await _apiService.put(
-          "${ApiConst.NOTIFICATIONS_ENDPOINT}/$notificationID/mark-as-read",
-          {});
-      if (response.body['success']) {
-        await _fetchData();
-      } else {}
-    } catch (e) {
-      rethrow;
+  Future<void> markAsRead(
+      String notificationID, int index, String typeMode) async {
+    if (typeMode == 'School') {
+      try {
+        final response = await _apiService.put(
+            "${ApiConst.NOTIFICATIONS_ENDPOINT}/$notificationID/mark-as-read",
+            {});
+        if (response.body['success']) {
+          notifications.removeAt(index);
+        } else {}
+      } catch (e) {
+        rethrow;
+      }
     }
-  }
-
-  Future<void> markAsReadRealtime(String notificationId) async {
-    final notificationRef = _firebaseService
-        .collectionReference(FirebaseConst.USER_NOTIFICATION)
-        .doc(notificationId);
-    await notificationRef.update({'is_read': true});
+    if (typeMode == 'Other') {
+      final notificationRef = _firebaseService
+          .collectionReference(FirebaseConst.USER_NOTIFICATION)
+          .doc(notificationID);
+      await notificationRef.update({'is_read': 1});
+      notificationsRealtime.removeAt(index);
+    }
   }
 
   String formatTimestamp(Timestamp timestamp) {
