@@ -15,6 +15,15 @@ class SettingsController extends GetxController {
   final RxBool _isSettingMode = true.obs;
   bool get isSettingMode => _isSettingMode.value;
 
+  final RxBool _isShowMap = true.obs;
+  bool get isShowMap => _isShowMap.value;
+
+  final RxBool _isShowStudentStatus = true.obs;
+  bool get isShowStudentStatus => _isShowStudentStatus.value;
+
+  final RxBool _isShowBattery = true.obs;
+  bool get isShowBattery => _isShowBattery.value;
+
   @override
   void onInit() {
     super.onInit();
@@ -24,5 +33,17 @@ class SettingsController extends GetxController {
 
   void changeSettingMode() {
     _isSettingMode.value = !isSettingMode;
+  }
+
+  void changeSwitchShowMap() {
+    _isShowMap.value = !isShowMap;
+  }
+
+  void changeSwitchShowBattery() {
+    _isShowBattery.value = !isShowBattery;
+  }
+
+  void changeSwitchShowStudentStatus() {
+    _isShowStudentStatus.value = !isShowStudentStatus;
   }
 }
