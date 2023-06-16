@@ -80,5 +80,37 @@ Map<String, String> get enKeys => {
       'Upload your file': 'Upload your file',
       'Deadline': 'Deadline',
       'Exercises': 'Exercises',
-      'About': 'About'
+      'About': 'About',
+
+      'Open': 'Open',
+      'No reviews yet.': 'No reviews yet.',
+      'The file has been uploaded.': 'The file has been uploaded.',
+      'User login successfully': 'User login successfully',
+      'User updated successfully': 'User updated successfully',
+      'Exercise updated successfully': 'Exercise updated successfully',
+      'Password updated successfully': 'Password updated successfully',
+      'Avatar updated successfully': 'Avatar updated successfully',
+
+      'Show Student Status': 'Show Student Status',
+      'Show Battery': 'Show Battery',
+      'Show Map': 'Show Map',
+      'Privacy Policy': 'Privacy Policy',
+      'Terms And Conditions': 'Terms And Conditions',
+
+      'Back to Setting': 'Back to Setting',
+
+      'Phone': 'Phone',
+      'Address': 'Address',
+      'Department': 'Department',
+      'Update': 'Update',
+      'Loading': 'Loading',
+      'Change Password': 'Change Password',
+      'Old Password': 'Old Password',
+      'New Password': 'New Password',
+      'Confirm Password': 'Confirm Password',
+
+      'Enable Sounds': 'Enable Sounds',
+      'Push Notifications': 'Push Notifications',
+
+      'Success': 'Success'
     };

@@ -75,5 +75,37 @@ Map<String, String> get viKeys => {
       'Upload your file': 'Tải lên tệp của bạn',
       'Deadline': 'Hạn chót',
       'Exercises': 'Bài tập',
-      'About': 'Về chúng tôi'
+      'About': 'Về chúng tôi',
+
+      'Open': 'Mở',
+      'No reviews yet.': 'Chưa có đánh giá.',
+      'The file has been uploaded.': 'Tệp đã được tải lên.',
+      'User login successfully': 'Đăng nhập thành công',
+      'User updated successfully': 'Cập nhật người dùng thành công',
+      'Exercise updated successfully': 'Cập nhật bài tập thành công',
+      'Password updated successfully': 'Cập nhật mật khẩu thành công',
+      'Avatar updated successfully': 'Cập nhật hình đại diện thành công',
+
+      'Show Student Status': 'Hiển thị trạng thái học sinh',
+      'Show Battery': 'Hiển thị Pin',
+      'Show Map': 'Hiển thị Bản đồ',
+      'Privacy Policy': 'Chính sách bảo mật',
+      'Terms And Conditions': 'Điều khoản và Điều kiện',
+
+      'Back to Setting': 'Quay lại Cài đặt',
+
+      'Phone': 'Số điện thoại',
+      'Address': 'Địa chỉ',
+      'Department': 'Phòng ban',
+      'Update': 'Cập nhật',
+      'Loading': 'Đang tải',
+      'Change Password': 'Thay đổi mật khẩu',
+      'Old Password': 'Mật khẩu cũ',
+      'New Password': 'Mật khẩu mới',
+      'Confirm Password': 'Xác nhận mật khẩu',
+
+      'Enable Sounds': 'Bật âm thanh',
+      'Push Notifications': 'Thông báo đẩy',
+
+      'Success': 'Thành công'
     };

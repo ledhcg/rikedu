@@ -81,4 +81,36 @@ Map<String, String> get ruKeys => {
       'Deadline': 'Крайний срок',
       'Exercises': 'Упражнения',
       'About': 'О нас',
+
+      'Open': 'Открыть',
+      'No reviews yet.': 'Пока нет отзывов.',
+      'The file has been uploaded.': 'Файл был загружен.',
+      'User login successfully': 'Пользователь успешно вошел в систему',
+      'User updated successfully': 'Пользователь успешно обновлен',
+      'Exercise updated successfully': 'Упражнение успешно обновлено',
+      'Password updated successfully': 'Пароль успешно обновлен',
+      'Avatar updated successfully': 'Аватар успешно обновлен',
+
+      'Show Student Status': 'Показать статус школьника',
+      'Show Battery': 'Показать уровень заряда',
+      'Show Map': 'Показать карту',
+      'Privacy Policy': 'Политика конфиденциальности',
+      'Terms And Conditions': 'Условия использования',
+
+      'Back to Setting': 'Вернуться к настройкам',
+
+      'Phone': 'Телефон',
+      'Address': 'Адрес',
+      'Department': 'Отдел',
+      'Update': 'Обновить',
+      'Loading': 'Загрузка',
+      'Change Password': 'Изменить пароль',
+      'Old Password': 'Старый пароль',
+      'New Password': 'Новый пароль',
+      'Confirm Password': 'Подтвердите пароль',
+
+      'Enable Sounds': 'Включить звуки',
+      'Push Notifications': 'Push-уведомления',
+
+      'Success': 'Успех'
     };
