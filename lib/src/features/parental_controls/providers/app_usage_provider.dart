@@ -30,8 +30,8 @@ class AppUsageProvider with ChangeNotifier {
     await getStudentID();
     if (userRole == RolesConst.STUDENT) {
       getListAppUsage();
-      //Run it every 1 minute
-      _timer = Timer.periodic(const Duration(minutes: 1), (timer) {
+      //Run it every 10 seconds
+      _timer = Timer.periodic(const Duration(seconds: 10), (timer) {
         getListAppUsage();
       });
     }
