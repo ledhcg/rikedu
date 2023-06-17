@@ -12,6 +12,9 @@ class SettingsController extends GetxController {
   final RxBool _isLoading = true.obs;
   bool get isLoading => _isLoading.value;
 
+  final RxBool _isStudent = false.obs;
+  bool get isStudent => _isStudent.value;
+
   final RxBool _isSettingMode = true.obs;
   bool get isSettingMode => _isSettingMode.value;
 
@@ -28,6 +31,9 @@ class SettingsController extends GetxController {
   void onInit() {
     super.onInit();
     _user.value = authProvider.user;
+    if (authProvider.role == RolesConst.STUDENT) {
+      _isStudent.value = true;
+    }
     _isLoading.value = false;
   }
 
