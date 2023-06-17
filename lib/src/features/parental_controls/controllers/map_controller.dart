@@ -28,7 +28,8 @@ class MapController extends GetxController {
   final RxBool _isLoading = true.obs;
   bool get isLoading => _isLoading.value;
 
-  final Rx<LatLng> _currentPosition = const LatLng(0, 0).obs;
+  final Rx<LatLng> _currentPosition =
+      const LatLng(55.75420052657267, 37.62076578248755).obs;
   LatLng get currentPosition => _currentPosition.value;
 
   @override
