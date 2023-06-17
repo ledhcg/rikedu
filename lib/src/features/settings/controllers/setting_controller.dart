@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:rikedu/src/features/authentication/models/user_model.dart';
 import 'package:rikedu/src/features/authentication/providers/auth_provider.dart';
+import 'package:rikedu/src/utils/constants/roles_constants.dart';
 
 class SettingsController extends GetxController {
   final authProvider = Provider.of<AuthProvider>(Get.context!);
