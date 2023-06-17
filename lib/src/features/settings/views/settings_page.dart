@@ -297,7 +297,7 @@ class ChangePasswordWidget extends GetView<EditProfileController> {
   }
 }
 
-class TabSetting extends StatelessWidget {
+class TabSetting extends GetView<SettingsController> {
   const TabSetting({
     super.key,
   });
@@ -315,13 +315,18 @@ class TabSetting extends StatelessWidget {
             context: context,
             builder: (context) {
               return Popover(
-                child: Column(
-                  children: const [
-                    ThemeModal(),
-                    MoreSettingsWidget(),
-                  ],
-                ),
-              );
+                  child: Obx(() => controller.isStudent
+                      ? Column(
+                          children: const [
+                            ThemeModal(),
+                          ],
+                        )
+                      : Column(
+                          children: const [
+                            ThemeModal(),
+                            MoreSettingsWidget(),
+                          ],
+                        )));
             },
           ),
         ),
