@@ -72,11 +72,12 @@ class PrivacyAndSecurityModal extends GetView<PrivacyAndSecurityController> {
                   content: SizedBox(
                     height: 400,
                     width: double.infinity,
-                    child: WebViewWidget(
-                      gestureRecognizers: {}
-                        ..add(Factory(() => VerticalDragGestureRecognizer())),
-                      controller: controller.controllerWV,
-                    ),
+                    child: Container(),
+                    // WebViewWidget(
+                    //   gestureRecognizers: {}
+                    //     ..add(Factory(() => VerticalDragGestureRecognizer())),
+                    //   controller: controller.controllerWV,
+                    // ),
                   ),
                   contentHorizontalPadding: 15,
                   contentBorderRadius: 25,
