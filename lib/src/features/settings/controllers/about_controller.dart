@@ -1,6 +1,7 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
+import 'dart:ui' as ui;
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -44,13 +45,20 @@ class AboutController extends GetxController {
     _isLoading.value = false;
   }
 
-  void setLocationMarker() {
-    BitmapDescriptor.fromAssetImage(
-      ImageConfiguration.empty,
-      FilesConst.ICON_SCHOOL_MARKER,
-    ).then((marker) {
-      locationMarker = marker;
-    });
+  Future<Uint8List> getBytesFromAsset(String path, int width) async {
+    ByteData data = await rootBundle.load(path);
+    ui.Codec codec = await ui.instantiateImageCodec(data.buffer.asUint8List(),
+        targetWidth: width);
+    ui.FrameInfo fi = await codec.getNextFrame();
+    return (await fi.image.toByteData(format: ui.ImageByteFormat.png))!
+        .buffer
+        .asUint8List();
+  }
+
+  void setLocationMarker() async {
+    final Uint8List markerIcon =
+        await getBytesFromAsset(FilesConst.ICON_SCHOOL_MARKER, 80);
+    locationMarker = BitmapDescriptor.fromBytes(markerIcon);
   }
 
   void animateCamera() async {
